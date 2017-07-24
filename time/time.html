@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<script src="angular.min.js"></script>
+	<link rel="stylesheet" href="../../css/index.css">
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+	<div class="account-box">
+		<h2 class="account-title">
+			<span class="left c3">回款计划</span>
+			<a href="###" class="f-btn-fhby right">返回本月</a>
+			<div class="clearfix right">
+				<div class="f-btn-jian left" ng-click="perClick()">&lt;</div><div class="left f-riqi"><span class="f-year">{{myYear}}</span>年<span class="f-month">{{myMonth}}</span>月</div><div class="f-btn-jia left" ng-click="nextClick()">&gt;</div><!-- 一定不能换行-->
+			</div>
+		</h2>
+		<div class="f-rili-table">
+			<div class="f-rili-head celarfix">
+				<div class="f-rili-th">周日</div>
+				<div class="f-rili-th">周一</div>
+				<div class="f-rili-th">周二</div>
+				<div class="f-rili-th">周三</div>
+				<div class="f-rili-th">周四</div>
+				<div class="f-rili-th">周五</div>
+				<div class="f-rili-th">周六</div>
+				<div class="clear"></div>
+			</div>
+			<div class="f-tbody clearfix">
+				<div class="f-td" ng-repeat="(key,value) in timeArr track by $index" ng-class="{'gray':value.className == 'gray','orange':value.className == 'orange','f-today': todayLight == value.time && (currentYear == myYear) && (currentMonth == myMonth)}" ng-click="itemClick(key)">{{value.time}}<i class="bg-red">99+</i></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var app = angular.module('myapp',[]);
+		app.controller('myctrl',function($scope){
+			$scope.time = function(){
+				$scope.timeArr =[];
+				//页面加载初始化年月
+				var mydate = new Date();
+				$scope.myYear = mydate.getFullYear();
+				$scope.myMonth = mydate.getMonth()+1;
+				$scope.currentYear = mydate.getFullYear();
+				$scope.currentMonth = mydate.getMonth()+1;
+				console.info('month',$scope.myMonth);
+				showDate($scope.myYear,$scope.myMonth);
+
+				//日历上一月
+				$scope.perClick = function(){
+					$scope.timeArr =[];
+					$scope.grayColor = false;
+					$scope.orangeColor = false;
+					var mm = parseInt($scope.myMonth);
+					var yy = parseInt($scope.myYear);
+					console.info(mm,yy);
+					if( parseInt($scope.myMonth) == 1){//返回12月
+						$scope.myYear = yy-1;//切换年
+						$scope.myMonth = 12;//切换显示余额
+						// $(".f-year").html(yy-1);
+						// $(".f-month").html(12);
+						showDate(yy-1,12);
+					}else{//上一月
+						$scope.myMonth = mm-1;
+						// $(".f-month").html(mm-1);
+						showDate(yy,mm-1);
+					}
+				}
+				
+				//日历下一月
+				$scope.nextClick = function(){
+					$scope.timeArr =[];
+					// var mm = parseInt($(".f-month").html());
+					// var yy = parseInt($(".f-year").html());
+					var mm = parseInt($scope.myMonth);
+					var yy = parseInt($scope.myYear);
+					console.info(mm,yy);
+					if( mm == 12){//返回12月
+						$scope.myYear = yy+1;
+						$scope.myMonth = 1;
+						// $(".f-year").html(yy+1);
+						// $(".f-month").html(1);
+						showDate(yy+1,1);
+					}else{//上一月
+						// $(".f-month").html(mm+1);
+						$scope.myMonth = mm+1;
+						showDate(yy,mm+1);
+					}
+				}
+				//返回本月
+				// $(".f-btn-fhby").click(function(){
+				// 	$(".f-year").html( mydate.getFullYear() );
+				// 	$(".f-month").html( mydate.getMonth()+1 );
+				// 	showDate(mydate.getFullYear(),mydate.getMonth()+1);
+				// })
+
+				//读取年月写入日历  重点算法!!!!!!!!!!!
+				function showDate(yyyy,mm){
+					console.info(125,yyyy,mm);
+					var dd = new Date(parseInt(yyyy),parseInt(mm), 0);   //Wed Mar 31 00:00:00 UTC+0800 2010  
+					var daysCount = dd.getDate();            //本月天数  
+					var mystr ="";//写入代码
+					var icon = "";//图标代码
+					var week = new Date(parseInt(yyyy)+"/"+parseInt(mm)+"/"+1).getDay(); //今天周几
+					$scope.preWeek = week;
+					$scope.nextWeek = 7-(daysCount+week)%7;
+					console.info('week',week);
+					var lastMonth; //上一月天数
+					var nextMounth//下一月天数
+					if(  parseInt(mm) ==1 ){
+						lastMonth = new Date(parseInt(yyyy)-1,parseInt(12), 0).getDate();
+					}else{
+						lastMonth = new Date(parseInt(yyyy),parseInt(mm)-1, 0).getDate();
+					}
+					if( parseInt(mm) ==12 ){
+						nextMounth = new Date(parseInt(yyyy)+1,parseInt(1), 0).getDate();
+					}else{
+						nextMounth = new Date(parseInt(yyyy),parseInt(mm)+1, 0).getDate();
+					}
+					console.info('lastMonth',lastMonth);
+					for(i=0;i<daysCount;i++){
+						//计算上月空格数
+						if( i%7 == 0){
+							if(i<7){//只执行一次
+								for(j=0;j<week;j++){
+									console.info(lastMonth,j,week);
+									var perGrayData = {
+										time : lastMonth+j-week+1,
+										className : 'gray'
+									};
+									$scope.timeArr.push(perGrayData);
+								}
+							}
+						}
+						// console.info($scope.timeArr);
+						//这里为一个单元格，添加内容在此
+						var orangeData = {
+							time : i+1,
+							className : 'orange'
+						};
+						$scope.timeArr.push(orangeData);
+					}
+
+					//计算下月空格数
+					//表格不等高，只补充末行不足单元格
+					if(7-(daysCount+week)%7 <7){
+						console.info(176,7-(daysCount+week)%7);
+						for(k=0; k<7-(daysCount+week)%7;k++ ){ // week为今天周几 daysCount为本月天数  7-week为本行空格数 7-(daysCount+6-week)%7为最后一行有几个空格
+							var nextGrayData = {
+								time : k+1,
+								className : 'gray'
+							};
+							$scope.timeArr.push(nextGrayData);
+							// mystr += "<div class='f-td f-null' style='color:#ccc;'>"+(k+1)+"</div>";
+						}
+					}
+					
+					//给今日加class
+					if( mydate.getFullYear() == yyyy){
+						if( (mydate.getMonth()+1 ) == mm){
+							var today = mydate.getDate();
+							console.info('今日高亮',today-1-week+6);
+							$scope.todayLight = today-week+6;
+							// $(".f-rili-table .f-td").eq(today-1-week+6).addClass("f-today");
+						}
+					}
+				}
+
+				//点击获取当前时间
+				$scope.itemClick = function(key){
+					var val = $scope.myYear+'-'+$scope.myMonth+'-'+$scope.timeArr[key].time;
+					console.info(val,'点击上月下月不对');
+				}
+			}
+			$scope.time();
+		})
+		
+	</script>
+</body>
+</html>
