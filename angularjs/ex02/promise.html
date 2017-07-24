@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$http</title>
+
+    <script>
+        var p =new Promise(function (resolve,reject) {
+            //ajax获取数据2s;
+            console.info(p);
+            var count =parseInt(Math.random()*100);
+            setTimeout(function () {
+                if(count%2==0){
+                    resolve('成功');//将'成功'传入resolve中,后面的成功函数能得到！
+                }else{
+                    reject('失败');
+                }
+            },2000);
+        });
+        console.info('承诺对象初始化');
+        p.then(function (e) {
+            //成功！
+            console.info(e);
+        },function (e) {
+            //失败
+            console.info(e);
+        });
+        console.info('承诺对象调用完成');
+
+    </script>
+</head>
+<body>
+<div>
+
+</div>
+</body>
+</html>

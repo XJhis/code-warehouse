@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>检测版本</title>
+</head>
+
+<body>
+    <script>
+    // console.log(navigator.userAgent)
+
+    // function IETester(userAgent) {
+    //     var UA = userAgent || navigator.userAgent;
+    //     if (/msie/i.test(UA)) {
+
+
+    //         return UA.match(/msie (\d+\.\d+)/i)[1];
+    //     } else if (~UA.toLowerCase().indexOf('trident') && ~UA.indexOf('rv')) {
+    //         return UA.match(/rv:(\d+\.\d+)/)[1];
+    //     }
+    //     return false;
+    // }
+
+    // //不传参数返回当前IE版本，如果不是IE内核浏览器，返回false
+    // console.log('浏览器版本：',IETester())
+
+    // // IETester('Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko'); //传userAgent字符串，用来判断其他IE浏览器的版本,该示例返回11.0
+
+    // // console.log(IETester('Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; Touch; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.2; Tablet PC 2.0; rv:11.0) like Gecko'))
+
+    console.log('32',navigator.appName)
+
+    if(navigator.appName == "Microsoft Internet Explorer"&&parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE",""))<9){
+            alert("您的浏览器版本过低，请下载IE9及以上版本");
+    }
+    
+    </script>
+</body>
+
+</html>

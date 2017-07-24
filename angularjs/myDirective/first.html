@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div ng-controller="firCtrl">
+		<h3 go-top class="title" handle="handle"></h3>
+	</div>
+
+
+
+	<script src="js/angular.min.js"></script>
+
+	<script>
+		'use strict';
+		var app = angular.module('app',[])
+		app.controller('firCtrl',['$scope',function($scope) {
+			$scope.numArr = [1,2,3];
+			$scope.name = 'xjh';
+			$scope.handle = function() {
+				alert('dianji')
+			}
+
+			// $scope.$watch('numArr', function(newValue, oldValue) {
+			// 	console.info($scope.numArr)
+			// });
+		}])
+
+		app.directive('goTop',function() {
+			return {
+				restrict: 'AE',
+				replace: true,
+				scope: {
+					// name: '@',	//传递基本数据类型的变量
+					// numArr: '=',	//传递对象
+					// handle: '&'	//用来传递方法,注意=也可以传递方法，但是&传递时候有括号
+				},
+				controller: function($scope) {
+					console.info(1,$scope.name)
+					console.info(2,$scope.numArr)
+					console.info(3,$scope.handle)
+				},
+				link: function(scope, ele, attrs) {
+
+					console.info(1,scope.name)
+					console.info(2,scope.numArr)
+					// console.info(3,scope.handle)
+					// scope.handle()				
+				}
+			}
+		})
+	</script>
+</body>
+</html>

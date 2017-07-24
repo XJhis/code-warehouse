@@ -1,0 +1,27 @@
+!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="service.js"></script>
+    <script>
+        var app = angular.module('myApp',['ng.service']);
+        app.controller('indexCtrl',function ($scope,$ss) {
+            var data = {
+                userID:'Xjh123',
+                password:'123123123',
+                status:'login'
+            };
+            $ss.login(data).then(function (suc) {
+                console.info(suc)
+            },function (e) {
+                console.info(e);
+            })
+        })
+    </script>
+</head>
+<body ng-controller="indexCtrl">
+
+</body>
+</html>

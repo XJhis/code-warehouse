@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	<style></style>
+</head>
+<body>
+	<div id="cont">
+		<div v-if="ok">OK</div>
+		<div v-else>NO</div>
+		
+		<!-- v-else 元素必须紧跟在 v-if 或者 v-else-if 元素的后面——否则它将不会被识别。 -->
+		<template v-if="ok">
+			<h3>阿斯达所多</h3>
+			<h3>破婆婆看看</h3>
+			<h3>你妹你妹你</h3>
+		</template>
+		<!-- template在html中不显示 -->
+	</div>
+	
+	<script src='js/vue.js'></script>
+	<script>
+
+		var app = new Vue({
+			el: '#cont',
+			data: {
+				ok: true
+			}
+		})
+	</script>
+
+</body>
+</html>

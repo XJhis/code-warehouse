@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件的状态</title>
+</head>
+<body>
+	<div id="app"></div>
+
+	
+	<script src="list/react.js"></script>
+	<script src="list/react-dom.js"></script>
+	<script src="list/browser.min.js"></script>
+	<script type="text/babel">
+		var Hello = React.createClass({
+			getInitialState: function() {
+				return {
+					clickCount: 0
+				}
+			},
+			clickFun: function() {
+				this.setState({clickCount: this.state.clickCount+1});
+			},
+			render: function() {								
+				return (
+					<div>
+						<button onClick={this.clickFun}>点我啊</button>
+						<h1>被点击了 {this.state.clickCount}</h1>
+					</div>
+				)
+			}
+		});
+
+		var hello = ReactDOM.render(
+			<Hello/>,
+			document.getElementById('app')
+		)	
+		console.info(hello)
+		hello.setState({isShow: true})	
+
+	</script>	
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route/angular-route.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('firCtrl',function ($scope) {
+           /* setTimeout(function () {
+                alert('你是');
+                $scope.name = 'who are you!';
+            },2000);*/
+             setTimeout(function () {
+                 alert('你是');
+                 $scope.$apply($scope.name = 'who are you!');
+             },2000);
+
+        });
+
+
+    </script>
+</head>
+<body ng-controller="firCtrl">
+    我是<div>{{name}}</div>
+</body>
+</html>

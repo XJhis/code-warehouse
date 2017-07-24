@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype</title>
+</head>
+<body>
+	
+
+	<script>
+
+		var person = {name: '小黄'}
+		console.log(person.toString()) ;
+
+		Object.prototype.valueOf = function() {
+			console.log('你是sb吗？')
+		}
+
+		var obj = {name: '熊炬辉'};
+		obj.valueOf();
+		// var person = {name: '小黄'}		
+		// person.valueOf()
+
+	</script>
+</body>
+</html>

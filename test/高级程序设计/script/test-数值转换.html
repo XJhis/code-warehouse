@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数值转换</title>
+</head>
+
+<body>
+    <script>
+    // 既然是数值转换，一般都是由其他的数据类型转为数字类型的
+    // Number()方法比较强大，可以由其他数据类型转为数值类型的
+    // 而parseInt()方法一般用于取整，以及字符串转为数值类型的
+
+    // 一： Number()如果传入的是布尔值;会返回0或1 
+    // console.info(Number(true));//1
+    // console.info(Number(false));//0
+
+    //二：如果是null，返回的是0；
+    // console.info(3,Number(null));
+
+    // 三：如果是undefined,返回NaN;
+    // var a;
+    // console.info(4,Number(a));
+
+    // 四：如果是空字符串,返回0;
+    // 如果是非数字类型的字符串，返回NaN;
+    // 如果是数字类型，会自动省略前面的0；如0123==>123;
+    //如果是包含16进的字符串；会转换为10进制
+
+    // console.info(Number(""));        //0
+    // console.info(Number("blue"));    //NaN
+    // console.info(Number('123'));     //123
+    // console.info(Number('01.2'));    //1.2
+    // console.info(Number('01.2a'));   //NaN
+    // console.info(Number('0xf')); //15
+
+    // 五：如果传入是对象；没弄明白；
+
+    // var obj ={
+    //  age: 12
+    //  // sex: '男'
+    // }
+    // console.info(Number(obj))
+
+    // parseInt()转换 它可以转换8进制、16进制
+
+    // console.info(parseInt('070',8))//56 8进制
+    // console.info(parseInt('070',16))//112 16进制
+
+    // console.info(parseInt('70a'))// 70   
+
+    // parseInt()解析空字符串，返回NaN
+    // console.info(parseInt(''))// NaN
+    // console.info(parseInt('  12'))// 12
+
+
+    // parseFloat() 它只能转10进制；
+    // console.info(parseFloat('012')) //12
+    // console.info(parseFloat('0xA')) //0
+    // console.info(parseFloat('22.12.12')) //22.12
+
+    var num = 16;
+    var num1 = num.toString(16);
+    console.info(num1)
+    </script>
+</body>
+
+</html>

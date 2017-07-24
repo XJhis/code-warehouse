@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件</title>
+	<script src="./js/vue.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#app {
+			padding: 20px 50px; 
+		}
+
+		#app .fir {
+			height: 30px;
+		}
+
+		.form-group {
+			margin-bottom: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="form-group fir">
+			<input type="text" v-show="showInput" v-model="name" placeholder="请输入用户名" />
+		</div>
+		<div class="form-control">
+			<button @click="showFn">点我</button>
+			<span>{{name}}</span>
+		</div>
+	</div>
+	
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				showInput: false,
+				name: ''
+			},
+			methods: {
+				showFn: function(event) {
+					this.showInput = !this.showInput;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

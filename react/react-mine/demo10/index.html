@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第10个-生命周期</title>
+</head>
+<body>
+	<div id="example"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../build/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var Hello = React.createClass({
+			//默认属性
+			getDefaultProps : function() {
+				return {
+					name: 'world'
+				}
+			},
+			//默认状态
+			getInitialState: function() {
+				return {
+					opacity: 1
+				}
+			},
+			componentDidMount: function () {
+			    this.timer = setInterval(function () {
+			      var opacity = this.state.opacity;
+			      opacity -= .05;
+			      if (opacity < 0.1) {
+			        opacity = 1.0;
+			      }
+			      this.setState({
+			        opacity: opacity
+			      });
+			    }.bind(this), 100);
+		  	},
+			render: function() {
+				return (
+					<div style={{opacity: this.state.opacity}}>
+						Hello,{this.props.name}
+					</div>
+				)
+			}
+		})
+
+		ReactDOM.render(
+			<Hello name="美女"></Hello>,
+			document.getElementById('example')
+		)
+	</script>
+</body>
+</html>

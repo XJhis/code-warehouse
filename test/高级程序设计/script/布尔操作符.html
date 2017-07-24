@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>布尔操作符</title>
+</head>
+<body>
+	
+
+	<script>
+		// 一:布尔操作符有三种;非(!),或(||),与(&&);
+
+		// 1:非操作符；可以用于js中任何值；返回值都是布尔值，先进行转换，在进行取反操作
+		// var num = 1,
+		// 	str = '你好',
+		// 	isOk = true,
+		// 	obj = {
+		// 		name: '相结合'
+		// 	},
+		// 	un; 
+
+		// console.info(!num);
+		// console.info(!str);
+		// console.info(!isOk);
+		// console.info(!obj);
+		// console.info(!un); //如果变量的值为undefined,那么他的!为true;
+
+		// 2:与操作符，同样可以应用于任何类型的操作数；但是其返回值不一定是布尔值，且存在逻辑短路的现象
+
+			var obj = {name: '相结合'};
+			var no = null;
+			var un ;
+			var str = '相结合' ;
+
+			// console.info(obj && un) //如果第一个是对象，则返回第二个操作数
+			// console.info(obj && str) //如果第二个是对象，则第一个值必须为真时，才返回第二个对象
+
+			// console.info(un && obj)
+			// 等等条件，总结一下就是，如果第一个操作数返回值的真，才会返回第二个操作数；如果第一个操作数返回假，无论第二个是什么，直接返回第一个操作数；这就是逻辑短路
+
+		// 3:逻辑或；返回值不一定是布尔值，存在逻辑短路现象；
+
+		// 如果第一个返回值为true，就直接返回第一个操作数，不管第二个是什么，如果第一个返回值不是true，则考虑第二个；
+
+		// 如果2个都不为真，优先返回第二个值
+		console.info(no || un) //返回的是undefined;
+		console.info(un || no)	//返回null;
+
+		// 常用于变量赋值
+		var myObj = preferObj || backObj;
+
+
+
+
+
+
+	</script>
+</body>
+</html>

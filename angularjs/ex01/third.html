@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('indexCtrl',function ($scope) {
+
+            $scope.test=function () {
+                //console.info('我被点击了');
+                //console.inf(this);
+               console.info($scope.username);
+            }
+        })
+    </script>
+
+</head>
+<body>
+    <div ng-controller="indexCtrl">
+        <label>用户名</label><input type="text" id="username" ng-model="username">
+        <span ng-if="username.length>16 || username.length<6">用户名长度6-16位</span>
+        <!--<em ng-bind="username"></em>-->
+        <p ng-show="username.length>16 || username.length<6">用户名长度6-16位</p>
+        <button ng-click="test()">点击</button>
+        <img src="" alt="" ng-src="">
+    </div>
+</body>
+</html>

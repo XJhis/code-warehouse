@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p:nth-child(2){ 	
+			color: red
+		}
+		/* 首先是父元素的第2个子元素，再选中的标签是p标签 条件复杂*/ /* 注：如果第二个子元素不是p标签，则样式不起作用 */
+		p:nth-of-type(2) {	
+			color: blue
+		}
+		/* 选中父元素中p标签的第二个 条件简单*/		
+		p:first-child {
+			color: green;
+		}
+		p:last-child {
+			color: green;
+		}
+
+		p:first-of-type {
+			color: purple;
+		}
+		p:last-of-type {
+			color: pink;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<ul>
+		<li>刘德华</li>
+		<li>张学友</li>
+		<li>郭富城</li>
+		<li>黎明</li>
+	</ul>
+</body>
+</html>

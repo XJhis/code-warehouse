@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('indexCtrl',function ($scope) {
+            $scope.name = '小家伙';
+            $scope.doing = function () {
+                alert('我在上自习！')
+            }
+        });
+        app.directive('demo',function () {
+            return {
+                //restrict:'A',
+                //template:'<div>今天天气有点热啊</div>',
+                scope:{
+                    minName:'=userName',
+                    minAge:'@userAge',
+                    minDoing:'&userDoing'//注意驼峰命名法是个坑！！！在html中要写成user-doing
+                },
+                link:function (scope,element,attr) {//均是形参；
+                    console.info(scope);//作用域
+                    //console.info(element);//所有使用自定义命令的标签（是一个数组）
+                    //console.info(attr);//自定义变量的值如：(ng-if='userName')
+                    scope.info = "我是scope里面的变量！";
+                    //console.info()
+                    //scope.$parent.doing();
+
+                }
+
+
+            }
+        });
+
+
+    </script>
+    <style>
+        .box {
+            background:red;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    <div demo user-name='name' user-age="25" user-doing="doing()">我的阿斯顿</div>
+</div>
+
+
+
+</body>
+</html>

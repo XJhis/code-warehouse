@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>return</title>
+</head>
+
+<body>
+
+
+    <script>
+    	// 'use strict';
+
+    	function fun1() {
+    		alert(arguments[0]+'，欢迎加入');
+    		console.info(arguments)
+    	}
+    	fun1('熊炬辉')
+    	// 函数里面的参数只是提供便利，但不是必须的
+    	//arguments的值与其对应函数参数的值保持同步；
+
+    	function fun2(num, index) {
+    		
+    		arguments[0] = 1;
+    		arguments[1] = 2;
+    		console.info(num,index)
+    		return (num + index)
+    	}
+
+    	console.info(fun2(0,0)) //3 表明只要有一个改变，都改变
+
+    	//注意：严格模式下，设置arguments的值变得无效
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component</title>
+</head>
+<body>
+	<div id="app"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../build/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var MessageText = React.createClass({
+			render:function() {
+				var messageArr = [];
+				for(var ii = 0; ii < 6 ; ii++) {
+					messageArr.push(<FirMessage key={"name"+ ii} />)
+				}				
+				return (
+					<div>
+						<h1>你好，美女！！！</h1>	
+						{messageArr}
+					</div>
+					
+				)
+			}
+
+		})
+		
+		var FirMessage = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<h3>嘿,baby!</h3>	
+						<SecMessage />
+					</div>
+					
+				)
+			}
+		});
+
+		var SecMessage = React.createClass({
+			render: function() {
+				return (
+					<p>我只是打酱油的</p>
+				)
+			}
+		})
+
+
+		ReactDOM.render(<MessageText />, document.getElementById('app'), function() {
+			console.info('捏好啊')
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>乘性操作符</title>
+</head>
+<body>
+	
+
+	<script>
+		// 特别注意：乘性操作符的返回结果：数字、NaN、Infinity/-Infinity，存在转换，后台调用Number()
+		// 一：乘法（*）
+		var numA = 121e10000,
+			numB = 100e20000;
+
+		var result = numA * numB;
+			console.info(result)
+		//如果结果超过js的数值范围，返回的是Infinity/-Infinity;
+
+		var str = 'klk',
+			str1 = '2'
+			num = 20,
+			result1 = str * num
+			result2 = str1 * num//后台调用Number()将其转换为数值；
+
+		console.info(result1,result2)
+		// 二：除法（/）
+		// 用法基本同上
+
+		// 三：求模（%）
+		var empty = 0,
+			a = 10,
+			back = empty % a;
+			console.info(back)//被除数是0，返回0；
+
+
+	</script>
+</body>
+</html>

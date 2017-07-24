@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.test-nav {
+			overflow: hidden;
+			width: 300px;
+			margin: 0 auto;
+		}
+		.test-nav li{
+			list-style: none;
+			float: left
+		}
+		.test-nav li a {
+			display: block;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: #ff6b00;
+			color: white;
+			text-decoration: none;
+			padding: 0 20px;
+		}
+		.test-nav li a:hover {
+			background: #FF8400;
+		}
+		.test > h3 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<my-test  :test-list="list"></my-test>
+	</div>
+	
+	<script src="./js/vue.js"></script>
+	<script>
+	
+		Vue.component('myTest', {
+			props: {
+				testTitle: {
+					type: [String, Number],
+					required: false,
+					default: '默认标题'
+				},
+				testList: {
+					type: [Array, Object],
+					required: true
+				}
+			},
+			template: `<div class="test">
+							<h3>{{testTitle}}</h3>
+							<ul class="test-nav">
+								<li v-for="item in testList"><a href="">{{item}}</a></li>								
+							</ul>
+						</div>`
+					
+		})
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				title: 666,
+				list: ['首页', '推荐管理', '职位管理']
+			}
+		})
+	</script>
+</body>
+</html>

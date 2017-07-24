@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        //全局执行环境：$rootScope;
+        /*app.run(function ($rootScope) {
+            $rootScope.name = '我是angularjs'
+        });*/
+        app.controller('indexCtrl',function ($scope,$timeout,$interval) {
+            setTimeout(function(){
+                //必须使用$apply 强制将数据渲染到页面上
+                $scope.$apply(function() {
+                    //讲更改的数据渲染到页面的视图中
+                    $scope.userName = '何林坤';
+                })
+            },1000)
+/*
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    $scope.value = '我是定时器！';
+                })
+            },1000)*/
+            //angular自己的定时器（一段时间后执行某函数）
+            $timeout(function () {
+                    $scope.value = '我是定时器！';
+            },1000);
+            //angular定时器；
+            $scope.count = 0;
+            $interval(function () {
+                    $scope.count++;
+            },1000);
+        })
+
+    </script>
+</head>
+<body>
+    <div ng-controller="indexCtrl">
+
+        {{value}}{{count}}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性</title>
+	<style>
+		* {margin: 0;padding: 0}
+	</style>
+	
+</head>
+<body>
+
+	<div id="app">
+		<p>原来的信息：{{message}}</p>
+		<p>翻转信息：{{reverseMessage}}</p>
+		<h3>时间：{{nowDate}}</h3>
+	</div>
+	
+	<script src="js/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: '大家好'
+			},
+			computed: {
+				reverseMessage: function() {
+					return this.message.split('').reverse().join('');
+				},
+				nowDate: function() {
+					return new Date();
+				}
+			}
+		})
+
+		app.message = '再见';
+
+		console.info(app.reverseMessage)
+
+	</script>
+</body>
+</html>

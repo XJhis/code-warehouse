@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<style>
+		* {margin: 0;padding: 0}
+	</style>
+	
+</head>
+<body>
+	<ol id="app" v-if="foodArr">
+		<ol-li v-for="(value, key) in foodObj" v-bind:item="value"></ol-li>
+	</ol>
+
+
+	
+
+	<script src="js/vue.js"></script>
+	<script>
+		//此处组件必须放在上面，不然报错
+		// Vue.component('todo-item', {
+		//   template: '<li>这是个待办项</li>'
+		// })
+
+		Vue.component('ol-li', {
+			props:['item'],
+			template: '<li>{{item}}</li>'
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				foodArr: ['米饭', '面条', '烧烤', '泡菜', '随便吃点什么,只要不吃翔'],
+				foodObj: {name: '米饭', sex: '面食', age: '烧烤'}
+			}
+		})		
+	</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/UIroute/angular-ui-router.min.js"></script>
+    <script>
+        var app = angular.module('myApp',['ui.router']);
+        app.config(['$stateProvider','$urlRouterProvider',function ($state,$urlRoute) {
+            $state.state ('homeIndex',{//这个路由名称,绑定到ui-sref上的地址
+                url:'/index',//添加到页面地址栏的路径信息;自动添加到href属性上;
+                templateUrl:'views/first.html'
+            }).state('second',{
+                url:'/second',
+                templateUrl:'views/second.html'
+            });
+            $urlRoute.otherwise('/index');
+        }])
+
+    </script>
+    <style>
+        .container{
+            width:200px;
+            height:150px;
+            border:1px solid #3c3c3c;
+        }
+    </style>
+</head>
+<body>
+<span ui-sref="homeIndex">第一个</span><span ui-sref="second">第二个</span>
+<div ui-view="" class="container"></div>
+</body>
+</html>

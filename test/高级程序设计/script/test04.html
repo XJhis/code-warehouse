@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		// 一：数字类型(分为整数和浮点数型);
+		// 二：如果小数点后没有跟数字或者数字为0；会被转为整数
+		// 三：科学计数法 12e7 12X10的7次方
+		// var num = 12e7;
+		// console.info('数字',num);
+		// 四：浮点数值千万不能在if语句中作比较判断；因为精度问题;
+		// 可以先将其转为整数
+		var a = 0.1,
+			b = 0.2;
+		if(a+b == 0.3){
+			alert('true')
+		}else {
+			alert('false') //结果为false
+		}
+		// var a = 0.1*10,
+		// 	b = 0.2*10;
+		// if(a+b == 0.3*10){
+		// 	alert('true')
+		// }else {
+		// 	alert('false') //结果为false
+		// }
+	</script>
+</body>
+</html>

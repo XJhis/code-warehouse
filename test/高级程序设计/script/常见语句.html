@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>常见语句</title>
+</head>
+<body>
+	
+
+	<script>
+		function test() {
+			var num = 0,
+				result = 0;
+			do {
+				num += 1;
+				result += num;
+
+				console.info(result) ;
+			} while (num<=10)
+
+			console.info(num)
+			return result;
+		}
+		
+		// test()
+
+		function listPro() {
+			for (var name in document) {
+				document.write(name+'| ')
+			}
+		}
+
+		listPro();
+	</script>
+</body>
+</html>

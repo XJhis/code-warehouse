@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route/angular-route.min.js"></script>
+    <script>
+    var app = angular.module('myApp', ['ngRoute']);
+    //配置路由;
+    
+    app.config(function($routeProvider) {
+        $routeProvider.when('/index', {
+            template: '<div>我是第一个模版页面 {{name}}</div>',
+            controller: 'firCtrl'
+        }).when('/second', {
+            template: '<div>我是第二个模板页面 {{age}}</div>',
+            controller: 'secCtrl'
+        }).otherwise({
+            redirectTo: '/index' //默认转到页面index；
+        })
+    });
+    app.controller('firCtrl', function($scope) {
+        $scope.name = '小家伙';
+    });
+    app.controller('secCtrl', function($scope) {
+        $scope.age = '20';
+    })
+    </script>
+    <style>
+    .container {
+        width: 200px;
+        height: 150px;
+        border: 1px solid #3c3c3c;
+    }
+    </style>
+</head>
+
+<body>
+    <p><a href="#/index">第一个</a> <a href="#/second">第二个</a></p>
+    <div ng-view="" class="container"></div>
+</body>
+
+</html>
