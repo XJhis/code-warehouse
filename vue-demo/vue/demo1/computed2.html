@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="ep-watch">
+		<p>Ask a yes/no question:</p>
+		<input type="text" v-model="question" placeholder="问一个问题" />
+		<h3>{{answer}}</h3>
+	</div>
+	
+
+	<script src="js/vue.js"></script>
+	<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#ep-watch',
+			data: {
+				answer: '正在等待用户的输入！',
+				question: ''
+			},
+			watch:{
+				question: function(newValue) {
+					this.answer = '等待用户停止输入。。。';
+					this.getAnswer();
+				}
+			},
+			methods: {
+				getAnswer: function() {
+					var vm = this;
+					if(vm.question.indexOf('?') === -1) {
+						return vm.answer = '问题一般要有?';
+					}
+
+					vm.answer = '正在思考中...';
+
+					axios.get('https://yesno.wtf/api').then(function(response) {
+						vm.answer = response.data.answer;
+					})
+				}
+
+
+			}
+
+			//没看明白，直接在watch中处理逻辑不就可以了？
+		})
+	</script>
+</body>
+</html>

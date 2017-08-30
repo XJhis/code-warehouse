@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>require</title>
+	<script src="../js/angular.min.js"></script>
+	<script>
+		var app = angular.module('app',[]);
+		//自定义父指令;
+		app.directive('hello',function(){
+			return {
+				restrict:'E',
+				controller:function($scope){
+					$scope.name = '熊炬辉';
+					this.information = {
+						name : $scope.name,
+		                age : 25,
+		                job : "程序员"
+					}
+				},
+				link:function(scope){
+
+				}
+
+			}
+		});
+		//自定义指令：hi
+		app.directive('hi',function(){
+			return {
+				restrict:'E',
+				require:'?good',
+				controller:function(){
+					this.name = '好漂亮'
+				},
+				link:function(scope,e,attrs,good){
+					console.info('hi指令'+good.name);
+					console.info('我是',attrs)
+				}
+
+			}
+		});
+		//自定义指令：good;
+		app.directive('good',function(){
+			return {
+				restrict:'A',
+				require:'?^hello',
+				controller:function(){
+					this.name = '好美丽'
+				},
+				link:function(scope,e,attrs,hello){
+					console.info('good中'+hello.information);
+				}
+
+			}
+		});
+	</script>
+</head>
+<body>
+	<hello>
+		<div>你好</div>
+
+		<hi good>very good!</hi>
+
+	</hello>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第七个</title>
+</head>
+<body>
+	<div id="example"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../build/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var MyForm = React.createClass({
+			handleClick: function() {
+				this.refs.myTextInput.placeholder = '我是输入框';
+				this.refs.myTextInput.value = '我是哈哈';
+			},			
+			render: function() {
+				return (
+					<div>
+						<input type="text" ref="myTextInput"/>
+						<button type="button" onClick={this.handleClick}>文本框获得焦点</button>
+					</div>
+				);
+			}
+		});	
+
+		ReactDOM.render(
+			<MyForm></MyForm>,
+			document.getElementById('example')	
+		)
+
+	</script>
+</body>
+</html>

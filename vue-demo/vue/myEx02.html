@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件</title>
+	<script src="./js/vue.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.test-nav {
+			overflow: hidden;
+			width: 380px;
+			margin: 0 auto;
+		}
+		.test-nav li{
+			list-style: none;
+			float: left
+		}
+		.test-nav li a {
+			display: block;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: #ff6b00;
+			color: white;
+			text-decoration: none;
+			padding: 0 20px;
+		}
+		.test-nav li a:hover {
+			background: #f9854f;
+		}
+		.test > h3 {
+			text-align: center;
+		}
+
+		.test-nav li.active a {
+			background: #FF8400;
+		}
+
+		#app >p {
+			text-align: center;
+		}	
+
+	</style>
+</head>
+<body>	
+	<div id="app">
+		<ul class="test-nav">
+			<li v-for="(item, key) in navList" :class="{active: item.active}" @click="chooseFn(key)"><a href="javascript:void(0)">{{item.title}}</a></li>								
+		</ul>
+		<p>您选择的导航是:{{currentNav}}</p>
+	</div>
+		
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				navList: [
+					{title: '首页', active: false},
+					{title: '职位', active: false},
+					{title: '我的简历', active: true},
+					{title: '个人中心', active: false}
+				]
+			},
+			computed:{
+				currentNav: function() {
+					var title;
+					this.navList.forEach(function(value, key) {
+						if (value.active) {
+							title = value.title;
+						}
+					})
+
+					return title;
+				}
+			},
+			methods: {
+				chooseFn: function(key) {
+
+					this.navList.forEach(function(value, key) {
+						value.active = false;
+					})
+
+					this.navList[key].active = true;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

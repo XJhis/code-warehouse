@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8" >
+    <title>directive</title>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('indexCtrl', function($scope) {
+            $scope.userName = '123';
+        });
+        app.directive('demo',function () {
+            return {
+                restrict:'A',//指令生效的位置：A:标签属性;E:标签；C:css;M:注释
+                template:"<div>你个打算打算打算打算的</div>",
+                replace:true
+            }
+        });
+        //demo02
+        app.directive('demo02',function () {
+            return {
+                restrict:'AE',//可以放置多个
+                template:"<div>你是老马吗？<span ng-transclude></span></div>",
+                transclude:true,
+                scope:{},
+                link:function (scope) {
+                  //console.info('scope设置为false时：',scope);//scope为false 的情况下 与controller进行相关联
+                   // console.info('scope设置为true时：',scope)//scope为true的情况下,创建一个子scope用来定义方法 变量 对象
+                    console.info('scope设置为{}时：',scope);//;同true;
+                }
+
+            }
+        });
+
+    </script>
+</head>
+<body ng-controller="indexCtrl">
+    <div demo></div>
+
+    <div demo02>您好！</div>
+</body>
+</html>

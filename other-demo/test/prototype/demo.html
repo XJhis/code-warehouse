@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype</title>
+</head>
+<body>
+	
+
+	<script>
+		
+
+		// function Person() {
+		// 	this.name = 'xjh';
+		// }
+
+		// var person1 = new Person;
+
+
+
+		//每一个函数都有一个prototype属性，这个属性指向用该函数创建的实例的原型
+		// console.log(Person.prototype === person1.__proto__) //true
+
+		//每个原型都有一个constructor属性指向关联的构造函数
+		// console.log(Person.prototype.constructor === Person) //true
+		// console.log(person1.__proto__.constructor === Person) //true
+
+		// //返回指定对象的原型
+		// console.log(Object.getPrototypeOf(1)) 
+
+		// console.log(Person.prototype.__proto__.__proto__)
+
+		// console.log({}.prototype) //undefined
+
+		//原型：javascript中，每一个对象(除null外),在创建的时候就会与之关联另一个对象，这个对象就是我们说的原型，每一个对象都会从原型中继承属性
+		// var obj = {};
+
+		// console.log(obj.__proto__)
+
+
+		//当读取实例的属性时，如果在第一层找不到，就会去该对象的原型中去找，如果还找不到，就一直往最顶层找
+		// function Person() {
+		// }
+
+		// Person.prototype.name = '阿辉'; 
+		// console.log(Person.prototype)
+		// var person1 = new Person();	
+
+		// console.log(person1.name);	//阿辉
+		// person1.name = '我是后来加的'; 	
+		// console.log(person1.name);	//我是后来加的
+
+		function Dog() {
+
+		}
+
+		var white = new Dog();
+
+		console.log(Dog.prototype === white.__proto__);
+		console.log(white.__proto__.__proto__ === Object.prototype);
+		console.log(Object.prototype.__proto__ === null);
+
+		// 当获取person.constructor时，其实person中并没有constructor属性,
+		// 当不能读取到constructor属性时，会从person的原型也就是Person.prototype中读取，正好原型中有该属性，所以
+		function Person() {
+		 
+		}
+		var person = new Person();
+		console.log(person.constructor === Person); // true
+		console.log(Person.prototype.constructor == person.constructor)	//true
+
+	</script>
+</body>
+</html>

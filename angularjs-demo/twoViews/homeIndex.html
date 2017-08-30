@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>路由</title>
+    <style>
+        *{margin:0;padding:0}
+        ul li {list-style: none}
+        .container{
+            width:80%;
+            height:300px;
+            border:1px solid #0ff;
+            margin:0 auto;
+        }
+        .header {
+            width:100%;
+            height:30px;
+            line-height:30px;
+            text-align: center;
+        }
+        .left {
+            float:left;
+            width:20%;
+            text-align: center;
+        }
+        .left li {
+           padding:10px 0;
+            background:#761c19;
+            color:white;
+        }
+        .right{
+            float:left;
+            width:65%;
+        }
+    </style>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/UIroute/angular-ui-router.min.js"></script>
+    <script>
+        var app = angular.module('myApp',['ui.router']);
+        app.config(function ($stateProvider,$urlRouterProvider) {
+            $stateProvider.state('home',{
+                url:"/index",
+                templateUrl:'user/home.html'
+            }).state('home.details',{
+                url:'/shopDetails',
+                views:{
+                   'son':{templateUrl:'user/user_info/shopDetails.html'}
+                }
+            }).state('home.list',{
+                url:'/shopList',
+                views:{
+                    'son':{templateUrl:'user/user_info/shopList.html'}
+                }
+            });
+            $urlRouterProvider.otherwise('/index');
+        })
+    </script>
+
+</head>
+<body>
+<div ui-view="" class="container"></div>
+</body>
+</html>

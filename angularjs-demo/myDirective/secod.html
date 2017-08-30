@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>获取表单值</title>
+</head>
+<body ng-controller="topCtrl">
+	
+	<div>
+		<input type="text" placeholder="请输入姓名" ng-model="user.name">
+	</div>
+
+
+
+	<script src="js/angular.min.js"></script>
+
+	<script>
+		'use strict';
+		var app = angular.module('app',[])
+		app.controller('topCtrl',['$scope',function($scope) {
+			$scope.user = {
+			};
+
+		}])
+		app.directive('placeholder',function() {
+			return {
+				restrict: 'A',
+				replace: true,
+				scope: {
+					ngModel: '='	
+				},				
+				link: function(scope, ele, attrs) {					
+					scope.$watch('ngModel', function (newValue, oldValue) {						
+						console.info(newValue)
+					})
+							
+				}
+			}
+		})
+	</script>
+</body>
+</html>

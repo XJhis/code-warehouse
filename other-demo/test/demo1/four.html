@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+	<div>
+		666
+		
+	</div>	
+    <script>
+    	// Object.create() 方法使用指定的原型对象和其属性创建了一个新的对象。
+    	//创建一个没有原型的对象，注意name后面必须是一个对象，value：表示前面属性的值
+    	// var obj = Object.create({nationality:'china'},{
+    	// 	name: {value: 'sds'},
+    	// 	age: {value: 24}
+    	// })
+
+    	var obj = new Object();
+
+    	console.log(Object.prototype === obj.__proto__)
+
+
+    	// console.log(obj.__proto__.__proto__.__proto__===null)
+
+    	// obj.__proto__ 表示obj对象的原型，这个原型也是一个对象;
+    	// obj.__proto__.__proto__ obj原型对象的原型指向Object的属性prototype
+
+    	// console.log(obj.__proto__.__proto__ === Object.prototype)
+
+        // console.log(obj.hasOwnProperty('name'))		//报错，因为obj没有hasOwnProperty方法
+
+        // 使用call或者apply方法
+        // console.log(Object.prototype.hasOwnProperty.call(obj,'aaa')) 
+        // console.log(Object.prototype.hasOwnProperty.apply(obj,['aaa','name'])) 
+
+    </script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+
+        app.controller('indexCtrl',function ($scope) {
+            console.info($scope.number);
+            $scope.count = '';
+            $scope.price = 100;
+            $scope.number = 0;
+            $scope.total = $scope.price*$scope.number;
+            $scope.$watch('number',function (newV,oldV) {//形参：但是用new不行（关键字）
+               //console.info('旧的',oldV);
+                //console.info('新的',newV);
+                console.info($scope.number);
+                if(isNaN(newV)){
+                    $scope.total='请输入数字！';
+                    $scope.count = '';
+                    return;
+                }
+                if(newV>10) {
+                    $scope.total = $scope.price*newV*0.8;
+                    $scope.count = '打8折';
+                }else{
+                    $scope.total = $scope.price*newV;
+                    $scope.count = '';
+                }
+
+            })
+        })
+
+    </script>
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    <div>
+        <label>单价：</label>{{price}}
+        <label>数量</label><input type="text" ng-model="number">模型：{{10*number}}
+        {{count}}
+        <label>总价:</label>{{total}}
+    </div>
+
+</div>
+
+</body>
+</html>

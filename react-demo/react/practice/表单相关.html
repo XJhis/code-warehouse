@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>props-属性1</title>
+	<style></style>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var FormApp = React.createClass({
+			getInitialState: function() {
+				return {
+					name: "诺克萨斯之手-德莱厄斯",
+					selectValue: "我是选择框",
+					lovingValue: 'A',
+					sexValue: '1',
+					selfValue: '本人小小书生，可笑可笑'
+				}
+			},
+			sendInfo: function(e) {
+				e.preventDefault()
+				console.info(e.target)
+			},
+			render: function() {
+				return (
+					<div>
+						<form name="baseForm" onSubmit={this.sendInfo}>
+							<div class="form-group">
+								<label for="">姓名：</label>
+								<input type="text" value={this.state.name} />
+							</div>
+							<br/>
+	
+							<div class="form-group">
+								<label for="">出生年月：</label>
+								<select value="1">
+									<option value="">请选择</option>
+									<option value="0">1991</option>
+									<option value="1">1992</option>
+									<option value="2">1993</option>
+									<option value="3">1994</option>
+								</select>
+							</div>
+							<br/>
+
+							<div class="form-group">
+								<label for="">爱好：</label>
+								<input type="checkbox" name="loving" value="A" checked />&nbsp;篮球&nbsp;
+								<input type="checkbox" name="loving" value="B" />&nbsp;游戏&nbsp;
+								<input type="checkbox" name="loving" value="C" />&nbsp;把妹&nbsp;
+							</div>
+							<br/>
+
+							<div class="form-group">
+								<label for="">性别：</label>
+								<input type="radio" value="1" checked name="sex"/>&nbsp;男
+								<input type="radio" value="0" name="sex"/>&nbsp;女
+							</div>
+							<br/>
+
+							<div class="form-group">
+								<label for="">自我介绍：</label>
+								<textarea name="" value="my name is xiongjuhui,I am 20 years old"></textarea>
+							</div>
+							<br />
+			
+							<div class="form-group">
+								<button type="submit">保存</button>
+							</div>
+						</form>
+					</div>
+				)
+			}
+		})
+
+		ReactDOM.render(
+			<FormApp />,
+			document.getElementById('box')
+		)
+	</script>
+</body>
+</html>

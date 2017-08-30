@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>状态-例子</title>
+	<style>
+		.shop-num button {
+			display: inline-block
+		}
+		.shop-num>div {
+			display: inline-block
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var CountNum = React.createClass({
+			getInitialState: function() {
+				return {
+					shopNum: 0,
+					strArr: ['aaa','bbb']
+				}
+			},
+			addNum: function() {
+				var num = this.state.shopNum;
+				if(num >= 10) {
+					alert('商品数量不能超过10');
+				}else {
+					this.setState({
+						shopNum: this.state.shopNum+1
+					})
+				}
+			},
+			reduceNum: function() {
+				var num = this.state.shopNum;
+				if(num <=0) {
+					alert('商品数量不能小于0');
+				}else {
+					this.setState({
+						shopNum: this.state.shopNum-1
+					})
+				}
+			},
+			render: function() {
+				return (
+					<div>
+						<h1>{this.state.strArr}</h1>
+						<button onClick={this.addNum}>+</button>
+						<div>商品数量({this.state.shopNum})</div>	
+						<button onClick={this.reduceNum}>-</button>
+					</div>					
+				)
+			}
+		})
+		
+		ReactDOM.render(
+			<CountNum/>,
+			document.getElementById('box')
+		)
+	</script>
+</body>
+</html>

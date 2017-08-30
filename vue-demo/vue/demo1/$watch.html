@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$watch</title>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<input type="text" v-model="msg" />
+			<div>{{msg}}</div>
+		</div>
+		<span v-once>{{info}}</span>
+
+		<div v-html="viewHtml"></div>
+	</div>
+
+
+	<script src="js/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				msg: 'asd',
+				info: '我不会随文本更新的',
+				viewHtml: '<i style="color: ">我是斜体</i>'
+			}
+		})
+
+		// app.$watch('msg', function(newValue, oldValue) {	//msg前面不需要加app
+		// 	console.info('新', newValue, '旧', oldValue)
+		// })
+
+		// 一次性绑定，后面改变，页面上不改变：v-once 
+		//v-html 插入标签
+
+		
+
+
+
+
+	</script>
+</body>
+</html>

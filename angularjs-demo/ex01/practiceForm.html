@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('indexCtrl',function($scope){
+            console.info($scope.formation);
+        })
+    </script>
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    <form name="formation" novalidate>
+        <div>
+            <label for="userName">用户名:</label>
+            <input type="text" id="userName" name="name" ng-model="userName" ng-required="true" ng-minlength="6" ng-maxlength="16" ng-pattern="/^\d/"/>
+            <div class="errors" ng-if="formation.name.$dirty && formation.name.$invalid">
+                <p ng-if="formation.name.$error.required">用户名不能为空</p>
+                <p ng-if="formation.name.$error.minlength<6 || formation.name.$error.maxlength>16">用户名长度为6-16位</p>
+            </div>
+        </div>
+    </form>
+</div>
+<form></form>
+</body>
+</html>

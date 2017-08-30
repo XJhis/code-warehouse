@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <script src="../js/angular.min.js"></script>
+    <script type="text/javascript">
+        function windowScopedFilter(input) {
+            var output = [];
+            angular.forEach(input, function(v, k) {
+                if (v.phone.indexOf("1") > -1) {
+                    output.push(v);
+                }
+            });
+            return output;
+
+            //返回一个包含有555数组;
+        }
+
+        var myapp = angular.module('MyFilterApp', []);
+        myapp.filter('myfilter', function() {
+            return function(obj, param1) {
+                console.info()
+
+                var args = Array.prototype.slice.call(arguments);
+                // filter  
+                return window[args[3]](obj);
+
+                return obj;
+            };
+        });
+
+        myapp.controller('MyFilterController', ['$scope', function($scope) {
+            //定义一个数组;
+            $scope.friends = [{
+                name: 'John',
+                phone: '555-1276'
+            }, {
+                name: 'Annie',
+                phone: '800-BIG-MARY'
+            }, {
+                name: 'Mike',
+                phone: '555-4321'
+            }, {
+                name: 'Adam',
+                phone: '555-5678'
+            }, {
+                name: 'David',
+                phone: '555-8765'
+            }, {
+                name: 'Mikay',
+                phone: '555-5678'
+            }];
+        }]);
+
+    </script>
+</head>
+
+<body ng-app="MyFilterApp">
+    <div ng-controller="MyFilterController">
+        <table id="searchTextResults">
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+            <tr ng-repeat="friend in friends | myfilter:12 :true:'windowScopedFilter'">
+                <td>{{friend.name}}</td>
+                <td>{{friend.phone}}</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+</body>
+
+</html>

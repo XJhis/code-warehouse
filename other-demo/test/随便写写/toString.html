@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toString</title>
+</head>
+<body>
+	
+
+
+	<script>
+		//一：toString()方法返回一个表示该对象的字符串；
+
+		// 二：默认情况下，toString() 方法被每个继承自Object的对象继承。
+		// 当对象被表示为文本值时或者当以期望字符串的方式引用对象时，该方法被自动调用。
+		// 如果此方法在自定义对象中未被覆盖，toString() 返回 "[object type]",其中type是对象类型。
+
+		function Dog(name, color, age) {
+			this.name = name;
+			this.color = color;
+			this.age = age;
+		}	
+
+		var dog = new Dog('jack', 'black', 24);
+		console.info(dog + '狗') //[object Object]狗
+
+		// 三：可以自定义一个方法来取代默认的 toString() 方法。
+		// 该 toString() 方法不能传入参数并且必须返回一个字符串。
+		// 自定义的 toString() 方法可以是任何我们需要的值，但如果它附带有关对象的信息，它将变的非常有用
+
+		Dog.prototype.toString = function () {
+			return this.name + '是一条' + this.color + '狗,它已经' + this.age + '岁了。'; 
+		}
+
+		console.log(dog+'哈哈') ;	//'jack是一条black狗,它已经24岁了。哈哈'
+
+		// 四：使用toString()方法来检测对象类型
+		// 可以通过toString() 来获取每个对象的类型。
+		// 为了每个对象都能通过 Object.prototype.toString() 来检测，需要以 Object.prototype.call() 或者 Object.prototype.apply() 的形式来调用，把需要检测的对象作为第一个参数传入。
+
+		var toString = Object.prototype.toString;
+
+		console.log(toString.call(new Date()));	//[object Date] 
+		console.log(toString.call(window));	// [object Window]
+		console.log(toString.call(null));	// [object Null]
+		console.log(toString.call(undefined));	// [object Undefined]
+		console.log(toString.call(''));	// [object String]
+		console.log(toString.call(NaN));	// [object Number]
+		console.log(toString.call([1,2,3]));	// [object Array]
+		console.log([1,2,3].toString()); 	//'1,2,3'
+		console.log({name: 'xjh'}.toString()); 
+	</script>
+</body>
+</html>

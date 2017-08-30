@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8" >
+    <title></title>
+    <script src="../js/angular.js"></script>
+    <script>
+
+        var app = angular.module('myApp',[]);
+
+        app.controller('indexCtrl',function ($scope) {
+            $scope.arr = [
+                {id: 1, name: 'xjh' ,skin: 'yellow'},
+                {id: 2, name: 'xxx' ,skin: 'black'},
+                {id: 3, name: 'jjj' ,skin: 'white'},
+                {id: 4, name: 'hhh' ,skin: 'blue'},
+                {id: 5, name: 'lll' ,skin: 'brown'},
+            ];
+
+            $scope.obj = {
+                'a' : '1',
+                'b' : '2',
+                'c' : '3',
+                'd' : '4',
+                'e' : '5',
+                'f' : '6',
+                'g' : '7'
+            }
+        });
+
+
+        
+    </script>
+</head>
+<body ng-controller="indexCtrl">
+
+    <ol>
+        <li ng-repeat="(key, value) in arr | filter:{$: 'o'}">姓名：{{value.name}}；肤色：{{value.skin}}</li>
+    </ol>
+
+    <ol>
+        <li ng-repeat="(key, value) in arr | filter:{$: '!o'}">姓名：{{value.name}}；肤色：{{value.skin}}</li>
+    </ol>
+
+    <ol>
+        <li ng-repeat="(key, value) in arr | filter:{name: 'x', skin: 'e'}">姓名：{{value.name}}；肤色：{{value.skin}}</li>
+    </ol>
+    
+    <!-- <ol>
+        <li ng-repeat="(key, value) in obj">&nbsp;{{value}}</li>
+    </ol> -->
+    
+</body>
+</html>

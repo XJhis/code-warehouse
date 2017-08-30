@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第九个-表单交互</title>
+</head>
+<body>
+	<div id="example"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../build/browser.min.js"></script>
+	
+	<script type="text/babel">
+		//注意：组件面的标签必须闭合;但标签也是
+		//定义一个表单组件
+		var Input = React.createClass({
+			getInitialState: function() {
+				return {
+					value: '等待用户输入...'
+				}
+			},
+			handleChange: function(event) {
+				this.setState({value: event.target.value})
+			},
+			render: function() {
+				var value = this.state.value ? this.state.value : '等待用户输入...';
+				return (
+					<div>
+						<input type="text" placeholder="请输入用户名" onChange={this.handleChange} />
+						<p>{value}</p>
+					</div>
+				)
+			}
+		});
+
+		ReactDOM.render(
+			<Input></Input>,
+			document.getElementById('example')	
+		)
+
+
+	</script>
+</body>
+</html>

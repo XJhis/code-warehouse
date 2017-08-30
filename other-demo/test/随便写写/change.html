@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		//一：
+		var arr = [1, 2, 3] ;
+		var result = '12' + arr;
+
+		// console.info(result);	
+		// console.log(arr.toString())	//'1,2,3';
+
+		// 二：
+		var obj = {
+			toString: function() {
+				console.info('调用了toString');
+				return 'a';
+			},
+			valueOf: function() {
+				console.log('调用了valueOf');
+				return 'b'
+			}
+		}
+
+		console.log("asd"+obj) ;
+
+	</script>
+</body>
+</html>

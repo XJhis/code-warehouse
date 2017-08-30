@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第一个页面</title>
+</head>
+<body>
+	
+	<div id="app">
+		
+		<h3>{{msg}}</h3>
+		<!-- <h6 v-bind:title="cont">我是内容</h6> -->
+		<!-- <a v-bind:href="firLink" target="_blank">百度一下</a> -->
+
+		<i v-if="isShow">显示还是隐藏这要看控制器了</i>
+
+		<ul>
+			<li v-for="(value, key) in cusList">{{value.name + '今年'+value.age+'岁了'}}</li>
+		</ul>
+
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				msg: '我是第一个vue页面',
+				cont: '页面加载与'+new Date(),
+				firLink: 'http://www.baidu.com',
+				isShow : true,
+				cusList: [
+					{name: '刘德华',age: 45},
+					{name: '张学友',age: 44},
+					{name: '郭富城',age: 33},
+					{name: '呵呵',age: 10},
+					{name: '王杰',age: 33},
+					{name: 'xjh',age: 20},
+				]
+			}
+		})
+	</script>
+</body>
+</html>

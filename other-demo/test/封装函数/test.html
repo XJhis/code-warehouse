@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装函数</title>
+</head>
+<body>
+
+	<script src="demo.js"></script>
+	<script>
+		//对象
+		// var obj = Object.create(null,{
+		// 	name: {value: '小家伙'},
+		// 	age: {value: '25'}
+		// })
+		// console.log(Object.getPrototypeOf(Object.prototype))
+
+		//日期对象
+		// var now = new Date();
+		// console.log(isDate(now)) ; //true
+		// console.log( new Date('2017.08.30 19:00:12')) //false
+
+		//正则对象
+		// var reg = /\d/;
+		// console.log(isRegExp(/\d/))	//true
+
+		// var b;
+		// var c = '窗前明月光'
+		// console.log(isUndefined(b));
+		// console.log(isDefined(c));
+
+		// var numbers = [12, 10, 1000, 112, -1, 123, -1];
+
+	 //    var maxNumber = Math.max.apply(Math,numbers); //898
+	 //    var minNumber = Math.min.apply(Math,numbers)  //-1
+	    
+	 //    console.info(maxNumber, minNumber);
+	//  window.name = 'asdadssa';
+
+	//  function test(name) {
+	//  	console.log(this.name)
+	//  }
+
+	//  var obj = {
+	//  	name: 'xjh'
+	//  }
+	 
+	// test();
+
+	var obj = {};
+	
+	Array.prototype.push.call(obj,'xjh')
+
+	console.log(obj)
+
+	 
+	</script>
+</body>
+</html>

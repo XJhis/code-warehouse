@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件</title>
+	<script src="./js/vue.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#app .container {
+			width: 800px;
+			margin: 0 auto;
+		}
+
+		.container .nav {
+			background-color: #5c9bb7;
+		    border-radius: 2px;
+		    padding: 10px;
+		    position: relative;
+		    text-align: right;
+		    line-height: 1;
+		}
+
+		.container .nav a {
+			display: inline-block;
+			color: #fff;
+			text-decoration: none;
+			margin-left: 5px;
+		}
+
+		.container .nav a.active {
+			color: #ff6b00
+		}
+		
+		.cont .vertical-list,
+		.cont .sudoku-list {
+			padding: 25px 40px;
+			overflow: hidden;
+		}
+
+		.vertical-list .list-item {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+			overflow: hidden;
+		}
+
+		.vertical-list .list-item .left {
+			float: left;
+			margin-right: 20px;
+		}
+
+		.vertical-list .list-item .left>a {
+			display: block;
+		}
+
+		.vertical-list .list-item .right{
+			width: 550px;
+			float: left
+		}
+
+		.sudoku-list a{
+			display: block;
+			float: left;
+			margin: 10px 40px;
+		}
+
+	</style>
+</head>
+<body>
+
+		
+	<div id="app">
+		<div class="container">
+			<div class="nav">
+				<a href="javascript:void(0)" @click="chooseFn(1)">垂直列表</a>
+				<a href="javascript:void(0)" @click="chooseFn(2)">九宫格</a>
+			</div>
+			<div class="cont">
+				<div class="vertical-list" v-show="type == 1">
+					<div class="list-item" v-for="(value, key) in list">
+						<div class="left">
+							<a :href="value.url" target="_blank">
+								<img :src="value.url" alt="" width="120" height="120">
+							</a>
+						</div>
+						<div class="right">
+							<p>{{value.title}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="sudoku-list" v-show="type == 2">
+					<a :href="value.url" target="_blank" v-for="(value, key) in list">
+						<img :src="value.url" alt="" width="280" height="280">
+					</a>					
+				</div>
+			</div>
+		</div>
+		
+	</div>
+		
+	<script>
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				type: 1,
+				list: [
+					{
+						url: 'http://pic66.nipic.com/file/20150507/7755667_212101166669_2.jpg',
+						title: '你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢'
+					},
+					{
+						url: 'http://pic37.nipic.com/20131216/7810872_170302235148_2.jpg',
+						title: '你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢'
+					},
+					{
+						url: 'http://pic12.nipic.com/20101130/6320671_115216019727_2.jpg',
+						title: '你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢'
+					},
+					{
+						url: 'http://pic4.nipic.com/20091117/3376018_110331702620_2.jpg',
+						title: '你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢你喜欢什么类型的汽车呢'
+					},
+				]
+			},
+			methods: {
+				chooseFn: function(num) {
+					this.type = num
+				}
+			}
+		})
+	</script>
+</body>
+</html>

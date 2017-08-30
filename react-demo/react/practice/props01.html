@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>props-属性1</title>
+	<style></style>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+
+		var Fathers = React.createClass({
+			getInitialState: function() {
+				return {
+					strArr: ['啦啦啦啦','德玛西亚','啊啊啊啊','是谁在敲着代码']
+				}
+			},			
+			render: function() {
+				return (
+					<div>
+						<h1>{this.props.title}</h1>
+						<p>{this.state.strArr}</p>
+						<Myson introduce={this.state.strArr} />
+					</div>
+				)
+			}
+		})
+
+		var Myson = React.createClass({
+			//默认属性
+			getDefaultProps: function() {
+				return {
+					introduce: ['我是默认属性']
+				}
+			},
+			render: function() {
+				var arr = this.props.introduce;
+				var newArr = [];
+				arr.forEach(function(val, key) {
+					newArr.push(<p key={key}>{val}</p>)
+				})
+
+				return (
+					<div>{newArr}</div>
+				)	
+			}
+		})
+		
+		var title='我是来自顶层props';
+		ReactDOM.render(
+			<Fathers title={title}/>,
+			document.getElementById('box')	
+		)
+	</script>
+</body>
+</html>

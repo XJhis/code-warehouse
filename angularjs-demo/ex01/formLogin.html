@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/angular.js"></script>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('formCtrl',function ($scope) {
+           //console.info($scope.userForm.v);
+            $scope.checkForm=function () {
+                alert('验证成功！');
+            } 
+        })
+    </script>
+    <style>
+        .error {
+            color:red;
+        }
+        .rows {
+            margin-bottom:20px;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="formCtrl">
+    <form name="userForm" novalidate>
+        <!--用户名-->
+        <div class="rows">
+            <label>用户名：</label>
+            <input type="text" ng-model="name" name="userName" ng-required="true" ng-minlength="6" ng-maxlength="16" ng-pattern="/^\w/"/>
+            <div class="error" ng-if="userForm.userName.$dirty && userForm.userName.$invalid" ng-model="error1">
+                <p ng-if="userForm.userName.$error.required">用户名不能为空</p>
+                <p ng-if="userForm.userName.$error.minlength || userForm.userName.$error.maxlength">用户名长度为6-16位</p>
+                <p ng-if="userForm.userName.$error.pattern">用户名开头必须为数字、字母、下划线</p>
+            </div>
+        </div>
+        <!--密码-->
+        <div class="rows">
+            <label>密码：</label>
+            <input type="password" ng-model="pass" name="pass" ng-required="true" ng-minlength="6" ng-maxlength="16"/>
+            <div class="error" ng-if="userForm.pass.$dirty && userForm.pass.$invalid" ng-model="error2">
+                <p ng-if="userForm.pass.$error.required">密码不能为空</p>
+                <p ng-if="userForm.pass.$error.minlength || userForm.pass.$error.maxlength">密码长度为6-16位</p>
+            </div>
+        </div>
+        <div ng-if="userForm.pass.$dirty && userForm.pass.$valid && userForm.userName.$dirty && userForm.userName.$valid" ng-model="button">
+            <button type="button" ng-click="checkForm()">登录</button>
+        </div>
+
+    </form>
+</body>
+</html>

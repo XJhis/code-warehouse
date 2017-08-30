@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单提交</title>
+	<style></style>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+		var ChildArr = React.createClass({
+			render: function() {
+
+				console.log(111, this.props.children);
+				return (
+					<div>
+						<h1>{this.props.title}</h1>
+					</div>	
+				)
+			}
+		})
+
+		//ChildArr里面内容可以通过this.props.children来获得；
+		//如果没有，则是undefined;有一个，是obj;有两个以上则是array;
+
+		ReactDOM.render(
+			<ChildArr>
+				<em>111</em>
+			</ChildArr>,
+			document.getElementById('box')
+
+		)
+
+
+	</script>
+</body>
+</html>

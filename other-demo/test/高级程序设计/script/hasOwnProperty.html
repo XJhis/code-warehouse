@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hasOwnProperty</title>
+	<script>
+		//一：hasOwnProperty
+		//obj.hasOwnProperty(str)
+		//用于检测对象中是否具有指定的属性(不包含从原型继承的属性)；返回值时布尔值,穿入的参数是'字符串；
+		var person = {};
+		person.name = 'xjh';
+		person.sex = '男';
+		person.loving = 'yun';
+
+		// alert(person.hasOwnProperty('name')) //true
+
+		// delete person.name
+
+		// alert(person.hasOwnProperty('name')) //false
+
+
+		// 实用案例
+
+		function copy(obj) {
+			var newObj = {};
+			for(var prop in obj) {
+				if(obj.hasOwnProperty(prop)) {
+					newObj[prop] = obj[prop];
+				}
+			}
+
+			return newObj;
+		}
+
+		var newPerson = copy(person);
+
+		console.info(newPerson)
+		
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

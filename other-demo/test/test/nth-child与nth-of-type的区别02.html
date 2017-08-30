@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul li {list-style: none}
+		ul.demo li:nth-child(2) {background: blue} /* 选中刘德华  demo下的子节点，且是li元素，如果不是li类型，则无法选中*/
+		ul.demo li:nth-of-type(2) {background: red} /* 选中张学友 选中类型为li的第二个元素 */
+		
+	</style>
+</head>
+<body>
+
+	<ul class="demo">
+		<p>我是假冒的</p>
+		<li>刘德华</li>
+		<li>张学友</li>
+		<li>郭富城</li>
+		<li>黎明</li>
+	</ul>
+</body>
+</html>

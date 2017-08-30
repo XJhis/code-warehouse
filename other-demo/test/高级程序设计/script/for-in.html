@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for-in枚举</title>
+</head>
+<body>
+	
+
+
+	<script>
+		var obj = {
+			name: 'xjh',
+			age: 26,
+			loving: null,
+			money: undefined,
+			sex: '男'
+		};
+		//循环输出的属性名顺序不可预测
+		//用的比较少
+		for (var prop in obj) {
+			console.info(prop)
+		}
+
+
+		console.info(11, 'loving' in obj)
+	</script>
+</body>
+</html>

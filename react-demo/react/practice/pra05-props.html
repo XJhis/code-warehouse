@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性-定义后一般不变化</title>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+
+		var Nav = React.createClass({
+			propTypes:{
+				title: React.PropTypes.string.isRequired //表示属性必填
+			},
+			getDefaultProps: function() {
+				return {
+					title: '唐代大诗人'
+				}
+			},
+			render: function() {
+				var poemArr = ['床前明月光', '疑似地上霜', '举头望明月', '低头思故乡'];
+
+				return (
+					<ol>
+						<h3>{this.props.title}</h3>
+						<p>{this.props.author}</p>
+						{
+							poemArr.map(function(value, key) {
+								return <li key={key}>{value}</li>
+							})
+						}
+					</ol>
+				)
+			}
+		});
+
+		ReactDOM.render(
+			<Nav author="李白"></Nav>,
+			document.getElementById('box')
+		)
+	</script>
+</body>
+</html>

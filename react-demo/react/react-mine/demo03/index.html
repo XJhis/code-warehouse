@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第三个</title>
+</head>
+<body>
+	<div id="example"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../build/browser.min.js"></script>
+	
+	<script type="text/babel">
+		//注意，这里数组里面的项和js不一样;
+		//数组直接就遍历
+		var arr = [
+			<h1>你好！</h1>,
+			<i>美女</i>
+		];
+		ReactDOM.render(
+			<div>{arr}</div>,
+			document.getElementById('example')
+		)
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二</title>
+</head>
+<body>
+	<div id="box"></div>
+
+
+	<!-- 必须先加载 -->
+	<script src="../list/react.js"></script>
+	<script src="../list/react-dom.js"></script>
+	<!-- 将jsx语法转换为js语法 -->
+	<script src="../list/browser.min.js"></script>
+	
+	<script type="text/babel">
+		//数组可以直接遍历
+		var arr = ['牛魔王','孙悟空','红孩儿','金角大王'];
+
+
+		ReactDOM.render(
+			<div>
+				{arr}
+			</div>,
+			document.getElementById('box')
+		)
+
+
+	</script>
+</body>
+</html>

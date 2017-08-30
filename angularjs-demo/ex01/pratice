@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/angular.js"></script>
+    <script>
+       var app = angular.module('myApp',[]);
+       app.cotroller('indexCtrl',function($scope) {
+            $scope.test = function() {
+                console.info($scope.userForm)
+            }
+       })
+    </script>
+
+</head>
+<body>
+    <div ng-controller="indexCtrl">
+        <form name='userForm' novalidate>
+            <label>用户名</label><input type="text" id="username" ng-model="username">
+            <span ng-if="username.length>16 || username.length<6">用户名长度6-16位</span>
+            <!--<em ng-bind="username"></em>-->
+            <p ng-show="username.length>16 || username.length<6">用户名长度6-16位</p>
+            <button ng-click='test()'>点击</button>            
+        </form>
+        
+        
+    </div>
+</body>
+</html>
