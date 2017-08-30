@@ -8,8 +8,74 @@
 	<link rel="stylesheet" href="css/shop.css">
 </head>
 <body>
-	<div id="app"></div>
-
+	<div id="app">		
+	    <div class="container">
+	        <div class="shop-car">
+	            <div class="title">
+	                <h4 class="text-center f18">购物车</h4>
+	            </div>
+	            <div class="shop-box">
+	                <div class="box-head clearfix">
+	                    <div class="col-md-5 list">商品信息</div>
+	                    <div class="col-md-2 list">商品金额</div>
+	                    <div class="col-md-2 list">商品数量</div>
+	                    <div class="col-md-2 list">总金额</div>
+	                    <div class="col-md-1 list">编辑</div>
+	                </div>
+	                <div class="box-cont">
+	                    <div class="shop-list clearfix" v-for="(value, key) in shop">
+	                        <div class="col-md-5 shop">
+	                            <div class="clearfix">
+	                                <div class="checkbox pull-left">
+	                                    <label>
+	                                        <input type="checkbox" v-model="value.active">
+	                                    </label>
+	                                </div>
+	                                <div class="pull-left">
+	                                    <a :href="value.link" target="_blank" class="dis-block pull-left shop-img">
+									  		<img :src="value.imgUrl" alt="">
+									  	</a>
+	                                    <div class="pull-left shop-info f12">
+	                                    	<p>{{value.title}}</p>
+	                                    	<div>
+	                                    		<span>{{value.describe}}</span>
+	                                    	</div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="col-md-2 price">
+	                        	￥{{value.price}}
+	                        </div>
+	                        <div class="col-md-2 num text-center">
+	                        	<span>-</span>
+	                        	<span class="bd-gray">{{value.number}}</span>
+	                        	<span>+</span>
+	                        </div>
+	                        <div class="col-md-2 price">
+	                        	￥{{value.total}}
+	                        </div>
+	                        <div class="col-md-1 operate text-center">
+	                        	<button class="btn btn-white btn-sm">删除</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="shop-bar">
+	            	<div class="checkbox pull-left">
+	            	    <label>
+	            	        <input type="checkbox">&nbsp;全选取消全选
+	            	    </label>
+	            	</div>
+	            	<div class="total-count pull-right">
+	            		<span>总计：￥12000.00</span>
+	            		<button class="btn btn-md">结账</button>
+	            	</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- <img src="imgs/clothe.jpg" alt=""> -->
 	<script src="js/vue.js"></script>
 	<script src="js/shop.js"></script>
 </body>
