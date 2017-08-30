@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src='jquery-1.12.4.min.js'></script>
+</head>
+<body>
+	<input type="text" name="username" value="john" /> 
+
+	<script>
+		$.fn.myPlugIn = function(options) {
+		 options = options || {};
+		 var name = this.attr("name") || options.id;
+		 var val = options.id || this.val();
+		 $("body").append("<span>" + name + "'s value contains " + val.length + " characters</span>");
+		 return this;
+		};
+
+		$(function(){
+			$("input").myPlugIn({id:"victor"});
+
+		})
+	</script>
+</body>
+</html>

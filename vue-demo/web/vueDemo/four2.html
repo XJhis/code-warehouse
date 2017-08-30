@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>solt内容分发</title>
+	<script src="./js/libs/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<customer>
+			<!-- {{message}} -->
+		</customer>
+	</div>
+	
+
+	<script>
+		//注意：在html中，#app标签内都是实例vm的作用域，即使是在customer内写的数据
+		Vue.component('customer', {
+			data: function() {
+				return {
+					message: '我是组件上数据'
+				}
+			},
+			template: `<div>
+							<slot>{{message}}</slot>	
+							<div></div>				
+						</div>`
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				message: '我是根上数据'
+			}
+		})
+	</script>
+	
+</body>
+</html>

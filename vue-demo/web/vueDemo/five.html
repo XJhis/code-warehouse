@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>alert提醒</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="./js/libs/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="componentTab(1)">组件1</button>
+		<button @click="componentTab(2)">组件2</button>
+		<button @click="componentTab(3)">组件3</button>	
+		<keep-alive><!-- 保留组件状态 -->
+			<component :is="current"></component>
+		</keep-alive>	
+	</div>
+
+	
+
+	<script>
+		var component1 = Vue.component('ah-customer',{
+			template: `<div @click="changeBg">
+						<h1>我是组件1啊</h1>
+					</div>`,
+			methods: {
+				changeBg: function(ev) {
+					ev.target.style.background　= '#0ff'
+				}
+
+			}
+		}),
+			component2 = Vue.component('ah-customer',{
+				template: `<div>
+							<h2>我是组件2啊</h2>
+						</div>`
+			}),
+			component3 = Vue.component('ah-customer',{
+				template: `<div>
+							<h3>我是组件3啊</h3>
+						</div>`
+			})
+
+		let componentArr = {
+			1: component1,
+			2: component2,
+			3: component3
+		}
+
+		new Vue({
+			el: '#app',
+			data: {
+				current: component1
+			},
+			methods: {
+				componentTab: function (index) {
+					this.current = componentArr[index] || component1;
+				}
+			}
+		})
+	</script>
+	
+</body>
+</html>

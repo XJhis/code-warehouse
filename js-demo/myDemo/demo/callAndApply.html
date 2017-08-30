@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>call和apply</title>
+</head>
+<body>
+	<input id='inpt' type="button" value="点我">
+
+	<script>
+		function demo() {
+			this.value = '我是李大爷';
+		}
+		//定义一个全局变量：
+		var value = '人生';// ==>window.value = '人生'
+
+
+		function fun1() {
+			alert(this.value);
+		};
+
+		//window.fun1();//'人生';
+		//fun1.call(window);//人生
+		var input = document.getElementById('inpt');
+		fun1.call(input);//call ==> 将调用call的对象的this指针指向call()中传入的对象;
+	</script>
+</body>
+</html>

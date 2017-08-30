@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="app">
+		<my-select ui-tittle="今天天气真热"></my-select>
+		<my-select ui-tittle="今天是星期五了"></my-select>
+	</div>
+
+	<table>
+		<h1>我是表格里面的标题</h1>不能放
+	</table>
+	<ul>
+		<div>我是ul里面的div可以放得</div>
+		<li></li>
+	</ul>
+	<select name="" id="">
+		<div>我是</div>
+		<option value=""></option>
+	</select>
+
+	
+
+	
+
+	<script src="./js/libs/vue.js"></script>
+	<script>
+		var obj = {
+			title: '今天天气好热',
+			list:['是的么','还好吧','真的非常热']
+		}
+
+		Vue.component('my-select',{
+			props: ['uiTittle'], //注意这么html中的ui-title要写成uiTitle
+			template: `<div class="ui-select">
+					<div class="title c-p">{{uiTittle}}</div>
+					<ul class="cont">
+					</ul>
+				</div>`
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				obj: obj
+			}
+		})
+
+	</script>
+
+</body>
+</html>

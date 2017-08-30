@@ -1,0 +1,181 @@
+
+@font-face {font-family: "aimsen";
+  src: url('icon/iconfont.eot?t=1500384057849'); /* IE9*/
+  src: url('icon/iconfont.eot?t=1500384057849#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('icon/iconfont.woff?t=1500384057849') format('woff'), /* chrome, firefox */
+  url('icon/iconfont.ttf?t=1500384057849') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('icon/iconfont.svg?t=1500384057849#aimsen') format('svg'); /* iOS 4.1- */
+}
+
+.aimsen {
+  font-family:"aimsen" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.youjian:before { content: "\e601"; }
+
+.ren:before { content: "\e640"; }
+
+.nvsheng:before { content: "\e649"; }
+
+.money:before { content: "\e6d0"; }
+
+.i-arrow-left:before { content: "\e65d"; }
+
+.i-arrow-right_:before { content: "\e65e"; }
+
+.i-arrow-top:before { content: "\e65f"; }
+
+.i-arrow-right:before { content: "\e660"; }
+
+.i-arrow-right1:before { content: "\e661"; }
+
+.i-cal:before { content: "\e662"; }
+
+.i-close:before { content: "\e663"; }
+
+.i-company:before { content: "\e664"; }
+
+.i-code:before { content: "\e665"; }
+
+.i-feedback:before { content: "\e667"; }
+
+.i-file:before { content: "\e668"; }
+
+.i-info:before { content: "\e669"; }
+
+.i-help:before { content: "\e66a"; }
+
+.i-lietou-left:before { content: "\e66b"; }
+
+.i-password:before { content: "\e66c"; }
+
+.i-poptips-error:before { content: "\e66d"; }
+
+.i-phone:before { content: "\e66e"; }
+
+.i-lietou-right:before { content: "\e66f"; }
+
+.i-poptips:before { content: "\e670"; }
+
+.i-profileset:before { content: "\e671"; }
+
+.i-qiye-left:before { content: "\e673"; }
+
+.i-qiye-right:before { content: "\e674"; }
+
+.i-resume:before { content: "\e675"; }
+
+.i-status:before { content: "\e676"; }
+
+.i-successful:before { content: "\e677"; }
+
+.i-search:before { content: "\e678"; }
+
+.i-warn:before { content: "\e679"; }
+
+.i-time:before { content: "\e67a"; }
+
+.i-zoomin:before { content: "\e67b"; }
+
+.i-select:before { content: "\e67c"; }
+
+.i-zoomout:before { content: "\e67d"; }
+
+.i-jobtitle:before { content: "\e680"; }
+
+.i-industry:before { content: "\e683"; }
+
+.i-message:before { content: "\e684"; }
+
+.i-quotes-left:before { content: "\e685"; }
+
+.i-quotes-right:before { content: "\e686"; }
+
+.i-send:before { content: "\e687"; }
+
+.i-new:before { content: "\e608"; }
+
+.i-arrow-down:before { content: "\e609"; }
+
+.i-arrow-up:before { content: "\e60b"; }
+
+.i-profile:before { content: "\e60d"; }
+
+.i-delete:before { content: "\e60e"; }
+
+.i-secret:before { content: "\e60f"; }
+
+.i-edit:before { content: "\e610"; }
+
+.i-add:before { content: "\e611"; }
+
+.i-lajitong1:before { content: "\e613"; }
+
+.youjian1:before { content: "\e6e8"; }
+
+.goutongjilu:before { content: "\e614"; }
+
+.hetong:before { content: "\e615"; }
+
+.i-sanjiao-down:before { content: "\e617"; }
+
+.i-zuzhijiagou:before { content: "\e618"; }
+
+.i-guanbi-shixin:before { content: "\e61b"; }
+
+.i-wuziji:before { content: "\e61c"; }
+
+.i-ziji:before { content: "\e61d"; }
+
+.xiangshang-copy-copy:before { content: "\e652"; }
+
+.i-qq:before { content: "\e61e"; }
+
+.i-telephone:before { content: "\e61f"; }
+
+.quanxing:before { content: "\e620"; }
+
+.zuobanxing:before { content: "\e621"; }
+
+.youbanxing:before { content: "\e622"; }
+
+.nvsheng1:before { content: "\e600"; }
+
+.i-jiaoyujingli:before { content: "\e623"; }
+
+.i-paichongchaxun:before { content: "\e624"; }
+
+.i-paixujiantou:before { content: "\e625"; }
+
+.i-quxiang:before { content: "\e626"; }
+
+.i-tuijian:before { content: "\e627"; }
+
+.i-dizhi:before { content: "\e628"; }
+
+.i-rongzijieduan:before { content: "\e629"; }
+
+.i-shoucang-dis:before { content: "\e62a"; }
+
+.i-shoucang:before { content: "\e62b"; }
+
+.i-wangzhi:before { content: "\e62c"; }
+
+.i-wechat:before { content: "\e62d"; }
+
+.i-zixunkefu:before { content: "\e62e"; }
+
+.i-beizhu:before { content: "\e62f"; }
+
+.i-tixing:before { content: "\e630"; }
+
+.i-shuaxin:before { content: "\e631"; }
+
+.i-paixujiantou-up:before { content: "\e632"; }
+
+.kefu:before { content: "\e633"; }
+

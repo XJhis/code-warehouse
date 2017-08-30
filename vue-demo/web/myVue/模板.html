@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第三个例子</title>
+	<style>
+		.container {
+			width: 1160px;
+			margin:0 auto;
+			height: 60px;
+			background: #ff6b00;
+			color: white;
+		}
+
+		.gray {
+			background: #666
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<span>889</span>
+	</div>
+
+	<script src="js/libs/vue.js"></script>
+
+	<script>
+
+		let data = {
+		};
+		let str = `<div>hello,world</div>`;
+
+		// 字符串模板
+		var vm = new Vue({
+			el: '#app',
+			data: data,
+			template: str	//会覆盖之前的标签
+		})
+
+
+	</script>
+
+</body>
+</html>
