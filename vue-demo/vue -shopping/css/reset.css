@@ -1,0 +1,129 @@
+/*
+ * 初始化
+ */
+
+body {
+    font-family: 'Microsoft YaHei', tahoma, arial, 'Hiragino Sans GB', \5b8b\4f53, sans-serif;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td,
+s {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    display: inline-block;
+}
+
+em {
+    font-style: normal;
+}
+/* a */
+
+a,
+a:focus,
+a:visited,
+a:link,
+a:hover {
+	outline: none;
+    text-decoration: none;
+}
+
+/* 元素i、select、input、textarea、button */
+
+i {
+    vertical-align: middle;
+}
+
+i,
+label,
+input[type='checkbox'] {
+    vertical-align: middle;
+}
+
+/* bootstrap 栅格系统 固定容器 */
+
+.row {
+    margin: 0;
+}
+
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12 {
+    padding: 0;
+}
+/* 表单组 */
+.form-horizontal .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-control:focus {
+	border-color: #14ADEF;
+}
+/* form表单中的label */
+label {
+    font-weight: normal;
+}
+
+/* 下拉菜单 */
+.dropdown-menu {
+    margin-top: 0px;
+    padding: 0;
+    border-radius: 0;
+    min-width:50px ;
+    text-align: left;
+    font-size: 12px;
+}
+
+/* ul li水平排列 */
+.list-inline {
+    margin: 0;
+}
+.list-inline>li {
+    padding: 0;
+}
+
+.form-group label {
+    margin-bottom: 0
+}
