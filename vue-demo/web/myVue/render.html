@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>render</title>
+	<style>
+		.container {
+			width: 1160px;
+			margin:0 auto;
+			height: 60px;
+			background: #ff6b00;
+			color: white;
+		}
+
+		.gray {
+			background: #666;
+		}
+		.red {
+			background: #ff6b00;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+	</div>
+
+	<script src="js/libs/vue.js"></script>
+
+	<script>
+
+		let data = {
+			msg: 'asdasdasdasdasda',
+			id: '#1212'
+		};
+
+
+
+		// 字符串模板
+		var vm = new Vue({
+			el: '#app',
+			data: data,
+			render:function(createElement) {
+				return createElement(
+					'ul',
+					{
+						class: {gray: false},
+						style: {color: '#ff6b00'},
+						attrs: {cusId: this.id}
+					},
+					[
+						createElement('li','one'),
+						createElement('li','two'),
+						createElement('li','three'),
+					]
+				)
+
+
+
+			}
+		})
+
+
+	</script>
+
+</body>
+</html>

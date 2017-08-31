@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第二个例子</title>
+</head>
+<body>
+	<div id="demo">
+		<input type="button" v-on:click="btnClick()" :value="name"/>
+
+		<div v-html="str"></div>
+	</div>
+
+	<script src="js/libs/vue.js"></script>
+
+	<script>
+		let info = {
+			msg: '欢迎来到的来联盟',
+			name: '点我啊',
+			str: '床前明月光<br/>床前明月光<br/>床前明月光<br/>床前明月光'
+		}
+
+		var vm = new Vue({
+			el: '#demo',
+			data: info,
+			methods: {
+				btnClick: function(){
+					alert(this.msg)
+				} 
+			}
+		})
+
+
+	</script>
+
+</body>
+</html>

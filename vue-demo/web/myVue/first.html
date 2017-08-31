@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第一个例子</title>
+</head>
+<body>
+	<div id="demo">
+		<h3>{{message}}</h3>
+	</div>
+
+	<script src="js/libs/vue.js"></script>
+
+	<script>
+		var data = {
+			message: 'welcome to vue.js'
+		}
+
+		var vm = new Vue({
+			el: '#demo',
+			data: data
+		})
+
+		console.log( vm.$data )
+
+
+	</script>
+
+</body>
+</html>

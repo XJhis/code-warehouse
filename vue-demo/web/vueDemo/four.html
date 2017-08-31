@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>solt内容分发</title>
+	<script src="./js/libs/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<customer>
+			<!-- slot属性可以对应js中template的name -->
+			<div slot="one">我是html结构1</div>
+			<div slot="two">我是html结构2</div>
+			<template slot="three">
+				<div>我是html结构3</div>
+				<div>我是html结构3</div>
+				<div>我是html结构3</div>
+				<div>我是html结构3</div>
+				<ul>
+					<li>嘿，我真的好想你</li>
+					<li>梦里时常遇见你</li>
+				</ul>
+			</template>
+			<!-- 如果没写slot属性，则会替换template中无name的slot -->
+			<div>替换无名solt</div>
+		</customer>
+	</div>
+	
+
+	<script>
+		Vue.component('customer', {
+			//定制html结构
+			//直接在html中组件标签内写入标签，实际渲染并没有用
+			//需要在template中写slot标签，告诉组件才有用；
+			// 如果在html中的组件标签内没有写html结构，template就会用slot中结构为默认结构，
+			// 如果写入则替换点slot中的而结构
+			template: `<div>
+							<slot name="one">
+								<div>我是默认结构1</div>
+							</slot>
+							<slot name="two">
+								<div>我是默认结构2</div>
+							</slot>
+							<slot name="three">
+								<div>我是默认结构3</div>
+							</slot>		
+							<slot></slot>						
+						</div>`
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+
+			}
+		})
+	</script>
+	
+</body>
+</html>

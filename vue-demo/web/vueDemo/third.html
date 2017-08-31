@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	
+	<div id="app">
+		<strong>{{count}}</strong>
+		<customer :cus-data="count" @count-click="countFn"></customer>
+	</div>
+
+	
+
+	<script src="./js/libs/vue.js"></script>
+	<script>
+		//定义的全局组件
+		Vue.component('customer',{			
+			template:`<div class="customer-demo">
+					<h3>我是子组件</h3>
+					<p>点击了{{ziCount}}次</p>
+					<button class="btn btn-success" @click="addCount">点击</button>
+			</div>`,
+			props: ['cusData'],
+			data: function() {
+				return {
+					ziCount: this.cusData,
+				}
+			},
+			methods: {
+				addCount: function() {
+					this.ziCount.number++;
+
+					// 触发自定义事件，并且传递参数
+					this.$emit('count-click',this.ziCount)
+
+				}
+			}
+		})
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				count: {
+					title: '对象',
+					number: 1
+				}
+			},
+			methods: {
+				countFn: function(obj) {
+					this.count = obj;
+
+				}
+			}
+		})
+			
+	</script>
+
+</body>
+</html>

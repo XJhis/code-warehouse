@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="app">
+		<h3>第一个组件</h3>
+		<my-select tab-name="逗我"></my-select>	
+		<h3>第二个组件</h3>
+		<my-select tab-name="hehe"></my-select>
+	</div>
+	
+	
+	<script src="js/libs/vue.js"></script>
+	<script>
+		//先要注册组件
+		Vue.component('my-select', {
+			template:`<ul class="nav-top">
+					<li><a href="###">{{tabName}}</a></li>
+					<li><a href="###">职位</a></li>
+					<li><a href="###">公司</a></li>
+				</ul>`,
+			props:['tabName']
+		})
+
+		var vm = new Vue({
+			el: '#app'
+		})
+
+	</script>
+
+</body>
+</html>

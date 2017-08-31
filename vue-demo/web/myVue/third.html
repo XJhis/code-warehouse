@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第三个例子</title>
+	<style>
+		.container {
+			width: 1160px;
+			margin:0 auto;
+			height: 60px;
+			background: #ff6b00;
+			color: white;
+		}
+
+		.gray {
+			background: #666
+		}
+	</style>
+</head>
+<body>
+	<div id="demo">
+		<button @click="changeSkin()">换皮肤</button>
+		<div class="container" :class="{gray: isDefult}">
+			<h3>欢迎来到vue</h3>
+		</div>
+	</div>
+
+	<script src="js/libs/vue.js"></script>
+
+	<script>
+		let data = {
+			isDefult:false
+		}
+
+		var vm = new Vue({
+			el: '#demo',
+			data : data,
+			methods: {
+				changeSkin: function() {
+					this.isDefult = !this.isDefult;
+				}
+			}
+		})
+
+
+	</script>
+
+</body>
+</html>

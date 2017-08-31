@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>alert提醒</title>
+	<script src="./js/libs/vue.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="app">
+		<my-alert 
+			type="error" 
+			:left-icon="true"
+			:right-close="true"
+			@click-close="closeHandle"
+			>
+			<div class="pull-left" slot="slot-cont">asdads</div>
+		</my-alert>
+		<my-alert 
+			@click-close="closeHandle"
+			>
+		</my-alert>
+		<my-alert 
+			type="info"
+			@click-close="closeHandle"
+			>
+		</my-alert>
+		<my-alert 
+			type="warning"
+			@click-close="closeHandle"
+			>
+		</my-alert>
+
+	</div>
+
+	
+
+	<script>
+		//左侧图标显示 leftIcon
+		//中级内容显示
+		//右侧x显示 rightClose
+
+		Vue.component('myAlert', {
+			props:{
+				type: {
+					type: String,
+					default: 'success'
+				},
+				leftIcon: {
+					type: Boolean,
+					default: true
+				},
+				rightClose: {
+					type: Boolean,
+					default: true
+				}
+			},
+			data: function() {
+				return {
+					isLeftIcon: this.leftIcon,
+					isRightClose: this.rightClose
+				}
+			},
+			computed: {
+				typeClass:function() {
+					return 'bg-'+ this.type
+				}
+			},
+			template: `<div class="ah-alert" :class="typeClass">
+						<div class="left-icon">
+							<i v-if="isLeftIcon" class="icon aimsen i-warn "></i>
+						</div>
+						
+						<slot name="slot-cont">
+							<div class="ah-alert-cont pull-left">顿阿斯顿</div>
+						</slot>
+						
+						<div class="ah-alert-close pull-right" v-if="isRightClose" @click="closeFn">
+							<i class="icon aimsen i-close pull-left c-p"></i>
+						</div>
+					</div>`,
+			methods: {
+				closeFn: function() {
+					this.$emit('click-close')
+				}
+			}
+
+		})
+
+		new Vue({
+			el: '#app',
+			data: {
+
+			},
+			methods: {
+				closeHandle: function() {
+					alert('click-close')
+				}
+			}
+		})
+
+
+	</script>
+	
+</body>
+</html>

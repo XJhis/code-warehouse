@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+	<div class="home" id="app">
+		<div class="home-nav text-center">任务计划书 {{unFinishedTask()}}</div>
+		<div class="home-cont">
+			<div class="container">
+				<div class="form-group cont-item clearfix">
+					<h3>添加任务{{nowTime}}</h3>
+					<div>
+						<div class="add-input">
+							<input type="text" placeholder="输入完成后回车即可添加"
+								v-on:keyup.enter="addTask"	
+								v-model="inputText"			
+							/>
+						</div>
+						<div v-show="list.length">
+							<span class="pull-left less-task">{{nodo}}个任务未完成</span>
+							<ul class="pull-right select-tab clearfix">
+								<li class="active"><a href="#all">所有任务</a></li>
+								<li><a href="#unFinished">未完成的任务</a></li>
+								<li><a href="#finished">完成的任务</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="form-group cont-item clearfix">
+					<h3>任务列表</h3>
+					<div class="item-sec">
+						<p v-show="!list.length">还没有添加任务</p>
+						<ul class="task-list clearfix" v-for="(value, key) in filterList">
+							<li :class="{completed: value.isChecked, editing: value.isEdit}">
+								<div class="list-cont view">
+									<div class="checkboxed pull-left">										
+										<input type="checkbox" v-model="value.isChecked">&nbsp;<span class="c-p" @dblClick="editTask(key, $event)">{{value.title}}</span>
+									</div>
+									<span class="del pull-right" v-on:click="delTask(key)">X</span>
+								</div>
+								<div class="list-cont edit">
+									<input type="text" v-focus="value.isEdit" class="edit-cont" 
+										v-model="editText" 
+										@keyup.13="finishTask(key)"
+										@keyup.esc="cancelTask(key)"
+
+										/>
+								</div>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/libs/vue.js"></script>
+	<script src="js/views/app.js"></script>
+</body>
+</html>
