@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+
+        /*
+            for循环中声明变量
+        */
+
+        // var arr = [];
+
+        // for (var i = 0; i < 10; i++) {
+        //     arr[i] = function() {
+        //         console.log('我是。。。', i)
+        //     }
+        // }
+
+        // arr[2](); //i都是10
+
+
+        // "use strict";
+        // var a = [];
+        
+        // var _loop = function _loop(i) {
+        //     a[i] = function () {
+        //         console.log(i);
+        //     };
+        // };
+
+        // for (var i = 0; i < 5; i++) {
+        //     _loop(i);
+        // }
+
+        // a[2]();
+
+        /*
+            let变量声明的变量不会提升
+        */
+        // console.log(a);   报错
+        // typeof a;    
+        // let a = 10;
+
+        // 暂时性死区 在let声明变量之前使用该变量都会报错，
+
+        // console.log(tem) //undefined
+        // var tem = 12;
+
+        // if (true) {
+        //     console.log(tem) //报错
+        //     let tem = 1;
+
+        //     console.log(tem) //1
+        // }
+
+        /*
+            不允许重复声明同一个变量即使一个用var,另一个用let；但是用var重复声明不会报错
+        */
+
+        // var tem = 1; //报错
+        // let tem = 2; //报错
+        // let tem = 0; //报错
+
+        // 函数里面Let声明的变量不能和函数参数名一样
+
+        // function test(str, num) {
+        //     let str = 12;
+        // }
+
+        // test(1,2) //报错
+
+
+
+
+    </script>
+</body>
+
+</html>

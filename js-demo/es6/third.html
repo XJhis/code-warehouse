@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // for of 语句
+        {
+            // let str = '熊炬辉';
+            // for (let name of str) {
+            //     console.log('遍历字符串', name)
+            // }
+
+        }
+
+        //确定一个字符串是否包含在另一个字符串中
+        // es5 indexOf方法
+        // es6 新增 
+            // includes 返回布尔值，表示是否找到了参数字符串。
+            // startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部
+            // endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部
+
+        // {
+        //     let [str1, str2] = ['0123456789', '1'];
+
+        //     console.log( str1.indexOf(str2)) //0
+
+        //     console.log( str1.includes(str2, 0) )  //true  位置从0开始
+        //     console.log( str1.startsWith(str2, 0) )  //true 位置从0开始
+        //     console.log( str1.endsWith(str2, 1) )  //true 前n个字符是
+        // }
+
+        /*
+            字符串的repeat方法
+            参数如果是小数，会被取整。
+        */
+        {
+            let [str, result] = ['6', '??'];
+
+            // result = str.repeat('3'); //666
+            // result = str.repeat(null); //如果repeat里面的参数不存在，结果返回''
+            result = str.repeat(); //''
+
+            console.log(result)
+        }
+
+    </script>
+</body>
+
+</html>
