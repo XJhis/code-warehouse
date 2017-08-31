@@ -48,9 +48,9 @@
 	                        	￥{{value.price}}
 	                        </div>
 	                        <div class="col-md-2 num text-center">
-	                        	<span>-</span>
+	                        	<span @click="changeNum(key, 1)">-</span>
 	                        	<span class="bd-gray">{{value.number}}</span>
-	                        	<span>+</span>
+	                        	<span @click="changeNum(key, 2)">+</span>
 	                        </div>
 	                        <div class="col-md-2 price">
 	                        	￥{{value.total}}
@@ -62,15 +62,17 @@
 	                </div>
 	            </div>
 	            <div class="shop-bar">
-	            	<div class="checkbox pull-left">
-	            	    <label>
-	            	        <input type="checkbox">&nbsp;全选取消全选
-	            	    </label>
-	            	</div>
-	            	<div class="total-count pull-right">
-	            		<span>总计：￥12000.00</span>
-	            		<button class="btn btn-md">结账</button>
-	            	</div>
+	            	<div class="container">
+	            		<div class="checkbox pull-left">
+	            		    <label>
+	            		        <input type="checkbox">&nbsp;全选取消全选
+	            		    </label>
+	            		</div>
+	            		<div class="total-count pull-right">
+	            			<span>总计：￥{{allTotal}}</span>
+	            			<button class="btn btn-md">结账</button>
+	            		</div>
+	            	</div>	            	
 	            </div>
 	        </div>
 	    </div>

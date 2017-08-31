@@ -52,8 +52,31 @@ var app = new Vue({
 	data: {
 		shop: shopObj
 	},
-	methods: {
+	computed: {
+		allTotal: function() {
+			var money = 0 ;
+			this.shop.forEach(function(value, key) {
 
+				if (value.active) {
+					money = money + value.number*value.price;
+					console.log(money)
+				}
+			})
+			
+			return money;
+		}
+	},
+	methods: {
+		changeNum: function(key, type) {
+			var add = type == 1 ? -1 : 1;
+
+			if ( type==1 && this.shop[key].number <=0 ) {				
+				return this.shop[key].number = 0;
+			}
+
+			this.shop[key].number =  this.shop[key].number + add;
+			this.shop[key].total =  this.shop[key].number * this.shop[key].price;
+		}
 	}
 
 })
