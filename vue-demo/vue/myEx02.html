@@ -51,9 +51,8 @@
 		<ul class="test-nav">
 			<li v-for="(item, key) in navList" :class="{active: item.active}" @click="chooseFn(key)"><a href="javascript:void(0)">{{item.title}}</a></li>								
 		</ul>
-		<p>您选择的导航是:{{currentNav}}</p>
+		<p>您选择的导航是:{{currentTitle}}</p>
 	</div>
-	<img src="imgs/clothe.jpg" alt="">
 	<script>
 		var vm = new Vue({
 			el: '#app',
@@ -63,20 +62,21 @@
 					{title: '职位', active: false},
 					{title: '我的简历', active: true},
 					{title: '个人中心', active: false}
-				]
+				],
+				currentTitle: '我的简历'
 			},
-			computed:{
-				currentNav: function() {
-					var title;
-					this.navList.forEach(function(value, key) {
-						if (value.active) {
-							title = value.title;
-						}
-					})
+			// computed:{
+			// 	currentNav: function() {
+			// 		var title;
+			// 		this.navList.forEach(function(value, key) {
+			// 			if (value.active) {
+			// 				title = value.title;
+			// 			}
+			// 		})
 
-					return title;
-				}
-			},
+			// 		return title;
+			// 	}
+			// },
 			methods: {
 				chooseFn: function(key) {
 
@@ -85,6 +85,8 @@
 					})
 
 					this.navList[key].active = true;
+
+					this.currentTitle = this.navList[key].title;
 				}
 			}
 		})

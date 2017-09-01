@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/dailog.css">
-    <link rel="stylesheet" href="./css/reset.css">
-    <script src="./js/vue.js"></script>    
-</head>
-
-<body>
-    <div id="app">
-    	<dailog-box v-show="showCustomer" @on-confirm="okFn()" @on-cancel="noFn()"></dailog-box>
-    </div>
-    <script>
+    
+	/*
+	==================
+	默认弹出框组件
+	=================
+	*/
 
     // 模态框组件 只能用于通用的弹窗,弹框内交互只有按钮点击，如确定或者取消
     // props 标题 dailogTitle 
-    //slot 内容 dailog-cont dailog-foot
-    //交互 确定 取消;
+    // dailog-confirm: 确定触发事件
+    // dailog-cancel: 取消触发事件    
 
     Vue.component('dailogBox', {
     	props: {
@@ -50,35 +40,10 @@
 	    , 
 	    methods: {
 	    	confirmFn: function() {
-	    		console.log('点击确定了')
-	    		this.$emit('on-confirm')
+	    		this.$emit('dailog-confirm')
 	    	},
 	    	cancelFn: function() {
-	    		console.log('点击取消了')
-	    		this.$emit('on-cancel')
+	    		this.$emit('dailog-cancel')
 	    	}
 	    }
     })
-
-    new Vue({
-    	el: '#app',
-    	data: {
-    		title1: '客户名称',
-    		showCustomer: true
-    	},
-    	methods: {
-    		okFn: function() {
-    			console.log('发送请求中....');
-    			this.showCustomer = false;
-    		},
-    		noFn: function() {
-    			this.showCustomer = false;
-    		}
-    	}
-    })
-
-
-    </script>
-</body>
-
-</html>

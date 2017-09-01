@@ -42,31 +42,41 @@ var shopObj = [
 ]
 
 //默认都选中
-for (var i = 0; i < shopObj.length; i++) {
-	shopObj[i].active = true;
-}
+// for (var i = 0; i < shopObj.length; i++) {
+// 	shopObj[i].active = true;
+// }
 
+shopObj.forEach(function(value, key) {
+	value.active = true;
+})
+var isChooseAll = true;
 
 var app = new Vue({
 	el: '#app',
 	data: {
-		shop: shopObj
+		shop: shopObj,
+		key: 0,
+		titleText: '删除',
+		contText: '您确定删除该商品吗？',
+		showConfirm: false,
+		chooseAll: isChooseAll
 	},
 	computed: {
+		//计算总价格
 		allTotal: function() {
 			var money = 0 ;
 			this.shop.forEach(function(value, key) {
 
 				if (value.active) {
 					money = money + value.number*value.price;
-					console.log(money)
 				}
 			})
 			
 			return money;
-		}
+		}		
 	},
 	methods: {
+		//商品数量改变
 		changeNum: function(key, type) {
 			var add = type == 1 ? -1 : 1;
 
@@ -76,6 +86,45 @@ var app = new Vue({
 
 			this.shop[key].number =  this.shop[key].number + add;
 			this.shop[key].total =  this.shop[key].number * this.shop[key].price;
+		},
+		chooseFn: function() {
+			let all = true;
+			this.shop.forEach(function(value, key) {
+				if (!value.active) {
+					all = false;
+				}				
+			})
+
+			this.chooseAll = all
+		},
+		//全选、取消全选
+		chooseAllFn: function() {
+
+			let thisChoose = this.chooseAll;
+
+			this.shop.forEach(function(value, key) {
+				value.active = thisChoose;	
+			})
+
+			// for (var i = 0; i < this.shop.length; i++) {
+			// 	this.shop[i].active = this.chooseAll
+			// }
+
+		},		
+		//删除商品
+		showDelete: function(key) {
+			this.key = key;			
+			this.showConfirm = true;
+		},
+		//确定删除
+		deleteFn: function() {
+			this.showConfirm = false;
+			this.shop.splice(this.key, 1); 
+
+		},
+		// 取消删除
+		cancel: function() {
+			this.showConfirm = false;
 		}
 	}
 

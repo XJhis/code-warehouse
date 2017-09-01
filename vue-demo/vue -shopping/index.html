@@ -1,84 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/shop.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/dailog.css">
+    <link rel="stylesheet" href="css/shop.css">
 </head>
+
 <body>
-	<div id="app">		
-	    <div class="container">
-	        <div class="shop-car">
-	            <div class="title">
-	                <h4 class="text-center f18">购物车</h4>
-	            </div>
-	            <div class="shop-box">
-	                <div class="box-head clearfix">
-	                    <div class="col-md-5 list">商品信息</div>
-	                    <div class="col-md-2 list">商品金额</div>
-	                    <div class="col-md-2 list">商品数量</div>
-	                    <div class="col-md-2 list">总金额</div>
-	                    <div class="col-md-1 list">编辑</div>
-	                </div>
-	                <div class="box-cont">
-	                    <div class="shop-list clearfix" v-for="(value, key) in shop">
-	                        <div class="col-md-5 shop">
-	                            <div class="clearfix">
-	                                <div class="checkbox pull-left">
-	                                    <label>
-	                                        <input type="checkbox" v-model="value.active">
-	                                    </label>
-	                                </div>
-	                                <div class="pull-left">
-	                                    <a :href="value.link" target="_blank" class="dis-block pull-left shop-img">
+    <div id="app">
+        <div class="container">
+            <div class="shop-car">
+                <div class="title">
+                    <h4 class="text-center f18">购物车</h4>
+                </div>
+                <div class="shop-box">
+                    <div class="box-head clearfix">
+                        <div class="col-md-5 list">商品信息</div>
+                        <div class="col-md-2 list">商品金额</div>
+                        <div class="col-md-2 list">商品数量</div>
+                        <div class="col-md-2 list">总金额</div>
+                        <div class="col-md-1 list">编辑</div>
+                    </div>
+                    <div class="box-cont">
+                        <div class="shop-list clearfix" v-for="(value, key) in shop">
+                            <div class="col-md-5 shop">
+                                <div class="clearfix">
+                                    <div class="checkbox pull-left">
+                                        <label @click="chooseFn()">
+                                            <input type="checkbox" v-model="value.active">
+                                        </label>
+                                    </div>
+                                    <div class="pull-left">
+                                        <a :href="value.link" target="_blank" class="dis-block pull-left shop-img">
 									  		<img :src="value.imgUrl" alt="">
 									  	</a>
-	                                    <div class="pull-left shop-info f12">
-	                                    	<p>{{value.title}}</p>
-	                                    	<div>
-	                                    		<span>{{value.describe}}</span>
-	                                    	</div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="col-md-2 price">
-	                        	￥{{value.price}}
-	                        </div>
-	                        <div class="col-md-2 num text-center">
-	                        	<span @click="changeNum(key, 1)">-</span>
-	                        	<span class="bd-gray">{{value.number}}</span>
-	                        	<span @click="changeNum(key, 2)">+</span>
-	                        </div>
-	                        <div class="col-md-2 price">
-	                        	￥{{value.total}}
-	                        </div>
-	                        <div class="col-md-1 operate text-center">
-	                        	<button class="btn btn-white btn-sm">删除</button>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="shop-bar">
-	            	<div class="container">
-	            		<div class="checkbox pull-left">
-	            		    <label>
-	            		        <input type="checkbox">&nbsp;全选取消全选
-	            		    </label>
-	            		</div>
-	            		<div class="total-count pull-right">
-	            			<span>总计：￥{{allTotal}}</span>
-	            			<button class="btn btn-md">结账</button>
-	            		</div>
-	            	</div>	            	
-	            </div>
-	        </div>
-	    </div>
-	</div>
-	<!-- <img src="imgs/clothe.jpg" alt=""> -->
-	<script src="js/vue.js"></script>
-	<script src="js/shop.js"></script>
+                                        <div class="pull-left shop-info f12">
+                                            <p>{{value.title}}</p>
+                                            <div>
+                                                <span>{{value.describe}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 price">
+                                ￥{{value.price}}
+                            </div>
+                            <div class="col-md-2 num text-center">
+                                <span @click="changeNum(key, 1)">-</span>
+                                <span class="bd-gray">{{value.number}}</span>
+                                <span @click="changeNum(key, 2)">+</span>
+                            </div>
+                            <div class="col-md-2 price">
+                                ￥{{value.total}}
+                            </div>
+                            <div class="col-md-1 operate text-center">
+                                <button class="btn btn-white btn-sm" @click="showDelete(key)">删除</button>
+                            </div>
+                        </div>
+                        <!-- 商品为空的页面 -->
+                        <!-- <div class="no-result p-t-100 ng-scope" v-if="noData">
+                            <div class="logo t-c-f m-b-10">
+                                <img src="imgs/logo/nodata.png" alt="" width="136" height="136">
+                            </div>
+                            <p class="gray999 t-c-f">暂无数据</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="shop-bar">
+                    <div class="container">
+                        <div class="checkbox pull-left">
+                            <label>
+                                <input @change="chooseAllFn()" type="checkbox" v-model="chooseAll">&nbsp;<em v-if="!chooseAll">全选</em><em v-if="chooseAll">取消全选</em>
+                            </label>
+                        </div>
+                        <div class="total-count pull-right">
+                            <span>总计：￥{{allTotal}}</span>
+                            <button class="btn btn-md">结账</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <dailog-box v-show="showConfirm" :dailog-title="titleText" @dailog-cancel="cancel()" @dailog-confirm="deleteFn()">
+            <div slot="dailog-cont">{{contText}}</div>
+        </dailog-box>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/component.js"></script>
+    <script src="js/shop.js"></script>
 </body>
+
 </html>
