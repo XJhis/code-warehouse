@@ -63,12 +63,12 @@
                             </div>
                         </div>
                         <!-- 商品为空的页面 -->
-                        <!-- <div class="no-result p-t-100 ng-scope" v-if="noData">
-                            <div class="logo t-c-f m-b-10">
-                                <img src="imgs/logo/nodata.png" alt="" width="136" height="136">
+                        <div class="no-result p-t-100 ng-scope" style="padding:60px 0" v-show="!shop.length">
+                            <div class="logo text-center m-b-20">
+                                <img src="imgs/nodata.png">
                             </div>
-                            <p class="gray999 t-c-f">暂无数据</p>
-                        </div> -->
+                            <p class="gray999 text-center">暂无数据</p>
+                        </div>
                     </div>
                 </div>
                 <div class="shop-bar">
