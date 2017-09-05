@@ -9,7 +9,11 @@
 <body>
     <div id="app">
         <ul>
-            <li></li>
+            <li v-for="(value, key) in shop">
+                <span v-text="value.title"></span>
+                <span>{{value.describe}}</span>
+                <img v-bind:src="value.imgUrl" alt="">
+            </li>
         </ul>
 
     </div>
@@ -20,16 +24,33 @@
             el: "#app", 
             data: {
                 shop: [],
+                totalMoney: 0
             },
             mounted: function() {
-                this.getData();
+                // this.getData();
+
+
+                this.$nextTick(function() {
+                    vm.getData();
+                })
             },
             methods: {
                 getData: function() {
-                    this.$http.get("data/list.json").then(function(res) {
-                        console.log( JSON.parse(res.bodyText) ) //报错
+                    // es5写法
+                    var _this = this;
+                    // this.$http.get("data/list.json").then(function(res) {
+                    //     console.dir( JSON.parse(res.bodyText) ) 
 
+                    //     _this.shop = JSON.parse(res.bodyText).data.list;
+                    //     _this.totalMoney = JSON.parse(res.bodyText).data.totalMoney;
                         
+                    // })
+
+                    //es6写法 箭头函数里面不会改变this指向 非常cool
+
+                    this.$http.get("data/list.json").then(res => {
+                        this.shop = JSON.parse(res.bodyText).data.list;
+                        this.totalMoney = JSON.parse(res.bodyText).data.totalMoney;
                     })
                 }
             }

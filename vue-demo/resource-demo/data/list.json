@@ -1,48 +1,48 @@
 {
-    "status": 1,
-    "data": {
-        "list": [
-            {
-                "active": false,
-                "imgUrl": "imgs/phone.jpg",
-                "title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
-                "describe": "赠送： 12期分期 送壳膜 正品国行",
-                "price": 5000,
-                "number": 1,
-                "total": 5000,
-                "link": "http://www.baidu.com"
-            },
-            {
-                "active": false,
-                "imgUrl": "imgs/phone.jpg",
-                "title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
-                "describe": "赠送： 12期分期 送壳膜 正品国行",
-                "price": 5000,
-                "number": 1,
-                "total": 5000,
-                "link": "http://www.baidu.com"
-            },
-            {
-                "active": false,
-                "imgUrl": "imgs/phone.jpg",
-                "title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
-                "describe": "赠送： 12期分期 送壳膜 正品国行",
-                "price": 5000,
-                "number": 1,
-                "total": 5000,
-                "link": "http://www.baidu.com"
-            },
-            {
-                "active": false,
-                "imgUrl": "imgs/phone.jpg",
-                "title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
-                "describe": "赠送： 12期分期 送壳膜 正品国行",
-                "price": 5000,
-                "number": 1,
-                "total": 5000,
-                "link": "http://www.baidu.com"
-            }
-
-        ]
-    }
+	"status": 1,
+	"data": {
+		"totalMoney": 10000,
+		"list": [
+			{
+				"active": false,
+				"imgUrl": "imgs/phone.jpg",
+				"title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
+				"describe": "赠送： 12期分期 送壳膜 正品国行",
+				"price": 5000,
+				"number": 1,
+				"total": 5000,
+				"link": "http://www.baidu.com"
+			},
+			{
+				"active": true,
+				"imgUrl": "imgs/clothe.jpg",
+				"title": "太平鸟男装 2017秋季黑色个性刺绣磨破外套宽松牛仔夹克",
+				"describe": "满2件,包邮；满2件,包邮",
+				"price": 399,
+				"number": 1,
+				"total": 399,
+				"link": "http://www.baidu.com"
+			},
+			{
+				"active": false,
+				"imgUrl": "imgs/phone.jpg",
+				"title": "苹果7【12期分期送壳膜】Apple/苹果 iPhone 7 全网通国行4G手机",
+				"describe": "赠送： 12期分期 送壳膜 正品国行",
+				"price": 5000,
+				"number": 1,
+				"total": 5000,
+				"link": "http://www.baidu.com"
+			},
+			{
+				"active": true,
+				"imgUrl": "imgs/clothe.jpg",
+				"title": "太平鸟男装 2017秋季黑色个性刺绣磨破外套宽松牛仔夹克",
+				"describe": "满2件,包邮；满2件,包邮",
+				"price": 399,
+				"number": 1,
+				"total": 399,
+				"link": "http://www.baidu.com"
+			}
+		]
+	}
 }
