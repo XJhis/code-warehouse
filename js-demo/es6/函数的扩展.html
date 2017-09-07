@@ -62,25 +62,110 @@
     //     log({num:2, money:10}) //
     // }
 
+    // {
+    //     function log({x = 1, y = 0}) {
+    //         console.log(x, y)
+    //     }
+
+    //     log({}) //1 0
+    //     log({x:2, y: 100}) //2, 100
+    //     // log() //报错
+    // }
+
+    // {
+    //     function log({x = 1, y = 2} = {}) {
+    //         console.log(x, y)
+    //     }
+
+    //     log() //1 2
+    //     log({}) //1 2
+    //     log({x: null, y: null}) //null null
+    // }
+
+    // {
+    //     //首先这个函数的参数是一个对象，这个函数参数的默认赋值是一个空对象，
+    //     //在调用函数的时候，首先判断函数传的参数是不是undefined,如果是就默认赋值空对象，
+    //     //再然后又会进行对象的解构赋值;如果函数传参不是undefined,就用函数参数赋值，然后还是要进行对象的解构赋值
+    //     function log1({x = 0, y = 0} = {}) {
+    //         console.log([x, y])
+    //     }
+
+
+    //     //首先这个函数的参数是一个对象，这个函数参数的默认赋值是对象{x:0, y: 0}，如果函数传参是undefined,就用那个对象进行赋值，
+    //     //如果函数参数不是undefined,就用传的参数进行赋值
+
+    //     // 注意函数参数判断有没有是用undefined来进行判断的
+    //     function log2({x, y} = {x: 0, y: 0}) {
+    //         console.log([x, y])
+    //     }
+
+    //     log1() //[0, 0]
+    //     log2()  //[0, 0]
+
+    //     log1({})  //[0, 0]
+    //     log2({})  //[undefined, undefined]
+
+    // }
+
+    // 函数的length
+    // {
+    //     function log(x , y = 2) {
+    //         console.log(x, y)
+    //     }
+
+    //     console.log(log.length) //1
+
+    // }
+
+    // 函数参数的作用域
+    //函数的参数声明默认后，会有一个单独的作用域，
+    //函数参数的取值用传递进来的值
     {
-        function log({x = 1, y = 0}) {
+        var x = 1;
+        function log(x , y = x) {
             console.log(x, y)
         }
 
-        log({}) //1 0
-        log({x:2, y: 100}) //2, 100
-        // log() //报错
+        log(2) //2 2
     }
 
     {
-        function log({x = 1, y = 2} = {}) {
-            console.log(x, y)
+        var x = 1;
+        function log( y = x) { //这里的x向函数外部寻找，如果此时，全局变量x不存在，就会报错。
+            let x = 10;
+            console.log(y)
         }
 
-        log() //1 2
-        log({}) //1 2
-        log({x: null, y: null}) //null null
+        log() // 1
     }
+
+    {
+        let x = 1;
+        function log( x = x) {  //会报错,这里相当于let x = x,不允许重复声明已经存在的变量。
+            console.log(y)
+        }
+
+        log() // 1
+    }
+
+    // 应用：利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误
+    {
+        //抛出错误函数
+        function throwError() {
+            return new Error('这个参数是必传的哦，小主怎么能忘记呢！');
+        }
+
+        function log(name = throwError()) {
+            console.log(name) 
+        }
+
+        log(666)
+        log() // Error: 这个参数是必传的哦，小主怎么能忘记呢！
+
+    }
+
+    
+
 
     </script>
 </body>
