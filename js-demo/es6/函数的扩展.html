@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数的扩展</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+    // {
+    //    function log(x , x, y) {
+    //        console.log(x, x, y) 
+    //    }
+
+    //    log(1,2,3) //2, 2, 3  使用后传入x的值
+    // }
+
+    // {
+    //     function log(x = 1, x, y) {
+    //         console.log(x, x, y) //报错
+    //     }
+
+    //     log(1, 2, 3)
+    // }
+
+    // let x = 10;
+
+    // function log(x=1, y=2) {
+
+    //     let x = 0; //报错
+    // }
+
+    // log(x)
+
+    // {
+    //     let x = 0;
+
+    //     function log(y = x + 1) {
+    //         console.log(y)
+    //     }
+
+    //     x = 10;
+    //     log() //11
+    // }
+
+    // {
+    //     // no understanding
+    //     function log({x = 0, y = 0} = {}) {
+    //         console.log([x, y])
+    //     }
+
+    //     log({x:1, y : 7}) //
+    // }
+
+    // {
+    //     function log(obj) {
+    //         console.log(obj.num, obj.money)
+    //     }
+
+    //     log({num:2, money:10}) //
+    // }
+
+    {
+        function log({x = 1, y = 0}) {
+            console.log(x, y)
+        }
+
+        log({}) //1 0
+        log({x:2, y: 100}) //2, 100
+        // log() //报错
+    }
+
+    {
+        function log({x = 1, y = 2} = {}) {
+            console.log(x, y)
+        }
+
+        log() //1 2
+        log({}) //1 2
+        log({x: null, y: null}) //null null
+    }
+
+    </script>
+</body>
+
+</html>
