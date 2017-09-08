@@ -132,33 +132,33 @@
     // 函数参数的作用域
     //函数的参数声明默认后，会有一个单独的作用域，
     //函数参数的取值用传递进来的值
-    {
-        var x = 1;
-        function log(x , y = x) {
-            console.log(x, y)
-        }
+    // {
+    //     var x = 1;
+    //     function log(x , y = x) {
+    //         console.log(x, y)
+    //     }
 
-        log(2) //2 2
-    }
+    //     log(2) //2 2
+    // }
 
-    {
-        var x = 1;
-        function log( y = x) { //这里的x向函数外部寻找，如果此时，全局变量x不存在，就会报错。
-            let x = 10;
-            console.log(y)
-        }
+    // {
+    //     var x = 1;
+    //     function log( y = x) { //这里的x向函数外部寻找，如果此时，全局变量x不存在，就会报错。
+    //         let x = 10;
+    //         console.log(y)
+    //     }
 
-        log() // 1
-    }
+    //     log() // 1
+    // }
 
-    {
-        let x = 1;
-        function log( x = x) {  //会报错,这里相当于let x = x,不允许重复声明已经存在的变量。
-            console.log(y)
-        }
+    // {
+    //     let x = 1;
+    //     function log( x = x) {  //会报错,这里相当于let x = x,不允许重复声明已经存在的变量。
+    //         console.log(y)
+    //     }
 
-        log() // 1
-    }
+    //     log() // 1
+    // }
 
     // {
     //     function log({x = 1, y = 2} = {}) { //
@@ -173,20 +173,71 @@
     
 
     // 应用：利用参数默认值，可以指定某一个参数不得省略，如果省略就抛出一个错误
-    {
-        //抛出错误函数
-        function throwError() {
-            return new Error('这个参数是必传的哦，小主怎么能忘记呢！');
+    // {
+    //     //抛出错误函数
+    //     function throwError() {
+    //         return new Error('这个参数是必传的哦，小主怎么能忘记呢！');
+    //     }
+
+    //     function log(name = throwError()) {
+    //         console.log(name) 
+    //     }
+
+    //     log(666)
+    //     log() // Error: 这个参数是必传的哦，小主怎么能忘记呢！
+
+    // }
+
+    // {
+    //     function add(...arr) {
+    //         arr.forEach((value, key) => {
+    //             console.log(value, ':', key)
+    //         })
+    //     }
+
+    //     add('000', '111', '222')
+
+    // }
+
+    // {   
+    //     // // es5
+    //     // function sortNum() {
+    //     //     console.log(Array.prototype.slice.call(arguments)) 
+            
+    //     // }
+
+    //     // sortNum('a', 'b', 'c')
+
+    //     // function sortNum() {
+
+    //     // }
+
+    // }
+
+    // let [x, y, z] = [1, 2, 3];
+
+    // console.log(x, y, z)
+    var arr = []
+    for (var i = 0; i < 5; i++) {
+
+        arr[i] = function() {
+            console.log(i)
         }
-
-        function log(name = throwError()) {
-            console.log(name) 
-        }
-
-        log(666)
-        log() // Error: 这个参数是必传的哦，小主怎么能忘记呢！
-
     }
+    
+
+    arr[0]()
+    arr[1]()
+    arr[2]()
+    arr[3]()
+
+
+    
+    
+    
+
+
+
 
     
 
