@@ -62,15 +62,22 @@
     //     log({num:2, money:10}) //
     // }
 
-    {
-        function log({x = 1, y = 0}) {
-            console.log(x, y)
-        }
+    // {
+    //     function log({x = 1, y = 0}) {
+    //         console.log(x, y)
+    //     }
 
-        log({}) //1 0
-        log({x:2, y: 100}) //2, 100
-        // log() //报错
-    }
+    //     log({}) //1 0
+    //     log({x:2, y: 100}) //2, 100
+    //     // log() //报错
+    // }
+
+    // {
+    //     // let {x = 1, y = 2} = {}    
+    //     let {x = 666, y = 888} = {x: undefined, y: undefined}    
+
+    //     console.log(x, y)
+    // }
 
     {
         function log({x = 1, y = 2} = {}) {
@@ -81,6 +88,20 @@
         log({}) //1 2
         log({x: null, y: null}) //null null
     }
+
+    // {
+    //     function log({x = 1, y = 2} = {}) { //
+    //         console.log(x, y)
+    //     }
+
+    //     log() //1 2
+    //     log({}) //1 2
+    //     log({x: null, y: null}) //null null
+    // }
+    
+    
+
+
 
     </script>
 </body>
