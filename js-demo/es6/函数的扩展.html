@@ -217,19 +217,108 @@
     // let [x, y, z] = [1, 2, 3];
 
     // console.log(x, y, z)
-    var arr = []
-    for (var i = 0; i < 5; i++) {
+    // var arr = []
+    // for (var i = 0; i < 5; i++) {
 
-        arr[i] = function() {
-            console.log(i)
-        }
-    }
+    //     arr[i] = function() {
+    //         console.log(i)
+    //     }
+    // }
     
 
-    arr[0]()
-    arr[1]()
-    arr[2]()
-    arr[3]()
+    // arr[0]()
+    // arr[1]()
+    // arr[2]()
+    // arr[3]()
+
+    // {   
+    //     // es5
+
+    //     // function push() {
+    //     //     var proto = [];
+
+    //     //     var arr = proto.slice.call(arguments);
+    //     //     var value = arr[0];
+    //     //     var params = arr.slice(1)
+    //     //     proto.push.apply(value, params)
+    //     //     console.log(value) 
+
+    //     //     return value
+
+    //     // }
+
+    //     // push([], 1,2,3)
+
+
+    //     // es6
+    //     // function push(arr,...args) {
+    //     //     args.forEach((value, key) => {
+    //     //         arr.push(value)
+    //     //     })
+
+    //     //     console.log(arr) ;
+    //     // }
+
+    //     // push([], 1,2,3)
+
+    //     // function log(arr, obj, ...args) {
+    //     //     console.log(arr, ':', obj, ':', ':', args)
+    //     // } 
+
+    //     // log([6,6,6], {name:'xjh'}, 'cool', 1, 2, 3)  
+
+    //     // function log(arr, ...args) {
+
+    //     // }
+
+    //     // log([], 1, 2) //报错
+
+    //     // console.log(log.length) //1
+    // }
+
+    /*
+        箭头函数、闪亮登场
+    */
+    {   
+        //es5
+        // var v = function (i) {
+        //     return i;
+        // }
+
+        // var v = i => i; //注意不需要写return 没有写{}时，是没有return的
+
+        // console.log(v(10))     
+
+        // var f = v => v;
+
+        // console.log(f(1)) 
+
+        //当函数没有参数的时候，这么写
+        // var log = () => 666; 
+
+        //当函数有参数的时候
+        // var log = (a, b) => a + b;
+        // console.log( log(1, 2) )
+        // 注意，这里如果需要返回一个对象时，需要用()包起对象
+        // 其实不管需要返回什么都可以包一个(),但是没有必要
+        // var log = (a, b) => ( {name: a, age: b} )
+
+        // console.log( log('熊炬辉', 25) )
+
+
+        //代码块部分多于一条语，需要使用{}加上return 
+        // var log = (a, b) => {
+        //     if (a) {    
+        //         return a + b;
+        //     }
+        // }
+
+
+
+        
+
+    }
+    
 
 
     
