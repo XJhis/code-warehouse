@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+
+	<script>
+		// 冒泡排序
+		// 思想：依次比较相邻的两位数，将较大的(或则较小)，放在后面一位，形成小的往上浮的视觉感
+		function bubblingSort(arr, type) {
+			var temp,
+				type = type || 1;
+
+			for (var i = 0; i < arr.length - 1; i++) {
+				
+				for (var j = 0; j < arr.length - 1 - i; j++) {
+
+					if (type == 1) {
+						if ( arr[j] > arr[j+1] ) {
+							temp = arr[j];
+							arr[j] = arr[j+1];
+							arr[j+1] = temp;
+						}
+					}
+
+					if (type == -1) {
+						if ( arr[j] < arr[j+1] ) {
+							temp = arr[j];
+							arr[j] = arr[j+1];
+							arr[j+1] = temp;
+						}
+					}
+
+					
+
+				}
+			}
+
+			return arr
+
+		}
+
+		console.log(bubblingSort([2, 12, 3, 13, 5], -1)) 
+
+
+	</script>
+	
+</body>
+</html>

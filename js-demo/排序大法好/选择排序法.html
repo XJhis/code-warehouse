@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序</title>
+</head>
+<body>
+
+	<script>
+		// 选择排序法：
+		// 思想：第一次，选出数组中最小的一位放在左侧第一位，第二次就从处第一位外中选出最小的放在左侧第二位，依次类推
+
+		//找出数组中最小的元素
+		function minArr(arr) {
+			var min = 0;
+
+			for (var i = 1; i < arr.length; i++) {
+				if (arr[i] < arr[min]) {
+					min = i
+				}
+			}
+
+			return arr[min]
+		}
+
+		// console.log(minArr([12, 11, 2, 13])) 
+
+
+
+
+		function selectSort(arr, type) {
+			
+			for (var i = 0; i < arr.length - 1; i++) {
+				var min = i;
+
+				for (var j = i + 1; j < arr.length; j++) {
+					if (arr[j] < arr[min]) {
+						min = j;
+					}	
+
+				}
+
+				if (min != i ) {
+					var temp = arr[i];
+					arr[i] = arr[min];
+					arr[min] = temp;
+				}			
+
+			}
+
+			return arr
+
+		}
+
+		console.log(selectSort([1, 5, 2, 7, 6])) 
+
+
+		
+
+
+
+	</script>
+	
+</body>
+</html>
