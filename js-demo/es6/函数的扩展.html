@@ -199,8 +199,8 @@
 
     // }
 
-    {   
-        // // es5
+    // {   
+    //     // // es5
         // function sortNum() {
         //     console.log(Array.prototype.slice.call(arguments)) 
             
@@ -313,6 +313,20 @@
         //         return a + b;
         //     }
         // }
+
+        let [arr, newArr] = [[1, 2, 3, 4], []];
+
+        // let arr = [1, 'asd', {name: 'XJh', age: 25}, [1,2,3]]
+
+        arr.forEach( (value, key) => {
+            newArr.push( value + key ) ;
+        })
+
+        // arr.forEach(function(value, key) {
+        //     newArr.push(value + key)
+        // })
+
+        console.log('...', newArr)
 
 
 

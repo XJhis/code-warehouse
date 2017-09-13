@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数的扩展</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        /*
+        ====箭头函数
+        */
+
+        {
+            // var log = function(val) {
+            //     return val;
+            // }
+
+            // var log = (val) => val;
+
+            // var log = (val, key) => val + key; 
+
+            // var log = (val, key) => ({name: val, id: key})
+
+            // var log = (...arr) => arr;
+
+            // var log = (val, key) => {
+            //     console.log(':',val+key)
+            // }
+
+            //可以核函数赋值一起用
+            // var fn = ({x, y}) => x + '_' + y;
+
+            // console.log(fn({x: 'xjh', y: 'cool'})) 
+
+            // var fn = ([x, y, z]) => x + y + z;
+
+            // 箭头函数可以简化代码
+            // const isEven = n => n % 2 == 0;
+
+            // const square = n => n * n;
+
+            // console.log(isEven(12)) //true
+            // console.log(isEven(1)) //false
+            // console.log(isEven(NaN)) //false
+
+            // console.log( square(2)) //4
+            // console.log( square(NaN)) //NAN
+
+            //简化毁掉函数
+            // let arr  = [1, 2 ,3];
+
+            // let newArr = arr.map( val => val%2 === 0 )
+
+            // console.log( newArr )
+
+            // sort方法
+
+            let arr = [1, 11, 2, 22, 31, 30]
+
+            arr.sort() //默认按照字符串Unicode码点排序
+
+            console.log(arr) // [1, 11, 2, 22, 30, 31]
+
+            // arr.sort((a, b) => a - b);
+            // console.log(arr) // 从小到大 [1, 2, 11, 22, 30, 31]
+
+            // arr.sort((a, b) => b - a);
+            // console.log(arr) // 从大到小 [31, 30, 22, 11, 2, 1]
+
+            // var fn = (a, b) => {
+            //     if (a > b) {
+            //         return 1;
+            //     }
+
+            //     if (a < b) {
+            //         return -1;
+
+            //     }
+
+            //     return 0;
+            // }
+
+            // arr.sort(fn)
+
+            // console.log(arr)
+
+            // var arrs = [
+            //   { name: 'Edward', value: 21 },
+            //   { name: 'Sharpe', value: 37 },
+            //   { name: 'And', value: 45 },
+            //   { name: 'The', value: -12 },
+            //   { name: 'Magnetic' },
+            //   { name: 'Zeros', value: 37 }
+            // ];
+
+            // arrs.sort( (a, b) => {
+            //     a.value - b.value;
+            // })
+
+            // console.log(arrs) //无法正常排序
+
+            var items = [
+              { name: 'Edward', value: 21 },
+              { name: 'Sharpe', value: 37 },
+              { name: 'And', value: 45 },
+              { name: 'The', value: -12 },
+              { name: 'Magnetic', value: 0},
+              { name: 'Zeros', value: 37 }
+            ];
+
+            var newItems = items.sort(function (a, b) {
+              if (a.value > b.value) {
+                return -1;
+              }
+              if (a.value < b.value) {
+                return 1;
+              }
+              // a 必须等于 b
+              return 0;
+            })
+
+            console.log(newItems, items) //正常排序 根据数组中每一项元素的value从小到大排序
+            console.log(newItems === items) //正常排序 根据数组中每一项元素的value从小到大排序
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>
