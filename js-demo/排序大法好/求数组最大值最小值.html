@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组求值</title>
+</head>
+<body>
+
+	<script>
+		
+		// 法一
+		var arr = [23, 17, 89, 0, 47, 29]
+
+		console.log(Math.min.apply(this, arr)) 
+		console.log(Math.max.apply(this, arr)) 
+
+		// 法二
+		//找出数组中最小的元素
+		// 定义一个变量存储最小元素
+		function minArr(arr) {
+			var min = 0;
+
+			for (var i = 1; i < arr.length; i++) {
+				if (arr[i] < arr[min]) {
+					min = i
+				}
+			}
+
+			return arr[min]
+		}
+
+	</script>
+	
+</body>
+</html>
