@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sort</title>
+</head>
+<body>
+
+	<script>
+
+		//默认排序
+		// var arr = [1, 10, 2, 12];
+		// arr.sort()
+
+		var list = [
+			{name: 'aaa', age: 6},
+			{name: 'bbb', age: 5},
+			{name: 'ccc', age: 4},
+			{name: 'ddd', age: 3},
+			{name: 'eee', age: 2}
+		]
+
+		list.sort( (a, b) => {
+
+			if (a.age > b.age) {
+				return 1;
+			}
+
+			if (a.age < b.age) {
+				return -1;
+			}
+
+			return 0;
+		})
+
+		console.log(list)
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>
