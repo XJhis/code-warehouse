@@ -102,28 +102,92 @@
 
             // console.log(arrs) //无法正常排序
 
-            var items = [
-              { name: 'Edward', value: 21 },
-              { name: 'Sharpe', value: 37 },
-              { name: 'And', value: 45 },
-              { name: 'The', value: -12 },
-              { name: 'Magnetic', value: 0},
-              { name: 'Zeros', value: 37 }
-            ];
+            // var items = [
+            //   { name: 'Edward', value: 21 },
+            //   { name: 'Sharpe', value: 37 },
+            //   { name: 'And', value: 45 },
+            //   { name: 'The', value: -12 },
+            //   { name: 'Magnetic', value: 0},
+            //   { name: 'Zeros', value: 37 }
+            // ];
 
-            var newItems = items.sort(function (a, b) {
-              if (a.value > b.value) {
-                return -1;
-              }
-              if (a.value < b.value) {
-                return 1;
-              }
-              // a 必须等于 b
-              return 0;
-            })
+            // var newItems = items.sort(function (a, b) {
+            //   if (a.value > b.value) {
+            //     return -1;
+            //   }
+            //   if (a.value < b.value) {
+            //     return 1;
+            //   }
+            //   // a 必须等于 b
+            //   return 0;
+            // })
 
-            console.log(newItems, items) //正常排序 根据数组中每一项元素的value从小到大排序
-            console.log(newItems === items) //正常排序 根据数组中每一项元素的value从小到大排序
+            // console.log(newItems, items) //正常排序 根据数组中每一项元素的value从小到大排序
+            // console.log(newItems === items) 
+
+
+            // 箭头函数注意点
+
+            // 函数体内this指向：箭头函数里面根本没有自己的this，而是引用外层的this。
+
+            // function log() {
+            //     console.log('id:' + this.id)
+            //     setTimeout( () => {
+                    
+            //         console.log('id:' + this.id)
+            //     }, 100)
+
+            // }
+
+            // var id = '007'
+
+            // log()
+
+            // function log() {
+            //     console.log('id::::',this.id)
+            //     setTimeout( function() {
+            //         console.log('id::::',this.id)
+            //     }, 100)
+
+            // }
+
+            // var id = 110;
+            
+            // log.call({id: 666}) //666 110
+
+            // function log() {
+            //     console.log('id::::',this.id)
+
+            //     setTimeout( () => {
+            //         console.log('id::::',this.id)
+            //     }, 100)
+
+            // }
+
+            // var id = 110;
+            
+            // log.call({id: 666}) //666 666  箭头函数的this指向函数定义时所在的对象
+
+            // function Time() {
+            //     this.t1 = 0;
+            //     this.t2 = 0;
+
+            //     setInterval( () => this.t1++, 1000 ); //this指向定义函数时的环境
+
+            //     setInterval( function() {                    
+            //         this.t2 ++ ; //这里的this指向window
+            //     }, 1000 );
+            // }
+
+            // var t2 = 100;
+
+            // var tt = new Time();
+
+
+            // // setTimeout( () => console.log(tt.t1), 1000)
+            // setTimeout( () => console.log(tt.t2), 1000)
+
+
 
 
 
