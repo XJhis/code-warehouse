@@ -13,16 +13,16 @@
         ====箭头函数
         */
 
-        {
-            // var log = function(val) {
-            //     return val;
-            // }
+        // {
+        //     // var log = function(val) {
+        //     //     return val;
+        //     // }
 
             // var log = val => val;
 
-            // var log = (val, key) => val + key; 
+        //     // var log = (val, key) => val + key; 
 
-            // var log = (val, key) => ({name: val, id: key})
+        //     // var log = (val, key) => ({name: val, id: key})
 
             // var log = (val, key) => {
             //     console.log(':',val+key)
@@ -35,176 +35,178 @@
             //可以核函数赋值一起用
             // var fn = ({x, y}) => x + '_' + y;
 
-            // console.log(fn({x: 'xjh', y: 'cool'})) 
+        //     // var log = (...arr) => arr;
 
-            // var fn = ([x, y, z]) => x + y + z;
+        //     // var log = (val, key) => {
+        //     //     console.log(':',val+key)
+        //     // }
 
-            // 箭头函数可以简化代码
-            // const isEven = n => n % 2 == 0;
+        //     //可以核函数赋值一起用
+        //     // var fn = ({x, y}) => x + '_' + y;
 
-            // const square = n => n * n;
 
-            // console.log(isEven(12)) //true
-            // console.log(isEven(1)) //false
-            // console.log(isEven(NaN)) //false
+        //     // console.log(fn({x: 'xjh', y: 'cool'})) 
 
-            // console.log( square(2)) //4
-            // console.log( square(NaN)) //NAN
+        //     // var fn = ([x, y, z]) => x + y + z;
+
+        //     // 箭头函数可以简化代码
+        //     // const isEven = n => n % 2 == 0;
+
+        //     // const square = n => n * n;
+
+        //     // console.log(isEven(12)) //true
+        //     // console.log(isEven(1)) //false
+        //     // console.log(isEven(NaN)) //false
+
+        //     // console.log( square(2)) //4
+        //     // console.log( square(NaN)) //NAN
 
             //简化回调函数
             // let arr  = [1, 2 ,3];
 
-            // let newArr = arr.map( val => val%2 === 0 )
 
-            // console.log( newArr )
+        //     // let newArr = arr.map( val => val%2 === 0 )
 
-            // sort方法
+        //     // console.log( newArr )
 
-            // let arr = [1, 11, 2, 22, 31, 30]
+        //     // sort方法
 
-            // arr.sort() //默认按照字符串Unicode码点排序
+        //     // let arr = [1, 11, 2, 22, 31, 30]
 
-            // console.log(arr) // [1, 11, 2, 22, 30, 31]
+        //     // arr.sort() //默认按照字符串Unicode码点排序
 
-            // arr.sort((a, b) => a - b);
-            // console.log(arr) // 从小到大 [1, 2, 11, 22, 30, 31]
+        //     // console.log(arr) // [1, 11, 2, 22, 30, 31]
 
-            // arr.sort((a, b) => b - a);
-            // console.log(arr) // 从大到小 [31, 30, 22, 11, 2, 1]
+        //     // arr.sort((a, b) => a - b);
+        //     // console.log(arr) // 从小到大 [1, 2, 11, 22, 30, 31]
 
-            // var fn = (a, b) => {
-            //     if (a > b) {
-            //         return 1;
-            //     }
+        //     // arr.sort((a, b) => b - a);
+        //     // console.log(arr) // 从大到小 [31, 30, 22, 11, 2, 1]
 
-            //     if (a < b) {
-            //         return -1;
+        //     // var fn = (a, b) => {
+        //     //     if (a > b) {
+        //     //         return 1;
+        //     //     }
 
-            //     }
+        //     //     if (a < b) {
+        //     //         return -1;
 
-            //     return 0;
-            // }
+        //     //     }
 
-            // arr.sort(fn)
+        //     //     return 0;
+        //     // }
 
-            // console.log(arr)
+        //     // arr.sort(fn)
 
-            // var arrs = [
-            //   { name: 'Edward', value: 21 },
-            //   { name: 'Sharpe', value: 37 },
-            //   { name: 'And', value: 45 },
-            //   { name: 'The', value: -12 },
-            //   { name: 'Magnetic' },
-            //   { name: 'Zeros', value: 37 }
-            // ];
+        //     // console.log(arr)
 
-            // arrs.sort( (a, b) => {
-            //     a.value - b.value;
-            // })
+        //     // var arrs = [
+        //     //   { name: 'Edward', value: 21 },
+        //     //   { name: 'Sharpe', value: 37 },
+        //     //   { name: 'And', value: 45 },
+        //     //   { name: 'The', value: -12 },
+        //     //   { name: 'Magnetic' },
+        //     //   { name: 'Zeros', value: 37 }
+        //     // ];
 
-            // console.log(arrs) //无法正常排序
+        //     // arrs.sort( (a, b) => {
+        //     //     a.value - b.value;
+        //     // })
 
-            // var items = [
-            //   { name: 'Edward', value: 21 },
-            //   { name: 'Sharpe', value: 37 },
-            //   { name: 'And', value: 45 },
-            //   { name: 'The', value: -12 },
-            //   { name: 'Magnetic', value: 0},
-            //   { name: 'Zeros', value: 37 }
-            // ];
+        //     // console.log(arrs) //无法正常排序
 
-            // var newItems = items.sort(function (a, b) {
-            //   if (a.value > b.value) {
-            //     return -1;
-            //   }
-            //   if (a.value < b.value) {
-            //     return 1;
-            //   }
-            //   // a 必须等于 b
-            //   return 0;
-            // })
+        //     // var items = [
+        //     //   { name: 'Edward', value: 21 },
+        //     //   { name: 'Sharpe', value: 37 },
+        //     //   { name: 'And', value: 45 },
+        //     //   { name: 'The', value: -12 },
+        //     //   { name: 'Magnetic', value: 0},
+        //     //   { name: 'Zeros', value: 37 }
+        //     // ];
 
-            // console.log(newItems, items) //正常排序 根据数组中每一项元素的value从小到大排序
-            // console.log(newItems === items) 
+        //     // var newItems = items.sort(function (a, b) {
+        //     //   if (a.value > b.value) {
+        //     //     return -1;
+        //     //   }
+        //     //   if (a.value < b.value) {
+        //     //     return 1;
+        //     //   }
+        //     //   // a 必须等于 b
+        //     //   return 0;
+        //     // })
+
+        //     // console.log(newItems, items) //正常排序 根据数组中每一项元素的value从小到大排序
+        //     // console.log(newItems === items)
+        // }
+
+        // {
+        //     // 箭头函数注意点
+        //     // 函数体内this指向：箭头函数里面根本没有自己的this，而是引用外层的this。
 
 
             // 箭头函数注意点
 
             // 函数体内this指向：箭头函数里面根本没有自己的this，而是引用外层的this。
 
-            var id = '007'
+            // var id = '007' // function log() { // console.log('id:' + this.id) // // setTimeout( () => { // // console.log('id:' + this.id) // // }, 100) // } // log() //007 007
 
-            function log() {
-                console.log('id:' + this.id)
-                // setTimeout( () => {
+        //     // var id = '007'
+        //     // function log() {
+        //     //     console.log('id:' + this.id) //007
+        //     //     setTimeout( () => {
                     
-                //     console.log('id:' + this.id)
-                // }, 100)
+        //     //         console.log('id:' + this.id) //007
+        //     //     }, 100)
+        //     // }
 
-            }
+        //     // log() //007 //007
+        //     // log.call({id: 888}) //666 666 
+
+        //     // var id = 110;
+        //     // function log() {
+        //     //     console.log('id::::',this.id)
+        //     //     setTimeout( function() { //当函数执行时，他的执行环境是window
+        //     //         console.log('id::::',this.id)
+        //     //     }, 100)
+        //     // }
 
 
-            log() //007 007
+        //     // log() // 110 110
 
-            // function log() {
-            //     console.log('id::::',this.id)
-            //     setTimeout( function() {
-            //         console.log('id::::',this.id)
-            //     }, 100)
+        //     // log.call({id: 666}) //666 110            
 
-            // }
+        //     // function log() {
+        //     //     console.log('id::::',this.id)
 
-            // var id = 110;
+        //     //     setTimeout( () => {
+        //     //         console.log('id::::',this.id)
+        //     //     }, 100)
+
+        //     // }
+
+        //     // var id = 110;
             
-            // log.call({id: 666}) //666 110
+        //     // log.call({id: 666}) //666 666  箭头函数的this指向函数定义时所在的对象
+        //     //a
+        //     // function Time() {
+        //     //     this.t1 = 0;
+        //     //     this.t2 = 0;
 
-            // function log() {
-            //     console.log('id::::',this.id)
+        //     //     setInterval( () => this.t1++, 1000 ); //this指向定义函数时的环境
+        //     //     setInterval( function() {                    
+        //     //         this.t2 ++ ; //这里的this指向window
+        //     //     }, 1000 );
+        //     // }
 
-            //     setTimeout( () => {
-            //         console.log('id::::',this.id)
-            //     }, 100)
+        //     // var tt = new Time();
 
-            // }
+        //     // setTimeout( () => console.log(tt.t1), 3000) //3
+        //     // setTimeout( () => console.log(tt.t2), 3000) //0
+        // }
 
-            // var id = 110;
-            
-            // log.call({id: 666}) //666 666  箭头函数的this指向函数定义时所在的对象
-
-            // function Time() {
-            //     this.t1 = 0;
-            //     this.t2 = 0;
-
-            //     setInterval( () => this.t1++, 1000 ); //this指向定义函数时的环境
-
-            //     setInterval( function() {                    
-            //         this.t2 ++ ; //这里的this指向window
-            //     }, 1000 );
-            // }
-
-            // var t2 = 100;
-
-            // var tt = new Time();
+        
 
 
-            // // setTimeout( () => console.log(tt.t1), 1000)
-            // setTimeout( () => console.log(tt.t2), 1000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
     </script>
 </body>
 

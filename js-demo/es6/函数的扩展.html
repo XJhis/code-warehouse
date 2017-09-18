@@ -280,57 +280,107 @@
     /*
         箭头函数、闪亮登场
     */
-    {   
-        //es5
-        // var v = function (i) {
-        //     return i;
-        // }
+    // {   
+    //     //es5
+    //     // var v = function (i) {
+    //     //     return i;
+    //     // }
 
-        // var v = i => i; //注意不需要写return 没有写{}时，是没有return的
+    //     // var v = i => i; //注意不需要写return 没有写{}时，是没有return的
 
-        // console.log(v(10))     
+    //     // console.log(v(10))     
 
-        // var f = v => v;
+    //     // var f = v => v;
 
-        // console.log(f(1)) 
+    //     // console.log(f(1)) 
 
-        //当函数没有参数的时候，这么写
-        // var log = () => 666; 
+    //     //当函数没有参数的时候，这么写
+    //     // var log = () => 666; 
 
-        //当函数有参数的时候
-        // var log = (a, b) => a + b;
-        // console.log( log(1, 2) )
-        // 注意，这里如果需要返回一个对象时，需要用()包起对象
-        // 其实不管需要返回什么都可以包一个(),但是没有必要
-        // var log = (a, b) => ( {name: a, age: b} )
+    //     //当函数有参数的时候
+    //     // var log = (a, b) => a + b;
+    //     // console.log( log(1, 2) )
+    //     // 注意，这里如果需要返回一个对象时，需要用()包起对象
+    //     // 其实不管需要返回什么都可以包一个(),但是没有必要
+    //     // var log = (a, b) => ( {name: a, age: b} )
 
-        // console.log( log('熊炬辉', 25) )
+    //     // console.log( log('熊炬辉', 25) )
 
 
-        //代码块部分多于一条语，需要使用{}加上return 
-        // var log = (a, b) => {
-        //     if (a) {    
-        //         return a + b;
-        //     }
-        // }
+    //     //代码块部分多于一条语，需要使用{}加上return 
+    //     // var log = (a, b) => {
+    //     //     if (a) {    
+    //     //         return a + b;
+    //     //     }
+    //     // }
 
-        let [arr, newArr] = [[1, 2, 3, 4], []];
+    //     let [arr, newArr] = [[1, 2, 3, 4], []];
 
-        // let arr = [1, 'asd', {name: 'XJh', age: 25}, [1,2,3]]
+    //     // let arr = [1, 'asd', {name: 'XJh', age: 25}, [1,2,3]]
 
-        arr.forEach( (value, key) => {
-            newArr.push( value + key ) ;
-        })
+    //     arr.forEach( (value, key) => {
+    //         newArr.push( value + key ) ;
+    //     })
 
-        // arr.forEach(function(value, key) {
-        //     newArr.push(value + key)
-        // })
+    //     // arr.forEach(function(value, key) {
+    //     //     newArr.push(value + key)
+    //     // })
 
-        console.log('...', newArr)
+    //     console.log('...', newArr)
 
 
 
         
+
+    // }
+
+    {
+
+        //阶乘算法
+        // function count(num) {
+        //     if (num == 1) {
+        //         return 1
+        //     }
+
+        //     return num * count(num-1)
+        // }
+        // console.log( count(3) ) //6
+
+        //阶乘优化
+        // function count(num, total = 1) {
+        //     if (num == 1) {
+        //         return total;
+        //     }
+
+        //     return count(num-1, num * total)
+        // }
+
+        // console.log( count(10) )
+
+        // function faba(n) {
+        //     if (n <= 1) { return 1 };
+
+        //     return faba(n-1) + faba(n-2)
+        // }
+
+        // console.log( faba(100) ) //卡死
+
+        // function f(n, fir = 0,  sec = 1) {
+        //     if (n <= 1) { return sec }
+
+        //     return f(n-1, sec, fir + sec)
+        // }
+
+        // console.log( f(1) ) 
+        // console.log( f(2) ) 
+        // console.log( f(3) ) 
+        // console.log( f(4) ) 
+        // console.log( f(5) ) 
+        // console.log( f(6) ) 
+
+
+
+
 
     }
     
