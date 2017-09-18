@@ -18,17 +18,19 @@
             //     return val;
             // }
 
-            // var log = (val) => val;
+            // var log = val => val;
 
             // var log = (val, key) => val + key; 
 
             // var log = (val, key) => ({name: val, id: key})
 
-            // var log = (...arr) => arr;
-
             // var log = (val, key) => {
             //     console.log(':',val+key)
             // }
+
+            // var log = (...arr) => arr;
+
+            
 
             //可以核函数赋值一起用
             // var fn = ({x, y}) => x + '_' + y;
@@ -49,7 +51,7 @@
             // console.log( square(2)) //4
             // console.log( square(NaN)) //NAN
 
-            //简化毁掉函数
+            //简化回调函数
             // let arr  = [1, 2 ,3];
 
             // let newArr = arr.map( val => val%2 === 0 )
@@ -130,18 +132,19 @@
 
             // 函数体内this指向：箭头函数里面根本没有自己的this，而是引用外层的this。
 
-            // function log() {
-            //     console.log('id:' + this.id)
-            //     setTimeout( () => {
+            var id = '007'
+
+            function log() {
+                console.log('id:' + this.id)
+                // setTimeout( () => {
                     
-            //         console.log('id:' + this.id)
-            //     }, 100)
+                //     console.log('id:' + this.id)
+                // }, 100)
 
-            // }
+            }
 
-            // var id = '007'
 
-            // log()
+            log() //007 007
 
             // function log() {
             //     console.log('id::::',this.id)
