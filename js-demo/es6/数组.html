@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组的扩展</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //Array.from: 可以将类似数组的对象（array-like object）
+        // 和可遍历（iterable）的对象转化为真正的数组,
+        // 返回一个新的数组
+        // 常见的类似数组的对象是DOM操作返回的NodeList集合，
+        // 以及函数内部的arguments对象。Array.from都可以将它们转为真正的数组
+        {
+            let arrayLike = {
+                0: 'asd',
+                1: 'dfs',
+                2: 'cvv',
+                length: 3
+            }
+
+            //es5
+            let arr2 = Array.prototype.slice.call(arrayLike)
+
+            //es6
+            let arr = Array.from(arrayLike) //
+
+
+            console.log(arr, arr2) //["asd", "dfs", "cvv"]
+
+             
+
+
+        }
+    </script>
+</body>
+
+</html>
