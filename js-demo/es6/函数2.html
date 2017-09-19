@@ -204,7 +204,175 @@
         //     // setTimeout( () => console.log(tt.t2), 3000) //0
         // }
 
-        
+        // {
+        //     function log(
+        //         args1, 
+        //         args2
+        //     ) {
+        //         console.log(args1+args2)
+        //     }
+        // }
+
+        // 扩展运算符（spread）是三个点（...）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列
+        // {
+        //     console.log(...[1, 2, 3, 4]) //1 2 3 4
+
+        //     //es写法
+
+        //     console.log.apply(console, [1, 2, 3, 4]) //1 2 3 4
+
+        // }
+
+        // {
+        //     function push(arr, ...args) {
+
+        //         console.log(...args)  // 2 3 4             
+
+        //         arr.push(...args);
+
+        //         console.log(arr) //[1, 2, 3, 4]
+        //     }
+
+        //     push([1], 2, 3, 4)
+
+        // }
+
+        //计算传入和
+        // {
+        //     var arr = [1, 2, 3, 4] //10
+
+        //     function count(...args) {
+
+        //         let res = 0;
+        //         for (var i = 0; i < args.length; i++) {
+        //             res = res + args[i];
+        //         }
+
+        //         console.log(res)
+
+        //         return res
+        //     }
+        //     count(1, 2) //3
+        // }
+
+        // {
+        //     function add(x, y) {
+
+        //         return x + y;
+        //     }
+
+        //     let s = add(...[1, 2]);
+
+        //     console.log(s) //10
+        // }
+
+        // 当我们有了...运算符，就可以替代原来的apply方法
+
+        //例子1
+        // {
+        //     // es5写法
+        //     function add(x, y, z) {
+        //         return x + y + z;
+        //     }
+
+        //     let arr = [20, 2, 3];
+
+        //     console.log( add.apply(null, arr) ) 
+
+
+        //     // es6写法
+        //     function add(x, y, z) {
+        //         return x + y + z;
+        //     }
+
+        //     let arr = [20, 2, 3];
+
+        //     console.log( add(...arr) ) //25
+        // }
+
+        // 案例2 取出数组中最小的数
+        // {
+        //     // es5写法
+        //     console.log( Math.max.apply(null, [120, 89, 65, 19]) ) 
+
+        //     //es6写法
+        //     console.log(Math.max(...[120, 879, 6565, 90])) //6565
+        //     console.log(Math.min(...[120, 879, 6565, 90])) //90
+
+        // }
+
+        // 案例3把一个数组的元素放到另一个数组当中
+        // {
+        //     //es5
+        //     let [a, b] = [[1, 3, 5], [2, 4, 6]];
+
+        //     // let b = {
+        //     //     0: 1,
+        //     //     1: 3,
+        //     //     2: 5,
+        //     //     length: 3
+        //     // }
+
+        //     let a = [2, 4, 6]
+
+        //     Array.prototype.push.apply(a, b) //不确定a是不是数组，所以尝试用Array.prototype
+        //     console.log( a , b)
+
+        //     //es6 ...写法只能是数组，如果是对象就不行
+        //     let [a, b] = [[1, 3, 5], [2, 4, 6]];
+        //     // let [a, b] = [[1, 3, 5], {0: 2, 1: 4, 2: 6, length: 3}]; //报错
+        //     a.push(...b)
+
+        //     console.log( a ) //[1, 3, 5, 2, 4, 6]
+        // }
+
+        // 扩展运算符应用
+        {
+
+            /*合并数组*/
+
+            // let a1 = [1, 2, 3];
+            // let ress = ['a', 'b', ...a1]; //["a", "b", "c", 1, 2, 3]
+
+
+            // let [arr1, arr2, arr3] = [['a', 'b'], ['c'], ['d', 'e']]
+
+
+            // // es5
+            // let res1 = arr1.concat(arr2, arr3) //["a", "b", "c", "d", "e"]
+
+            // //es6
+            // let res2 = [...arr1, ...arr2, ...arr3] //["a", "b", "c", "d", "e"]
+
+            // console.log( res1, res2 )
+
+            /*与解构赋值结合*/
+            // var  list = ['a', 'b', 'c', 'd']
+
+            //es5
+            // var fir = list[0],
+            //     less = list.slice(1);
+
+            // console.log(fir, less) // a ["b", "c", "d"]
+
+            //es6
+
+            // let [first, ...less] = ['a', 'b', 'c', 'd']; //注意：...less只能在最后面
+
+            // console.log(first, less) //a ["b", "c", "d"]
+
+            // let [first, ...less] = []; //当为空数组的时候，first为undefined, less为[]
+
+            // console.log(first, less) //undefined []
+
+            // let [first, ...less] = ['abcdefg']; //当是一个字符串时，first为''
+
+            // console.log(first, less) // abcdefg []
+
+            
+
+
+        }
 
 
     </script>
