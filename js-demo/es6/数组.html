@@ -7,7 +7,12 @@
 </head>
 
 <body>
-    <div></div>
+    <div>        
+        <p>!!!</p>
+        <p>???</p>
+        <p>...</p>
+
+    </div>
     <script>
         //Array.from: 可以将类似数组的对象（array-like object）
         // 和可遍历（iterable）的对象转化为真正的数组,
@@ -15,21 +20,47 @@
         // 常见的类似数组的对象是DOM操作返回的NodeList集合，
         // 以及函数内部的arguments对象。Array.from都可以将它们转为真正的数组
         {
-            let arrayLike = {
-                0: 'asd',
-                1: 'dfs',
-                2: 'cvv',
-                length: 3
-            }
+            // let arrayLike = {
+            //     0: 'asd',
+            //     1: 'dfs',
+            //     2: 'cvv',
+            //     length: 3
+            // }
 
-            //es5
-            let arr2 = Array.prototype.slice.call(arrayLike)
+            // //es5
+            // let arr2 = Array.prototype.slice.call(arrayLike)
 
-            //es6
-            let arr = Array.from(arrayLike) //
+            // //es6
+            // let arr = Array.from(arrayLike) //
 
 
-            console.log(arr, arr2) //["asd", "dfs", "cvv"]
+            // // console.log(arr, arr2) //["asd", "dfs", "cvv"]
+            // // console.log( [...arrayLike] ) //报错，...
+
+            // let strArr = Array.from('hello')
+
+            // console.log( strArr ) //["h", "e", "l", "l", "o"]
+
+            //注意：扩展运算符与Array.from的区别
+            // 1：任何有length属性的对象，都可以通过Array.from方法转为数组，而此时扩展运算符就无法转换
+            // 2: 扩展运算符...如果一个对象没有部署这个接口，就无法转换可以转arguments // NodeList对象 //字符串也可以
+
+            // 一：
+            // function log() {
+            //     console.log( [...arguments] ) 
+            // }
+
+            // log(1, 2, 3) //[1, 2, 3]            
+
+            // 二：
+            // var pList = document.querySelectorAll('p') //类数组对象 NodeList
+
+            // console.log( Object.prototype.toString.call(pList) ) //[object NodeList]
+            // console.log( Object.prototype.toString.call([...pList]) ) //[object Array]
+
+            // 三：
+            // console.log( [...'xiongjuhui'] ) //["x", "i", "o", "n", "g", "j", "u", "h", "u", "i"]
+
 
              
 
