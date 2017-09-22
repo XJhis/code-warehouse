@@ -14,6 +14,8 @@
 
     </div>
     <script>
+        const log = console.log;
+
         //Array.from: 可以将类似数组的对象（array-like object）
         // 和可遍历（iterable）的对象转化为真正的数组,
         // 返回一个新的数组
@@ -61,11 +63,83 @@
             // 三：
             // console.log( [...'xiongjuhui'] ) //["x", "i", "o", "n", "g", "j", "u", "h", "u", "i"]
 
-
-             
-
+<<<<<<< HEAD
+=======
+            // console.log(arr, arr2) //["asd", "dfs", "cvv"]
+>>>>>>> 86ced0624078513de0c8bf75a16f337aafc3ea4a
 
         }
+
+        /*注意Array.from与...运算符的区别*/
+        // 任何有length属性的对象，都可以通过Array.from方法转为数组，而此时扩展运算符就无法转换
+
+        {
+            // console.log( Array.from( {length: 4} ) ) //[undefined, undefined, undefined, undefined]
+        }
+
+        // 兼容问题
+        // 对还没有部署Array.from方法的浏览器我们可以：
+
+        // {
+        //     //写法一：
+        //     function toArray(obj) {
+
+
+        //         return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj) ;
+        //     }
+
+        //     let arrs = toArray('nishishui')
+
+        //     console.log(arrs)
+
+        // }
+
+        // {
+        //     // 写法二
+
+        //     const toArray = (() => {
+        //         return Array.from ? Array.from : obj => [].slice.call(obj)
+        //     })() 
+
+        //     console.log( toArray('方法二') ) //["方", "法", "二"]
+            
+
+        //     var rest = Array.from ? Array.from : [].slice.call;
+
+        //     console.log( toArray('fangfaer') ) //["f", "a", "n", "g", "f", "a", "e", "r"]
+
+        // }
+
+        // Array.from还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组。
+        // {
+        //     // let x = Array.from('1234', a => a * a)
+
+        //     // console.log(x) //[1, 4, 9, 16]
+
+        //     console.log( Array.from([1, , 2, , 3] )) // [1, undefined, 2, undefined, 3]            
+        // }
+
+        /*应用*/
+
+        // // 案例一
+        // {
+        //     // 数组中布尔值为false的成员转为0
+        //     log( Array.from([1, , 3, 4], n => n || 0) ) //[1, 0, 3, 4]
+        // }
+
+        // // // 案例二：改写typeof 
+        // {
+        //     function typeOf() {
+        //         return Array.from(arguments, val => typeof val)
+        //     }
+
+        //     log( typeOf(null , 12, '123') )  // ["object", "number", "string"]
+        // }
+
+        
+
+
+
     </script>
 </body>
 
