@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象扩展</title>
+</head>
+<body>
+	
+	<script>
+		const log = console.log;
+
+		//写法扩展
+		{
+			/*属性简写*/
+
+			// let name = '熊炬辉';
+
+			// let obj = { name }
+
+			// log( obj )
+
+
+			// function f(name, age) {
+			// 	log( {name, age} )
+			// }
+
+			// f('熊炬辉', '25') //{name: "熊炬辉", age: "25"}
+
+			// function g( person, info ) {
+			// 	log( {person,  info} )
+			// }
+
+			// g({name: 'xjh', age: 25}, {cool: true, handsome: true})
+
+		}
+
+		{
+			/*方法简写*/
+
+			// // ex01
+			// const obj = {
+			// 	get(val) {
+			// 		return val * 2
+			// 	}
+			// }
+
+			// log( obj )
+
+			// ex02
+			// let birth = '2017/07/28'
+			// var person = {
+			// 	name: 'xjh',
+			// 	birth,
+			// 	like(val) {
+			// 		alert( this.name + '喜欢'+ val || '打游戏')
+			// 	}
+
+			// }
+
+			// function get(jobId, name) {
+				
+			// 	return {jobId, name}
+
+			// }
+
+			// log( get( 10086, 'xjh' ) ) 
+
+		}
+
+		/*新增方法*/
+		// Object.is 只要两个值是一样的，就相当，包括NaN
+		// 同===基本一致
+		
+		// {
+
+		// 	log( Object.is(NaN, NaN) )  //true
+
+		// 	log( NaN === NaN ) //false
+		// }
+
+		// // 兼容问题
+
+		// var objectIs = (() => {
+		// 	return Object.is ? Object.is : (x, y) => {
+
+		// 		if (x === y) {
+		// 		      // 针对+0 不等于 -0的情况
+		// 		      return x !== 0 || 1 / x === 1 / y;
+		// 		    }
+		// 		    // 针对NaN的情况
+		// 		    return x !== x && y !== y;
+		// 	}
+
+		// })()
+
+		// log( objectIs(NaN, NaN) ) 
+
+
+
+
+	</script>
+</body>
+</html>
