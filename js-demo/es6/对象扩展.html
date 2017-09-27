@@ -98,61 +98,61 @@
 		/*Object.assign方法*/
 		// 用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target），返回值是目标对象
 		{
-			// let [a, b, c] = [{x:1}, {y: 2}, {z: 3}]
+			let [a, b, c] = [{x:1}, {y: 2}, {z: 3}]
 
-			// log( Object.assign(a, b, c) ) //{x: 1, y: 2, z: 3}
+			log( Object.assign(a, b, c) ) //{x: 1, y: 2, z: 3}
 
-			// log( a === Object.assign(a, b, c)) //true
+			log( a === Object.assign(a, b, c)) //true
 
 			//如果属性名有重复，后面的会替换前面,注意是替換而不是添加
 
-			// let a  = {x: 1, y: 1};
-			// let b  = {y: 2, z: 2};
-			// let c  = {z: 3, m: 0};
+			let a  = {x: 1, y: 1};
+			let b  = {y: 2, z: 2};
+			let c  = {z: 3, m: 0};
 
-			// log( Object.assign(a, b, c) ) //{x: 1, y: 2, z: 3, m: 0}
+			log( Object.assign(a, b, c) ) //{x: 1, y: 2, z: 3, m: 0}
 
 			// 注意点：
 
 			//1：如果是只有一个参数且参数是对象返回本身
-			// log( Object.assign({name: 'xjh'}) ) //{name: "xjh"} 
+			log( Object.assign({name: 'xjh'}) ) //{name: "xjh"} 
 
 			//2：如果首参数不是对象，会先尝试将其转为对象，但是null和undefined会报错
-			// log( Object.assign(2) ) //Number {[[PrimitiveValue]]: 2}
-			// log( Object.assign('xjh') ) //String {0: "x", 1: "j", 2: "h", length: 3, [[PrimitiveValue]]: "xjh"}
-			// log( Object.assign(null) ) //报错
-			// log( Object.assign(undefined) ) //报错
+			log( Object.assign(2) ) //Number {[[PrimitiveValue]]: 2}
+			log( Object.assign('xjh') ) //String {0: "x", 1: "j", 2: "h", length: 3, [[PrimitiveValue]]: "xjh"}
+			log( Object.assign(null) ) //报错
+			log( Object.assign(undefined) ) //报错
 
 			//3：如果非对象参数出现在源对象的位置（即非首参数），这些参数都会转成对象，如果无法转成对象，就会跳过
 
 			// log( Object.assign({}, null, undefined, {x: 1}) ) //{x: 1}
 
 			//4：其他类型的值（即数值、字符串和布尔值），除了字符串会以数组形式，拷贝入目标对象，其他值都不会产生效果。
-			// let obj = {name: 'xjh'}
-			// log( Object.assign( obj, 12 ) )	//{name: "xjh"}
-			// log( Object.assign( obj, true ) )	//{name: "xjh"}
-			// log( Object.assign( obj, 'cool' ) )	//{0: "c", 1: "o", 2: "o", 3: "l", name: "xjh"}
+			let obj = {name: 'xjh'}
+			log( Object.assign( obj, 12 ) )	//{name: "xjh"}
+			log( Object.assign( obj, true ) )	//{name: "xjh"}
+			log( Object.assign( obj, 'cool' ) )	//{0: "c", 1: "o", 2: "o", 3: "l", name: "xjh"}
 
 			//5：Object.assign只拷贝源对象的自身属性（不拷贝继承属性），也不拷贝不可枚举的属性
 
 			// 6：Object.assign方法实行的是浅拷贝，而不是深拷贝。此时，那么目标对象拷贝得到的是这个对象的引用。
-			// let person = {
-			// 	name: 'xjh',
-			// 	age: 25
-			// }
-			// let infos = {
-			// 	id: 1,
-			// 	times: 2
-			// }
+			let person = {
+				name: 'xjh',
+				age: 25
+			}
+			let infos = {
+				id: 1,
+				times: 2
+			}
 
-			// let a = { person };
-			// let b = { infos };
-			// let c = Object.assign({}, a, b);
+			let a = { person };
+			let b = { infos };
+			let c = Object.assign({}, a, b);
 
-			// log( c.person === person, c.infos === infos ); //true true
+			log( c.person === person, c.infos === infos ); //true true
 
 			// 用处
-			//1： 为对象添加方法
+			// //1： 为对象添加方法
 			// {
 			// 	function Person() {
 			// 		this.skin = 'yellow'
@@ -168,7 +168,7 @@
 			// 		}
 			// 	})
 
-			// 	//等同于
+			// // 	//等同于
 
 			// 	Person.prototype.doing = function() {
 			// 		return 666
@@ -178,13 +178,13 @@
 
 			// 2:克隆对象
 
-			// {
-			// 	function clone(obj) {
-			// 		return Object.assign({}, obj)
-			// 	}
+			{
+				function clone(obj) {
+					return Object.assign({}, obj)
+				}
 
-			// 	log( clone( {name: 'xjh'} ) ) //{name: "xjh"}
-			// }
+				log( clone( {name: 'xjh'} ) ) //{name: "xjh"}
+			}
 
 			//只能克隆原始对象自身的值，不能克隆它继承的值。如果想要保持继承链，可以采用下面的代码。
 

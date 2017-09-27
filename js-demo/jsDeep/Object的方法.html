@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Object的方法</title>
+</head>
+
+<body>
+    <script>
+    const log = console.log;
+ //    Object.create方法：用指定的原型对象及其属性去创建一个新的对象。
+ //    语法：Object.create(proto, [ propertiesObject ])
+ //    proto:一个对象，应该是新创建的对象的原型。
+	// propertiesObject:可选。包含一个或多个属性描述符的 JavaScript 对象。  
+	// “数据属性”是可获取且可设置值的属性。  数据属性描述符包含 value 特性，以及 writable(可写的)、enumerable(可枚举的) 和 configurable(可配置的) 特性。
+	// 如果未指定最后三个特性，则它们默认为 false。只要检索或设置该值，“访问器属性”就会调用用户提供的函数。  
+	// 访问器属性描述符包含 set 特性和/或 get 特性。请参阅 Object.defineProperty 函数 (JavaScript)。  
+
+    // ex01:创建一个乜有原型对象
+    {
+    	let o = Object.create(null) //{} No properties
+    }
+    // ex02:
+    {
+    	var obj = Object.create(null, {
+    		size: {
+    			value: 42,
+    			writable: true, //如果为full，则该属性只读；
+    			configurable: true,
+    			enumerable: true
+    		}
+    	})
+
+    	obj.size = 1;
+
+    	// log( obj ) //{size: 1}
+    }
+    //ex03:
+    {
+    	var o = { x: undefined, y: undefined};
+
+    	var obj = Object.create(Object.prototype, {
+    		x: {
+    			value: undefined,
+    			writable: true,
+    			configurable: true,
+    			enumerable: true
+    		},
+    		y: {
+    			value: undefined,
+    			writable: true,
+    			configurable: true,
+    			enumerable: true
+    		}
+    	})
+
+    	log( o, obj ) //构造一模一样
+
+    }
+    </script>
+</body>
+
+</html>
