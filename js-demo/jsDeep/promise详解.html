@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise解释</title>
+</head>
+
+<body>
+    <script>
+    const log = console.log;
+    // {
+    //     // es5写法
+    //     // var p = new Promise( function(resolve, reject) {
+    //     //     var text = '我在定义一个promise对象时产生的';
+
+    //     //     resolve(text) //success就是指向then后面的第一个参数函数
+
+    //     //     reject(text)
+
+    //     // } )
+
+    //     // p.then( function(res) {
+    //     //     console.log('我是第一个参数函数',res)
+
+    //     // }, function(error) {
+    //     //     console.log( '我是第二个参数函数', error )
+
+    //     // } )
+
+    //     //es6写法
+    //     var p = new Promise( (resolve, reject) => {
+    //         var text = "我在定义产生";
+
+    //         log(text)
+
+    //         resolve(666)
+
+
+    //     } )
+
+    //     p.then( res => {
+    //         console.log( '第一个参数', res ) 
+    //     }, err => {
+    //         console.log( '第二个参数', err )
+    //     } )           
+
+    //     console.log( '我在代码最底部' )
+
+    //     // 我在定义产生
+    //     // 我在代码最底部
+    //     // 第一个参数 666 //因为其异步特性，在当前脚步同步任务完成后才执行
+
+    // }
+
+    // 案例二
+    {
+        var p1 = new Promise( (resolve, reject) => {
+            setTimeout( () => reject(new Error('请求超时')), 2000 )
+        });
+
+        var p2 = new Promise( (resolve, reject) => {
+          setTimeout(() => resolve(p1), 1000)  
+        } )
+
+        // p1.then( res => {
+        //     log(p1) //状态：resolve
+        // }, err => {
+        //     log(err) //状态: reject
+        // } )
+
+        p2.then(res => {
+            log(res)
+        }, err => {
+            log(err)
+        })
+
+
+
+        log(p1)
+    }
+    </script>
+</body>
+
+</html>
