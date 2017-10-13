@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象扩展</title>
+</head>
+<body>
+	
+	<script>
+		// promise对象
+		{
+			function timeout(ms) {
+				return new Promise( (resolve, reject) => {
+					console.log( '创建promise对象')
+					resolve('???')
+				} )
+			}
+
+			timeout().then((value) => { //异步的
+			  console.log('我执行了', value);
+			});
+
+			console.log('我在代码最后面')
+
+			// 创建promise对象
+			// 我在代码最后面
+			// 我执行了 ???
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象扩展</title>
+</head>
+<body>
+	
+	<script>
+		//一：对象的每一个属性都有一个描述对象，用来控制该属性的行为
+		const log = console.log;
+
+		{
+			let obj = {name: 'xjh', age: 26, skin: 'yellow'};
+
+			let res = Object.getOwnPropertyDescriptor(obj, 'name');
+
+			console.log( res )
+
+			//Object {value: "xjh", writable: true, enumerable: true, configurable: true}
+		}
+
+		// 目前，有四个操作会忽略enumerable为false的属性。
+
+		// for...in循环：只遍历对象自身的和继承的可枚举的属性。
+		// Object.keys()：返回对象自身的所有可枚举的属性的键名。
+		// JSON.stringify()：只串行化对象自身的可枚举的属性。
+		// Object.assign()： 忽略enumerable为false的属性，只拷贝对象自身的可枚举
+
+		//上述中只有for in 会遍历继承的属性，实际上，引入“可枚举”（enumerable）这个概念的最初目的，
+		// 就是让某些属性可以规避掉for...in操作，不然所有内部属性和方法都会被遍历到。
+		
+		log( Object.getOwnPropertyDescriptor(Object.prototype, 'toString').enumerable ) //false
+		log( Object.getOwnPropertyDescriptor([], 'length').enumerable ) //false
+		log( Object.getOwnPropertyDescriptor('', 'length').enumerable ) //false
+
+
+	</script>
+</body>
+</html>
