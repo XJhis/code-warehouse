@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+
+<body>
+    <script>
+        const log = console.log;
+
+        var imgUrl = ['imgs/pic01.jpg', 'imgs/pic02.jpg', 'imgs/pic03.jpg', 'imgs/pic04.jpg'];
+
+        // {
+        //     let p = new Promise( (resolve, reject) => {
+        //         var img = new Image(250, 250);
+        //         // img.src = imgUrl[3];
+        //         img.src = [];
+
+        //         img.onload = () => {
+        //             resolve(img)
+        //         }
+
+        //         img.onerror = () => {
+        //             reject(new Error('图片加载出错'))
+        //         }
+
+        //         document.body.appendChild(img)
+
+        //     } )
+
+        //     p.then(res => {
+
+        //         log( '图片加载完成', res );
+        //     }).catch( err => {
+
+        //         log(err)
+        //     })
+        // }
+
+        {
+            function loadImg(url) {
+                return new Promise( (resolve, reject) => {
+                    let img = new Image(300, 300);
+                    img.src = url;
+                    img.onload = () => {
+                        resolve(img)
+                    }
+                    img.onerror = () => {
+                        reject(new Error('图片加载出错'))
+                    }                    
+                } )
+            }
+
+            // loadImg(imgUrl[1]).then(function(img) {
+            //     document.body.appendChild(img);
+            //     log('图片加载完成了')
+            // })
+
+            // 二：
+            //Promise.all方法用于将多个 Promise 实例，包装成一个新的 Promise 实例
+            // 参数：一个Promise实例的数组,注意：Promise.all方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。
+            
+            //当所有promise实例的状态变为reslove时；Promise.all的状态就变为resolve;
+            //当有一个promise实例的状态变为reject；Promise.all的状态就变为reject
+            // Promise.all( [loadImg(imgUrl[0]),loadImg(imgUrl[1]), loadImg(imgUrl[2]), loadImg(imgUrl[3])])
+            //     .then(function(res) {
+
+            //         res.forEach( (val, key) => {
+            //             document.body.appendChild(val);
+            //         } )
+
+            //         log( '加载完所有图片' )
+            //     }).catch( err => {
+
+            //         log(err)
+            //     } ) 
+
+            // 三：Promise.resolve()
+            // //将现有对象转为Promise对象
+
+            // Promise.resolve('foo')
+            // // 等价于
+            // new Promise(resolve => resolve('foo'))
+
+            // 参数四种情况
+            // 一：参数是一个Promise实例：Promise.resolve将不做任何修改、原封不动地返回这个实例。
+
+            // Promise.resolve(loadImg(imgUrl[0]))
+            //     .then(res => {
+            //         document.body.appendChild(res)
+            //     })
+
+            // 二：参数是一个thenable对象,thenable对象指的是具有then方法的对象，比如下面这个对象
+
+            // let thenable = {
+            //     then(resolve, reject) {
+            //         resolve(666)
+            //     }
+            // }
+
+            // let p1 = Promise.resolve(thenable);
+            // p1.then(function(value) {
+            //   console.log(value);  // 42
+            // });
+
+            //三：参数不是具有then方法的对象，或根本就不是对象
+            // 如果参数是一个原始值，或者是一个不具有then方法的对象，
+            // 则Promise.resolve方法返回一个新的Promise对象，状态为resolved。
+
+            // var p = Promise.resolve('hello');
+
+            // p.then( res => {
+            //     log(res) //hello
+            // } )
+
+            // 四：不带有任何参数
+            var p = Promise.resolve();
+
+            log(p) //状态为resolved的Promise对象
+
+        }
+
+
+    </script>
+</body>
+
+</html>

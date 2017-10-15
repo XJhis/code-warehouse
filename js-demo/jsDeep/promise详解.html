@@ -54,31 +54,31 @@
     // }
 
     // 案例二
-    {
-        var p1 = new Promise( (resolve, reject) => {
-            setTimeout( () => reject(new Error('请求超时')), 2000 )
-        });
+    // {
+    //     var p1 = new Promise( (resolve, reject) => {
+    //         setTimeout( () => reject(new Error('请求超时')), 2000 )
+    //     });
 
-        var p2 = new Promise( (resolve, reject) => {
-          setTimeout(() => resolve(p1), 1000)  
-        } )
+    //     var p2 = new Promise( (resolve, reject) => {
+    //       setTimeout(() => resolve(p1), 1000)  
+    //     } )
 
-        // p1.then( res => {
-        //     log(p1) //状态：resolve
-        // }, err => {
-        //     log(err) //状态: reject
-        // } )
+    //     // p1.then( res => {
+    //     //     log(p1) //状态：resolve
+    //     // }, err => {
+    //     //     log(err) //状态: reject
+    //     // } )
 
-        p2.then(res => {
-            log(res)
-        }, err => {
-            log(err)
-        })
+    //     p2.then(res => {
+    //         log(res)
+    //     }, err => {
+    //         log(err)
+    //     })
 
 
 
-        log(p1)
-    }
+    //     log(p1)
+    // }
     </script>
 </body>
 
