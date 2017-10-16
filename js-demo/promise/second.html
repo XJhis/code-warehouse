@@ -10,9 +10,9 @@
     <script src="js/jquery-1.12.4.js"></script>
     <script>
         function getUserId() {
-            return new Promise(function(resolve) {
+            return new Promise(function(resolve, reject) {
                 //异步请求
-                http.get(url, function(results) {
+                $http.get(url, function(results) {
                     resolve(results.id)
                 })
             })
@@ -22,19 +22,23 @@
             //一些处理
         })
 
-        function Promise (fn) {
+        function Promise(fn) {
 
-            var callback = []
+            var callback = [];
 
-            this.then = function(successFn) {
-                successFn()
+            this.then = success => {
+                success();
+            } 
 
-            };
-
-            this.resolve = function(value) {
-                callback.push()
+            this.resolve = value => {
+                callback.push(fn)
             }
         }
+
+        new Promise( function(resolve, reject) {
+
+        }).then()
+
 
 
 

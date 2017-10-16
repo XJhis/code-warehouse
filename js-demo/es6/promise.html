@@ -49,23 +49,43 @@
 
 		//一般来说，不要在then方法里面定义Reject状态的回调函数（即then的第二个参数），总是使用catch方法。
 		// 推荐使用：
+		// 原因：理由是第二种写法可以捕获前面then方法执行中的错误，也更接近同步的写法（try/catch）。
+		// {
+		// 	var p = new Promise( (resolve, reject) => {
+
+		// 		//do something...
+		// 	} )
+
+		// 	p
+		// 	.then( res => {
+
+		// 		//success
+		// 	})
+		// 	.catch( err => {
+				
+		// 		//error
+		// 	} )
+
+
+		// }
+
+		// ex02:
 		{
 			var p = new Promise( (resolve, reject) => {
 
-				//do something...
-			} )
-
-			p
-			.then( res => {
-
-				//success
+				if (true) {
+					resolve(1);
+					// reject(new Error('请求出错'))
+				}
 			})
-			.catch( err => {
-				
-				//error
-			} )
 
+			p.then( res => {
 
+				throw new Error('hhhh')
+			}).catch(err => {
+
+				throw err;
+			})
 		}
 
 

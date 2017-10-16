@@ -25,7 +25,7 @@
             client.send();
 
             function handler() {
-                if (this.status === 200) {
+                if (this.readyState === 4 && this.status === 200) {
                     resolve(this.response);
                 } else {
                     reject(new Error(this.statusText));
