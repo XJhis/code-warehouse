@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Image对象</title>
+</head>
+<body>
+	<!-- <img src="img/pic01.jpg" alt=""> -->
+
+	<script>
+		const log = console.log;
+
+		var imgUrl = ['img/pic01.jpg', 'img/pic02.jpg', 'img/pic03.jpg', 'img/pic04.jpg']
+
+		//Image对象
+
+		var img = new Image(300, 300);
+
+		img.src = '';
+		// img.src = imgUrl[1];
+
+		img.onload = () => {
+			log('图片加载完成');
+			log( img.complete )
+		}
+
+		img.onerror = () => {
+			log('图片加载出错')
+			log( img.complete )
+		}
+
+		log( img.complete )
+
+		document.body.appendChild(img)
+
+	</script>
+</body>
+</html>
