@@ -42,7 +42,7 @@
 </head>
 <body>
 	<div id="app">
-		<menu-top :menu-list="list" :menu-title="title"></menu-top>
+		<menu-top :menu-list="list" :menu-title="title" :menu-num="num"></menu-top>
 	</div>
 	
 	<script src="./js/vue.js"></script>
@@ -62,6 +62,7 @@
 			// },	
 			props: {
 				menuList: Array,
+				menuNum: Number,
 				menuTitle: {
 					type: [String, Number],
 					default: '设一个默认值'
@@ -73,13 +74,20 @@
 							<ul class="test-nav">
 								<li v-for="item in menuList" :class="{active: item.active}"><a href="">{{item.title}}</a></li>
 							</ul>
-						</div>`
+							<button @click="addFn()">{{menuNum}}</button>
+						</div>`,
+			methods: {
+				addFn() {
+					this.menuNum ++ ;
+				}
+			}
 		})
 
 		var app = new Vue({
 			el: '#app',
 			data: {
 				title: '我是第一个组件,hahaha',
+				num: 0,
 				list: [
 					{id: 1, title: '首页', active: false},
 					{id: 2, title: '职位', active: true},
