@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>class类</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const log = console.log;
+
+        //类：class
+        // ES6 的class可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，
+        // 新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。
+        // 类的所有方法都定义在类的prototype属性上面。如下面的Point中的toString方法就是定义在prototype上
+        
+        // {
+        //     //es5
+        //     // function Point(x, y) {
+        //     //     this.x = x || 1;
+        //     //     this.y = y || 1;
+        //     // }
+
+        //     // Point.prototype.toString = function () {
+        //     //     return '(' + this.x + ',' + this.y + ')';
+        //     // }
+
+        //     // // var p1 = new Point();
+
+        //     // // log(p1)
+        //     // // log(p1.toString())
+
+        //     // log( Point === Point.prototype.constructor ) // true Point就是构造函数
+
+        //     class Point {
+        //         constructor(x = 1, y = 1) {
+        //             this.x = x;
+        //             this.y = y;
+        //         }
+        //         //注意这里没有逗号
+        //         toString() {
+        //             return '(' + this.x + ',' + this.y + ')';
+        //         }
+        //     }
+
+        //     let p2 = new Point();
+
+        //     // log(p2, p2.toString())
+
+        //     // log( typeof Point ) //'function'
+        //     // log( Point === Point.prototype.constructor ) //true 同es5的构造函数形式 结果相同，说明只是语法糖的改写
+
+        //     log( p2.toString === Point.prototype.toString ) // true
+
+        // }
+
+        //类的所有方法都是定义在prototype上
+        // {
+        //     // class Dog {
+        //         // constructor(name = "小黑", age = 0) {
+        //         //     this.name = name;
+        //         //     this.age = age;
+        //         // }
+
+        //     //     getSkin() {
+
+        //     //     }
+
+        //     //     getData() {
+                    
+        //     //     }
+        //     // }
+
+        //     // 等同于
+
+        //     function Dog() {}
+
+        //     Dog.prototype = {
+        //         constructor(){},
+        //         getSkin(){},
+        //         getData(){}
+        //     }
+
+        //     var d1 = new Dog()
+
+        //     log( d1 )
+        //     log( d1.__proto__ ) //方法都在原型上
+        // }
+
+
+
+        // {
+        //     let obj = {};
+
+        //     log( obj.toString === Object.prototype.toString )  //true
+        // }
+
+        
+    </script>
+</body>
+
+</html>

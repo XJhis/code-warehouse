@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件</title>
+	<script src="./js/vue.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.test-nav {
+			overflow: hidden;
+			width: 380px;
+			margin: 0 auto;
+		}
+		.test-nav li{
+			list-style: none;
+			float: left
+		}
+		.test-nav li a {
+			display: block;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: #ff6b00;
+			color: white;
+			text-decoration: none;
+			padding: 0 20px;
+		}
+		.test-nav li a:hover {
+			background: #f9854f;
+		}
+		.test > h3 {
+			text-align: center;
+		}
+
+		.test-nav li.active a {
+			background: #FF8400;
+		}
+
+		#app >p {
+			text-align: center;
+		}	
+
+	</style>
+</head>
+<body>	
+	<div id="app">
+		<ul class="test-nav">
+			<li v-for="(value, key) in list" :class="{active: value.active}"><a href="javascript:void(0)" @click="getTitle(value)">{{value.title}}</a></li>								
+		</ul>
+		<p v-show="currentTitle">您选择的导航是:{{currentTitle}}</p>
+		<input type="text" v-model="currentTitle" placeholder="文本输入框">
+	</div>
+	<script>
+		const log = console.log;
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				titleId: 3,
+				list: [
+					{id: 1, title: '首页', active: false},
+					{id: 2, title: '职位', active: false},
+					{id: 3, title: '推荐', active: false},
+					{id: 4, title: '中心', active: false}
+				],
+				// currentTitle: ''
+			},
+			computed: {
+				currentTitle() {
+					log('计算属性触发')
+					
+					/*如果两次点击的tab是同一个，则不会触发这个Log，
+					 *计算属性会缓存，只有当他依赖的变量发生改变时，
+					 *才会计算更新
+					*/
+
+					let titleObj = {
+						1: '首页',
+						2: '职位',
+						3: '推荐',
+						4: '中心'
+					}
+
+					return titleObj[this.titleId] || '';
+				}
+			},
+			methods: {
+				getTitle(value) {
+					this.titleId = value.id;
+
+				}
+			}
+		})
+	</script>
+</body>
+</html>

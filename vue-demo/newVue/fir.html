@@ -15,7 +15,7 @@
 		<i v-if="isShow">显示还是隐藏这要看控制器了</i>
 
 		<ul>
-			<li v-for="(value, key) in cusList">{{value.name + '今年'+value.age+'岁了'}}</li>
+			<li v-for="(value, key) in cusList" :data-key = "key">{{value.name + '今年'+value.age+'岁了'}}</li>
 		</ul>
 
 	</div>

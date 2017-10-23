@@ -27,27 +27,30 @@
 <body>
 	<div id="app">
 		<div class="form-group fir">
-			<input type="text" v-show="showInput" v-model="name" placeholder="请输入用户名" />
+			<input type="text" v-show="isShow" v-model="name" placeholder="请输入用户名" />
 		</div>
 		<div class="form-control">
 			<button @click="showFn">点我</button>
-			<span>{{name}}</span>
+			<span :data-info="name">{{name}}</span>
 		</div>
 	</div>
 	
 	<script>
-		var vm = new Vue({
+		var app = new Vue({
 			el: '#app',
 			data: {
-				showInput: false,
-				name: ''
+				name: '  我是大树怪',
+				isShow: true 
 			},
 			methods: {
-				showFn: function(event) {
-					this.showInput = !this.showInput;
+				showFn() {
+					this.isShow = !this.isShow;
 				}
 			}
+
 		})
+
+
 	</script>
 </body>
 </html>
