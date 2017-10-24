@@ -10,12 +10,47 @@
 <body>
 	
 	<div id="app">
-		<div>
+		<!-- 多选按钮 -->
+		<div class="ex01">
 			<label for="">
 				<input type="checkbox" v-model="checkbox1" value="???">
+				<input type="checkbox" v-model="checkbox1" value="！！！">
+				<input type="checkbox" v-model="checkbox1" value="。。。">
 			</label>
 			<p>{{checkbox1}}</p>
 		</div>
+		<hr>
+		<!-- 单选按钮 -->
+		<div class="ex02">
+			<label>
+				<input type="radio" v-model="radio1" value="1">男				
+			</label>
+			<label>
+				<input type="radio" v-model="radio1" value="0">女				
+			</label>
+			
+			<p>{{radio1}}</p>
+		</div>
+
+		<!-- 单选下拉框 -->
+		<div class="ex03">
+			<select name="" v-model="select1" multiple>
+				<option value="" disabled="true" >请选择</option>
+				<!-- <option value="1">1991</option>
+				<option value="2">1992</option>
+				<option value="3">1993</option> -->
+				<option v-for="(value, key) in data.birthYear" :value="value" >{{typeof value}}</option>
+			</select>
+			
+			<p>{{select1}}</p>
+		</div>
+
+		<h3>
+			<input type="text" v-model.trim="age">
+			<p>{{age}}  {{typeof age}}</p>
+		</h3>
+
+
 	</div>
 
 	<script src="js/vue.js"></script>
@@ -24,7 +59,15 @@
 		var app = new Vue({
 			el: '#app',
 			data: {
-				checkbox1: {}
+				// checkbox1: false //表单绑定的model值为true/false
+				checkbox1: [], //当checkbox1默认值为数组的时候，如果选中则，将对应表单的value值放入数组中
+				radio1: false,
+				select1: [],
+				age: 12,
+				data:{
+					birthYear: [1990, 1991, 1992, 1993, 1994, 1995]
+					
+				} 
 			},
 		})
 	</script>
