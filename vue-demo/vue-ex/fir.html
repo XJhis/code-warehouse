@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第一个页面</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<div>
+			<label for="">
+				<input type="checkbox" v-model="checkbox1" value="???">
+			</label>
+			<p>{{checkbox1}}</p>
+		</div>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		//单个多选框是
+		var app = new Vue({
+			el: '#app',
+			data: {
+				checkbox1: {}
+			},
+		})
+	</script>
+</body>
+</html>
