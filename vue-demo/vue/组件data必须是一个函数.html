@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件data必须是一个函数</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<menu-top></menu-top>
+		<menu-top></menu-top>
+		<menu-top></menu-top>
+	</div>
+	
+	<script src="./js/vue.js"></script>
+	<script>
+		var params = {
+			num: 1
+		}
+
+
+		Vue.component('menuTop', {
+			// data: function() {
+			// 	return params  各个组件相互影响
+			// },	
+			data: function() {		
+
+				return {
+					num: 1
+				}
+			},	
+			template: `<button @click="addFn()">{{num}}</button>`,
+			methods: {
+				addFn() {
+					this.num ++ ;
+				},
+			}
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: [
+					{id: 1, title: '首页', active: false},
+					{id: 2, title: '职位', active: false},
+					{id: 3, title: '推荐', active: false},
+					{id: 4, title: '中心', active: false}
+				]
+			},
+			methods: {}
+		})
+
+		
+	</script>
+</body>
+</html>

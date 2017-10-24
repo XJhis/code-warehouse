@@ -11,7 +11,7 @@
 
 <body>
     <div id="app">
-    	<dailog-box v-show="showCustomer" @on-confirm="okFn()" @on-cancel="noFn()"></dailog-box>
+    	<dailog-box v-show="showCustomer" dailog-title="内容提示" @on-confirm="okFn()" @on-cancel="noFn()"></dailog-box>
     </div>
     <script>
 

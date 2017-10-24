@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.test-nav {
+			overflow: hidden;
+			width: 300px;
+			margin: 0 auto;
+		}
+		.test-nav li{
+			list-style: none;
+			float: left
+		}
+		.test-nav li a {
+			display: block;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			background: #ff6b00;
+			color: white;
+			text-decoration: none;
+			padding: 0 20px;
+		}
+		.test-nav li a:hover {
+			background: #FF8400;
+		}
+		.test > h3 {
+			text-align: center;
+		}
+
+		.test-nav li.active a {
+			background: #FF8400;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<menu-top :menu-list="list" :menu-title="title" :menu-num="num"></menu-top>
+	</div>
+	
+	<script src="./js/vue.js"></script>
+	<script>
+
+		Vue.component('menuTop', {
+			// props:['menuList', 'menuTitle'], //props没有验证
+			// props: {
+			// 	menuList: Array,
+			// 	menuTitle: String, //简单验证类型
+
+			// },	
+			// props: {
+			// 	menuList: [Array, Object] //可能多种类型
+			// 	menuTitle: String, //简单验证类型
+
+			// },	
+			props: {
+				menuList: Array,
+				menuNum: Number,
+				menuTitle: {
+					type: [String, Number],
+					default: '设一个默认值'
+				}, //简单验证类型
+
+			},			
+			template: `<div class="test">
+							<h3>{{menuTitle}}</h3>
+							<ul class="test-nav">
+								<li v-for="item in menuList" :class="{active: item.active}"><a href="">{{item.title}}</a></li>
+							</ul>
+							<button @click="addFn()">{{menuNum}}</button>
+						</div>`,
+			methods: {
+				addFn() {
+					this.menuNum ++ ;
+				}
+			}
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				title: '我是第一个组件,hahaha',
+				num: 0,
+				list: [
+					{id: 1, title: '首页', active: false},
+					{id: 2, title: '职位', active: true},
+					{id: 3, title: '推荐', active: false},
+					{id: 4, title: '中心', active: false}
+				]
+			},
+			methods: {}
+		})
+
+		
+	</script>
+</body>
+</html>
