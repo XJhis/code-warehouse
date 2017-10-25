@@ -1,0 +1,24 @@
+/*小demo-2017/10/25*/
+
+.my-to-do {
+    width: 800px;
+    margin:0 auto;
+    padding:30px;
+}
+
+.to-do-radio .checkbox>label {
+    padding:0 10px 0 0 !important;
+}
+.to-do-list {
+    margin-bottom: 15px;
+}
+
+.to-do-list .checkbox {
+    margin:0;
+    line-height: 30px !important;
+    height: 32px;
+}
+
+.to-do-list .checkbox>label {
+    padding:0;
+}

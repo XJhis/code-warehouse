@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>待办事项</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/todo.css">
+		
+</head>
+<body>	
+	<div id="app">
+		<div class="my-to-do">
+			<h2>我的代办事项</h2>
+			<div class="cont">
+				<h4>添加小目标</h4>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="输入人小目标后，按回车确认">
+				</div>
+				<p>共有4个目标，已完成3个，还有1条未完成</p>
+				<div class="to-do-radio">
+					<div class="checkbox dis-inBlock">
+						<label>
+							<input type="radio">&nbsp;所有目标
+						</label>
+					</div>
+					<div class="checkbox dis-inBlock">
+						<label>
+							<input type="radio">&nbsp;已完成目标
+						</label>
+					</div>
+					<div class="checkbox dis-inBlock">
+						<label>
+							<input type="radio">&nbsp;未完成目标
+						</label>
+					</div>
+				</div>
+				<div class="cont-list">
+					<div class="to-do-list">
+						<div class="view clearfix">
+							<div class="checkbox pull-left">
+								<label>
+									<input type="radio">&nbsp;学习html5,等等等。。。
+								</label>
+							</div>
+							<div class="pull-right"><button class="btn btn-danger">X</button></div>
+						</div>
+						<div class="edit hide">
+							<input type="text" class="form-control" >
+						</div>
+
+					</div>
+					<div class="to-do-list">
+						<div class="view hide clearfix">
+							<div class="checkbox pull-left">
+								<label>
+									<input type="radio">&nbsp;学习html5,等等等。。。
+								</label>
+							</div>
+							<div class="pull-right"><button class="btn btn-danger">X</button></div>
+						</div>
+						<div class="edit">
+							<input type="text" class="form-control" >
+						</div>
+
+					</div>
+					<div class="to-do-list">
+						<div class="view clearfix">
+							<div class="checkbox pull-left">
+								<label>
+									<input type="radio">&nbsp;学习html5,等等等。。。
+								</label>
+							</div>
+							<div class="pull-right"><button class="btn btn-danger">X</button></div>
+						</div>
+						<div class="edit hide">
+							<input type="text" class="form-control" >
+						</div>
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>
