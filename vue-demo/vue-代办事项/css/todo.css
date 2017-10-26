@@ -22,3 +22,12 @@
 .to-do-list .checkbox>label {
     padding:0;
 }
+.my-to-do .big-size {
+	height: 40px !important;
+	font-size: 16px !important;
+	line-height: 40px !important;
+}
+
+.to-do-list .checkbox input[type=checkbox] {
+	margin-left: 0;
+}

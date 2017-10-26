@@ -16,9 +16,12 @@
 			<div class="cont">
 				<h4>添加小目标</h4>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="输入人小目标后，按回车确认">
+					<input type="text" class="form-control big-size" placeholder="输入人小目标后，按回车确认" 
+						@keyup.enter="setTask()"
+						v-model="taskText"
+						>
 				</div>
-				<p>共有4个目标，已完成3个，还有1条未完成</p>
+				<p>共有{{totalNum}}个目标，已完成{{completedNum}}个，还有{{totalNum - completedNum}}条未完成</p>
 				<div class="to-do-radio">
 					<div class="checkbox dis-inBlock">
 						<label>
@@ -37,48 +40,26 @@
 					</div>
 				</div>
 				<div class="cont-list">
-					<div class="to-do-list">
-						<div class="view clearfix">
+					<div class="to-do-list" v-for="(value, key) in todoList">
+						<div class="view clearfix" v-show="value.view">
 							<div class="checkbox pull-left">
-								<label>
-									<input type="radio">&nbsp;学习html5,等等等。。。
+								<input type="checkbox" v-model="value.completed">
+								<label @dblclick="editTask(key)">
+									&nbsp;{{value.content}}
 								</label>
 							</div>
-							<div class="pull-right"><button class="btn btn-danger">X</button></div>
+							<div class="pull-right"><button class="btn btn-danger" @click="deleteTask(key)">X</button></div>
 						</div>
-						<div class="edit hide">
-							<input type="text" class="form-control" >
+						<div class="edit" v-show="!value.view">
+							<input type="text" class="form-control" 
+								v-model="value.editCont"
+								@:blur="changeTask(key)"
+								@keyup.enter="changeTask(key)"
+								@keyup.esc="cancelEdit(key)"
+								v-autofocus="!value.view"
+								>
 						</div>
-
-					</div>
-					<div class="to-do-list">
-						<div class="view hide clearfix">
-							<div class="checkbox pull-left">
-								<label>
-									<input type="radio">&nbsp;学习html5,等等等。。。
-								</label>
-							</div>
-							<div class="pull-right"><button class="btn btn-danger">X</button></div>
-						</div>
-						<div class="edit">
-							<input type="text" class="form-control" >
-						</div>
-
-					</div>
-					<div class="to-do-list">
-						<div class="view clearfix">
-							<div class="checkbox pull-left">
-								<label>
-									<input type="radio">&nbsp;学习html5,等等等。。。
-								</label>
-							</div>
-							<div class="pull-right"><button class="btn btn-danger">X</button></div>
-						</div>
-						<div class="edit hide">
-							<input type="text" class="form-control" >
-						</div>
-
-					</div>
+					</div>					
 				</div>
 			</div>
 			
@@ -87,7 +68,97 @@
 
 	<script src="js/vue.js"></script>
 	<script>
-		
+		var app = new Vue({
+			el: '#app',
+			data: {
+				taskText: "",
+				todoList: [
+					{
+						content: '早起早睡',
+						completed: false,
+						view: true,
+						editCont: '早起早睡'
+					},
+					{
+						content: '多读书',
+						completed: false,
+						view: true,
+						editCont: '多读书'
+					},
+					{
+						content: '多学习',
+						completed: false,
+						view: true,
+						editCont: '多学习'
+					},
+					{
+						content: '多锻炼',
+						completed: false,
+						view: true,
+						editCont: '多锻炼'
+					},
+				],
+			},
+			computed: {
+				//总共任务数量
+				totalNum() {
+					return this.todoList.length;
+				},
+				//已完成的任务数量
+				completedNum() {
+					let num = 0;
+					this.todoList.forEach( (val, key) => {
+						if (val.completed) {
+							num ++ ;
+						}
+					} )
+
+					return num;
+				},
+				//未完成的数量
+				todoNum() {}
+			},
+			methods: {
+				//设置任务
+				setTask() {
+					
+					let data = {
+						content: this.taskText,
+						completed: false,
+						view: true,
+						editCont: this.taskText
+					}
+					this.todoList.push(data);
+					this.taskText = '';
+				},
+				//删除任务
+				deleteTask(key) {
+					this.todoList.splice(key, 1)
+				},
+				//编辑任务：
+				editTask(key) {
+					this.todoList[key].view = false;
+				},
+				//修改任务
+				changeTask(key) {
+					this.todoList[key].content = this.todoList[key].editCont;
+					this.todoList[key].view = true;
+				},
+				cancelEdit(key) {
+					this.todoList[key].view = true;					
+					this.todoList[key].editCont = this.todoList[key].content;
+				}
+
+			},
+			directives: {
+				//失去焦点
+				autofocus: {
+					update(el, value) {
+						value && el.focus()
+					}
+				}
+			}
+		})
 	</script>
 </body>
 </html>
