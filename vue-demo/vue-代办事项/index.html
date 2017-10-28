@@ -17,25 +17,24 @@
 				<h4>添加小目标</h4>
 				<div class="form-group">
 					<input type="text" class="form-control big-size" placeholder="输入人小目标后，按回车确认" 
-						@keyup.enter="setTask()"
 						v-model="taskText"
-						>
+						@keyup.enter="setTask()">
 				</div>
 				<p>共有{{totalNum}}个目标，已完成{{completedNum}}个，还有{{totalNum - completedNum}}条未完成</p>
 				<div class="to-do-radio">
 					<div class="checkbox dis-inBlock">
 						<label>
-							<input type="radio">&nbsp;所有目标
+							<input type="radio" @click="chooseType(1)" name="taskRadio">&nbsp;所有目标
 						</label>
 					</div>
 					<div class="checkbox dis-inBlock">
 						<label>
-							<input type="radio">&nbsp;已完成目标
+							<input type="radio" @click="chooseType(2)" name="taskRadio">&nbsp;已完成目标
 						</label>
 					</div>
 					<div class="checkbox dis-inBlock">
 						<label>
-							<input type="radio">&nbsp;未完成目标
+							<input type="radio" @click="chooseType(3)" name="taskRadio">&nbsp;未完成目标
 						</label>
 					</div>
 				</div>
@@ -53,11 +52,10 @@
 						<div class="edit" v-show="!value.view">
 							<input type="text" class="form-control" 
 								v-model="value.editCont"
-								@:blur="changeTask(key)"
+								@blur="changeTask(key)"
 								@keyup.enter="changeTask(key)"
 								@keyup.esc="cancelEdit(key)"
-								v-autofocus="!value.view"
-								>
+								v-autofocus="!value.view">
 						</div>
 					</div>					
 				</div>
@@ -68,11 +66,13 @@
 
 	<script src="js/vue.js"></script>
 	<script>
+		const log = console.log;
 		var app = new Vue({
 			el: '#app',
 			data: {
 				taskText: "",
-				todoList: [
+				showBtn: false,
+				proList: [
 					{
 						content: '早起早睡',
 						completed: false,
@@ -98,16 +98,17 @@
 						editCont: '多锻炼'
 					},
 				],
-			},
+				todoList: []
+			},			
 			computed: {
 				//总共任务数量
 				totalNum() {
-					return this.todoList.length;
+					return this.proList.length;
 				},
 				//已完成的任务数量
 				completedNum() {
 					let num = 0;
-					this.todoList.forEach( (val, key) => {
+					this.proList.forEach( (val, key) => {
 						if (val.completed) {
 							num ++ ;
 						}
@@ -140,14 +141,28 @@
 					this.todoList[key].view = false;
 				},
 				//修改任务
-				changeTask(key) {
+				changeTask(key) {					
 					this.todoList[key].content = this.todoList[key].editCont;
 					this.todoList[key].view = true;
 				},
 				cancelEdit(key) {
 					this.todoList[key].view = true;					
 					this.todoList[key].editCont = this.todoList[key].content;
-				}
+				},
+				//选择任务类型
+				chooseType(type) {
+					var completed = this.proList.filter( function(item) { return item.completed } ),
+						not = this.proList.filter( function(item) { return !item.completed } ),
+						all = {
+							1: this.proList,
+							2: completed,
+							3: not
+						}
+					console.log(all)
+
+					this.todoList = all[type] ? all[type] : [];
+
+				}				
 
 			},
 			directives: {
@@ -157,7 +172,11 @@
 						value && el.focus()
 					}
 				}
+			},
+			mounted() {
+				this.todoList = this.proList;
 			}
+			
 		})
 	</script>
 </body>
