@@ -37,27 +37,47 @@
 
 	</style>	
 </head>
-<body>
-	<div class="app">
+<body>	
+	<div id="app">
 		<div class="container">
 			<ul class="tab-guide">
-				<li><a href="javascript:void(0)">html</a></li>
-				<li><a href="javascript:void(0)"">css</a></li>
-				<li><a href="javascript:void(0)"">javascript</a></li>
-				<li><a href="javascript:void(0)"">vue</a></li>
+				<li v-for="item in list" :class="{active: currentTab == item.id}"><a @click="chooseTab(item.id)" href="javascript:void(0)">{{item.title}}</a></li>				
 			</ul>
-			<div class="tab-cont">
-				asdads
-			</div>
+			<div class="tab-cont">{{contents}}</div>
 		</div>
-		
 	</div>
-		
-	<div id="app"></div>
 
 	<script src="js/vue.js"></script>
 	<script>
-		
+		let contents = {
+			1: '我是html页面',
+			2: '我是css页面',
+			3: '我是javascript页面',
+			4: '我是vue页面',
+		}
+
+		var app = new Vue({
+			el: "#app",
+			data: {
+				list: [
+					{title: 'html', id: 1},
+					{title: 'css', id: 2},
+					{title: 'javascript', id: 3},
+					{title: 'vue', id: 4}
+				],
+				currentTab: 1,
+				contents: '请选择tab'
+			},
+			methods:{
+				chooseTab(id) {
+					this.currentTab = id;
+					this.contents = contents[id] || '请选择tab';
+				}
+			}
+		})
+
+		// 总结
+		// 用数据控制页面显示，不要总是想着操作dom元素
 	</script>
 </body>
 </html>
