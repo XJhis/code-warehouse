@@ -140,15 +140,87 @@
   	        </el-checkbox-group>
   	      </template> -->
 
-
-  	      <template>
+			<!-- 多选按钮-点击全部 -->
+  	      <!-- <template>
   	        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
   	        <div style="margin: 15px 0;"></div>
   	        <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
   	          <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
   	        </el-checkbox-group>
-  	      </template>
+  	      </template> -->
+			
+			<!-- 多选按钮组-可选项目数量的控制 -->
+  	      <!-- <template>
+  	        <el-checkbox-group 
+  	          v-model="checkedCities1"
+  	          :min="1"
+  	          :max="3">
+  	          <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+  	        </el-checkbox-group>
+  	      </template> -->
 
+  	      <!-- 输入框 -->
+  	      <!-- <el-input v-model="input" placeholder="请输入内容"></el-input> -->
+
+  	      <!-- <el-input
+  	          placeholder="请选择日期"
+  	          suffix-icon="el-icon-date"
+  	          v-model="input2">
+  	        </el-input> -->
+
+  	        <!-- <el-input
+  	          placeholder="请选择日期"
+  	          prefix-icon="el-icon-date"
+  	          v-model="input2">
+  	        </el-input> -->
+
+  	        <!-- <el-input
+  	            placeholder="请选择日期"
+  	            v-model="input22">
+  	            <i slot="suffix" class="el-input__icon el-icon-date"></i>
+  	          </el-input> -->
+
+  	        <!-- 多行文本框 -->
+  	        <!-- <el-input
+  	          type="textarea"
+  	          :rows="2"
+  	          placeholder="请输入内容"
+  	          v-model="textarea">
+  	        </el-input> -->
+
+
+	       <!-- 带匹配的输入框 -->
+	       <!-- <el-row class="demo-autocomplete">
+	         <el-col :span="12">
+	           <div class="sub-title">激活即列出输入建议</div>
+	           <el-autocomplete
+	             class="inline-input"
+	             v-model="state1"
+	             :fetch-suggestions="querySearch"
+	             placeholder="请输入内容"
+	             @select="handleSelect"
+	           ></el-autocomplete>
+	         </el-col>
+	         <el-col :span="12">
+	           <div class="sub-title">输入后匹配输入建议</div>
+	           <el-autocomplete
+	             class="inline-input"
+	             v-model="state2"
+	             :fetch-suggestions="querySearch"
+	             placeholder="请输入内容"
+	             :trigger-on-focus="false"
+	             @select="handleSelect"
+	           ></el-autocomplete>
+	         </el-col>
+	       </el-row> -->
+
+	       <el-input-number 
+	         v-model="num1" 
+	         @change="handleChange" 
+	         :min="1" 
+	         :max="10" 
+	         controls-position="center"
+	         ></el-input-number>
 	    
 
 	</div>
@@ -157,55 +229,6 @@
 
 	<!-- 引入组件库 -->
 	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-
-
-	<script>
-		const cityOptions = ['上海', '北京', '广州', '深圳'];
-		var app = new Vue({
-			el: '#app',
-			data: {
-				checkAll: false,
-				cities: cityOptions,
-				checkedCities: ['上海', '北京'],
-				isIndeterminate: true
-			},
-			methods: {
-				handleCheckAllChange(val) {
-					console.log('点击全部事件', val)
-			        this.checkedCities = val ? cityOptions : [];
-			        this.isIndeterminate = false;
-		      	},
-		      	handleCheckedCitiesChange(value) { //value值为v-model的值
-		      		console.log('单个点击', value)
-		      	  let checkedCount = value.length;
-		      	  this.checkAll = checkedCount === this.cities.length;
-		      	  this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-		      	}
-
-			}
-		})
-
-		  // export default {
-		  //   data() {
-		  //     return {
-		  //       checkAll: false,
-		  //       checkedCities: ['上海', '北京'],
-		  //       cities: cityOptions,
-		  //       isIndeterminate: true
-		  //     };
-		  //   },
-		  //   methods: {
-		  //     handleCheckAllChange(val) {
-		  //       this.checkedCities = val ? cityOptions : [];
-		  //       this.isIndeterminate = false;
-		  //     },
-		      // handleCheckedCitiesChange(value) {
-		      //   let checkedCount = value.length;
-		      //   this.checkAll = checkedCount === this.cities.length;
-		      //   this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-		      // }
-		  //   }
-		  // };
-	</script>
+	<script src="js/demo.js"></script>
 </body>
 </html>
