@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第一个页面</title>
+	<!-- 引入样式 -->
+
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<style>
+		* {margin: 0; padding: 0}
+		.el-row {
+		    margin-bottom: 20px;
+		    &:last-child {
+		      margin-bottom: 0;
+		    }
+		  }
+		  .el-col {
+		    border-radius: 4px;
+		  }
+		  .bg-purple-dark {
+		    background: #99a9bf;
+		  }
+		  .bg-purple {
+		    background: #d3dce6;
+		  }
+		  .bg-purple-light {
+		    background: #e5e9f2;
+		  }
+		  .grid-content {
+		    border-radius: 4px;
+		    min-height: 36px;
+		  }
+		  .row-bg {
+		    padding: 10px 0;
+		    background-color: #f9fafc;
+		  }
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<!-- <el-button @click="visible = true">按钮</el-button>
+	    <el-dialog :visible.sync="visible" title="Hello world">
+	      <p>欢迎使用 Element</p>
+	    </el-dialog> -->
+
+		<!-- span为栅格长度 -->
+	    <!-- <el-row>
+	      <el-col :span="6"><div class="grid-content bg-purple-dark"></div></el-col>
+	      <el-col :span="6"><div class="grid-content bg-purple-dark"></div></el-col>
+	      <el-col :span="6"><div class="grid-content bg-purple-dark"></div></el-col>
+	    </el-row> -->
+		<!-- :gutter为栅格的间隔，默认最左边和最右边间隔为0-->
+	    <!-- <el-row :gutter="100" >
+	      <el-col :span="12"><div class="grid-content bg-purple-dark"></div></el-col>
+	      <el-col :span="12"><div class="grid-content bg-purple-dark"></div></el-col>
+	    </el-row> -->
+		
+		<!-- 给el-col加:offset="4",栅格加偏移 -->
+	    <!-- <el-row :gutter="20" >
+	      <el-col :span="8" :offset="4"><div class="grid-content bg-purple-dark"></div></el-col>
+	      <el-col :span="12"><div class="grid-content bg-purple-dark"></div></el-col>
+	    </el-row> -->
+
+	    <!-- <el-row :gutter="20" >
+	      <el-col :span="8" :offset="4"><div class="grid-content bg-purple-dark"></div></el-col>
+	      <el-col :span="12"><div class="grid-content bg-purple-dark"></div></el-col>
+	    </el-row> -->
+
+	    <!-- <el-container>
+	      <el-header>Header</el-header>
+	      <el-main>Main</el-main>
+	    </el-container>
+
+	    <el-container>
+	      <el-aside width="800px">Aside</el-aside>
+	      <el-main>Main</el-main>
+	    </el-container> -->
+	    <!-- <div class="bg-blue">asd</div> -->
+
+	    <!-- 图标 -->
+	    <!-- <i class="el-icon-edit c-p"></i> -->
+
+	    <!-- <el-button type="success" icon="el-icon-edit">搜索</el-button> -->
+
+	    <!-- 按钮组 -->
+	    <!-- <el-button>阿斯达所多</el-button> -->
+
+	    <!-- <el-button type="primary">主要按钮</el-button> -->
+		
+		<!-- 单选按钮 -->
+	    <!-- <template>
+	      <el-radio v-model="radio" label="1">备选项</el-radio>
+	      <el-radio v-model="radio" label="2">备选项</el-radio>
+	    </template> -->
+
+	    <!-- <div>
+	        <el-radio v-model="radio7" label="1" border>备选项1</el-radio>
+	        <el-radio v-model="radio7" label="2" border>备选项2</el-radio>
+	      </div> -->
+
+      	<!-- <template>
+      	  <el-radio-group v-model="radio2">
+      	    <el-radio :label="3">备选项1</el-radio>
+      	    <el-radio :label="6">备选项2</el-radio>
+      	    <el-radio :label="9">备选项3</el-radio>
+      	  </el-radio-group>
+      	</template> -->
+
+      	<!-- <div>
+      	    <el-radio-group v-model="radio3">
+      	      <el-radio-button label="上海"></el-radio-button>
+      	      <el-radio-button label="北京"></el-radio-button>
+      	      <el-radio-button label="广州"></el-radio-button>
+      	      <el-radio-button label="深圳"></el-radio-button>
+      	    </el-radio-group>
+      	  </div>
+
+  	  <div style="margin-top: 20px">
+  	      <el-radio-group v-model="radio4" size="medium">
+  	        <el-radio-button label="上海" ></el-radio-button>
+  	        <el-radio-button label="北京"></el-radio-button>
+  	        <el-radio-button label="广州"></el-radio-button>
+  	        <el-radio-button label="深圳"></el-radio-button>
+  	      </el-radio-group>
+  	    </div> -->
+
+  	    <!-- 多选按钮 -->
+  	    <!-- `checked` 为 true 或 false -->
+  	      <!-- <el-checkbox v-model="checked">备选项</el-checkbox> -->
+			
+			<!-- 多选框组v-model为数组 -->
+  	      <!-- <template>
+  	        <el-checkbox-group v-model="checkList">
+  	          <el-checkbox label="1"></el-checkbox>
+  	          <el-checkbox label="2"></el-checkbox>
+  	          <el-checkbox label="3"></el-checkbox>
+  	          <el-checkbox label="4" disabled></el-checkbox>
+  	          <el-checkbox label="5" disabled></el-checkbox>
+  	        </el-checkbox-group>
+  	      </template> -->
+
+
+  	      <template>
+  	        <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+  	        <div style="margin: 15px 0;"></div>
+  	        <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+  	          <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+  	        </el-checkbox-group>
+  	      </template>
+
+	    
+
+	</div>
+
+	<script src="js/vue.js"></script>
+
+	<!-- 引入组件库 -->
+	<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+
+	<script>
+		const cityOptions = ['上海', '北京', '广州', '深圳'];
+		var app = new Vue({
+			el: '#app',
+			data: {
+				checkAll: false,
+				cities: cityOptions,
+				checkedCities: ['上海', '北京'],
+				isIndeterminate: true
+			},
+			methods: {
+				handleCheckAllChange(val) {
+					console.log('点击全部事件', val)
+			        this.checkedCities = val ? cityOptions : [];
+			        this.isIndeterminate = false;
+		      	},
+		      	handleCheckedCitiesChange(value) { //value值为v-model的值
+		      		console.log('单个点击', value)
+		      	  let checkedCount = value.length;
+		      	  this.checkAll = checkedCount === this.cities.length;
+		      	  this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+		      	}
+
+			}
+		})
+
+		  // export default {
+		  //   data() {
+		  //     return {
+		  //       checkAll: false,
+		  //       checkedCities: ['上海', '北京'],
+		  //       cities: cityOptions,
+		  //       isIndeterminate: true
+		  //     };
+		  //   },
+		  //   methods: {
+		  //     handleCheckAllChange(val) {
+		  //       this.checkedCities = val ? cityOptions : [];
+		  //       this.isIndeterminate = false;
+		  //     },
+		      // handleCheckedCitiesChange(value) {
+		      //   let checkedCount = value.length;
+		      //   this.checkAll = checkedCount === this.cities.length;
+		      //   this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+		      // }
+		  //   }
+		  // };
+	</script>
+</body>
+</html>
