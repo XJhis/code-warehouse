@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打开新窗口</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<a href="http://www.taobao.com" onclick="openNewWindow(this.href); return false;">打开淘宝</a>
+	<a href="http://www.taobao.com" id="link">打开淘宝2</a>
+	
+
+
+	<script type="text/javascript">
+		// window.onload = function() {
+		// 	window.open('http://www.baidu.com', 'baidu' ,"width=300,height:200") //打开新窗口的方式
+		// }	
+
+		function openNewWindow(url) {
+			window.open(url, 'newWindow', 'winth=300,height=200')
+		}
+
+		function test() {
+			var a = document.getElementById('link');
+			a.onclick = function() {
+				openNewWindow(this.href);
+				return false;
+			}
+		}
+
+		window.onload = test;
+	</script>
+</body>
+</html>
