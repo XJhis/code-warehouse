@@ -5,12 +5,25 @@
 	<title>es6-模块</title>
 </head>
 <body>
-	<!-- <script src="js/one.js"></script> -->
-	<script>
+
+
+	<!-- <script type="module" src="./one.js"></script>
+	<script type="module">
 		const log = console.log;
-		import {firstName, age, year} from 'js/one'
+		import {firstName, age, year} from './one.js'
 
 		log(firstName, age, year)
+	</script> -->
+
+	<script type="module">
+		import utils from 'https://example.com/js/utils.js';
+
+		const x = 1;
+
+		console.log(x === window.x); //false
+		console.log(this === undefined); // true
+
+		delete x;
 	</script>
 	
 </body>
