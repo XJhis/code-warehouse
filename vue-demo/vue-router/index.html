@@ -13,13 +13,19 @@
 
 <body>
     <div id="app">
-        <h1>Hello vue!</h1>
+        <h1>Hello vue!  {{$route}}</h1>
         <p>
-            <router-link to="/foo">去foo页面</router-link>
+            <router-link to="/foo/123">去foo页面</router-link>
             <router-link to="/bar">去bar页面</router-link>
+
+            <!-- 动态绑定to，后面传一个对象 -->
             <!-- <router-link :to="{ path: 'home' }">去home页面</router-link> -->
-            <!-- <router-link :to="{ name: 'user', params: { userId: 123 }}">去home页面</router-link> -->
-            <!-- <router-link :to="{ path: 'register', query: { userId: 13 }}" append>去home页面</router-link> -->
+            
+            <!-- 路由传参数 -->
+            <!-- <router-link :to="{ path: 'home', query: { userId: userId }}">去home页面</router-link> -->
+
+            <!-- 用name也可以 -->
+            <!-- <router-link :to="{ name: 'user', query: { userId: 123 }}}">去home页面</router-link> -->
         </p>
         <hr>
         <router-view></router-view>
@@ -29,17 +35,21 @@
     <script>
     const Foo = { template: '<div>我是 foo</div>' }
     const Bar = { template: '<div>我是 bar</div>' }
+    const Home = { template: '<div>我是 主页面啊</div>' }
 
     const router = new VueRouter({
         routes: [
-            { path: '/foo', component: Foo },
+            { path: '/foo/:id', component: Foo , name: 'foo组件'},
             { path: '/bar', component: Bar },
-            { path: '/bar', component: Bar , name: 'user'},
+            { path: '/home', component: Home , name: 'user'},
         ]
     })
 
     const app = new Vue({
-        router
+        router,
+        data: {
+            userId: '#123'
+        }
     }).$mount('#app')
     </script>
 </body>

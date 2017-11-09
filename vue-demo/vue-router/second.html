@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-router嵌套路由</title>
+    <style>
+    	
+    </style>
+</head>
+
+<body>
+    <div id="app">        
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+    const Home = { template: `<div>
+                <h3>home{{$route.params}}</h3>
+                <ul>
+                    <li><router-link to="/home/one"></router-link></li>
+                    <li><router-link to="/home/two"></router-link></li>
+                </ul>
+                <hr>
+                <router-view></router-view>
+            </div>`}
+
+    const One = {
+        template: "<div>我是home子路由中的：one</div>"
+    }
+
+    const Two = {
+        template: "<div>我是home子路由中的：two</div>"
+    }
+
+    const router = new VueRouter({
+        routes: [
+            { 
+                path: '/home/:userId', 
+                component: Home, 
+                name: '小家伙',
+                children: [
+                    {
+                        path: '', 
+                        component: One
+                    },
+                    {
+                        path: 'one', 
+                        component: One
+                    },
+                    {
+                        path: 'two', 
+                        component: Two
+                    }
+                ]
+            },
+        ]
+    })
+
+    const app = new Vue({
+        el: '#app',
+        router       
+    })
+    </script>
+</body>
+
+</html>
