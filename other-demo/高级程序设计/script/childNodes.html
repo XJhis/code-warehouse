@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>childNodes</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>	
+
+	<a href="http://www.baidu.com" onclick="return false;">百度一下，你就知道</a>
+	<ul class="link" id="link">
+		<li><a href="imgs/pic01.jpg" title="这是一张图片" onclick="showPic(this); return false;">美女1</a></li>
+		<li><a href="imgs/pic02.jpg" title="这是一张图片" onclick="showPic(this); return false;">美女2</a></li>
+		<li><a href="imgs/pic03.jpg" title="这是一张图片" onclick="showPic(this); return false;">美女3</a></li>
+		<li><a href="imgs/pic04.jpg" title="这是一张图片" onclick="showPic(this); return false;">美女4</a></li>
+	</ul>
+	<img src="" class="img-cont" id="cont">
+	<script type="text/javascript">
+		function getChildNodes() {
+			var body = document.getElementsByTagName('body')[0];
+			// console.info(body.childNodes.length);
+			console.info(body.children.length);
+			console.info(body.children[0].nodeType)
+		}
+		window.onload = getChildNodes;	//加载完后执行函数；注意此处不需要加();
+		
+	</script>
+</body>
+</html>

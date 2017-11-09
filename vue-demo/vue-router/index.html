@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>vue-router</title>
+    <style>
+    	.router-link-active {
+    		color: #ff6b00;
+    	}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello vue!</h1>
+        <p>
+            <router-link to="/foo">去foo页面</router-link>
+            <router-link to="/bar">去bar页面</router-link>
+            <!-- <router-link :to="{ path: 'home' }">去home页面</router-link> -->
+            <!-- <router-link :to="{ name: 'user', params: { userId: 123 }}">去home页面</router-link> -->
+            <!-- <router-link :to="{ path: 'register', query: { userId: 13 }}" append>去home页面</router-link> -->
+        </p>
+        <hr>
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+    const Foo = { template: '<div>我是 foo</div>' }
+    const Bar = { template: '<div>我是 bar</div>' }
+
+    const router = new VueRouter({
+        routes: [
+            { path: '/foo', component: Foo },
+            { path: '/bar', component: Bar },
+            { path: '/bar', component: Bar , name: 'user'},
+        ]
+    })
+
+    const app = new Vue({
+        router
+    }).$mount('#app')
+    </script>
+</body>
+
+</html>

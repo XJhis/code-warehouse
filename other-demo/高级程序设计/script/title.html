@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>title</title>
+</head>
+<script type="text/javascript"></script>
+<body>
+	<p title="你是在逗我吗" id="kiddingMe">呵呵</p>
+	<br>
+
+	<ul class="box name fir">
+		<li>窗前明月光</li>
+		<li>疑是地上霜</li>
+		<li>举头望明月</li>
+		<li>低头思故乡</li>
+	</ul>
+
+	<h3 class="box name">静夜思</h3>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			//一：getElementById
+			// var p = document.getElementById('kiddingMe');
+
+			// alert(typeof p.innerHTML)
+			// alert(typeof p)
+
+			//二：getElementsByTagName()
+			// var p = document.getElementsByTagName("bodys")
+
+			// console.info(p)//如果去不到对象，返回的都是空数组
+
+			// var liArr = document.getElementsByTagName('li');
+
+			// for(var i = 0;i<liArr.length;i++) {
+			// 	console.info(liArr[i])				
+			// }
+
+			// var ar.legnthr = document.getElementsByTagName("*")
+			// console.info(arr.length)
+
+			// var ul = document.getElementsByClassName('box name')
+			// console.info(ul)
+
+			var p = document.getElementById('kiddingMe');
+			// alert(p.getAttribute('title'))
+			(p.setAttribute('title',"Are you kidding me?"))
+
+
+		}
+	</script>
+</body>
+</html>

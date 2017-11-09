@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片库</title>
+	<style type="text/css">
+		* {
+			margin:0;
+			padding:0;
+		}
+		body {
+			text-align:center;
+		}
+		.link {
+			margin-bottom: 10px;
+			padding-top:20px;
+		}
+		ul.link li {
+			list-style: none;
+			display: inline-block;
+			margin:0 5px;
+		}
+		ul.link li a {
+			display: block;
+			line-height: 30px;			
+		}
+		img.img-cont {
+			display: inline-block;
+			width: 400px;
+			height: 300px;
+			background: #0ff;
+			border:1px solid #dbdbdb;
+		}
+	</style>
+</head>
+<body>
+	<h3>Snapshots</h3>
+	<!-- <a href="http://www.baidu.com" onclick="return false;">百度一下，你就知道</a> -->
+	<ul class="link" id="link">
+		<li><a href="imgs/pic01.jpg" title="这是一张图片1" onclick="showPic(this);return false;">美女1</a></li>
+		<li><a href="imgs/pic02.jpg" title="这是一张图片2" onclick="showPic(this);return false;">美女2</a></li>
+		<li><a href="imgs/pic03.jpg" title="这是一张图片3" onclick="showPic(this);return false;">美女3</a></li>
+		<li><a href="imgs/pic04.jpg" title="这是一张图片4" onclick="showPic(this);return false;">美女4</a></li>
+	</ul>
+	<img src="" class="img-cont" id="cont">
+	<p id="h3"></p>
+
+
+
+	<script type="text/javascript">	
+		function showPic(obj) {
+			// var src = obj.href;
+			var src = obj.getAttribute('href');
+			// console.info(src)
+
+			var img = document.getElementById("cont");
+			img.setAttribute('src',src)
+
+			// return false;	//并不能阻止a链接的默认事件；但是在html中添加就可以，为什么呢？(⊙o⊙)…
+
+			var text = obj.getAttribute("title");
+			var des = document.getElementById("h3");
+			des.innerHTML = text;
+
+		}
+	</script>
+</body>
+</html>
