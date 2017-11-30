@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>你好，我是App!</h1>
+        <nav>
+            
+            <router-link to="/foo">去Foo页面</router-link>
+            <router-link to="/bar">去Bar页面</router-link>
+
+            <router-link :to="'/bar/:'+item" v-for="item in list" :key="item">去Bar页面</router-link>
+        </nav>
+        
+         <router-view></router-view>
+        }
+
+    </div>
+    
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        //定义页面模板
+        const Foo = {template: `<div>
+            <h3>我是Foo页面</h3>
+            <div>
+                快来Foo页面快来Foo页面快来Foo页面
+                快来Foo页面快来Foo页面快来Foo页面
+                快来Foo页面快来Foo页面快来Foo页面
+                快来Foo页面快来Foo页面快来Foo页面
+            </div>
+        </div>`};
+        const Bar = {template: `<div>
+            <h3>我是Bar页面</h3>
+            <div>
+                快来Bar页面快来Bar页面快来Bar页面
+                快来Bar页面快来Bar页面快来Bar页面
+                快来Bar页面快来Bar页面快来Bar页面
+                快来Bar页面快来Bar页面快来Bar页面
+                快来Bar页面快来Bar页面快来Bar页面
+            </div>
+        </div>`};
+
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/foo', 
+                    component: Foo
+                },
+                {
+                    path: '/bar/:id', 
+                    component: Bar
+                },
+            ]
+        })
+
+        const app = new Vue({
+            el: '#app',
+            router,
+            data: {
+                list: [1, 2, 3, 4, 5]
+            }
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>
