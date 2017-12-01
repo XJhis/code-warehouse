@@ -39,18 +39,16 @@
             template: '<div>不要问我从哪里来，因为我就是默认页面</div>'
         }
 
-
         const router = new VueRouter({
             routes: [
                 {
                     path: '/foo',  //要注意，以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。
                     component: Foo,
-                    name: '首页',
                     children: [
                         {
                             path: '', //默认进入的页面
                             component: FooDefault,
-                            name: 'home',
+                            name: 'default',
                         },
                         {
                             path: 'first', //子页面1 注意： 子页面前面没有 / 
@@ -67,6 +65,13 @@
             ]
         })
 
+        router.beforeEach((to, from, next) => {
+            console.log(1111, to)
+            console.log(222, from)
+            console.log(333, next)
+            next()
+        })
+
         const app = new Vue({
             el: '#app',
             router,
@@ -75,7 +80,7 @@
                     //注意$router和$route的区别
                     //$router: VueRouter的实例
                     //$route: 指定页面路由参数对象
-                    console.log(this.$router, this.$route) 
+                    // console.log(this.$router, this.$route) 
                     this.$router.push('/foo') 
                 }
             }
