@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义组件v-model</title>
+</head>
+<body>
+	
+	<div id="app">
+		<!-- <h3>{{showNum}}</h3> -->
+		<currency-input v-model="price"></currency-input>
+
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		Vue.component('currency-input', {
+			template: `<div>
+						<input 
+							type="text" 
+							ref="input"
+							v-bind:value="value"
+							v-on:input="updateValue($event.target.value)"
+						>
+					</div>`,
+			props: ['value'],
+			methods: {
+				updateValue(value) {
+					console.log(value, '???')
+					let newVal = value+'$';
+
+					if (newVal !== value) {
+						//设置输入框的value值
+						this.$refs.input.value = newVal
+					}
+
+					console.log(this.value)
+				}
+			}
+		})
+
+		let vm = new Vue({
+			el: '#app',
+			data: {
+				price: 'fuck'
+			},
+			watch: {
+				price: function(val1, val2) {
+					console.log(val1, val2)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
