@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态组件</title>
+</head>
+<body>
+	
+	<div id="app">
+		<span>
+			<a href="javascript:void(0)" @click="changeComponent(1)">组件1</a>
+			<a href="javascript:void(0)" @click="changeComponent(2)">组件1</a>
+			<a href="javascript:void(0)" @click="changeComponent(3)">组件1</a>			
+		</span>
+		<keep-alive>
+			<component :is="currentView" :title="text"></component>	
+		</keep-alive>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		let First = {
+			template: `
+				<div>
+					<h2>组件一，帅不帅</h2>
+					{{title}}
+				</div>
+			`,
+			props: ['title']
+			
+		}
+
+		let Second = {
+			template: `
+				<div>
+					<h5>组件二，6不6 </h5>
+					{{title}}
+				</div>
+			`,
+			props: ['title'],
+			
+		}
+
+		let Third = {
+			template: `
+				<div>
+					<h3>组件三，独孤求败 </h3>
+					{{title}}
+				</div>
+			`,
+			props: ['title'],
+			
+		}
+
+		let componentObj = {
+			1: First,
+			2: Second,
+			3: Third,
+		}
+
+		
+		let vm  = new Vue({
+			el: '#app',
+			data: {
+				currentView: First,
+				text: 'This is a title'
+			},
+			methods: {
+				changeComponent(key) {
+					this.currentView = componentObj[key]
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

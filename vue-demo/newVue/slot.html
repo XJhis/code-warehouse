@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内容分发</title>
+</head>
+<body>
+	
+	<div id="app">
+		<alert-dailog>
+			<div slot="third-line">我想要显示在组件脚部</div>
+			<div slot="first-line">我想要显示在组件头部</div>
+			<div slot="second-line">我想要显示在组件中间</div>
+			{{text}}
+		</alert-dailog>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		Vue.component('alert-dailog', {
+			//如果slot没有name属性，渲染的时候会将组件标签中的没有slot属性的内容放到组件中
+			//如果slot有name属性，渲染的时候会将组价标签中对应的slot属性值放到组建中
+			// 父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译。
+			template: `
+				<div>
+					<h3>我是一个组件</h3>
+					<div>
+						<slot name="first-line"><p>这是第一行</p></slot>
+						<slot name="second-line"><p>这是第二行</p></slot>
+						<slot name="third-line"><p>这是第三行</p></slot>
+						<slot><p>babababa </p></slot>
+					</div>	
+				</div>
+			`,
+			props: [],
+			data() {
+				return {
+					text: '我是组件上的数据'
+				}
+			}
+		})
+
+		let vm = new Vue({
+			el: '#app',
+			data: {
+				text: '我是根实例上的数据'
+			},
+			methods: {}
+		})
+
+	</script>
+</body>
+</html>
