@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>template页面</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <template v-if="isShow">
+			<h3>我是he</h3>
+			<em>我是em</em>
+			<b>我是吧</b>
+		</template>
+		<button style="height: 30px;" @click="showTem">切换</button> -->
+        <!-- <template v-if="loginType">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="name">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="name1">
+        </template>
+        <button style="height: 30px;" @click="toggleType">切换</button> -->
+		<ul>
+			<li v-for="(value, key) in 10">{{value}} {{key}}</li>			
+		</ul>
+		<button style="height: 30px;" @click="changePlace">切换位置</button>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+    //单个多选框是
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isShow: true,
+            loginType: true,
+            userName: '',
+            userName1: '',
+            textArr : [
+            	{name: 'asd', id: '#am111', age: 20},
+            	{name: 'qwe', id: '#am222', age: 21},
+            	{name: 'zxc', id: '#am333', age: 22},
+            	{name: 'hjk', id: '#am444', age: 23}
+            ]
+        },
+        methods: {
+            showTem() {
+                this.isShow = !this.isShow;
+            },
+            toggleType() {
+            	this.loginType = !this.loginType
+            },
+            changePlace() {
+            	this.textArr = [
+	            	{name: 'qwe', id: '#am222', age: 21},
+	            	{name: 'asd', id: '#am111', age: 20},
+	            	{name: 'hjk', id: '#am444', age: 23},
+	            	{name: 'zxc', id: '#am333', age: 22}
+	            ]
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
