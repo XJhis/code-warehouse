@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子组件引用</title>
+</head>
+<body>
+	
+	<div id="app">
+		<user-info ref="userInfo"></user-info>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+
+		Vue.component('user-info', {
+			template: `<h2>我是组件</h2>`
+		})
+		
+		let vm = new Vue({
+			el: '#app',
+			data: {},
+			// components: {
+			// 	'user-info': {
+			// 		template: '<h3>组件</h3>'	
+			// 	} 
+			// }
+		})
+
+		let child = vm.$refs.userInfo;
+
+		console.log( vm, child )
+	</script>
+</body>
+</html>

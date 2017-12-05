@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过度动画1</title>
+	<style>
+		.fade-enter-active, .fade-leave-active {
+		  transition: opacity .5s
+		}
+		.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+		  opacity: 0
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="app">
+		<button @click="toggle()">开关</button>
+		<transition name="fade">
+			<h3 v-if="isShow">Hello World! I am Vue</h3>
+		</transition>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		
+		
+		let vm = new Vue({
+			el: '#app',
+			data: {
+				isShow: true,
+			},
+			methods: {
+				toggle() {
+					this.isShow = !this.isShow;
+				}
+			}
+			
+		})
+
+
+	</script>
+</body>
+</html>

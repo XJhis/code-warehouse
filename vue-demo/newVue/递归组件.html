@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归组件</title>
+</head>
+<body>
+	
+	<div id="app">
+		<user-info ref="userInfo"></user-info>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		//这是一个失败的例子，需要重新反思一下
+		Vue.component('user-info', {
+			template: `<h2>我是组件</h2>`
+		})
+		
+		let vm = new Vue({
+			el: '#app',
+			data: {
+				list: [
+					{name: 'A', id:1, chiildren: [
+						{name: 'A-a', id:11, chiildren: [
+							{name: 'A-a-1', id:111, chiildren: []},
+							{name: 'A-a-2', id:112, chiildren: []},
+						]},
+						{name: 'A-b', id:12, chiildren: []},
+						{name: 'A-c', id:13, chiildren: []}
+					]},
+				]
+			},
+			
+		})
+
+
+		console.log( vm, child )
+	</script>
+</body>
+</html>
