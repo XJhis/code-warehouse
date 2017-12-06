@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>混合组件</title>
+</head>
+<body>
+	
+	<div id="app">
+		<app-top></app-top>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		var myMixins = {
+			created() {
+				console.log('我是myMixins里面的内容')
+			}
+		}
+
+		Vue.component('app-top', {
+			template: `
+				<div>
+					<h3>我是app-top组件</h3>
+				</div>
+			`,
+			mixins: [myMixins],
+			created() {
+				console.log('我是app-top组件')
+			}
+		})
+
+		//将混合对象合并到组件中时，第一层中：值如果是函数，则混合到一个数组中，如果是对象选项，
+		//且两对象的键名冲突，取组件对象的键值对
+		var vm = new Vue({
+			// mixins: [myMixins],
+			el: '#app',
+			created() {
+				console.log('我是根实例里面的')
+			},
+			data: {}
+		})
+
+		
+
+
+
+	</script>
+</body>
+</html>

@@ -8,18 +8,42 @@
 	
 	<div id="app">
 		<user-info ref="userInfo"></user-info>
+		<hr>
+		<button @click="consoleFn">dianwo</button>
 	</div>
 
 	<script src="js/vue.js"></script>
 	<script>
 
 		Vue.component('user-info', {
-			template: `<h2>我是组件</h2>`
+			template: `
+				<div>
+					<h2>我是组件</h2>
+					<h4>{{num}}</h4>
+					<button @click="add">+1</button>
+				</div>
+			`,
+			data() {
+				return {
+					num: 0
+				}
+			},
+			methods: {
+				add() {
+					this.num++;
+				}
+			}
 		})
 		
 		let vm = new Vue({
 			el: '#app',
 			data: {},
+			methods: {
+				consoleFn() {
+					let child = vm.$refs.userInfo;
+					console.log( child.add)
+				}
+			}
 			// components: {
 			// 	'user-info': {
 			// 		template: '<h3>组件</h3>'	
@@ -27,9 +51,8 @@
 			// }
 		})
 
-		let child = vm.$refs.userInfo;
+		
 
-		console.log( vm, child )
 	</script>
 </body>
 </html>
