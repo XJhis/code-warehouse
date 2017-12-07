@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>混合组件</title>
+</head>
+<body>
+	
+	<div id="app">
+		<my-con></my-con>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+
+		let myMixins = {
+			name: 'my-con',
+			template: `
+				<h3>我是mixins内容</h3>
+			`,
+			created: function() {
+				this.hello()
+			},
+			methods: {
+				hello() {
+					console.log('Hello，来自mixins')
+				}
+			}
+		}
+
+		let Component = Vue.extend({
+			mixins: [myMixins]
+		})
+
+		let component = new Component()
+
+		console.log(component)
+
+		let vm = new Vue({
+			el: '#app'
+		})
+
+		//然而并不知道这个例子有什么卵用，只是官网上面的例子敲了一遍而已，
+		//以后可能会有所收获吧
+
+	</script>
+</body>
+</html>

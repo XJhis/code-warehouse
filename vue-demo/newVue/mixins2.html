@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>混合组件</title>
+</head>
+<body>
+	
+	<div id="app">
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		//将混合对象合并到组件中时，第一层中：值如果是函数，则混合到一个数组中，如果是对象选项，
+		//且两对象的键名冲突，取组件对象的键值对
+
+		var myMixins = {
+			methods: {
+				foo() {
+					console.log('foo is cool')
+				},
+				common() {
+					console.log('myMixins common is cool')
+				}
+			}
+		}
+
+		
+
+		
+		var vm = new Vue({
+			mixins: [myMixins],
+			el: '#app',			
+			methods: {
+				bar() {
+					console.log('bar is cool')
+				},
+				common() {
+					console.log('vm common is cool')
+				}
+			}
+		})
+
+		vm.bar()  //bar is cool
+		vm.foo() //foo is cool
+		vm.common() //vm common is cool
+
+		
+
+
+
+	</script>
+</body>
+</html>
