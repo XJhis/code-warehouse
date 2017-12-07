@@ -4,12 +4,22 @@
 	<meta charset="UTF-8">
 	<title>过度动画1</title>
 	<style>
-		.fade-enter-active, .fade-leave-active {
-		  transition: opacity .5s
+		/* .fade-enter-active, .fade-leave-active {
+		  transition: opacity 1.5s
 		}
-		.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+		.fade-enter, .fade-leave-to .fade-leave-active in below version 2.1.8 {
 		  opacity: 0
+		} */
+
+		.fade-enter {
+			opacity: 0;
+			transform: translateX(100px)
 		}
+		.fade-enter-active {
+			transition: all 1.5s
+		}
+
+
 	</style>
 </head>
 <body>
