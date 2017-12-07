@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="text" v-auto-focus="show" v-model="userName"> -->
+        <h3>{{userName}}</h3>
+
+        <input type="password" v-focus="show">
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        //注意：在模板中使用指令的时候需要加上V-
+        Vue.directive('auto-focus', {
+            inserted: function (el) {
+                el.focus()
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                userName: 'asdasd',
+                show: false
+            },
+            directives: {
+                focus: {
+                    inserted(el, binding, vnode, oldVnode) {
+                        //el：只有el可以改写，其余参数为只读
+
+                        console.log(el, binding, vnode, oldVnode)
+                        el.focus()
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

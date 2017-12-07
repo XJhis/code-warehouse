@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>架子啊图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        .show-img {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 1px solid #e8e8e8;
+            margin-top: 40px;
+            overflow: hidden;
+        }
+
+        .show-img .img-list {
+            width: 25%;
+            height: 100px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="show-img">
+            <!-- <div class="img-list" v-img="val.url" v-for="(val, key) in list"></div> -->
+            <img class="img-list" alt="" v-img="val.url" v-for="(val, key) in list" >
+        </div>
+
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        let imgList = [
+            {
+                url: 'http://bpic.588ku.com/element_origin_min_pic/17/11/21/b9039fdbdd15a29dc77bbdc55453831c.jpg'
+            },
+            {
+                url: 'http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg'
+            },
+            {
+                url: 'http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg'
+            },
+            {
+                url: 'http://img.zcool.cn/community/017274582000cea84a0e282b576a32.jpg'
+            },
+            {
+                url: 'http://pic.58pic.com/58pic/13/74/51/99d58PIC6vm_1024.jpg'
+            },
+            {
+                url: 'http://www.taopic.com/uploads/allimg/140421/318743-140421213T910.jpg'
+            },
+            {
+                url: 'http://pic2.ooopic.com/12/22/94/30b1OOOPIC5c.jpg'
+            },
+            {
+                url: 'http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg'
+            },
+        ];
+        Vue.directive('img', {
+            inserted: function (el, binding, vnode) {
+
+                let bgColor = '#' + Math.floor(Math.random() * 1000000);
+                el.style.backgroundColor = bgColor;
+
+                let img = new Image();
+                img.src = binding.value;
+
+                img.onload = function () {
+                    // el.style.backgroundImage ='url(' + binding.value + ')';
+                    el.src =binding.value;
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: imgList
+            }
+        })
+    </script>
+</body>
+
+</html>

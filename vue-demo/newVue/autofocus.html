@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自动获取焦点</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用变量控制autofocus，效果达不到啊 -->
+        <!-- <input type="text" :autofocus="isFocus"> -->
+        <input type="text" v-focus v-model="text">
+        <button @click="getFocus">toggle</button>
+        {{isFocus}}
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        Vue.directive('focus', {
+            //绑定指令的元素插入到其父元素中时，触发
+            inserted: function (el, binding, vnode, oldVnode) {
+                console.log('inserted..........', el, binding, vnode, oldVnode)
+            },
+            //所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。
+            //指令的值可能发生了改变，也可能没有。
+            //但是你可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。
+            update: function (el, binding, vnode, oldVnode) {
+                console.log('update..........', vm.$data.isFocus)
+                if (vm.$data.isFocus) {
+                   el.focus() 
+                }
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isFocus: false,
+                text: '熊炬辉'
+            },
+            methods: {
+                getFocus() {
+                    this.isFocus = ! this.isFocus;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
