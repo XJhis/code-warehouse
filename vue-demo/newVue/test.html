@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件模板的几种方法</title>
+</head>
+
+<body>
+    <p id="demo">点击这个按钮，获得您的坐标：</p>
+    <button onclick="getLocation()">试一下</button>
+    <script>
+        var options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+        };
+
+        function success(pos) {
+          var crd = pos.coords;
+
+          console.log('Your current position is:');
+          console.log('Latitude : ' + crd.latitude);
+          console.log('Longitude: ' + crd.longitude);
+          console.log('More or less ' + crd.accuracy + ' meters.');
+        };
+
+        function error(err) {
+          console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    </script>
+</body>
+
+</html>
+
+
+

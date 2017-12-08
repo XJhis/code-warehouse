@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件模板的几种方法</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <user-info :user-title="vueTitle"></user-info>
+    </div>
+
+    <script src="js/vue.js"></script>   
+    <script type="text/x-template" id="user-info-template">
+        <div>
+            <h3>{{userTitle}}</h3>
+            <ul>
+                <li v-for="(val, key) in userList">{{val.name}}</li>
+            </ul>
+        </div>
+    </script>
+    <script>
+        Vue.component('user-info', {
+            template: '#user-info-template',
+            props: ['userTitle'],
+            data: function () {
+                return {
+                    userList: [
+                        {
+                            name: '老夫聊发少年狂',
+                            id: 1
+                        },
+                        {
+                            name: '左牵黄',
+                            id: 2
+                        },
+                        {
+                            name: '右擎苍',
+                            id: 3
+                        },
+                        {
+                            name: '金毛小丑钱几卷平岗',
+                            id: 4
+                        },
+                    ]
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                vueTitle: 'Welcome to Component'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
