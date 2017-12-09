@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>响应式原理</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h3 id="app-title">{{message}}</h3>
+        <ul>
+            <li v-for="item in list">
+                姓名：{{item.name}} <br>
+                年龄：{{item.age}}
+            </li>
+        </ul>
+
+        <button @click="setFn">dianwo</button>
+    </div>
+
+    <script src="js/vue.js"></script>   
+    
+    <script>
+        const getDOMFn = document.getElementById;
+        const log = console.log;
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                message: '你好！',
+                list: [
+                    {
+                        name: 'xjh',
+                        age: 24,
+                        id: 1
+                    },
+                    {
+                        name: 'aaa',
+                        age: 25,
+                        id: 2
+                    },
+                    {
+                        name: 'bbb',
+                        age: 26,
+                        id: 3
+                    },
+                ]
+            },
+            methods: {
+                setFn() {
+                    // this.list[2] = '我是后来手动加的' //无法直接改变数组一个的整项
+
+                    //改变对象的属性，使其具有响应式
+                    // this.$set(this.list, '2', '我是后来手动加的' ); //可以改变
+
+                    this.list[2].name = '改名字了'; //但是可以改变数组某一项中的值
+                }
+            }
+        });
+
+        log(vm)
+
+        vm.message = 'hello';
+
+        // vm.err = 'asd' //如果变量事先没有在vue实例中的data里声明，则这个声明的变量不是响应式的
+
+        log( document.getElementById('app-title').innerHTML === 'hello' ) //false //异步更新DOM中的数据
+        // log( document.getElementById('app-title').innerHTML === '你好！' ) //true
+
+
+        Vue.nextTick(function() {
+            log(document.getElementById('app-title').innerHTML === 'hello') //true 
+        })
+
+        // console.log(Object.prototype.toString.call(vm.$el) ) //[object HTMLDivElement] DOM节点
+
+
+    </script>
+</body>
+
+</html>

@@ -22,6 +22,7 @@
         </div>
     </script>
     <script>
+        //使用x-template时，script标签里只能有一个根节点，有多个不起作用
         Vue.component('user-info', {
             template: '#user-info-template',
             props: ['userTitle'],
