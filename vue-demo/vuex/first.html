@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vuex-第一个例子</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>{{num}}::{{vmNum}}</h3>
+        <hr>
+        <button @click="addNum">++</button>
+        <button @click="reduceNum">--</button>
+
+        <div style="background:#e6e6e6">
+            <cus-header></cus-header>
+        </div>
+
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script src="js/vuex.js"></script>
+    <script>
+        const log = console.log;
+        const store = new Vuex.Store({
+            state: {
+                count: 0
+            },
+            mutations: {
+                add(state) {
+                    state.count++;
+                },
+                reduce(state) {
+                    state.count--;
+                }
+            }
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            store,
+            data: {
+                num: store.state.count
+            },
+            computed: {
+                vmNum: () => store.state.count
+            },
+            methods: {
+                addNum() {
+                    store.commit('add')
+                },
+                reduceNum() {
+                    store.commit('reduce')
+                }
+            },
+            components:{
+                'cus-header':{
+                    template: `<div>
+                                    <h4>我是cus组件</h4>
+                                    <em>{{count}}</em>
+                                </div>`,
+                    computed:{
+                        count() {
+                            return this.$store.state.count;
+                        }
+                    }
+                }
+            }
+
+        });
+
+
+
+
+    </script>
+
+    
+
+
+</body>
+
+</html>
