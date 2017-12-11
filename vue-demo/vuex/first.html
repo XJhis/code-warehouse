@@ -36,6 +36,16 @@
                 reduce(state) {
                     state.count--;
                 }
+            },
+            actions: {
+                incrementAsync({commit, state}, value) {
+                    // log(commit, state, value)
+                    log('调用actions')
+                    setTimeout(function() {
+                        commit('add');
+                        log('执行commit事件')
+                    }, 1000);
+                }
             }
         })
 
@@ -50,6 +60,7 @@
             },
             methods: {
                 addNum() {
+                    //触发mutations中事件
                     store.commit('add')
                 },
                 reduceNum() {
@@ -71,6 +82,9 @@
             }
 
         });
+
+        //触发actions事件
+        store.dispatch('incrementAsync', {name: 'xjh'})
 
 
 
