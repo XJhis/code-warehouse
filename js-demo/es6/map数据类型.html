@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>map类型的数据</title>
+</head>
+
+<body>
+    <script> 
+        const log = console.log;
+
+        // var man = {name: 'xjh'},
+        //     dog = {gender: '公'},
+        //     animal = {},
+        //     ok = true,
+        //     num = 1,
+        //     arr = [];
+
+        // animal[man] = 'man'
+        // animal[dog] = 'dog'
+        // animal[ok] = 'ok'
+        // animal[num] = 'num'
+        // animal[arr] = 'arr'
+
+        // //{1: "num", [object Object]: "dog", true: "ok", "": "arr"}
+        // log( animal ) //{[object Object]: 3} 将一个值设为一个对象的键名的时候，会默认调用toString方法，如果不是字符串，则将其转为字符串
+
+        
+
+
+        var man = {name: 'xjh', age: 12}
+        var mm = new Map([
+            ['name', 'xjh'],
+            [man, 25]
+        ]);
+        log(mm) // {"name" => "xjh", {…} => 25}
+
+
+    </script>
+</body>
+
+</html>

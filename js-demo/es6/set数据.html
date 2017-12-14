@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>set类型的数据</title>
+</head>
+
+<body>
+    <script> 
+        //是一种新的数据类型，类似数组，区别是：成员的值都是唯一的，没有重复的值；
+        //特点：没有键名，只有键值，或则说是，键名和键值是同一个值
+        const log = console.log;
+        {
+            var ss = new Set([1, 1, 2, 2])
+            // log(ss.size) //2 键值的个数
+
+            log(ss.add(2).add('123')) //返回ss对象，可以链式调用           
+            
+        }
+    </script>
+</body>
+
+</html>
