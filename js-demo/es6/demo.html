@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>es6-demo</title>
+</head>
+<body>
+	
+	<script>
+        //变量的解构赋值的使用
+		// var info = {
+        //     name: 'xjh',
+        //     age: 24,
+        //     like: function (text) {
+        //         console.log(this.name + '喜欢'+ text);
+        //     }
+        // }
+
+        // var name = 'windows';
+
+        // function doing({name, age, like}) {
+        //     console.log(name, age, like)
+        // }
+
+        // doing(info)
+
+        function timeOut(time) {
+            return new Promise((resolve, reject) => {
+                setTimeout(function() {
+                    resolve('我穿一个参数')
+                }, time, 'done');
+            })
+        }
+
+        timeOut(3000).then(function (params) {
+            console.log('执行成功回调函数', params)
+        })
+
+
+
+	</script>
+</body>
+</html>
