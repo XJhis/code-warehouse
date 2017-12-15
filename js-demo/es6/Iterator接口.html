@@ -7,7 +7,14 @@
 </head>
 
 <body>
-    <div></div>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <script> 
         const log = console.log;
         // {
@@ -52,16 +59,64 @@
         //     //true
 
         // }
-        {
-            let ss = new Set([1, 'a', true]);
-            let [x, y] = ss;
+        // {
+        //     let ss = new Set([1, 'a', true]);
+        //     let [x, y] = ss;
 
-            log(x, y) //1 2
+        //     log(x, y) //1 2
 
-            let newArr = [...ss]
+        //     let newArr = [...ss]
 
-            log(newArr) //[1, "a", true] Array
-        }
+        //     log(newArr) //[1, "a", true] Array
+        // }
+        // {
+        //     // let nodeList = document.querySelectorAll('.box ul li')
+        //     // log(nodeList) // [li, li, li, li] DOM数组
+
+        //     // log( {}.toString.call(nodeList) ) //[object NodeList]
+        //     // log( nodeList[Symbol.iterator]() ) //Array Iterator {}
+
+        //     // for (let item of nodeList) {
+        //     //     console.log(item)
+        //     // }
+
+        //     //三个li
+
+        //     // let nodeArr = [...nodeList];
+        //     // log(nodeArr)
+
+        //     // log({}.toString.call(nodeArr)) //[object Array]
+
+
+        // }
+        
+        //String:
+        // {
+        //     let str = '只剩下钢琴陪我弹了一天';
+        //     let strArr = [...str];
+
+        //     log(strArr) //["只", "剩", "下", "钢", "琴", "陪", "我", "弹", "了", "一", "天"]
+
+        //     for (let item of strArr) {
+        //         console.log(item)
+        //     }
+
+        //     //分别遍历每个字符
+        // }
+        
+        //数组forof循环
+        // {
+        //     let arr = [1, 'a', true]
+
+        //     for (let item of arr) {
+        //         log(item)
+        //     }
+
+        //     // 注意遍历的是数组的每一项
+        //     //1
+        //     //a
+        //     //true
+        // }
 
     </script>
 </body>
