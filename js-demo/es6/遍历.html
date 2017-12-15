@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模拟数组的Iterator对象</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // const log = console.log;
+
+        // function likeIterator(arr) {
+        //     var index = 0;
+
+        //     return {
+        //         next: function () {
+        //             log(index)
+        //             return index < arr.length ?
+        //                 { value: arr[index++], done: false } :
+        //                 { value: undefined, done: true }
+        //         }
+        //     }
+        // }
+
+        // var arr = [1, 2, true, 'string'];
+
+        // var res = likeIterator(arr);
+
+        // log(res.next())
+        // log(res.next())
+        // log(res.next())
+        // log(res.next())
+        // log(res.next())
+
+        //数组的Symbol.iterator对象
+        // {
+        //     let arr = [1,  'a', true]
+
+        //     var fun = arr[Symbol.iterator]();
+
+        //     console.log(fun.next())
+        //     console.log(fun.next())
+        //     console.log(fun.next())
+        //     console.log(fun.next())
+        // }
+
+        const obj = {
+            [Symbol.iterator]: function () {
+                return {
+                    next: function () {
+                        return {
+                            value: 1,
+                            done: true
+                        };
+                    }
+                };
+            }
+        };
+
+        let ii = obj[Symbol.iterator]()
+
+        console.log(ii.next()) //都是{value: 1, done: true}
+        console.log(ii.next()) //都是{value: 1, done: true}
+
+
+
+
+    </script>
+</body>
+
+</html>
