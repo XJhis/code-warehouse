@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>class语法</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const log = console.log;
+
+        // //es5构造函数的写法
+        function Miaov(a, b) {
+            this.name = a;
+            this.age = b;
+            return this;
+
+        }   
+
+        Miaov.prototype = {
+            constructor: Miaov, //再声明一下，否则constructor就被覆盖没了
+            alert: function() {
+                log(this.a + '：'+ this.b)
+            },
+            color: 'yellow'
+        }
+
+        let ss = new Miaov('熊炬辉', 24)
+
+        log( Object.keys(ss) ) //["name", "age"] 
+
+        log(ss)
+
+        //es6语法
+        // class Miao {
+        //     constructor(a, b) {
+        //         this.name = a || 'sb',
+        //         this.age = b || 3
+        //         return this 
+        //     } //这里没有逗号
+
+        //     alert() { //原型中的方法，实例会继承
+        //         log(this.name + '今年' + this.age + '岁了')
+        //     }
+
+        //     // log: function() { //这么写会报错，只能用上面写法
+        //     //     log(666)
+        //     // }
+        // }
+
+        // var ss = new Miao('xjh', 25)
+
+        // log(ss);
+        // ss.alert();
+
+        // typeof Miao //"function"
+
+        // log(Object.keys(ss)) //["name", "age"]
+
+        // log(Object.getOwnPropertyNames(ss))
+
+
+    </script>
+</body>
+
+</html>
