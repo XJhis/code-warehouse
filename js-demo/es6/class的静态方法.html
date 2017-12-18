@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>class静态方法</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //class声明一个类的时候，如果方法前加static关键字，表示该方法是这个类的静态方法，
+        //该类的实例上没有该方法，只有这个类有这个方法
+        const log = console.log;
+        class Person {
+            static fam() {
+                log('我是fam')
+            }
+
+        }
+
+        let pp = new Person()
+        log(pp)
+        // log(pp.fam()); //报错，没有该方法
+        Person.fam() //有该方法
+
+    </script>
+</body>
+
+</html>

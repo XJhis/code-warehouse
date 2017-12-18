@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>class继承</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const log = console.log;
+
+        class Animal {
+            constructor(age, name) {
+                this.age = age;
+                this.name = name;
+            }
+            like() {
+                return '婆娘'
+            }
+        }
+
+        class Person extends Animal {
+
+        }
+
+        let pp = new Person('1', 2)
+
+        log(pp)
+
+
+    </script>
+</body>
+
+</html>
