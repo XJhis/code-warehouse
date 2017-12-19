@@ -13,10 +13,23 @@
 		// 它是 JavaScript 语言的第七种数据类型，、
 		// 前六种是：undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）。
 
-		{
-			let s = Symbol()
+		// {
+		// 	let s = Symbol()
 
-			log( typeof s ) 
+		// 	log( typeof s ) //symbol
+
+		// 	let name = Symbol('name');
+
+		// 	let obj = {
+		// 		[name]: '我的键名为symbol(name)'
+		// 	}
+
+		// 	log(obj)
+		// 	log(obj[name])
+		// }
+
+		{
+			log(Symbol('我是Symbol').toString())  //Symbol(我是Symbol)
 		}
 
 	</script>

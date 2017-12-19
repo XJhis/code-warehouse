@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>set和get</title>
+</head>
+<body>
+	
+	<script>
+        const log = console.log;
+        let obj = {
+            _name: '小家伙',
+            age: 21,
+            set name(name) {
+                log("调用set")
+                this._name = name;
+            },
+            get name() {
+                log("调用get")
+                return this._name;
+            }
+        }
+
+        // let oo = obj.name;
+        // obj.name
+
+        // log( obj.name )
+
+        obj.name = 'aaa'
+
+    </script>
+</body>
+</html>
