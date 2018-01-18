@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css技巧</title>
+	<style>
+		.box-border {
+			margin: 0 auto;
+			width: 500px;
+			border: 1px solid #000;
+			user-select: none
+		}
+		.box-border > h3{
+			user-select: none
+		}
+		.box-border .specail {
+			user-select: text
+		}
+		.box-border img {
+			width: 200px;
+			height: 200px;
+			object-fit: cover
+		}
+	</style>
+</head>
+<body>
+	<div class="box-border">
+		<h3>我是标题我是标题我是标题我是标题我是标题我是标题</h3>
+		<hr>
+		<div>
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+			我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容
+			<p class="specail">特殊内容特殊内容特殊内容特殊内容</p>
+		</div>
+		<img src="imgs/banner.png" alt="">
+	</div>
+</body>
+</html>
