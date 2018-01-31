@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise对象</title>
+    <style>
+        *  {margin: 0; padding: 0;}
+        .img-box  {
+            width: 800px;
+            margin:0 auto;
+            min-height: 40px;
+            background-color: #999;
+        }
+
+        .img-box>img {
+            display: block;;
+            border:0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-box">
+        
+    </div>
+
+    <script>
+        const log = console.log;
+
+        let imgUrl = ['imgs/pic01.jpg', 'imgs/pic02.jpg', 'imgs/pic03.jpg', 'imgs/pic04.jpg'];
+
+        // var img = new Image();        
+
+        // img.onload = function() {
+        //     log('成功')
+
+        //     document.querySelector('.img-box').appendChild(img);
+
+        // }
+
+        // img.onerror = function() {
+        //     log('失败')
+        // }
+
+        // img.src = imgUrl[0];
+
+
+        function loadImg(url) {
+            return new Promise((resolve, reject) => {
+                let img = new Image();
+                img.onload = function() {
+                    resolve(this)
+                }
+                img.onerror = function() {
+                    reject(new Error('加载图片出错！'))
+                }
+
+                //注意：这里先写事件，再去写src属性
+                img.src = url
+
+            })
+        }
+
+        loadImg( imgUrl[1] ).then(res => {
+            document.querySelector('.img-box').appendChild(res);
+        } )
+
+
+        
+    </script>
+</body>
+
+</html>
