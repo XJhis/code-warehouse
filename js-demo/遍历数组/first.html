@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>遍历数组</title>
+</head>
+<body>
+
+	<script>
+		const log = console.log;
+		let arr = [1, 2, 3];
+		let init = 20
+
+		//res 上一次调用回调时返回的结果，或者为init 
+		// val 数组中的项目
+		// index 数组中的索引
+		//arr 数组
+		//init 初始值
+		let ss = arr.reduce((res, val, index, arr) => { 
+			log(res,val, index, arr)
+			return res + val
+		}, init)
+
+		log(ss)
+	</script>
+</body>
+</html>

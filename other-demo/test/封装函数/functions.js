@@ -3,6 +3,12 @@ function isFunction(value) {
 	return (typeof value === 'function')
 }
 
+//检测数组
+function(value) isArray{
+	return Array.isArray ? Array.isArray(value) : 
+		(Object.prototype.toString.call(value) === "[object Array]")
+}
+
 // 检测对象
 function isObject(value) {
 	return (value !==null && typeof value === 'function');
@@ -20,17 +26,17 @@ function isNumber(value) {
 
 // 检测是不是字符串
 function isString(value) {
-	return (typeof value === 'string');
+	return Object.prototype.toString.call(value) === "[object String]";
 }
 
 //检测是否是日期类型
 function isDate(value) {
-	return Object.prototype.toString.call(value) === '[object Date]';
+	return Object.prototype.toString.call(value) === "[object Date]";
 }
 
 //检测是否是正则对象
 function isRegExp(value) {
-	return Object.prototype.toString.call(value) === '[object RegExp]';
+	return Object.prototype.toString.call(value) === "[object RegExp]";
 }
 
 //检测是不是undefined
@@ -43,5 +49,8 @@ function isDefined(value) {
 	return typeof value !== 'undefined';
 }
 
+function isOjectNoName(value) {
+	return JSON.stringify(value) === "{}";
+}
 
 
