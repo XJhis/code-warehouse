@@ -2,47 +2,33 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>封装函数</title>
 </head>
 <body>
 	<a href="javascript:void(0)" id="j-test-moblie">测试手机版本</a>
-	<!-- <script src="./functions.js"></script> -->
+	<script src="./functions.js"></script>
 	<script>
 		window.onload = function() {
 			init();
+			test();
 		}
 
 		function init() {
 
 			var a = document.querySelector('#j-test-moblie');
-
 			a.onclick = phoneType
-
 		}
 
-		function phoneType () {
+		function test() {
+			var tt = 1517817273213;
 
-		    var u = navigator.userAgent,
-		    	text = '';
+			var res = formatTime(tt, 'yyyy/MM/dd hh:mm');
 
-		    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
-		        // return "Android";
-		        text = 'Android'
-		    } else if (u.indexOf('iPhone') > -1) {//苹果手机
-		        // return "iPhone";
-		        text = 'iPhone'
-		    } else if (u.indexOf('iPad') > -1) {//iPad
-		        // return "iPad";
-		        text = 'iPad'
-		    } else if (u.indexOf('Windows Phone') > -1) {//winphone手机
-		        // return "Windows Phone";
-		        text = 'Windows Phone'
-		    }else{
-		    	text = '什么也不是'
-		    }
-
-		    alert(text)
+			console.log(res)			
 		}
+
+		
 				
 	</script>
 </body>

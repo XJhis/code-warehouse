@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>封装函数</title>
+</head>
+<body>
+	<h2 class="j-title" style="text-align: center;">不支持了</h2>
+	<!-- <script src="./functions.js"></script> -->
+	<script>
+		window.onload = function() {
+			document.querySelector('.j-title').innerHTML ='浏览器类型是：' + browserType();
+		}
+
+		function browserType(){
+		    var text = '';
+		    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+		    var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+		    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+		    var isEdge = userAgent.indexOf("Edge") > -1; //判断是否IE的Edge浏览器
+		    var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+		    var isSafari = userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") == -1; //判断是否Safari浏览器
+		    var isChrome = userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Safari") > -1; //判断Chrome浏览器
+
+		    if (isIE) {
+		        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+		        reIE.test(userAgent);
+		        var fIEVersion = parseFloat(RegExp["$1"]);
+		        if(fIEVersion == 7) return "IE7"
+		        else if(fIEVersion == 8) return "IE8";
+		        else if(fIEVersion == 9) return "IE9";
+		        else if(fIEVersion == 10) return "IE10";
+		        else if(fIEVersion == 11) return "IE11";
+		        else return "IE7以下"//IE版本过低
+		    }
+
+		    if (isFF) { text = "FF" } ;
+		    if (isOpera) { text = "Opera" } ;
+		    if (isEdge) { text = "Edge" } ;
+		    if (isSafari) { text = "Safari" } ;
+		    if (isChrome) { text = "Chrome" } ;
+
+		    return text;
+		}
+				
+	</script>
+</body>
+</html>
