@@ -216,3 +216,20 @@ function getYearOfDay (time) {
     var numSecond = (new Date(lastDayYear).getTime() - new Date(firstDayYear).getTime())/1000;
     return Math.ceil(numSecond/(24*3600));
 }
+
+/**
+ * 获取某个日期是当年中的第几天
+ * 
+ * @param  {time} 日期字符串 String
+ * @return {day} 天数  Number
+ *
+ * @example formatTime('2018/7/6') // -> 365
+ * @注意 如果日期字符串只到天，返回结果需要加一
+ */
+
+function getDayOfYear (time) {
+
+    var firstDayYear = getFirstDayOfYear(time);
+    var numSecond = (new Date(time).getTime() - new Date(firstDayYear).getTime())/1000;
+    return Math.ceil(numSecond/(24*3600));
+}

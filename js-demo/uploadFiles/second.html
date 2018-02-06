@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传文件（二）</title>
+</head>
+<body>
+	<div class="box">
+		<input type="file" id="upload-inpt" name="file" style="display: none" accept="image/*" onchange="uploadFiles(this.files)" multiple accept=".jpg"/>
+		<label for="upload-inpt">点我上传文件</label>
+	</div>
+
+	<script>
+			
+		//利用label和input的联动特性来触发
+		function uploadFiles(files) {
+			console.log('触发事件了。。。', files)
+		}				
+	</script>
+</body>
+</html>

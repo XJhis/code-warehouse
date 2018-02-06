@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传文件（一）</title>
+</head>
+<body>
+	<div class="box">
+		<input type="file" id="upload-inpt" name="file" style="display: none" accept="image/*" onchange="uploadFiles(this.files)" multiple accept=".jpg"/>
+		<button id="upload-btn" type="button">点我上传文件</button>
+	</div>
+
+	<script>
+		//用隐藏input表单，通过触发input.click()来上控制
+		window.onload = function() {
+			var btn = document.querySelector('#upload-btn'),
+				inpt = document.querySelector('#upload-inpt');
+
+			btn.addEventListener('click', function(e) {
+
+				inpt && inpt.click();
+
+			})
+
+		}
+
+		function uploadFiles(files) {
+			console.log('触发事件了。。。', files)
+		}
+
+
+				
+	</script>
+</body>
+</html>
