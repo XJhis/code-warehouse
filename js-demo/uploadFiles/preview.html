@@ -83,7 +83,7 @@
 			    preview.appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
 			    
 			    var reader = new FileReader();
-			    reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+			    reader.onload = (function(img) { return function(e) { img.src = e.target.result; }; })(img);
 			    reader.readAsDataURL(file);
 		    }
 		}
