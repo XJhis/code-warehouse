@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开始使用</title>
+</head>
+<body>
+	<div id="demo-box">
+		<canvas id="my-canvas" style="background: #999; opacity: 0.7">
+			<p>您的浏览器不支持画布</p>
+		</canvas>
+	</div>
+	
+	<script>
+		window.onload = function() {
+			// set()
+			// setSan()
+			setGu1()
+		}
+
+		function setGu() {
+			var canvas = document.querySelector('#my-canvas');
+			if (!canvas.getContext) { return alert('您的浏览器不支持画布') };
+			var ctx = canvas.getContext('2d');
+
+			//画一个矩形
+
+			// ctx.fillRect(0, 0, 100, 100);
+
+			// ctx.clearRect(10, 10, 80, 80)
+
+			// ctx.strokeRect(20, 20, 50, 50)
+
+			ctx.beginPath();
+		    ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+		    ctx.moveTo(110,75);
+		    ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+		    ctx.moveTo(65,65);
+		    ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+		    ctx.moveTo(95,65);
+		    ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+		    ctx.stroke();
+
+
+
+		}
+
+		function setSan() {
+			var canvas = document.querySelector('#my-canvas');
+			if (!canvas.getContext) { return alert('您的浏览器不支持画布') };
+			var ctx = canvas.getContext('2d');
+
+			ctx.beginPath();
+			ctx.moveTo(100, 100);
+			ctx.lineTo(200, 100);
+			ctx.lineTo(150, 50);
+			ctx.lineTo(150, 50);
+
+			ctx.fill();
+		}
+
+		function setGu1() {
+			var canvas = document.querySelector('#my-canvas');
+			if (!canvas.getContext) { return alert('您的浏览器不支持画布') };
+			var ctx = canvas.getContext('2d');			
+
+			ctx.beginPath();
+		    ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+		    ctx.moveTo(110,75);
+		    ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+		    ctx.moveTo(65,65);
+		    ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+		    ctx.moveTo(95,65);
+		    ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+		    ctx.stroke();
+		}
+	</script>
+</body>
+</html>
