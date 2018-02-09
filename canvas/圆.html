@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>开始使用</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #my-canvas {
+        background: #e8e8e8;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <canvas id="my-canvas">
+            您的浏览器不支持cancas!!!
+        </canvas>
+    </div>
+    <script>
+    window.onload = function() {
+        // paintSan()
+
+        // draw()
+        draw1()
+
+    }
+
+    function paintSan() {
+        var canvas = document.querySelector('#my-canvas');
+        if (!canvas.getContext) { return console.log('您的浏览器不支持canvas') }
+
+        var ctx = canvas.getContext('2d');
+
+        ctx.arc(100, 100, 50, 0, Math.PI * 5 / 4, true);
+
+        ctx.stroke()
+
+
+    }
+
+    function draw() {
+        var canvas = document.getElementById('my-canvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            //三次贝塞尔曲线
+            ctx.beginPath();
+            ctx.moveTo(75, 40);
+            ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+            ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+            ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+            ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+            ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+            ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+            ctx.fillStyle = 'orange'
+            ctx.fill();
+        }
+    }
+
+    function draw1() {
+      var ctx = document.getElementById('my-canvas').getContext('2d');
+      for (var i=0;i<6;i++){
+        for (var j=0;j<6;j++){
+          ctx.strokeStyle  = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
+                           Math.floor(255-42.5*j) + ',0)';
+       		ctx.beginPath();
+
+          ctx.strokeRect(j*25,i*25,25,25);
+          ctx.stroke();
+        }
+      }
+    }
+    </script>
+</body>
+
+</html>
