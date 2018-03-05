@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>页面加载问题</title>
+</head>
+
+<body>
+    <!-- <script>
+		function init() {
+			var inpt = document.querySelector('.box input');
+			console.log('ddddddd', inpt)
+		}
+
+		// document.addEventListener('readystatechange', function(e) {
+		// 	if (document.readyState === 'complete') {
+		// 		init()
+		// 	}
+
+		// })
+
+		init()		
+
+		window.onload = function() {
+		}
+		
+	</script> -->
+    <div class="box">
+        <form action="">
+            <input type="text" placeholder="溜了溜了">
+            <br>
+            <button>点我啊</button>
+        </form>
+    </div>
+    <script>
+    const log = console.log;
+    // {
+    // 	var a;
+    // 	a.length  //报错：Uncaught TypeError: Cannot read property 'length' of undefined
+    // }
+
+    // {
+    // 	var b = {};
+    // 	b.name //不报错 undefined
+    // 	b.foo() //报错 Uncaught TypeError: b.foo is not a function
+    // }		
+
+    // 16进制颜色代码生成
+    // function getColor() {
+    //     return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).slice(-6)
+    // }
+
+    // console.log(getColor())
+
+    // //驼峰命名转下划线
+    // function formatStr(str) {
+    //     return str.match(/^[a-z][a-z0-9]+|[A-Z][a-z0-9]*/g).join('_').toLowerCase()
+    // }
+
+    // console.log(formatStr('resumeCtrl'))
+
+
+    // {
+    //     let foo = [1, ['-1', '-0'], 2];
+    //     let res = eval('[' + foo + ']')
+
+    //     log(res)
+    // }
+
+    // JSON.parse(`[${JSON.stringify(foo).replace(/\[|]/g, '')}]`);
+
+    // {
+
+    // }
+
+    // 方法一
+    // function format1(x, y) {
+    //     var z = {
+    //             y: x.getFullYear(),
+    //             M: x.getMonth() + 1,
+    //             d: x.getDate(),
+    //             h: x.getHours(),
+    //             m: x.getMinutes(),
+    //             s: x.getSeconds()
+    //         };
+
+    //     log(z);
+
+    //     return y.replace(/(y+|M+|d+|h+|m+|s+)/g, function(v) {
+    //     	log(v, v.length, ( (v.length >1 ? "0" : "" ) + eval( 'z.' + v.slice(-1) )))
+
+    //         return ((v.length >1 ? "0" : "" ) + eval('z.' + v.slice(-1))).slice(-(v.length > 2 ? v.length :2))
+    //     });
+    // }
+
+    // log( format1(new Date('2018/12/1 12:12'), 'yyyy-M-d hh:mm') );
+
+    // 日期格式化
+
+    function formatDate(x, y) {
+
+		var z = {
+		    y: x.getFullYear(),
+		    M: x.getMonth() + 1,
+		    d: x.getDate(),
+		    h: x.getHours(),
+		    m: x.getMinutes(),
+		    s: x.getSeconds()
+		};	
+
+		y.replace(/(y+|M+|d+|h+)/)
+
+    }
+
+
+    </script>
+</body>
+
+</html>
