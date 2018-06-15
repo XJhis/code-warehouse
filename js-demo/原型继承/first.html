@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型继承</title>
+</head>
+<body>
+	
+
+	<script>
+		const log = console.log;
+
+		function Person(value) {
+			this.name = value.name || 'xjh';
+			this.skin = value.skin || 'yellow';
+			this.sayName = function() {
+				alert(111)
+			}
+		}
+
+		// Person.prototype = {
+		// 	constructor: Person,
+		// 	sayName() {
+		// 		alert(this.name)
+		// 	}
+		// }
+
+		// Person.prototype.sayName = function() {
+		// 	alert(222)
+		// }
+
+		var myPerson = new Person({name: '熊炬辉'});
+
+		// myPerson.sayName = function() {
+		// 	alert(666)
+		// }
+
+		log(myPerson)
+
+
+	</script>
+</body>
+</html>

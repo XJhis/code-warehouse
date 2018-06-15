@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css导航</title>
+	<style scss>
+		公共导航浮层
+		.common-floatnav {
+		  background: #ffffff;
+		  position: fixed;
+		  left: 0;
+		  top: 100px;
+		  z-index: 1000;
+		  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.06);
+		  padding: 5px 0;
+		  transition: left 0.5s;
+
+		  .on-off {
+		    //按钮
+		    position: absolute;
+		    margin-top: -30px;
+		    top: 50%;
+		    left: 120px;
+		    width: 30px;
+		    height: 60px;
+		    border-radius: 0 30px 30px 0;
+		    background: #fff;
+		    z-index: -10;
+		    cursor: pointer;
+		    box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.06);
+		    i {
+		      position: relative;
+		      top: 20px;
+		      color: #ff6b00;
+		      font-size: 18px;
+		      transition: all 0.5s;
+		      &.turn-around {
+		        transform: rotate(180deg);
+		      }
+		    }
+		  }
+
+		  .list {
+		    width: 120px;
+		    li {
+		      position: relative;
+		      background: #ffffff;
+		      &:hover {
+		        a.tab {
+		          background: #fafafa;
+		          border-top: 1px solid #e4e4e4;
+		          border-bottom: 1px solid #e4e4e4;
+		        }
+		        .more-cont {
+		          left: 120px;
+		        }
+		      }
+
+		      &.active {
+		        a.tab {
+		          background: #fafafa;
+		        }
+		      }
+
+		      a.tab {
+		        display: block;
+		        line-height: 38px;
+		        border: 1px solid transparent;
+		        text-align: center;
+		      }
+
+		      .more-cont {
+		        transition: left 1s;
+		        width: 400px;
+		        background: #fafafa;
+		        border: 1px solid #e4e4e4;
+		        border-left: 0;
+		        position: absolute;
+		        top: 0;
+		        left: -281px;
+		        z-index: -5;
+		        min-height: 38px;
+		        padding: 2px 15px;
+		        .item a {
+		          padding: 0 5px;
+		          display: block;
+		          height: 34px;
+		          line-height: 34px;
+		          font-size: 12px;
+		          & > span {
+		            text-align: center;
+		            display: block;
+		            max-width: 80%;
+		            overflow: hidden;
+		            text-overflow: ellipsis;
+		            white-space: nowrap;
+		            float: left;
+		          }
+		        }
+		      }
+		    }
+		  }
+	</style>
+</head>
+<body>
+	<!-- 公共浮层 -->
+<div class="common-floatnav hide" :class="{'take-hide': hideNav}">
+    <ul class="list">
+        <li class="active">
+            <a href="javascript:void(0)" class="tab">首页</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tab">简历管理</a>
+            <div class="more-cont">
+                <el-row :gutter="0">
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)"><span>简历我的</span><el-badge class="mark f-l" :value="3" /></a></el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)"><span>我的收藏简历我的收藏简历我的收藏简历</span><el-badge class="mark f-l" :value="3" /></a></el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)"><span>我的收藏简历我的收藏简历我的收藏简历</span><el-badge class="mark f-l" :value="3" /></a></el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)"><span>我的收藏简历我的收藏简历我的收藏简历</span><el-badge class="mark f-l" :value="3" /></a></el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)"><span>我的收藏简历我的收藏简历我的收藏简历</span><el-badge class="mark f-l" :value="3" /></a></el-col>
+                </el-row>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tab">客户管理</a>
+            <div class="more-cont">
+                <el-row :gutter="0">
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                </el-row>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tab">职位管理</a>
+            <div class="more-cont">
+                <el-row :gutter="0">
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                </el-row>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tab">推荐管理</a>
+            <div class="more-cont">
+                <el-row :gutter="0">
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                </el-row>
+            </div>
+        </li>
+        <li>
+            <a href="javascript:void(0)" class="tab">绩效管理</a>
+            <div class="more-cont">
+                <el-row :gutter="0">
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">公共简历库</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">我的收藏简历</a> </el-col>
+                    <el-col :span="8" class="t-c item"><a href="javascript:void(0)">你在说什么</a> </el-col>
+                </el-row>
+            </div>
+        </li>
+    </ul>
+    <div class="on-off" @click="showMore">
+        <i class="el-icon-d-arrow-left" :class="{'turn-around': hideNav}"></i>
+        <i class="el-icon-d-arrow-right" v-if="hideNav"></i>
+    </div>
+</div>
+</body>
+</html>

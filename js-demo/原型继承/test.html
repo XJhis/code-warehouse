@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型继承</title>
+</head>
+<body>
+	
+
+	<script>
+		const log = console.log;
+
+		function MyError(msg) {
+			this.message = msg
+		}
+
+		MyError.prototype = new Error();
+
+		var one = new MyError('新的错误信息');
+
+		log(one);
+
+
+	</script>
+</body>
+</html>
