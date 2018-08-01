@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>form表单提交</title>
+</head>
+
+<body>
+    <form action="login.do?act=login" method="post">
+        用户帐号
+        <input type=text name="userId" size="18" value="">
+        <br> 登录密码
+        <input type="password" name="password" size="19" value="" />
+        <!-- <input type=submit name="submit1" value="登陆" onclick="return check(this.form)"> -->
+        <!-- 如果是提交按钮，在其点击事件中return false,则不会默认提交表单，反之则能正常提交 -->
+        <!-- 同理a链接也是 -->
+        <!-- <input type=submit name="submit1" value="登陆" onclick="return true"> -->
+        <a href="//www.baidu.com" onclick="return true">asdasdads</a>
+    </form>
+
+    <script type="text/javascript">
+	    function check(form) {
+	        if (form.userId.value == '') {
+	            alert("请输入用户帐号!");
+	            form.userId.focus();
+	            return false;
+	        }
+	        if (form.password.value == '') {
+	            alert("请输入登录密码!");
+	            form.password.focus();
+	            return false;
+	        }
+	        return true;
+	    }
+    </script>
+</body>
+
+</html>
