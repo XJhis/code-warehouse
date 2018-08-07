@@ -7,5 +7,6 @@ var handle = {};
 handle['/'] = requestHandlers.start;
 handle['/start'] = requestHandlers.start;
 handle['/upload'] = requestHandlers.upload;
+handle['notFound'] = requestHandlers.notFound;
 
 server.start(router.route, handle);
