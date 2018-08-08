@@ -1,4 +1,5 @@
 var exec = require("child_process").exec;
+var querystring = require("querystring");
 
 function start(response, postData) {
     var content = "empty";
@@ -25,7 +26,7 @@ function start(response, postData) {
 
 function upload(response, postData) {
     response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.write('你上传的文字是：', postData);
+    response.write('you asd asd：'+querystring.parse(postData).text);
     response.end();
 }
 
