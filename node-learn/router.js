@@ -1,8 +1,8 @@
-function route(handle, pathname, response, postData) {
+function route(handle, pathname, response, postData, request) {
     if (typeof handle[pathname] === 'function') {
-        return handle[pathname](response, postData);
+        return handle[pathname](response, request);
     } else {
-        handle.notFound(response, postData)
+        handle.notFound(response)
     }
 }
 
