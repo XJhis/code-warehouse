@@ -7,14 +7,8 @@ function start(route, handle) {
          pathname = url.parse(request.url).pathname;
 
         request.setEncoding("utf8");
-
-        request.on("data", function(postDataChunk) {
-            postData += postDataChunk;            
-        });
-
-        request.on("end", function() {
-            route(handle, pathname, response, postData, request);
-        });
+        
+        route(handle, pathname, response, postData, request);
 
     }
 

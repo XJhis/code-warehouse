@@ -31,29 +31,33 @@ function start(response, postData) {
 function upload(response, request) {
     // response.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
     // response.write("You've sent the text:" + querystring.parse(postData).text);
-    // response.end();
+    // response.end();    
+    request.setEncoding("binary")
 
     var form = new formidable.IncomingForm();
     form.parse(request, function(error, fields, files) {
-        console.log("上传完毕:", files);
-        fs.renameSync(files.upload.path, "/tmp/test.png");
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.write("received image:<br/>");
-        response.write("<img src='/show' />");
-        response.end();
+        console.log("parsing done:files:", files);
+        // fs.renameSync(files.upload.path, "/tmp/test.png");
+        fs.writeFile(`/tmp/test.png`, files.upload, 'binary', (error) => {
+            if (error) {
+                console.log('下载失败');
+            } else {
+                console.log('下载成功！')
+                response.writeHead(200, { "Content-Type": "text/html" });
+                response.write("received image:<br/>");
+                response.write("<img src='/show' />");
+                response.end();
+            }
+        })
+
+        
+
+        
     });
+
 }
 
-//404页面
-function notFound(response) {
-    var body = `
-        <h1 style="color:#ff6b00">404 Not Found</h1>
-    `
-    response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-    response.write(body);
-    response.end();
-}
-
+//展示图片
 function show(response, postData) {
     fs.readFile('/tmp/test.png', 'binary', function(err, file) {
         if (err) {
@@ -68,7 +72,15 @@ function show(response, postData) {
     })
 }
 
-
+//404页面
+function notFound(response) {
+    var body = `
+        <h1 style="color:#ff6b00">404 Not Found</h1>
+    `
+    response.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+    response.write(body);
+    response.end();
+}
 
 module.exports = {
     start,

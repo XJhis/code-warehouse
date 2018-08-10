@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form表单提交</title>
+	<style>
+		.box>form {
+			width: 400px;
+			margin: 30px auto;
+			border: 2px solid #f6f6f6;
+			padding: 20px 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<form action="/upload" method="post">
+			<p>
+				<label for="">姓名：</label>
+				<input type="text" name="name">
+			</p>
+			<p>
+				<label for="">年龄：</label>
+				<input type="text" name="age">
+			</p>
+			<p>
+				<input type="checkbox" name="like" value="1">吃
+				<input type="checkbox" name="like" value="2">睡
+				<input type="checkbox" name="like" value="3">玩
+			</p>
+			<p><input type="submit" value="提交信息"></p>
+		</form>
+	</div>
+</body>
+</html>
