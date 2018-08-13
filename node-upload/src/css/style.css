@@ -1,0 +1,21 @@
+* {margin: 0; padding: 0;}
+
+.form-box {
+	margin: 30px auto;
+	width: 400px;
+	padding: 30px;
+	border:1px solid #f5f5f5;
+}
+
+.form-box .group {
+	margin-bottom: 15px;
+}
+
+.form-box .group:last-child {
+	margin-bottom: 0px;
+}
+
+.commit {
+	text-align: center;
+	
+}

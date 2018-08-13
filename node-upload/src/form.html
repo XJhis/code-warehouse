@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单提交</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<form class="form-box" action="/send" method="post">
+		<div class="group">姓名： <input type="text" name="name"/></div>
+		<div class="group">年龄： <input type="text" name="age"/></div>
+		<div class="group">
+			爱好： <input type="checkbox" name="like" value="1"/>吃
+			<input type="checkbox" name="like" value="2"/>喝
+			<input type="checkbox" name="like" value="3"/>睡
+		</div>
+		<div class="group commit">
+			<button type="submit"> 提交 </button>
+		</div>
+	</form>
+</body>
+</html>

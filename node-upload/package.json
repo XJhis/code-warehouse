@@ -1,0 +1,17 @@
+{
+  "name": "node-upload-demo",
+  "version": "1.0.0",
+  "description": "how to use node to upload image",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "xjh",
+  "license": "ISC",
+  "devDependencies": {
+    "formidable": "^1.2.1"
+  }
+}
