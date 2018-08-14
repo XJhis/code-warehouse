@@ -16,6 +16,13 @@
 }
 
 .commit {
-	text-align: center;
+	padding-left: 50px;
 	
+}
+
+.commit>button {
+	padding: 4px 10px;
+	border-radius: 4px;
+	background: #ff6b00;
+	color: #fff;
 }
