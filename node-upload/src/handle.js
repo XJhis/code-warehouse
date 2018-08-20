@@ -57,6 +57,7 @@ function uploadFiles(req, res) {
     form.parse(req, function(err, fields, files) {
         if (err) throw err;
         var oldpath = files.uploadImg.path;
+        console.log(oldpath, )
         var newpath = path.join(path.dirname(oldpath), files.uploadImg.name);
         fs.rename(oldpath, newpath, (err) => {
             if (err) throw err;
