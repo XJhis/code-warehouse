@@ -1,13 +1,9 @@
 var url = require('url');
-var handleFn = require('./handle');
-var handle = {};
-handle['/'] = handleFn.upload;
-handle['/upload'] = handleFn.upload;
-handle['/style.css'] = handleFn.css;
+var handle = require('./handle');
 
 function route(req, res) {
 	var pathname = url.parse(req.url).pathname;
-	console.log('req:', req.url)
+	// console.log('req:', req.url)
     if (typeof handle[pathname] === 'function') {
         return handle[pathname](req, res);
     } else {
