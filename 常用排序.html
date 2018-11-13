@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		var arr = [11, 22, 2, 5, 12, 90, 20, 43];
+
+        //选择排序        
+        function selectSort(arr, type) {
+            var type = type || 1;
+            for (var i = 0; i < arr.length-1; i++) {
+                var min = i;
+
+                for (var j = i + 1; j < arr.length; j++) {
+
+                    if (type == 1) {
+                        if (arr[j] < arr[min]) {
+                            var temp = arr[min];
+                            arr[min] = arr[j];
+                            arr[j] = temp
+                        } 
+                    }
+
+                    if (type == -1 ) {
+                        if (arr[j] > arr[min]) {
+                            var temp = arr[min];
+                            arr[min] = arr[j];
+                            arr[j] = temp
+                        }
+                    }
+                    
+                    
+                }
+            }
+
+            return arr;
+        }
+
+        //冒泡排序
+        function bubbling(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                
+                for (var i = 0; i < .length; i++) {
+                    [i]
+                }
+            }
+        }
+
+	</script>
+</body>
+</html>
