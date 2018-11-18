@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+    <title>myVue</title>
+</head>
+<style>
+    #app {
+    text-align: center;
+  }
+</style>
+
+<body></body>
+<script>
+    var obj = {},
+        nameVal = '';
+
+    Object.defineProperty(obj, 'name', {
+        set: function(val) {
+            nameVal = val
+        },
+        get: function () {
+            return `名字叫${nameVal}`
+        }
+    })
+
+    obj.name = '熊炬辉';
+
+    console.log(obj.name, obj)
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<head>
+    <title>myVue</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0
+}
+
+#app {
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+}
+</style>
+
+<body>
+    <div id="app">
+        <input type="text" id="a" v-model="text">
+        {{text}}
+    </div>
+</body>
+<script>
+//文档片段，一个存储dom节点的容器，对dom操作效率高 document.createDocumentFragment()
+// var flag = document.createDocumentFragment(),
+//     span = document.createElement('span'),
+//     textNode = document.createTextNode('hello world');
+// span.appendChild(textNode);
+// flag.appendChild(span);
+// document.querySelector('#app').appendChild(flag);
+
+
+
+// function nodeToFragment(node) {
+//     var flag = document.createDocumentFragment();
+//     var child;
+//     while (child = node.firstChild) {
+//         flag.appendChild(child);
+//     }
+
+//     console.log(flag)
+//     return flag;
+// }
+
+// var dom = nodeToFragment(document.getElementById('app'));
+// // console.log(dom);
+
+// document.getElementById('app').appendChild(dom);
+
+
+function compile(node, vm) {
+    var reg = /\{\{(.*)\}\}/;
+
+    // 节点类型为元素
+    if (node.nodeType === 1) {
+        var attr = node.attributes;
+        // 解析属性
+        for (var i = 0; i < attr.length; i++) {
+            if (attr[i].nodeName == 'v-model') {
+                var name = attr[i].nodeValue; // 获取v-model绑定的属性名
+
+                node.addEventListener('input', function(e) {
+                    // 给相应的data属性赋值，进而触发属性的set方法
+                    vm[name] = e.target.value;
+                })
+
+                node.value = vm.data[name]; // 将data的值赋值给该node
+                node.removeAttribute('v-model');
+            }
+        }
+    }
+
+    // 节点类型为text
+    if (node.nodeType === 3) {
+        if (reg.test(node.nodeValue)) {
+            console.log(node.nodeValue)
+            var name = RegExp.$1; // 获取匹配到的字符串
+            name = name.trim();
+            node.nodeValue = vm.data[name]; // 将data的值赋值给该node
+        }
+    }
+}
+
+function nodeToFragment(node, vm) {
+    var flag = document.createDocumentFragment();
+    var child;
+    while (child = node.firstChild) {
+        compile(child, vm);
+        flag.appendChild(child);
+    }
+
+    return flag;
+}
+
+
+// vue构造函数
+function Vue(options) {
+
+    this.data = options.data;
+    observe(this.data, this);
+    var dom = nodeToFragment(document.getElementById(options.el), this);
+    document.getElementById(options.el).appendChild(dom)
+
+}
+
+function observe(obj, vm) {
+    Object.keys(obj).forEach(function(key) {
+        defineReactive(vm, key, obj[key]);
+    });
+}
+
+function defineReactive(obj, key, val) {
+    // 响应式的数据绑定
+    Object.defineProperty(obj, key, {
+        get: function() {
+            return val;
+        },
+        set: function(newVal) {
+            if (newVal === val) {
+                return;
+            } else {
+                val = newVal;
+                console.log(val); // 方便看效果
+            }
+        }
+    });
+}
+
+var vm = new Vue({
+    el: 'app',
+    data: {
+        text: 'hello world'
+    }
+});
+</script>
