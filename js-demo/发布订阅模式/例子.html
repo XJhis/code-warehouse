@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布订阅模式1</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Event() {
+		this.obj = {}
+	}
+
+	Event.prototype.on = function(type, fn) {
+
+		if (!this.obj[type]) {
+			this.obj[type] = []
+		};
+
+		this.obj[type].push(fn);
+	}
+
+	Event.prototype.emit = function(...rest) {
+		//1：可以取到订阅的事件名字 2：可以将首个参数过滤掉，获得后面的参数
+		// var type = Array.prototype.shift.call(arguments); 
+
+		//es6写法
+		var type = rest.shift(); 
+
+		this.obj[type].forEach( fn => {
+			fn.apply(fn, rest)
+		} )
+
+	}
+
+	var ev = new Event();
+
+	ev.on('click', (...rest) => {
+		console.log('click执行了:::', rest)
+	})
+
+	ev.on('click', (...rest) => {
+		console.log('asdasdad', rest)
+	})
+
+	console.log(ev)
+
+	ev.emit('click',{name: 1})
+
+</script>
+</html>

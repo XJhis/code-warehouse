@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+    <title>myVue</title>
+</head>
+<style>
+#app {
+    text-align: center;
+}
+</style>
+
+<body>
+</body>
+<script>
+
+//    
+let event = {
+    clientList: {}, //缓存所有订阅消息
+    listen(key, fn) {
+        if (!this.clientList[key]) {
+            this.clientList[key] = [];
+        }
+
+        this.clientList[key].push(fn);
+
+    },
+    trigger(type, money) {
+        let arr = this.clientList[type];
+
+        if (!arr || !arr.length) { return false };
+
+        // console.log('this:', this)
+
+        arr.forEach(fn => {
+            fn.apply(this, [money])
+        })
+
+    },
+}
+
+//安装订阅模式
+let installEvent = obj => {
+    for (let i in event) {
+        obj[i] = event[i]
+    }
+}
+
+//售楼处对象
+let salesOffices = {};
+
+installEvent(salesOffices);
+
+// 小明订阅信息
+salesOffices.listen('squareMeter88', function (price){
+    console.log('小明，你看中的88平方的房子，价格=' + price)
+    console.log('小明this=====：', this)
+})
+
+// 小光订阅信息
+salesOffices.listen('squareMeter88', price => {
+    console.log('小光，你看中的88平方的房子，价格=' + price)
+})
+
+// 小红订阅信息
+salesOffices.listen('squareMeter100', price => {
+    console.log('小红，你看中的100平方的房子，价格=' + price)
+})
+
+
+salesOffices.trigger('squareMeter88', 2000000);
+
+salesOffices.trigger('squareMeter100', 2500000)
+
+
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素妙用</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    .box {
+    	padding: 0 100px;
+    }
+
+    a {
+        position: relative;
+        display: inline-block;
+        outline: none;
+        text-decoration: none;
+        color: #000;
+        font-size: 32px;
+        padding: 5px 10px;
+    }
+
+    a:hover::before,
+    a:hover::after {
+        position: absolute;
+    }
+
+    a:hover::before {
+        content: "\263A";
+        left: -20px;
+    }
+
+    a:hover::after {
+        content: "\00BD";
+        right: -20px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <a href="" class="link">职位</a>
+    </div>
+</body>
+
+</html>

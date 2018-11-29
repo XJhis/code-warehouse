@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+    <title>myVue</title>
+</head>
+<style>
+    #app {
+    text-align: center;
+  }
+</style>
+
+<body>
+    <div id="app">
+        <form>
+            <input type="text" v-model="number">
+            <button type="button" v-click="increment">增加</button>
+        </form>
+        <h3 v-bind="number"></h3>
+        <h3 v-bind="isShow"></h3>
+    </div>
+</body>
+<script>
+function defineReactive(data, key, val) {
+    observe(val);
+    Object.defineProperty(data, key, {
+        configurable: true,
+        enumerable: true,
+        get: function() {
+            return val;
+        },
+        set: function(newVal) {
+            val = newVal;
+            console.log(`${key}新的数据为${newVal}`)
+        }
+    })
+}
+
+function observe(data) {
+    if (!data || typeof data !== 'object') {
+        return;
+    }
+
+    Object.keys(data).forEach(function(key) {
+        defineReactive(data, key, data[key]);
+    });
+};
+
+// 我的思维应该是这么递归
+function observes(data) {    
+    Object.keys(data).forEach(function(key) {
+        var value = data[key]
+
+        if (typeof data[key] === 'object') {
+            observes(data[key]);            
+        }
+        //这里不能放在上面一个else里面，因为即使属性的值为对象，
+        //我们也要给他监听这个属性有没有改变
+
+        Object.defineProperty(data, key, {
+            configurable: true,
+            enumerable: true,
+            get: function() {
+                return value;
+            },
+            set: function(newVal) {
+                value = newVal;
+                console.log(`${key}新的数据为${newVal}`)
+            }
+        })
+
+        
+    });
+};
+
+
+var oo = {
+    name: 'asd',
+    cont: {
+        id: 1,
+        age: 23
+    }
+}
+
+observes(oo)
+
+// oo.name = 'asd';
+// oo.cont = 12;
+</script>
