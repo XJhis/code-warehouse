@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+    <script>
+    const log = console.log;
+    // var obj = {};
+    // var ss = Object.create(null);
+    // ss.value = 'xjh';
+    // Object.defineProperty(obj, 'name', ss)
+    // console.log(obj)
+    // let obj = {};
+    // Object.defineProperty(obj, 'ss', {
+    // 	configurable: false,
+    // 	enumerable: true,
+    // 	writable: true,
+    // 	value: 'asdasdasd'
+    // })
+
+    // log(obj)
+
+    const person = {}; // 嘿嘿，谁都改不了我的名字
+
+    Object.defineProperty(person, 'name', {
+        get() {
+            return 'van';
+        },
+        set(v) {
+            console.log('they want change my name');
+        }
+    });
+    console.log(person.name); // van
+    person.name = 'tec';// they want change my nameconsole.log(person.name);// van
+    </script>
+</body>
+
+</html>
