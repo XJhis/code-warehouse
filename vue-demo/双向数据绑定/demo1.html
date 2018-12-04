@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实现双向数据绑定</title>
+    <style>
+        * {margin: 0; padding: 0}
+	</style>
+</head>
+
+<body>
+    
+    <h1 id="name">{{name}}</h1>
+    <script src="./js/observer.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script>    
+
+    function SelfVue(data, el, exp) {
+        this.data = data;
+
+        Object.keys(data).forEach(key => {
+            this.proxy(key)
+        })
+
+        observe(data);
+        el.innerHTML = this.data[exp]; // 初始化模板数据的值
+        new Watcher(this, exp, function(val, oldVal) {
+            console.log('新的：', val, '老的：',oldVal)
+            el.innerHTML = val;
+        });
+        // return this;
+    }    
+
+    SelfVue.prototype.proxy = function(key) {
+        var _this = this;
+        Object.defineProperty(this, key, {
+            enumberable: false,
+            configurable: true,
+            set: function(newVal) {
+                _this.data[key] = newVal;
+            },
+            get: function() {
+                return _this.data[key];
+            }
+        })
+    }  
+
+    var ele = document.querySelector('#name');
+    var selfVue = new SelfVue({
+        name: 'hello world',
+        age: 12,
+    }, ele, 'name');	
+
+    // window.setTimeout(function() {
+    //     console.log('name值改变了');
+    //     selfVue.data.name = 'canfoo';
+    // }, 2000);
+
+    </script>
+</body>
+
+</html>
