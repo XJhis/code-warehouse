@@ -180,7 +180,7 @@ function getMonthDays(year, month) {
 
 function getFirstDayOfYear(time) {
     var year = new Date(time).getFullYear();
-    return year + "-01-01 00:00:00";
+    return year + "/01/01 00:00:00";
 }
 
 /**
@@ -196,7 +196,7 @@ function getLastDayOfYear(time) {
     var year = new Date(time).getFullYear(),
         lastMonth = getMonthDays(year, 12);
 
-    return year + '-12-' +lastMonth + " 23:59:59";
+    return year + '/12/' + lastMonth + " 23:59:59";
 }
 
 /**
@@ -209,12 +209,12 @@ function getLastDayOfYear(time) {
  */
 
 /*获取某年有多少天*/
-function getYearOfDay (time) {
+function getYearOfDay(time) {
 
     var firstDayYear = getFirstDayOfYear(time);
     var lastDayYear = getLastDayOfYear(time);
-    var numSecond = (new Date(lastDayYear).getTime() - new Date(firstDayYear).getTime())/1000;
-    return Math.ceil(numSecond/(24*3600));
+    var numSecond = (new Date(lastDayYear).getTime() - new Date(firstDayYear).getTime()) / 1000;
+    return Math.ceil(numSecond / (24 * 3600));
 }
 
 /**
@@ -227,9 +227,65 @@ function getYearOfDay (time) {
  * @注意 如果日期字符串只到天，返回结果需要加一
  */
 
-function getDayOfYear (time) {
-
+function getDayOfYear(time) {
     var firstDayYear = getFirstDayOfYear(time);
-    var numSecond = (new Date(time).getTime() - new Date(firstDayYear).getTime())/1000;
-    return Math.ceil(numSecond/(24*3600));
+    var numSecond = (new Date(time).getTime() - new Date(firstDayYear).getTime()) / 1000;
+    return Math.ceil(numSecond / (24 * 3600));
+}
+
+//深拷贝1
+//能基本满足深拷贝的需求
+//缺点:当对象中有函数、undefined、正则、时间对象的时候，无法正确拷贝；
+function deepCopy1(val) {
+    return JSON.parse(JSON.stringify(val));
+}
+
+// 判断值得类型
+function judgeType(obj) {
+    // tostring会返回对应不同的标签的构造函数
+    const toString = Object.prototype.toString;
+    const map = {
+        '[object Boolean]': 'boolean',
+        '[object Number]': 'number',
+        '[object String]': 'string',
+        '[object Function]': 'function',
+        '[object Array]': 'array',
+        '[object Date]': 'date',
+        '[object RegExp]': 'regExp',
+        '[object Undefined]': 'undefined',
+        '[object Null]': 'null',
+        '[object Object]': 'object',
+    };
+    if (obj instanceof Element) {
+        return 'element';
+    }
+    return map[toString.call(obj)];
+}
+
+
+//深拷贝2
+function deepCopy2(data) {
+    var type = this.judgeType(data);
+    var obj;
+    if (type === 'array') {
+        obj = [];
+    } else if (type === 'object') {
+        obj = {};
+    } else {
+        // 不再具有下一层次
+        return data;
+    }
+    if (type === 'array') {
+        // eslint-disable-next-line
+        for (var i = 0, len = data.length; i < len; i++) {
+            obj.push(this.deepClone(data[i]));
+        }
+    } else if (type === 'object') {
+        // 对原型上的方法也拷贝了....
+        // eslint-disable-next-line
+        for (var key in data) {
+            obj[key] = deepCopy2(data[key]);
+        }
+    }
+    return obj;
 }

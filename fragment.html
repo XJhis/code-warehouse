@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {margin: 0 ;padding: 0;}
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1>我是标题</h1>
+		<span>我是span</span>
+		哈哈哈哈
+	</div>
+	<script>
+		function nodeToFragment (el) {
+		    var fragment = document.createDocumentFragment();
+		    var child = el.firstChild;
+		    while (child) {
+		    	console.log('child::',child);
+		        fragment.appendChild(child);
+		        child = el.firstChild
+		    }
+		    return fragment;
+		}
+
+		var dom = document.querySelector('#app');
+
+		var f = nodeToFragment(dom)
+	</script>
+</body>
+</html>
