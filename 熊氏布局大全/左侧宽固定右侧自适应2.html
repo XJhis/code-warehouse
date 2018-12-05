@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左侧宽固定右侧自适应</title>
+	<style>
+		* {margin: 0; padding: 0;}
+
+		.box {
+			width: 100%;
+			width: 1160px;
+			margin: 0 auto;
+		}
+
+		.left{
+			float: left;
+			width: 200px;
+			background-color: #ff0;
+			margin-right: 20px;
+		}
+
+		.right{
+			/* 注意 这里千万不能写width: 100%*/
+			width: auto;
+			overflow: auto;
+			background-color: #f0f;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left">
+			左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧
+			左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧左侧
+			
+		</div>
+		<div class="right">
+			哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒 
+			哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒哒 			 
+		</div>
+	</div>
+</body>
+</html>

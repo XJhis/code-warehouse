@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>深拷贝方法一</title>
+</head>
+<body>
+	<script>
+		function deepCopy(obj) {
+			var o;
+			switch (typeof obj) {
+				case 'undefined': break; 
+				case 'string': o = obj + ''; break; 
+				case 'number': o = +obj; break; 
+				case 'boolean': o = obj; break; 
+				case 'object': 
+					if (obj === null) {
+						o = null;
+					}else {
+						// if (Object.prototype.toString.call(obj)==='[object Array]') {
+						if (obj instanceof Array) {
+							o = [];
+							for (var i = 0; i < obj.length; i++) {
+								o[i] = deepCopy(obj[i]); 
+							}
+						}else {
+							o = {};
+							for(var name in obj) {
+								o[name] = deepCopy(obj[name])
+							}
+						}
+					}
+					break;
+				default: o = obj; break;
+			};
+
+			return o;
+		}
+	</script>
+</body>
+</html>
