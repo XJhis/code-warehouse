@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟vue的双向数据绑定</title>
+	<style>
+		* {margin: 0; padding: 0}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1>{{title}}</h1>
+		<p>{{name}}</p>
+	</div>
+	
+	<script src="./js/index.js"></script>
+	<script>
+		var vm = new SelfVue({
+			el: '#app',
+			data: {
+				title: '我是标题',
+				name: '你是搞笑的吧',
+			}
+		})
+	</script>
+</body>
+</html>
