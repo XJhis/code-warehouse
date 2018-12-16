@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的vue案例1</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h1>{{title}}</h1>
+		<p>{{name}}</p>
+	</div>
+
+	<script src="./js/index.js"></script>
+
+	<script>
+		var vm = new MyVue({
+			el: '#app',
+			data: {
+				name: '熊炬辉',
+				title: '我是标题'
+			}
+		})
+	</script>
+</body>
+</html>
