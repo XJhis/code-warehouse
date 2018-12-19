@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery是如何解决冲突的</title>
+</head>
+	
+	<script>
+		var $ = 123,
+			jQuery = 'asd';
+	</script>
+	<script src="./jquery-1.9.1.js"></script>
+<body>
+	
+	<script>
+		jQuery.noConflict();
+	</script>
+</body>
+</html>
