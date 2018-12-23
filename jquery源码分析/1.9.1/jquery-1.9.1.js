@@ -34,6 +34,7 @@
         location = window.location,
 
         // Map over jQuery in case of overwrite
+        // 将window下默认的jQuery赋值，避免后面被覆盖
         _jQuery = window.jQuery,
 
         // Map over the $ in case of overwrite
@@ -74,9 +75,11 @@
         // A simple way to check for HTML strings
         // Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
         // Strict HTML recognition (#11290: must start with <)
+        //正则：匹配html标签的字符串
         rquickExpr = /^(?:(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
         // Match a standalone tag
+        //正则：匹配html标签的字符串：单标签
         rsingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
 
         // JSON RegExp
@@ -91,6 +94,7 @@
 
         // Used by jQuery.camelCase as callback to replace()
         fcamelCase = function(all, letter) {
+            //将传进来的字母转为大写
             return letter.toUpperCase();
         },
 
@@ -137,6 +141,7 @@
                 } else {
                     match = rquickExpr.exec(selector);
                 }
+                    console.log('match::', match)
 
                 // Match html or make sure no context is specified for #id
                 if (match && (match[1] || !context)) {
@@ -381,10 +386,12 @@
 
     jQuery.extend({
         noConflict: function(deep) {
+            //判断$是否就是jQuery，确定$和jQuery就是本库的变量
             if (window.$ === jQuery) {
                 window.$ = _$;
             }
 
+            //deep为true时，释放jQuery变量控制权
             if (deep && window.jQuery === jQuery) {
                 window.jQuery = _jQuery;
             }
@@ -605,8 +612,10 @@
             }
         },
 
+
         // Convert dashed to camelCase; used by the css and data modules
         // Microsoft forgot to hump their vendor prefix (#9572)
+        // 将css属性转为驼峰 如:background-color ==> backgroundColor
         camelCase: function(string) {
             return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
         },
