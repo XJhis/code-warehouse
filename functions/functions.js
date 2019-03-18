@@ -135,9 +135,12 @@ function browserType() {
  */
 
 function formatTime(date, fmt) {
-    var date = new Date(date * 1);
+    var date = new Date(+date);
     if (/(y+)/.test(fmt)) {
+        console.log('RegExp.$1', RegExp.$1)
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+        console.log('sss:', (date.getFullYear() + '').substr(4 - RegExp.$1.length) )
+        console.log('fmt:', fmt)
     }
     let o = {
         'M+': date.getMonth() + 1,
@@ -147,6 +150,8 @@ function formatTime(date, fmt) {
         's+': date.getSeconds()
     };
     for (let k in o) {
+        console.log('new RegExp(`(${k})`)', new RegExp(`(${k})`))
+        console.log('RegExp.$1', RegExp.$1)
         if (new RegExp(`(${k})`).test(fmt)) {
             let str = o[k] + '';
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : ('00' + str).substr(str.length));
