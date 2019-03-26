@@ -1,6 +1,12 @@
 /* pages/index/index.wxss */
 page{
 	background: #fff;
+	color: #0ff;
+	font-size: 60rpx;
+	font-weight: 500; 
+}
+.sign button {
+	background: #0f0;
 }
  .close {
  	width: 40rpx;

@@ -1,0 +1,5 @@
+/* myComponents/test/index.wxss */
+
+:host {
+  color: yellow;
+}

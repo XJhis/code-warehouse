@@ -1,61 +1,62 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/agreement/index",
-        "pages/signInUp/index/index",
-        "pages/signInUp/setPass/index",
-        "pages/signInUp/findPass/index",
-        "pages/signInUp/up/index",
-        "pages/signInUp/upSetPass/index",
-        "pages/resume/operating/modifyOffer/index",
-        "pages/resume/operating/giveupWork/index",
-        "pages/resume/operating/leaveWork/index",
-        "pages/resume/operating/eval/index",
-        "pages/resume/operating/evalM/index",
-        "pages/resume/operating/evalOffer/index",
-        "pages/resume/operating/refuse/index",
-        "pages/resume/operating/refuseM/index",
-        "pages/resume/operating/unConfirm/index",
-        "pages/resume/operating/confirmWork/index",
-        "pages/resume/operating/faceAddress/index",
-        "pages/resume/operating/modifyFace/index",
-        "pages/resume/operating/offer/index",
-        "pages/resume/operating/startFace/index",
-        "pages/resume/list/index",
-        "pages/resume/eval/index",
-        "pages/resume/detail/index",
-        "pages/resume/search/index",
-        "pages/share/index/index",
-        "pages/share/detail/index",
-        "pages/share/operating/evaluate/index",
-        "pages/my/index",
-        "pages/download/index",
-        "pages/tools/salary/index"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "猎你网HR端丨让招聘更简单",
-        "navigationBarTextStyle": "black",
-        "backgroundTextStyle": "dark"
-    },
-    "tabBar": {
-        "color": "#7F8389",
-        "selectedColor": "#FF6B00",
-        "backgroundColor": "#fff",
-        "list": [
-            {
-                "pagePath": "pages/resume/list/index",
-                "text": "候选人",
-                "iconPath": "assets/img/list.png",
-                "selectedIconPath": "assets/img/list_active.png"
-            },
-            {
-                "pagePath": "pages/my/index",
-                "text": "我的",
-                "iconPath": "assets/img/my.png",
-                "selectedIconPath": "assets/img/my_active.png"
-            }
-        ]
-    },
-    "debug": false
+  "pages": [
+    "pages/index/index",
+    "pages/agreement/index",
+    "pages/signInUp/index/index",
+    "pages/signInUp/setPass/index",
+    "pages/signInUp/findPass/index",
+    "pages/signInUp/up/index",
+    "pages/signInUp/upSetPass/index",
+    "pages/resume/operating/modifyOffer/index",
+    "pages/resume/operating/giveupWork/index",
+    "pages/resume/operating/leaveWork/index",
+    "pages/resume/operating/eval/index",
+    "pages/resume/operating/evalM/index",
+    "pages/resume/operating/evalOffer/index",
+    "pages/resume/operating/refuse/index",
+    "pages/resume/operating/refuseM/index",
+    "pages/resume/operating/unConfirm/index",
+    "pages/resume/operating/confirmWork/index",
+    "pages/resume/operating/faceAddress/index",
+    "pages/resume/operating/modifyFace/index",
+    "pages/resume/operating/offer/index",
+    "pages/resume/operating/startFace/index",
+    "pages/resume/list/index",
+    "pages/resume/eval/index",
+    "pages/resume/detail/index",
+    "pages/resume/search/index",
+    "pages/share/index/index",
+    "pages/share/detail/index",
+    "pages/share/operating/evaluate/index",
+    "pages/my/index",
+    "pages/download/index",
+    "pages/tools/salary/index",
+    "myComponents/test/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "猎你网HR端丨让招聘更简单",
+    "navigationBarTextStyle": "black",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#7F8389",
+    "selectedColor": "#FF6B00",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/resume/list/index",
+        "text": "候选人",
+        "iconPath": "assets/img/list.png",
+        "selectedIconPath": "assets/img/list_active.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "assets/img/my.png",
+        "selectedIconPath": "assets/img/my_active.png"
+      }
+    ]
+  },
+  "debug": false
 }

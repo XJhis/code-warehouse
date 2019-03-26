@@ -1,64 +1,59 @@
 <!--pages/index/index.wxml-->
 <view class="sign">
-	<view wx:if="{{hidden}}">
-		<image class="img" mode="widthFix" src="../../assets/img/home_head.png"></image>
-
-		<!-- 企宣 -->
-		<view class="h1">智能化招聘全案服务商</view>
-
-		<view class="p">
-			<view class="p_icon"></view>
-			<view class="p_info">
-				<view class="h2">多样化的招聘方式</view>
-				<view class="sub">人力资源解决方案（BPO和RPO）和高端猎头服务</view>
-			</view>
-		</view>
-
-		<view class="p">
-			<view class="p_icon"></view>
-			<view class="p_info">
-				<view class="h2">免费的平台服务</view>
-				<view class="sub">人才简历下载和免费背景调查服务</view>
-			</view>
-		</view>
-
-		<view class="p">
-			<view class="p_icon"></view>
-			<view class="p_info">
-				<view class="h2">个性化的收费模式</view>
-				<view class="sub">“入职”和“到面”导向的招聘服务</view>
-			</view>
-		</view>
-		<view class="footer">
-			<image class="img img_footer" mode="widthFix" src="../../assets/img/home_footer.png"></image>
-			<view class="btn">
-				<button class="signUp" bind:tap="showSignUp">注册</button>
-				<button class="signIn" bind:tap="showSign">登录</button>	
-			</view>	
-		</view>
-		
-
-		<!-- hr默认 -->
-		<view class="sign-select" wx:if="{{show}}">
-			<view class="signInUp">
-				<view class="close" bind:tap="hideSign"></view>
-				<view class="title">登录/注册猎你网</view>
-			    <button wx:if="{{userShow}}" class="weixin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><i-icon class="icon" size="40" custom="i-weixin" />微信账号快速登录</button>
-			    <button wx:if="{{userShow && userType != 2}}" class="iphone" bind:tap="pwdSign"><i-icon class="icon" size="40" custom="i-iphone" color="#000" />手机号登录/注册</button>
-			</view>
-		</view>
-		
-		
+    <view wx:if="{{hidden}}">
+        <image class="img" mode="widthFix" src="../../assets/img/home_head.png"></image>
+        <my-test></my-test> 
+        <!-- 企宣 -->
+        <view class="h1">智能化招聘全案服务商</view>
+        <view class="p">
+            <view class="p_icon"></view>
+            <view class="p_info">
+                <view class="h2">多样化的招聘方式</view>
+                <view class="sub">人力资源解决方案（BPO和RPO）和高端猎头服务</view>
+            </view>
+        </view>
+        <view class="p">
+            <view class="p_icon"></view>
+            <view class="p_info">
+                <view class="h2">免费的平台服务</view>
+                <view class="sub">人才简历下载和免费背景调查服务</view>
+            </view>
+        </view>
+        <view class="p">
+            <view class="p_icon"></view>
+            <view class="p_info">
+                <view class="h2">个性化的收费模式</view>
+                <view class="sub">“入职”和“到面”导向的招聘服务</view>
+            </view>
+        </view>
+        <view class="footer">
+            <image class="img img_footer" mode="widthFix" src="../../assets/img/home_footer.png"></image>
+            <view class="btn">
+                <button class="signUp" bind:tap="showSignUp">注册</button>
+                <button class="signIn" bind:tap="showSign">登录</button>
+            </view>
+        </view>
+        <!-- hr默认 -->
+        <view class="sign-select" wx:if="{{show}}">
+            <view class="signInUp">
+                <view class="close" bind:tap="hideSign"></view>
+                <view class="title">登录/注册猎你网</view>
+                <button wx:if="{{userShow}}" class="weixin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                    <i-icon class="icon" size="40" custom="i-weixin" />微信账号快速登录</button>
+                <button wx:if="{{userShow && userType != 2}}" class="iphone" bind:tap="pwdSign">
+                    <i-icon class="icon" size="40" custom="i-iphone" color="#000" />手机号登录/注册</button>
+            </view>
+        </view>
     </view>
     <!-- am分享 -->
     <view class="share-modal" wx:if="{{isShare}}">
         <view class="modal">
-        	<!-- <view class="close" bind:tap="hideShare"></view> -->
+            <!-- <view class="close" bind:tap="hideShare"></view> -->
             <view class="title">点击下方“分享给HR”，HR可直接查看/操作报告</view>
             <image class="img" src="{{share.imageUrl}}"></image>
             <view class="btns">
                 <button class="weixin" open-type="share">分享给HR</button>
-            </view>    
+            </view>
         </view>
     </view>
 </view>
