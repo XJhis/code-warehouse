@@ -1,0 +1,175 @@
+/* 导航 */
+.tabs {
+    display: flex;
+    width: 100%;
+    height: 84rpx;
+    line-height: 84rpx;
+    box-sizing: border-box;
+    position: fixed;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-box-align: center;
+    background: #fff;
+}
+.tabs-tab {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    text-align: center;
+    position: relative
+}
+.tabs-tab-title{
+    font-size: 30rpx;
+    color: #303030;
+}
+.tabs-tab .active{
+    color: #ff6b00;
+    border-bottom: 4rpx solid #ff6b00;
+}
+/* 简历列表 */
+.resume-list {
+    padding-top: 104rpx;
+    background: #f6f6f6;
+}
+
+.resume-list .list-item {
+    background: #fff;
+    padding: 40rpx 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.list-item .first,
+.list-item .bottom {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.list-item .first .name {
+    flex: 130;
+    font-size: 34rpx;
+    box-sizing: border-box;
+}
+
+.list-item .first .job {
+    flex: 400;
+    font-size: 30rpx;
+    padding: 4rpx 0 0 16rpx;
+    box-sizing: border-box;
+}
+
+.list-item .first .tag {
+    flex: 200;
+    font-size: 30rpx;
+    position: relative;
+}
+.list-item .tag .icon {
+    position: absolute;
+    top: -32rpx;
+    right: -20rpx;
+}
+
+.list-item .second {
+    font-size: 24rpx;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 24rpx;
+    padding: 22rpx 0;
+    box-sizing: border-box;
+}
+
+.list-item .second >text {
+    float: left;
+    display: inline-block;    
+    padding: 0 18rpx;
+    border-left: 1px solid #f0f0f0;
+}
+
+.list-item .second>text:first-child {        
+    padding-left: 0;
+    border-left: none;
+}
+
+
+.list-item .bottom .recom-job {
+    flex: 540rpx;
+    font-size: 28rpx;
+    color: #666666;
+    letter-spacing: 0;
+    line-height: 28rpx;
+}
+
+.list-item .bottom .time {
+    font-size: 24rpx;
+    color: #999999;
+    text-align: right;
+    line-height: 24rpx;
+}
+
+
+/* 筛选 */
+
+.recom-select {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+    height: 96rpx;
+    padding: 20rpx 0;
+    background: #fff;
+}
+
+.recom-select .item {
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    width: 188rpx;
+    font-size: 28rpx;
+    color: #333333;
+    line-height: 56rpx;
+    border-right: 1px solid #CFCFCF;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 20rpx;
+}
+
+.recom-select .item.active {
+    color: #ff6b00;
+}
+
+.recom-select .item:last-child {
+    border: 0;
+}
+
+/* 暂无数据 */
+.no-data {
+	padding: 130rpx 0;
+	background: #fff;
+}
+
+.no-data image{
+	width: 150rpx;
+	height: 150rpx;
+}
+
+.no-data .text{
+	font-size: 30rpx;
+	color: #B4B4B4;
+	line-height: 30rpx;
+}
+
+/* 加载更多 */
+.load-more {
+    font-size: 28rpx; 
+    color: #666; 
+    padding: 10rpx 0;
+}

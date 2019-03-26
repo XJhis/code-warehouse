@@ -1,0 +1,45 @@
+<!--pages/signInUp/up/index.wxml-->
+<view class="login">
+    <!-- 内容 -->
+    <view class="login-title">
+    	<!-- <text class="item {{loginType==1 ? 'active':''}}" bindtap="changeLogin" data-type="1">验证码登录</text>|<text class="item {{loginType==2 ? 'active':''}}" bindtap="changeLogin" data-type="2">密码登录</text>	         -->
+    </view>
+    <view class="login-box">    	
+    	<!-- 验证码登录 -->
+    	<block>
+	    	<view class="login-cont login-padding-cont">
+	    		<view class="welcome"></view>
+				<view class="form-group">
+					<view class="name">公司全称</view>
+					<view class="item">
+						<input type="text" value="{{ codeForm.companyName }}" data-name="companyName" bindinput="changeData" maxlength="50" placeholder-class="place-holder" placeholder="请输入公司全称" />
+					</view>
+				</view>
+				<view class="form-group">
+					<view class="name">手机号</view>
+					<view class="item">
+						<input type="number" value="{{ codeForm.phone }}" data-name="phone" bindinput="changeData" maxlength="11" placeholder-class="place-holder" placeholder="请输入手机号码" />
+					</view>
+				</view>
+				<view class="form-group last msg">
+					<view class="name">短信验证码</view>
+					<view class="item">
+						<input type="number" value="{{ codeForm.code }}" data-name="code" bindinput="changeData" maxlength="6" placeholder-class="place-holder" placeholder="请输入短信验证码" />
+						<text wx:if="{{ codeForm.codeShow }}" class="get-code {{codeForm.codeDisabled ? 'sending' : ''}}"  data-status="{{ codeForm.codeDisabled }}" bindtap="getCode" >获取验证码</text>
+						<text wx:else class="get-code sending">{{codeForm.time}}秒后重新发送</text>
+					</view>
+				</view>
+				<view class="forget">
+				</view>
+				<view class="btn">
+					<button type="default" disabled="{{ codeForm.disabled }}" bindtap="codeFormSubmit"> 下一步 </button>
+				</view>
+	    	</view>
+    	</block>
+    	<!-- 背景 -->
+    	<view class="login-bg"></view>
+    </view>
+    <view class="agreement">注册即表示您同意《<navigator class="route orange" url="/pages/agreement/index" hover-class="none">用户协议</navigator>》</view>
+    
+</view>
+

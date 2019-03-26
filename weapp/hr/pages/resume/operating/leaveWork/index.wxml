@@ -1,0 +1,25 @@
+<view class="box">	
+	<form report-submit="true"  bindsubmit="formSubmit">
+		<view class="init">
+	        <i-cell-group i-class="plr">
+	            <i-cell title="离职时间" i-class="ptb col-line" is-link>
+	                <view slot="footer">
+	                    <picker name="unGuaranteedTime" mode="date" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+			              	<view class="tui-picker-detail">{{!date ? '请选择时间' : date}}</view>
+			            </picker>                 
+	                </view>
+	            </i-cell>
+	        </i-cell-group>
+	    </view>
+		<view class="bottom">
+			<view class="inpt">
+				<textarea name="reason" class="text-area" bindinput="handleLen" placeholder-class="place-holder" placeholder="请输入离职理由，最多200字"  maxlength="200"/>
+				<view class="num">{{count}}/200</view>
+			</view>
+			<view class="b-btn">
+				<button class="btn" formType="submit">确认</button>
+			</view>
+		</view>
+	</form>
+	<i-toast id="toast" />
+</view>

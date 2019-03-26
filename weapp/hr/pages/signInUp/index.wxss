@@ -1,0 +1,182 @@
+
+/*登录相关的所有样式都在这*/
+/*
+***********************
+xjh 962648162@qq.com
+2018/10/10
+***********************
+*/
+
+.login {
+	box-sizing: border-box;
+}
+
+.login-title {
+	line-height: 145rpx;
+	height: 145rpx;
+	font-size: 24rpx;
+	color: #BBBBBB;
+	text-align: center;	
+}
+
+.login-title .item {
+	padding: 0 40rpx;
+}
+
+.login-title .item.active {
+	color: #ff6b00;
+}
+
+.login-box {
+	position:relative;
+	overflow: hidden;
+}
+
+.login-box .login-bg {
+	background-color: #ff6b00;	
+	width: 170rpx; 
+	height: 2000rpx;
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 800rpx;
+	transform: rotate(50deg);
+	transform-origin: 0 0
+
+}
+
+.login-box .login-cont {
+	width: 690rpx;
+	margin: 0 auto;
+	background: #FFFFFF;
+	border: 1px solid #F2F2F2;
+	box-shadow: 0 0 16rpx 0 rgba(0,0,0,0.08);
+	border-radius: 40rpx;
+	padding: 90rpx 30rpx;
+	box-sizing: border-box;
+	position: relative;
+}
+.login-box .login-padding-cont {
+	padding: 60rpx 30rpx 90rpx;
+}
+
+.login-cont .welcome {
+	opacity: 0.99;
+	font-size: 56rpx;
+	color: #333333;
+	letter-spacing: 0;
+	line-height: 56rpx;
+	/* height: 56rpx; */
+	padding-bottom: 90rpx;
+}
+
+.login-cont .form-group {
+	margin-bottom: 60rpx;
+}
+
+.login-cont .form-group.last {
+	margin-bottom: 30rpx;
+}
+.form-group .name {
+	font-size: 24rpx;
+	color: #BBBBBB;
+	letter-spacing: 0;
+	line-height: 24rpx;
+}
+
+.form-group .item .place-holder {
+	font-size: 28rpx;
+	color: #888888;
+	letter-spacing: 0;
+	line-height: 28rpx;
+}
+
+.form-group .item input {
+	border-bottom: 2rpx solid #F2F2F2;
+	padding: 36rpx 0;
+}
+.login-padding-cont .form-group .item input {
+	padding: 30rpx 0;
+	font-size: 28rpx;
+	height: 40rpx;
+	min-height: 40rpx;
+	line-height: 40rpx;
+}
+
+
+.form-group .item input:focus {
+	border-bottom: 2rpx solid #ff6b00;
+}
+
+.forget {
+	font-size: 24rpx;
+	color: #BBBBBB;
+	letter-spacing: 0;
+	line-height: 24rpx;	
+	height: 24rpx;
+	text-align: right;	
+}
+
+.login-cont .btn {
+	padding-top: 146rpx;
+}
+.login-padding-cont .btn {
+	padding-top: 40rpx;
+}
+
+.login-cont .set-btn {
+	padding-top: 430rpx;
+}
+
+
+.login-cont .btn button {
+	background-image: linear-gradient(90deg, #FFBF69 0%, #FF6B00 100%);
+	border-radius: 10rpx;
+	color: #fff;
+	height: 88rpx;
+	line-height: 86rpx;
+}
+
+.login-cont .btn button::after {
+	border: none
+}
+
+.login-cont .btn button[disabled] {
+	box-sizing: border-box;	
+	color: #999;
+	background: #F7F7F7;
+	border: 2rpx solid #F0F0F0;	
+	border-radius: 10rpx;
+	outline: none;
+
+}
+
+.form-group.msg,.form-group.pwd {
+	position: relative;
+}
+.form-group.msg .item input{
+	padding-right: 170rpx;
+}
+
+.msg .get-code {
+	position: absolute;
+	right: 0;
+	top: 70rpx;
+	font-size: 24rpx;
+	color: #FF6B00;
+	letter-spacing: 0;
+	line-height: 24rpx;
+
+}
+
+.msg .get-code.sending {
+	color: #888;
+}
+.pwd .show-hide{
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	top: 60rpx;
+	right: 10rpx;
+	z-index: 9
+}

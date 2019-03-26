@@ -1,0 +1,69 @@
+<!--pages/my/index.wxml-->
+<view class="my">
+	<view class="top">
+	    <view class="user">
+	    	<view class="img f-l">
+	    		
+	    		<i-avatar i-class="avatar" src="{{ user.headUrl }}">
+	    			<image class="dafault" src="../../assets/img/head_pic.png"></image>
+	    			<button class="get-auth" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+	    		</i-avatar>
+	    	</view>
+	    	<view class="info f-l">
+	    		<view class="name" wx:if="{{isSign}}">{{ user.name }}</view>
+	    		<view class="name" wx:if="{{!isSign}}">登录</view>
+	    		<view class="company clearfix" >
+	    			<i-icon class="f-l" wx:if="{{isSign && id}}" custom="i-company" size="30" color="#fff"/>
+	    			<text class="f-l" wx:if="{{isSign && id}}">{{ user.companyName }}</text>
+	    			<text class="f-l" wx:else="{{!isSign}}">欢迎回来</text>
+	    		</view>
+	    	</view>
+	    </view>
+	</view>
+	<view class="main">
+		<view class="data" wx:if="{{ !!id }}">
+	    	<i-row>
+			    <i-col span="8" i-class="col-class">
+			    	<view class="col-title">真实反馈时间</view>
+			    	<view class="col-info">{{ statisic.feedbackDays == 'null' ? 0 : statisic.feedbackDays }}个工作日</view>
+			    </i-col>
+			    <i-col span="8" i-class="col-class">
+			    	<view class="col-title">简历处理率</view>
+			    	<view class="col-info">{{ statisic.resumeProcessRate ? statisic.resumeProcessRate + '%' : '暂无数据' }}</view>
+			    </i-col>
+			    <i-col span="8" i-class="col-class">
+			    	<view class="col-title">快速处理率</view>
+			    	<view class="col-info">{{ statisic.quickProcessRate ? statisic.quickProcessRate + '%' : '暂无数据' }}</view>
+			    </i-col>
+			</i-row>
+	    </view>
+		<view class="btns">
+			<i-cell-group>
+			    <i-cell i-class="i-cell-my" title="转发简历" bind:click="forwarding" is-link is-border-cell="{{false}}">
+			    	<i-icon custom="i-forward" size="40" slot="icon" />
+			    	<view wx:if="{{ is }}" class="new-eval"></view>
+			    </i-cell>
+			    <i-cell i-class="i-cell-my" title="切换账号" bind:click="logout" is-link is-border-cell="{{false}}">
+			    	<i-icon custom="i-logout" size="40" slot="icon" />
+			    	<view class="round-left"></view>
+			    	<view class="round-right"></view>
+			    </i-cell>
+			    <!-- 不支持第三方页面 -->
+			    <i-cell i-class="i-cell-my" title="下载APP" is-link url="/pages/download/index" is-border-cell="{{false}}" value="更多功能">
+			    	<i-icon custom="i-download" size="40" slot="icon" />
+			    	<view class="round-left"></view>
+			    	<view class="round-right"></view>
+			    </i-cell> 
+			    <!-- 工具 -->
+			    <i-cell i-class="i-cell-my" title="薪酬查询" is-link url="/pages/tools/salary/index" is-border-cell="{{false}}">
+			    	<i-icon custom="i-query" size="40" slot="icon" />
+			    	<view class="round-left"></view>
+			    	<view class="round-right"></view>
+			    </i-cell> 
+			</i-cell-group>
+		</view>	
+	</view>
+	
+</view>
+
+

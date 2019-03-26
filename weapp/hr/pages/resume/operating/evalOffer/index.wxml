@@ -1,0 +1,46 @@
+<view class="box">
+    <form report-submit="true" bindsubmit="formSubmit">
+        <view class="top">
+            <view class="form-group">
+                <view class="title">请您对本次猎头顾问进行评价，您的评价非常重要，是我们提供交付质量的动力</view>
+                <view class="star-item">
+                    <text class="name">推荐质量</text>
+                    <view class="stars">
+                        <i-rate name="recommendQuality" size="54" bind:change="onChange1" value="{{starIndex1}}">
+                        </i-rate>
+                    </view>                
+                    <text class="grade">{{starIndex1}}分</text>
+                </view>
+                <view class="star-item">
+                    <text class="name">服务质量</text>
+                    <view class="stars">
+                        <i-rate name="serviceQuality" size="54" bind:change="onChange2" value="{{starIndex2}}">
+                        </i-rate>
+                    </view>                
+                    <text class="grade">{{starIndex2}}分</text>
+                </view>
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="form-group">
+                <view class="title">请您对交付经理<text wx:if="{{name}}">（{{name}}）</text>的服务进行评价</view>
+                <view class="star-item">
+                    <text class="name">服务质量</text>
+                    <view class="stars">
+                        <i-rate name="pamServiceQuality" size="54" bind:change="onChange3" value="{{starIndex3}}">
+                        </i-rate>
+                    </view>                
+                    <text class="grade">{{starIndex3}}分</text>
+                </view>            
+            </view>
+            <view class="inpt">
+                <textarea name="evaluation" class="text-area" bindinput="handleLen" placeholder-class="place-holder" placeholder="其他改进意见"  maxlength="200"/>
+                <view class="num">{{count}}/200</view>
+            </view>
+            <view class="b-btn">
+                <button class="btn" formType="submit">确认</button>
+            </view>
+        </view>
+    </form>
+    <i-toast id="toast" />
+</view>

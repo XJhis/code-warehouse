@@ -1,0 +1,9 @@
+{
+
+    "navigationBarTitleText": "放弃Offer",
+    "navigationBarTextStyle": "black",
+    "usingComponents":{
+    	"i-toast": "../../../../components/toast/index"
+    }
+
+}

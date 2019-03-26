@@ -1,0 +1,137 @@
+<wxs src="../../../../filter/index.wxs" module="filters" />
+<view class="work">
+    <view class="plr">
+        <view class="header-card clear">
+            <view class="info f-l">
+                <view class="title">{{info.candidateName}}</view>
+                <view class="list">
+                    <view class="clear pt20">
+                        <i-col span="6" i-class="col-class color666">
+                            推荐顾问:
+                        </i-col>
+                        <i-col span="18" i-class="col-class el-sl">{{info.gwName}}</i-col>
+                    </view>
+                    <view class="clear pt20">
+                        <i-col span="6" i-class="col-class color666">
+                            推荐职位:
+                        </i-col>
+                        <i-col span="18" i-class="col-class">{{info.jobTitle}}</i-col>
+                    </view>                    
+                </view>
+            </view>
+            <view class="logo f-r">
+                <i-avatar i-class="size" wx:if="{{!info.headUrl}}" >{{filters.familyName(info.candidateName)}}</i-avatar>
+                <i-avatar i-class="size" wx:if="{{info.headUrl}}" src="{{info.headUrl}}" ></i-avatar>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="plr bg-white">
+            <view class="ptb clear b-border col-line">
+                <view class="f-l">
+                    Offer年薪
+                </view>
+                <view class="f-r color666 more-line" wx:if="{{info.supplyOfferSalary}}">
+                    {{filters.CutNumber(info.baseOfferSalary)}} <text>（Offer年薪）+ {{filters.CutNumber(info.supplyOfferSalary)}}元（补充年薪）</text>
+                </view>
+                <view class="f-r color666" wx:if="{{!info.supplyOfferSalary}}">
+                    {{filters.CutNumber(info.baseOfferSalary)}} 元
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line">
+                <view class="f-l">
+                    保证期
+                </view>
+                <view class="f-r color666" wx:if="{{info.jobType != 2}}">
+                    {{info.guaranteeMonth}}个月
+                </view>
+                <view class="f-r color666" wx:else>
+                    {{info.rpoGuaranteeMonth}}天
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line">
+                <view class="f-l">
+                    试用期
+                </view>
+                <view class="f-r color666">                    
+                    {{info.probationMonth}}个月（以劳动合同为准）
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==3}}">
+                <view class="f-l">
+                    佣金
+                </view>
+                <view class="f-r colorred">
+                    {{filters.CutNumber(info.commissionvalue)}}元
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==3 && info.vip}}">
+                <view class="f-l">
+                    折后佣金
+                </view>
+                <view class="f-r colorred">
+                    （{{info.discount*10}}折）{{filters.CutNumber(info.discountReward)}}元
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==2}}">
+                <view class="f-l">
+                    固定佣金
+                </view>
+                <view class="f-r colorred">
+                    {{filters.CutNumber(info.commissionvalue)}}元
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==2 && info.vip}}">
+                <view class="f-l">
+                    折后佣金
+                </view>
+                <view class="f-r colorred">
+                    （{{info.discount*10}}折）{{filters.CutNumber(info.discountReward)}}元
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==1}}">
+                <view class="f-l">
+                    佣金比例
+                </view>
+                <view class="f-r colorred more-line">
+                    （{{info.commissionPercent}}%） <text style="color: red">{{filters.CutNumber(info.commissionvalue)}}元</text>
+                </view>
+            </view>
+            <view class="ptb clear b-border col-line" wx:if="{{info.commissionType==1 && info.vip}}">
+                <view class="f-l">
+                    折后佣金
+                </view>
+                <view class="f-r colorred more-line">
+                    （{{info.commissionPercent}}%*{{info.discount*10}}折） <text style="color: red">{{filters.CutNumber(info.discountReward, 1)}}元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view class="plr bg-white">
+            <i-cell title="财务联系人" i-class="ptb b-border col-line" value="{{info.contact}}"></i-cell>
+            <i-cell title="联系人电话" i-class="ptb b-border col-line" value="{{info.contactPhone}}"></i-cell>
+        </view>
+    </view>
+    <view class="content">
+        <view class="plr bg-white b-border">
+            <i-cell title="预计上岗日期" is-link i-class="ptb clear col-line">
+                <view slot="footer" wx:if="{{!type}}">
+                    <picker name="getDate" value="{{info.getDate}}" mode="date" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+                        <view class="tui-picker-detail">{{!info.getDate ? '请选择时间' : info.getDate}}</view>
+                    </picker>                 
+                </view>
+                <view slot="footer" wx:if="{{type}}">
+                    {{filters.DATE(info.getDate)}}
+                </view>
+            </i-cell>
+        </view>
+        <view class="textareaContent" wx:if="{{info.remark}}">
+            <view class="txt">
+                {{info.remark}}
+            </view>            
+        </view>
+    </view>
+    <button wx:if="{{!type}}" bindtap="submitForm" class="btn">确认</button>
+    <i-toast id="toast" />
+</view>

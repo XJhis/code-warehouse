@@ -1,0 +1,11 @@
+{
+	"navigationBarTitleText": "搜索",
+	"backgroundColor": "#f6f6f6",
+	"usingComponents": {
+	    "i-icon": "../../../components/icons/index",
+	    "i-row": "../../../components/row/index",
+	    "i-tag": "../../../components/tag/index",
+        "i-col": "../../../components/col/index",
+        "i-load-more": "../../../components/load-more/index"
+	}
+}

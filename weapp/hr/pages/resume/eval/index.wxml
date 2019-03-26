@@ -1,0 +1,17 @@
+<wxs src="../../../filter/index.wxs" module="filters" />
+<view class="eval">
+	<view class="lieni-step">
+		<view class="step-item" wx:for="{{eval}}" wx:key="index">
+			<view class="time">{{filters.DATE(item.createTime, 'y-M-d h:m')}}</view>
+			<view class="eval-item">				
+				<view class="left">
+					<i-avatar wx:if="{{!item.headUrl}}" i-class="header" size="large">{{filters.familyName(item.name)}}</i-avatar>
+			    	<i-avatar wx:if="{{item.headUrl}}" src="{{item.headUrl}}" i-class="header" size="large"></i-avatar>	
+				</view>
+				<view class="right">
+					<view>{{item.name}}：<rich-text nodes="{{filters.newline(item.content)}}"></rich-text></view>				    	
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

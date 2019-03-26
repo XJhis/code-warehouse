@@ -1,0 +1,541 @@
+<wxs src="../../../filter/index.wxs" module="filters" />
+<view>
+    <!-- 去app -->
+    <button wx:if="{{isApp}}" class="launchApp" open-type="launchApp" app-parameter="{{appParams}}" binderror="launchAppError">打开APP</button>
+    <!-- 授权 -->
+    <view class="sign-select" wx:if="{{isSign}}">
+        <view class="modal">
+            <view class="content">授权更多信息，有助于您与用人部门更方便沟通</view>
+            <view class="btns">
+                <button class="weixin" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权</button>
+            </view>    
+        </view>
+    </view>
+
+    <view class="top-height">
+        <!-- 头部信息 -->
+        <view class="detail-header">
+            <view class="header-bg">
+                <image src="../../../assets/img/resumeDetail.png"></image>
+            </view>
+            <view class="header-cont">
+                <view class="top-info clear">
+                    <view class="f-l">
+                        <i-avatar wx:if="{{!info.candidateInfo.headUrl}}" i-class="img-header" size="large">{{filters.familyName(info.candidateInfo.candidateName)}}</i-avatar>
+                        <i-avatar wx:if="{{info.candidateInfo.headUrl}}" src="{{info.candidateInfo.headUrl}}" i-class="img-header" size="large"></i-avatar>
+                    </view>
+                    <view class="name f-l">{{info.candidateInfo.candidateName}}</view>
+                    <view class="sex f-l">
+                        <i-icon wx:if="{{info.candidateInfo.gender==1}}" custom="i-man" size="36" color="#009EFF" />
+                        <i-icon wx:if="{{info.candidateInfo.gender==0}}" custom="i-woman" size="36" color="#f00" />
+                    </view>
+                    <view class="f-r tag">
+                        <i-tag color="blue">{{filters.showStatus(info.candidateInfo.recommendStatus)}}</i-tag>
+                    </view>
+                </view>
+                <view class="bottom-info">
+                    <view class="item">{{info.candidateInfo.age}}</view>
+                    <view class="item">{{filters.workYears(info.candidateInfo.workYears) }}</view>
+                    <view class="item">{{info.candidateInfo.highestDegree}}</view>
+                    <view class="item el-sl city-name" wx:if="{{info.candidateInfo.liveCityName||info.candidateInfo.liveDistrictName}}">
+                        {{info.candidateInfo.liveCityName}}<text wx:if="{{info.candidateInfo.liveDistrictName}}">-{{info.candidateInfo.liveDistrictName}}</text></view>
+                </view>
+            </view>
+        </view>
+        <view class="second-mode">
+            <!-- 基础信息 -->
+            <view class="base-info">
+                <view class="info-item">
+                    <view class="title">
+                        <text class="text b">基础信息</text>
+                    </view>
+                    <view class="cont">
+                        <view class="form-group" wx:if="{{filters.maritalStatus(info.candidateInfo.maritalStatus)}}">
+                            <i-row>
+                                <i-col span="5" i-class="left">婚姻状况：</i-col>
+                                <i-col span="17" i-class="right">{{filters.maritalStatus(info.candidateInfo.maritalStatus)}}</i-col>
+                            </i-row>
+                        </view>
+                        <view class="form-group" wx:if="{{filters.workState(info.candidateInfo.workState)}}">
+                            <i-row>
+                                <i-col span="5" i-class="left">求职状态：</i-col>
+                                <i-col span="17" i-class="right">{{filters.workState(info.candidateInfo.workState)}}</i-col>
+                            </i-row>
+                        </view>
+                        <view class="form-group" wx:if="{{info.candidateInfo.candidatePhone}}">
+                            <i-row>
+                                <i-col span="5" i-class="left">联系电话：</i-col>
+                                <i-col span="17" i-class="right">
+                                    <text data-info="{{info.candidateInfo}}" class="{{isCall ? 'call-blue': ''}}" bindtap="makeCall">{{info.candidateInfo.candidatePhone}}</text>
+                                </i-col>
+                            </i-row>
+                        </view>
+                        <view class="form-group" wx:if="{{info.candidateInfo.candidateEmail}}">
+                            <i-row>
+                                <i-col span="5" i-class="left">联系邮箱：</i-col>
+                                <i-col span="17" i-class="right">{{info.candidateInfo.candidateEmail}}</i-col>
+                            </i-row>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 评价记录 -->
+            <view class="eval-record" wx:if="{{eval.length}}">
+                <view class="info-item">
+                    <view class="title">
+                        <text class="text b">评价记录</text>
+                        <text wx:if="{{hasMoreEval}}" class="f-r more-eval" bindtap="toMoreEval">更多</text>
+                    </view>
+                    <view class="cont">
+                        <view class="eval-item" wx:for="{{eval}}" wx:key="{{index}}">
+                            <i-row>
+                                <i-col span="4">
+                                    <i-avatar wx:if="{{!item.headUrl}}" i-class="header" size="large">{{filters.familyName(item.name)}}</i-avatar>
+                                    <i-avatar wx:if="{{item.headUrl}}" src="{{item.headUrl}}" i-class="header" size="large"></i-avatar>
+                                </i-col>
+                                <i-col span="19" i-class="right">
+                                    <view class="wexin-name">{{item.name}}：<rich-text nodes="{{filters.newline(item.content)}}"></rich-text></view>
+                                    <view class="time">{{filters.DATE(item.createTime, 'y-M-d h:m')}}</view>
+                                </i-col>
+                            </i-row>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- tab页面 -->
+    <view class="i-sticky-view">
+        <view class="tab-info {{ isFixed ? 'i-sticky-fixed' : ''}}">
+            <i-tabs current="{{ currentTab }}"  color="#ff6b00" bindchange="tabChange">
+                <i-tab key="1" size="34" title="候选人详情"></i-tab>
+                <i-tab key="2" size="34" title="推荐报告"  wx:if="{{info.candidateInfo.jobType != 2}}"></i-tab>
+                <i-tab key="3" size="34" title="推荐动态"></i-tab>
+            </i-tabs>
+        </view>
+    </view>
+    <!-- 简历信息 -->
+    <view wx:if="{{currentTab==1}}">
+        <!-- 工作经历 -->
+        <view class="work-info info-box" wx:if="{{info.workList && info.workList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">工作经历</text>
+                </view>
+                <view class="cont">
+                    <view class="lieni-step">
+                        <view class="step-item" wx:for="{{info.workList}}" wx:key="{{index}}">
+                            <view class="title">
+                                <text class="text-item">{{item.company}}</text>
+                                <text class="text-item">{{item.jobName}}</text>
+                            </view>
+                            <view class="time-range">
+                                {{item.startYear}}.{{item.startMonth}}-{{item.endYear!==9999?(item.endYear+'.'+item.endMonth):"至今"}}（{{filters.yearMonthRange(item.startYear, item.startMonth, item.endYear, item.endMonth)}}）
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.companyIndustry}}">
+                                <view class="f-l left">公司行业：</view>
+                                <view class="f-l">{{item.companyIndustry}}</view>
+                            </view>
+                            <view class="form-group clear" wx:if="{{filters.companyScale(item.scale)}}">
+                                <view class="f-l left">公司规模：</view>
+                                <view class="f-l">{{filters.companyScale(item.scale)}}</view>
+                            </view>
+                            <view class="toggle-show t-c" wx:if="{{!workMore[index]}}" data-work-key="{{index}}" bindtap="toggleWork">展开</view>
+                            <view class="more-cont" wx:if="{{workMore[index]}}">
+                                <view class="form-group clear" wx:if="{{item.department}}">
+                                    <view class="f-l left">所属部门：</view>
+                                    <view class="f-l">{{item.department}}</view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.reportPeople}}">
+                                    <view class="f-l left">汇报对象：</view>
+                                    <view class="f-l">{{item.reportPeople}}</view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.underPeople}}">
+                                    <view class="f-l left">下属人数：</view>
+                                    <view class="f-l">{{item.underPeople}}人</view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.workIntroduce}}">
+                                    <view class="f-l left">工作内容：</view>
+                                    <view class="f-l">
+                                        <rich-text nodes="{{filters.newline(item.workIntroduce)}}"></rich-text>
+                                    </view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.workGrade}}">
+                                    <view class="f-l left">工作业绩：</view>
+                                    <view class="f-l">
+                                        <rich-text nodes="{{filters.newline(item.workGrade)}}"></rich-text>
+                                    </view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.dimissionReason}}">
+                                    <view class="f-l left">离职原因：</view>
+                                    <view class="f-l">
+                                        <rich-text nodes="{{filters.newline(item.dimissionReason)}}"></rich-text>
+                                    </view>
+                                </view>
+                                <view class="form-group clear" wx:if="{{item.companyIntroduce}}">
+                                    <view class="f-l left">公司介绍：</view>
+                                    <view class="f-l">
+                                        <rich-text nodes="{{filters.newline(item.companyIntroduce)}}"></rich-text>
+                                    </view>
+                                </view>
+                                <view class="toggle-hidden t-c" wx:if="{{workMore[index]}}" data-work-key="{{index}}" bindtap="toggleWork">收起</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 教育经历 -->
+        <view class="edu-info info-box" wx:if="{{info.educationList && info.educationList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">教育经历</text>
+                </view>
+                <view class="cont">
+                    <view class="lieni-step">
+                        <view class="step-item" wx:for="{{info.educationList}}" wx:key="{{index}}">
+                            <view class="title clear">
+                                <view class="f-l text-item">
+                                    {{item.graduationSchool}}<text wx:if="{{item.nationalUnified==false}}">（非统招）</text><text wx:if="{{item.nationalUnified==true}}">（统招）</text>
+                                </view>
+                                <view class="f-l text-item">
+                                    {{filters.showDegree(item.degree)}}
+                                    <text wx:if="{{item.degree==3 && item.collegeToUniversity}}">（专升本）</text>
+                                </view>
+                                <view class="f-l text-item">{{item.professional}}</view>
+                            </view>
+                            <view class="time-range m-b-0">
+                                {{item.startYear}}.{{item.startMonth}}-{{item.endYear!==9999?(item.endYear+'.'+item.endMonth):"至今"}}（{{filters.yearMonthRange(item.startYear, item.startMonth, item.endYear, item.endMonth)}}）
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 项目经验 -->
+        <view class="project-info info-box" wx:if="{{info.projectList && info.projectList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">项目经验</text>
+                </view>
+                <view class="cont">
+                    <view class="lieni-step">
+                        <view class="step-item" wx:for="{{info.projectList}}" wx:key="{{index}}">
+                            <view class="title">
+                                <text>{{item.projectName}}</text>
+                            </view>
+                            <view class="time-range">
+                                {{item.startYear}}.{{item.startMonth}}-{{item.endYear!==9999?(item.endYear+'.'+item.endMonth):"至今"}}（{{filters.yearMonthRange(item.startYear, item.startMonth, item.endYear, item.endMonth)}}）
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.projectDesc}}">
+                                <view class="f-l left">项目描述：</view>
+                                <view class="f-l">
+                                    <rich-text nodes="{{filters.newline(item.projectDesc)}}"></rich-text>
+                                </view>
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.responsibilityDesc}}">
+                                <view class="f-l left">项目职责：</view>
+                                <view class="f-l">
+                                    <rich-text nodes="{{filters.newline(item.responsibilityDesc)}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 自我评价 -->
+        <view class="self-info info-box" wx:if="{{info.candidateInfo && info.candidateInfo.selfIntroduce}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">自我评价</text>
+                </view>
+                <view class="cont">
+                    <rich-text nodes="{{filters.newline(info.candidateInfo.selfIntroduce)}}"></rich-text>
+                </view>
+            </view>
+        </view>
+        <!-- 语言能力 -->
+        <view class="lang-info info-box" wx:if="{{info.languageList && info.languageList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">语言能力</text>
+                </view>
+                <view class="cont">
+                    <block wx:for="{{info.languageList}}" wx:key="{{index}}">
+                        <view class="lang-item" wx:if="{{item.language!=3}}">
+                            <text>{{filters.language.type(item.language)}}</text><text>{{filters.language.pro(item.languageProficiency)}}</text><text>{{filters.language.level(item.languageLevel)}}</text>
+                        </view>
+                        <view wx:if="{{item.language==3}}">{{item.otherLanguage}}</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <!-- 培训经历 -->
+        <view class="work-info info-box" wx:if="{{info.trainList && info.trainList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">培训经历</text>
+                </view>
+                <view class="cont">
+                    <view class="lieni-step train-exp">
+                        <view class="step-item" wx:for="{{info.trainList}}" wx:key="{{index}}">
+                            <view class="title">
+                                <text>{{item.trainingOrganization}}</text> &nbsp;<text>{{item.trainingName}}</text>
+                            </view>
+                            <view class="time-range">
+                                {{item.startYear}}.{{item.startMonth}}-{{item.endYear!==9999?(item.endYear+'.'+item.endMonth):"至今"}}（{{filters.yearMonthRange(item.startYear, item.startMonth, item.endYear, item.endMonth)}}）
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.trainingPlace}}">
+                                <view class="f-l left">培训地点：</view>
+                                <view class="f-l">{{item.trainingPlace}}</view>
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.trainingCertificate}}">
+                                <view class="f-l left">获得证书：</view>
+                                <view class="f-l">{{item.trainingCertificate}}</view>
+                            </view>
+                            <view class="form-group clear" wx:if="{{item.trainingDesc}}">
+                                <view class="f-l left">培训描述：</view>
+                                <view class="f-l">
+                                    <rich-text nodes="{{filters.newline(item.trainingDesc)}}"></rich-text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 附件能力 -->
+        <view class="doc-info info-box" wx:if="{{info.productList && info.productList.length}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">附件作品</text>
+                    <text class="advise">附件作品建议您到PC浏览</text>
+                </view>
+                <view class="cont">
+                    <view class="doc-item" wx:for="{{info.productList}}" wx:key="{{index}}">
+                        <view class="doc-title">{{item.productName}}</view>
+                        <view class="doc-cont">
+                            <rich-text nodes="{{filters.newline(item.productExplain)}}"></rich-text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 推荐报告 -->
+    <view class="recom-report" wx:if="{{currentTab==2}}">
+        <!-- 风险提示 -->
+        <view class="warn-info  info-box" wx:if="{{risk.pregnantFlag || risk.jobHoppingFlag || risk.degreeFlag || risk.workYearsFlag || risk.nationUnfiedFlag || risk.ageFlag}}">
+            <view class="info-item">
+                <view class="title">
+                    <text class="text b">风险提示</text>
+                </view>
+                <view class="cont">
+                    <view class="warn-item" wx:if="{{risk.pregnantFlag}}">该候选人已经{{risk.candidateAge}}岁，并且已婚未育，以后会生宝宝哦！</view>
+                    <view class="warn-item" wx:if="{{risk.jobHoppingFlag}}">该候选人{{risk.workYears}}年换过{{risk.worksNum}}份工作，跳槽有点频繁哦！</view>
+                    <view class="warn-item" wx:if="{{risk.degreeFlag}}">该候选人的学历为{{filters.showDegree(risk.candidateEducation)}}，职位要求是{{filters.degreeRequest(risk.jobEducation)}}，不符合职位要求哦！</view>
+                    <view class="warn-item" wx:if="{{risk.workYearsFlag}}">该候选人工作经验只有{{filters.workYears(risk.candidateActualWorkYears)}}， 职位要求是{{filters.workYearsReq(risk.minWorkYearReq, risk.maxWorkYearReq)}}，不符合职位要求哦！</view>
+                    <view class="warn-item" wx:if="{{risk.nationUnfiedFlag}}">该候选人符合职位要求的学历中，没有一项学历属于统招，请留意哦！</view>
+                    <view class="warn-item" wx:if="{{risk.ageFlag}}">该候选人年龄是{{risk.candidateAge}}岁，职位要求是{{risk.minAgeReq}}-{{risk.maxAgeReq}}，请留意哦！</view>
+                </view>
+            </view>
+        </view>
+        <!-- 推荐报告 -->
+        <view class="report-info">
+            <view class="info-item  info-box">
+                <view class="title">
+                    <text class="text b">推荐报告</text>
+                </view>
+                <view class="cont">
+                    <view class="form-group">
+                        <text class="left-text">综合年薪：</text>
+                        <text class="right-cont">{{filters.salaryType(report.nowSalaryType)}} {{filters.savePoint(report.nowSalary/10000)}}万</text>
+                    </view>
+                    <view class="form-group">
+                        <text class="left-text">薪资构成：</text>
+                        <text class="right-cont">
+                            <block wx:if="{{report.monthSalary}}">{{report.monthSalary}}元 X {{report.monthSalaryCount}}月；</block>
+                            <block wx:if="{{report.otherIncome}}">{{report.otherIncome}}</block>{{report.nowSalaryOld}}
+                        </text>
+                    </view>
+                    <view class="form-group">
+                        <text class="left-text">期望薪资：</text>
+                        <text class="right-cont">
+                            <block wx:if="{{report.expectSalaryType==0}}">{{info.report.expectSalary}}</block>
+                            <block wx:if="{{report.expectSalaryType==1}}">面议</block>
+                        </text>
+                    </view>
+                    <view class="form-group clear" wx:if="{{report.jobAnalysis}}">
+                        <view class="left-text">职业经历：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.jobAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.advantageAnalysis}}">
+                        <view class="left-text">优势和劣势：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.advantageAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.professionalAnalysis}}">
+                        <view class="left-text">专业能力：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.professionalAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.jobdevelopmentAnalysis}}">
+                        <view class="left-text">发展方向：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.jobdevelopmentAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.jobintentionAnalysis}}">
+                        <view class="left-text">职位意向度：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.jobintentionAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.characterAnalysis}}">
+                        <view class="left-text">性格特点：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.characterAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.familyAnalysis}}">
+                        <view class="left-text">家庭情况：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.familyAnalysis)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.jobMotivation}}">
+                        <view class="left-text">求职动机：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.jobMotivation)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.expectInterviewTime}}">
+                        <view class="left-text">期望面试时间：</view>
+                        <view class="right-cont">
+                            <rich-text nodes="{{filters.newline(report.expectInterviewTime)}}"></rich-text>
+                        </view>
+                    </view>
+                    <view class="form-group" wx:if="{{report.expectEntryTime>=0}}">
+                        <view class="left-text">预计到岗：</view>
+                        <text class="right-cont">{{filters.expectEntryTime(report.expectEntryTime)}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 推荐顾问 -->
+        <view class="">
+            <view class="info-item info-box">
+                <view class="title">
+                    <text class="text b">推荐顾问</text>
+                </view>
+                <view class="cont">
+                    <view class="gw-info clear">
+                        <view class="left-header f-l">
+                            <image class="default-img" wx:if="{{!gwInfo.gwUrl}}" src="../../../assets/img/man.png"></image>
+                            <image class="origin-img" wx:if="{{gwInfo.gwUrl}}" src="{{gwInfo.gwUrl}}"></image>
+                        </view>
+                        <view class="right f-l">
+                            <view class="gw-top clear">
+                                <view class="f-l name el-sl">{{gwInfo.gwName}}</view>
+                                <view class="f-l grade">
+                                    <image wx:for="{{gwInfo.levelArr}}" wx:key="{{index}}" src="../../../assets/img/{{item}}.png"></image>
+                                </view>
+                                <view class="f-l title">
+                                    {{gwInfo.gwRank}}
+                                </view>
+                            </view>
+                            <view class="gw-item clear">
+                                <view class="f-l item">推荐数 {{gwInfo.recommendNum||0}}</view>
+                                <view class="f-l item">发面数 {{gwInfo.interviewNum||0}}</view>
+                                <view class="f-l item">面试率 {{gwInfo.interviewRate || 0}}%</view>
+                            </view>
+                            <view class="gw-quality">
+                                <text>推荐质量：</text>
+                                <view class="stars-mode">
+                                    <view class="star-item" wx:for="{{gwInfo.recommendQ}}" wx:key="{{index}}">
+                                        <block wx:if="{{item==0}}">
+                                            <i-icon class="star" custom="i-star_all" size="34" color="#d0d0d0" />
+                                        </block>
+                                        <block wx:if="{{item==2}}">
+                                            <i-icon class="star orange" custom="i-star_all" size="34" color="#ff8b38" />
+                                        </block>
+                                        <block wx:if="{{item==1}}">
+                                            <i-icon class="star" custom="i-star_all" size="34" color="#ff8b38" />
+                                            <i-icon class="right-star" custom="i-star_right" size="34" color="#d0d0d0"/>
+                                        </block>
+                                    </view>
+                                </view>
+                                <text>{{gwInfo.recommendQuality||0}}</text>
+                            </view>
+                            <view class="gw-quality">
+                                <text>服务质量：</text>
+                                <view class="stars-mode">
+                                    <view class="star-item" wx:for="{{gwInfo.serviceQ}}" wx:key="{{index}}">
+                                        <block wx:if="{{item==0}}">
+                                            <i-icon class="star" color="#d0d0d0" custom="i-star_all" size="34" />
+                                        </block>
+                                        <block wx:if="{{item==2}}">
+                                            <i-icon class="star" color="#ff8b38" custom="i-star_all" size="34" />
+                                        </block>
+                                        <block wx:if="{{item==1}}">
+                                            <i-icon class="star" color="#ff8b38" custom="i-star_all" size="34" />
+                                            <i-icon class="right-star" color="#d0d0d0" custom="i-star_right" size="34" />
+                                        </block>
+                                    </view>
+                                </view>
+                                <text>{{gwInfo.serviceQuality||0}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 推荐动态 -->
+    <view wx:if="{{currentTab==3}}">
+        <view class="recom-status">
+            <view class="info-item">
+                <view class="cont status-cont">
+                    <view class="lieni-step">
+                        <view class="step-item" wx:for="{{actions}}" wx:key="{{index}}">
+                            <view class="title">
+                                <text class="status">{{item.actionDetail}}</text><text class="time">{{filters.DATE(item.createTime, 'y-M-d h:m')}}</text>
+                            </view>
+                            <view class="content" wx:if="{{item.content}}">
+                                <rich-text nodes="{{filters.newline(item.content)}}"></rich-text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- </view> -->
+    <!-- 底部悬浮 -->
+    <view class="operate-bottom t-c">
+        <view class="li-item share relative">
+            <form report-submit="true" bindsubmit="shareModal">
+                <view class="icon">
+                    <i-icon type="share" size="56" />
+                </view>
+                分享
+                <button class="base-form-btn" formType="submit"></button>
+            </form>
+        </view>
+        <view class="item big-btn">
+            <form report-submit="true" bindsubmit="evaluateRoute">
+                <button class="btn" type="default" formType="submit">评价简历</button>
+            </form>
+        </view>
+    </view>
+    <!-- 分享 -->
+    <i-modal visible="{{ shareModalShow }}" actions="{{ btnActions }}" bind:hide="shareHide">
+        <view class="modal-text">有人评价后你将收到微信通知</view>
+    </i-modal>
+
+</view>

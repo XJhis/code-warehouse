@@ -1,0 +1,23 @@
+<form bindsubmit="submitForm">
+    <view class="address">
+        <i-cell-group i-class="plr">
+            <i-cell title="面试地址" i-class="ptb b-border col-line" is-link>
+                <view slot="footer">
+                    <picker name="region" mode="region" bindchange="bindRegionChange" value="{{region}}">
+                        <view class="picker">
+                            {{region[0]}} {{region[1]}} {{region[2]}}
+                        </view>
+                    </picker>
+                </view>
+            </i-cell>
+            <i-cell title="详细地址" i-class="ptb b-border col-line address-detail">
+                <view slot="footer" class="detail-cont">
+                    <!-- <input name="moreAddress" class="cityInfo" slot="footer" type="text" placeholder="如道路、门牌号、小区、楼栋号、单元室等" value="{{moreAddress}}" maxlength="200" /> -->
+                    <textarea name="moreAddress" class="cityInfo t-l" placeholder="如道路、门牌号、小区、楼栋号、单元室等" value="{{moreAddress}}" maxlength="200"></textarea> 
+                </view>
+            </i-cell>
+        </i-cell-group>
+        <button form-type="submit" class="btn">确认</button>
+        <i-toast id="toast" />
+    </view>
+</form>

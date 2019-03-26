@@ -1,0 +1,14 @@
+{
+	"navigationBarBackgroundColor": "#F76B1C",
+	"navigationBarTitleText": "",
+    "disableScroll": true,
+	
+	"usingComponents": {
+		"i-icon": "../../components/icons/index",
+		"i-cell": "../../components/cell/index",
+		"i-cell-group": "../../components/cell-group/index",
+		"i-row": "../../components/row/index",
+    	"i-col": "../../components/col/index",
+    	"i-avatar": "../../components/avatar/index"
+	}
+}

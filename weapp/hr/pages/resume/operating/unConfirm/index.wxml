@@ -1,0 +1,21 @@
+<view class="box">
+	<form report-submit="true"  bindsubmit="formSubmit">
+		<view class="top">
+			<view class="title">请您选择待定理由，待定期内30天无操作，系统会自动拒绝候选人</view>
+			<radio-group class="radio-group" name="radio" bindchange="radioChange">
+			  <label class="radio" wx:for="{{items}}" wx:key="{{ index }}">
+			    <radio color="#ff6b00" value="{{index}}"/>{{item}}
+			  </label>
+			</radio-group>
+		</view>
+		<view class="bottom">
+			<view class="inpt" wx:if="{{show}}">
+				<textarea name="content" class="text-area" bindinput="handleLen" placeholder-class="place-holder" placeholder="其他待定原因"  maxlength="200"/>
+				<view class="num">{{count}}/200</view>
+			</view>
+			<view class="b-btn">
+				<button class="btn" formType="submit">确认</button>
+			</view>
+		</view>
+	</form>
+</view>

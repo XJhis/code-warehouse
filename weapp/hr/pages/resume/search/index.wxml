@@ -1,0 +1,60 @@
+<wxs src="../../../filter/index.wxs" module="filters" />
+<view class="search-page">
+	<view class="search-header">
+		<view class="fixed">
+			<view class="inpt">
+				<input focus="{{true}}"  placeholder="人选名字/电话/邮箱" value="{{queryParam}}" placeholder-class="place-hold" bindconfirm="confirmSearch"/>
+				<i-icon class="icon" custom="i-search" size="26" color="#B4B4B4" />	
+			</view>	
+		</view>
+		<view class="take-place"></view>	
+	</view>
+	<view class="search-cont">
+		<block wx:if="{{history.length}}">
+			<view class="history-record">
+				<i-row i-class="title">
+				    <i-col span="20" i-class="name">历史记录</i-col>
+				    <i-col span="4" i-class="delete"><i-icon type="trash" size="36" color="#333" bindtap="removeHis"/></i-col>
+				</i-row>
+				<view class="cont">
+					<view data-text="{{item}}" bindtap="tapHis" class="record-item el-sl" wx:for="{{history}}" wx:key="{{index}}">{{item}}</view>					
+				</view>
+			</view>
+		</block>
+		<view class="list">
+			<block wx:if="{{!noData}}" wx:for="{{list}}" wx:key="index">
+			    <navigator url="{{id ? '../' : '/pages/share/'}}detail/index?candidateId={{item.candidateId}}" hover-class="none">
+			        <view class="list-item">
+			            <view class="first">
+			                <view class="name el-sl t-l">{{item.candidateName||''}}</view>
+			                <view class="job el-sl">{{item.currentPosition||''}}</view>
+			                <view class="tag t-r">
+			                    <i-tag color="blue">{{filters.showStatus(item.status)}}</i-tag>
+			                </view>
+			            </view>
+			            <view class="second clear">
+			                <text wx:if="{{item.gender>=0}}">{{filters.showGender(item.gender)}}</text>
+			                <text wx:if="{{item.birthYear}}">{{filters.countAge(item.birthYear)}}岁</text>
+			                <text wx:if="{{item.workYears>=0}}">{{filters.workYears(item.workYears)}}</text>
+			                <text wx:if="{{filters.showDegree(item.highestDegree)}}">{{filters.showDegree(item.highestDegree)}}</text>
+			                <text class="city-name el-sl" wx:if="{{item.workCityName||item.workDistrictName}}">{{item.workCityName||''}}<block wx:if="{{item.workCityName&&item.workDistrictName}}">-</block>{{item.workDistrictName||''}}</text>
+			            </view>
+			            <view class="bottom">
+			                <view class="recom-job el-sl">推荐职位：{{item.jobName||''}}</view>
+			                <view class="time">{{filters.DATE(item.recommendTime)}}</view>
+			            </view>
+			        </view>
+			    </navigator>
+			</block>
+	        <view wx:if="{{isLoading}}" style="padding-bottom: 20rpx">
+	            <i-load-more />
+	        </view>
+	        <view wx:if="{{!hasMore}}">
+				<i-load-more tip="没有更多了" loading="{{ false }}"/>
+	        </view>
+		</view>
+		<block wx:if="{{noData}}">
+			<view class="no-data">当前没有搜索结果</view>
+		</block>
+	</view>
+</view>

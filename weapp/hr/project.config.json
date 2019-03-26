@@ -1,0 +1,119 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"uglifyFileName": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wx4a2e2e98df1b2754",
+	"projectname": "%E7%8C%8E%E4%BD%A0HR%E7%AB%AF",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/signInUp/up/index",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "所有入口",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": "",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "下载",
+					"pathName": "pages/download/index",
+					"query": "",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "转发简历",
+					"pathName": "pages/share/index/index",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "授权",
+					"pathName": "pages/share/detail/index",
+					"query": "candidateId=#469064"
+				},
+				{
+					"id": -1,
+					"name": "am分享",
+					"pathName": "pages/index/index",
+					"query": "scene=%23910253%26am"
+				},
+				{
+					"id": 7,
+					"name": "打开APP",
+					"pathName": "pages/share/detail/index",
+					"query": "candidateId=#1000933"
+				},
+				{
+					"id": 8,
+					"name": "登录带值",
+					"pathName": "pages/index/index",
+					"query": "type=share&candidateId=#1000933"
+				},
+				{
+					"id": -1,
+					"name": "最新简历列表",
+					"pathName": "pages/resume/list/index",
+					"query": "first=true"
+				},
+				{
+					"id": -1,
+					"name": "最新注册",
+					"pathName": "pages/signInUp/up/index",
+					"query": "phone=18261372735"
+				}
+			]
+		}
+	}
+}

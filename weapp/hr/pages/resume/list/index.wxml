@@ -1,0 +1,86 @@
+<wxs src="../../../filter/index.wxs" module="filters" />
+
+<view class="resume-top">
+    <view class="bg">
+        <image src="../../../assets/img/resumeList.png"></image>
+    </view>
+    <view class="logo">
+        <image src="../../../assets/img/logo.png"></image>
+    </view>
+    <view class="search">
+    	<navigator url="../search/index" hover-class="none">
+            <i-icon class="icon" size="30" custom="i-search" color="#cfcfcf" />
+            <text>人选名字/电话/邮箱</text>
+        </navigator>
+    </view>
+</view>    
+<view class="i-sticky-view" style="width: 100%">
+    <view class="recom-select {{ isFixed ? 'i-sticky-fixed' : ''}}">
+        <i-tabs i-class="fontw" current="{{ '+'+activeSatus }}" color="#ff6b00" scroll bindchange="selectStatus">
+            <i-tab i-class="el-sl item" key="{{index}}" wx:key="index" title="{{item.name}} {{item.num>99?'99+':item.num||0}}" wx:for="{{recomStatus}}"></i-tab>        
+        </i-tabs>
+    </view>
+</view>  
+<view class="tips" wx:if="{{isTips}}">恭喜您注册成功，我们业务人员会在1个工作日内联系您，如遇问题可联系客服 <text class="phone" bindtap="makeCall" data-phone="400-677-6171">400-677-6171</text></view>
+<!-- am分享 -->
+<view class="first-modal" wx:if="{{first}}">
+    <view class="modal">
+        <view class="title">恭喜您注册成功</view>
+        <view class="main">
+            我们业务人员会在1个工作日内联系您，如遇问题可联系客服<text class="phone" bindtap="makeCall" data-phone="400-677-6171">400-677-6171</text>
+        </view>
+        <view class="btns">
+            <button class="weixin" bindtap="closeFirst">我知道了</button>
+        </view>    
+    </view>
+</view>
+<view class="resume-list clear">    
+    <block wx:if="{{!noData}}" wx:for="{{list}}" wx:key="index">
+        <navigator url="{{id ? '../' : '/pages/share/'}}detail/index?candidateId={{item.candidateId}}" hover-class="none">
+            <view class="list-item">
+                <view class="first">
+                    <view class="name b el-sl t-l">{{item.candidateName||''}}</view>
+                    <view class="job b el-sl">{{item.currentPosition||''}}</view>
+                    <view class="tag t-r">
+                        <i-tag color="blue">{{filters.showStatus(item.status)}}</i-tag>
+                    </view>
+                </view>
+                <view class="second clear">
+                    <text wx:if="{{item.gender>=0}}">{{filters.showGender(item.gender)}}</text>
+                    <text wx:if="{{item.birthYear}}">{{filters.countAge(item.birthYear)}}岁</text>
+                    <text wx:if="{{item.workYears>=0}}">{{filters.workYears(item.workYears)}}</text>
+                    <text wx:if="{{filters.showDegree(item.highestDegree)}}">{{filters.showDegree(item.highestDegree)}}</text>
+                    <text class="city-name el-sl" wx:if="{{item.workCityName||item.workDistrictName}}">{{item.workCityName||''}}<block wx:if="{{item.workCityName&&item.workDistrictName}}">-</block>{{item.workDistrictName||''}}</text>
+                </view>
+                <view class="bottom">
+                    <view class="recom-job el-sl">推荐职位：{{item.jobName||''}}</view>
+                    <view class="time">{{filters.DATE(item.recommendTime)}}</view>
+                </view>
+            </view>
+        </navigator>
+
+        
+    </block>
+    <block wx:if="{{noData}}">
+    	<view class="no-data t-c">
+    		<view>
+    			<image mode="scaleToFill" src="../../../assets/img/noData.png"></image>
+    		</view>
+    		<text class="text">暂时没有数据</text>
+    	</view>
+    </block>
+    <view wx:if="{{isLoading}}" style="padding-bottom: 20rpx">
+        <i-load-more />
+    </view>
+    <view wx:if="{{!hasMore}}" style="padding-top: 20rpx">
+        <i-load-more tip="没有更多了" loading="{{ false }}"/>
+    </view>
+    
+</view>
+<!-- <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin> -->
+        
+  	
+	
+
+	
+

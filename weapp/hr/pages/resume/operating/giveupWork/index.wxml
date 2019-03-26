@@ -1,0 +1,14 @@
+<view class="box">	
+	<form report-submit="true"  bindsubmit="formSubmit">
+		<view class="bottom">
+			<view class="inpt">
+				<textarea  name="content" class="text-area" bindinput="handleLen" placeholder-class="place-holder" placeholder="请输入放弃Offer理由，最多200字"  maxlength="200"/>
+				<view class="num">{{count}}/200</view>
+			</view>
+			<view class="b-btn">
+				<button class="btn" formType="submit">确认</button>
+			</view>
+		</view>
+	</form>
+	<i-toast id="toast" />
+</view>

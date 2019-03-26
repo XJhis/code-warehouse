@@ -1,0 +1,88 @@
+.work{
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 32rpx;
+    letter-spacing: 0;
+}
+.work .plr{
+    padding: 0 30rpx !important;
+}
+.work .ptb{
+    padding: 36rpx 0 !important;
+    
+}
+.work .b-border{
+    border-bottom: 1px solid #F2F2F2;
+}
+.work .color666{
+    color: #666666;
+}
+.work .colorred{
+    color: #FF3D3D;
+}
+.work .pt20{
+    padding-top: 20rpx;
+}
+
+.work .bg-white{
+    background: white;
+}
+
+/* header */
+.work .header-card{
+    padding: 40rpx 0;
+}
+.work .header-card .info{
+    width: 570rpx;
+}
+.work .header-card .info .title{
+    font-size: 40rpx;
+    color: #333333;
+    line-height: 40rpx;
+    margin-bottom: 8rpx;
+}
+.work .header-card .info .list{
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.work .header-card .logo{
+    width: 120rpx;
+    padding-left:32rpx; 
+    box-sizing: border-box;
+}
+.work .header-card .logo .size{
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 88rpx;
+    line-height: 88rpx;
+    background: #FF8B38;
+}
+
+.work .content{
+    padding-top: 20rpx;
+    background: #F5F5F5;
+    box-sizing: border-box;
+}
+
+.work .btn{
+    width: 690rpx;
+    height: 94rpx;
+    border-radius: 10rpx;
+    line-height: 94rpx;
+    background: #FF8B38 !important;
+    font-size: 36rpx;
+    color: #FFFFFF !important;
+    margin: 210rpx 30rpx 60rpx;
+}
+
+.work .btn::after{
+    border: none
+}
+
+.content .more-line {
+    max-width: 75%; 
+    line-height: 40rpx;
+}

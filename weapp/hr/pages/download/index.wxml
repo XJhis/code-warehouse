@@ -1,0 +1,14 @@
+<!--pages/download/index.wxml-->
+<view class="download">
+	<image class="bg" mode="scaleToFill" src="../../assets/img/download_bg.png"></image>
+	<view class="main">
+		<image class="logo" mode="scaleToFill" src="../../assets/img/logo_download.png"></image>
+		<view class="h1">猎你网 让招聘更简单</view>
+		<view class="info">
+			<view class="title">下载方法</view>
+			<view class="p">1.复制链接到手机浏览器中打开</view>
+			<view class="p">2.在各大应用商店搜索“猎你网HR端”免费下载</view>
+		</view>
+		<button type="default" bindtap="copyUrl"> 复制链接 </button>
+	</view>
+</view>

@@ -1,0 +1,18 @@
+<view class="box">
+	<form report-submit="true"  bindsubmit="formSubmit">
+		<view class="top">
+			请详细描述您的拒绝理由，这对我们非常重要，
+			描述的越具体准确，顾问找人的方向会变得更准,
+			您便可以越快招到合适的人才；
+		</view>
+		<view class="bottom">
+			<view class="inpt">
+				<textarea name="content" bindinput="handleLen" class="text-area" placeholder-class="place-holder" placeholder="{{placeHolder}}"  maxlength="200"/>
+				<view class="num">{{count}}/200</view>
+			</view>
+			<view class="b-btn">
+				<button class="btn" formType="submit">确认</button>
+			</view>
+		</view>
+	</form>
+</view>

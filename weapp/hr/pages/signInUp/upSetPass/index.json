@@ -1,0 +1,6 @@
+{
+	"navigationBarTitleText": "密码",
+    "usingComponents": {
+        "i-icon": "../../../components/icons/index"
+    }
+}

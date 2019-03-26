@@ -1,0 +1,31 @@
+<!--pages/signInUp/upSetPass/index.wxml-->
+<view class="login">
+    <!-- 内容 -->
+    <view class="login-title">
+    	<!-- <text class="item {{loginType==1 ? 'active':''}}" bindtap="changeLogin" data-type="1">验证码登录</text>|<text class="item {{loginType==2 ? 'active':''}}" bindtap="changeLogin" data-type="2">密码登录</text>	         -->
+    </view>
+    <view class="login-box">
+    	<!-- 密码登录 -->
+    	<block>
+	    	<view class="login-cont">
+	    		<view class="welcome"></view>				
+				<view class="form-group last pwd">
+					<view class="name">设置密码</view>
+					<view class="item">
+						<input value="{{ pwd }}" maxlength="20" bindinput="changePwd" password="{{show}}" placeholder-class="place-holder" placeholder="请输入6~20位密码" />
+						<view class="show-hide" bindtap="pwdShowHide">
+							<i-icon wx:if="{{ show }}" custom="i-pwd_hide" size="40" color="#888"></i-icon>
+							<i-icon wx:else custom="i-pwd_show" size="40" color="#888"></i-icon>	
+						</view>
+					</view>
+				</view>
+				<view class="btn set-btn">
+					<button type="default" disabled="{{ disabled }}" bindtap="formSubmit" >注册</button>
+				</view>
+	    	</view>
+    	</block>    	
+    	<!-- 背景 -->
+    	<view class="login-bg"></view>
+    </view>
+    
+</view>

@@ -1,0 +1,85 @@
+/* pages/resume/operating/initiateInterview/index.wxss */
+/* 列表样式 */
+.init{
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 32rpx;
+    letter-spacing: 0;
+}
+.init .plr{
+    padding: 0 30rpx !important;
+}
+.init .ptb{
+    padding: 36rpx 0 !important;
+    
+}
+.init .b-border{
+    border-bottom: 1rpx solid #F2F2F2;
+}
+.f28{
+    font-size: 28rpx;
+}
+.init .col-line{
+    height: 32rpx;
+}
+
+/* 多行输入框 */
+.init .textareaContent{
+    padding-top: 20rpx;
+    background: #F5F5F5;
+}
+
+.init .switchColor{
+    border-color:#4DD865 !important;
+    background-color:#4DD865 !important;
+}
+
+.init .textareaContent .txt{
+    width: 100%;
+    background: #FFFFFF;
+    height: 180rpx;
+    font-size: 32rpx;
+    padding: 28rpx 26rpx;
+    box-sizing: border-box;
+}
+.init .textareaContent .num{
+    font-size: 24rpx;
+    color: #BBBBBB;
+    text-align: right;
+    line-height: 24rpx;
+    background: #FFFFFF;
+    padding: 28rpx 30rpx;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+.init .checkbox{
+    padding: 22rpx 30rpx;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #666666;
+}
+.init .checkbox label view{
+    display: inline-block;
+    padding-top: 8rpx;
+    box-sizing: border-box;
+}
+.init .checkbox .checkboxSize{
+    transform:scale(.8);
+    float: left;
+}
+.init .btn{
+    width: 690rpx;
+    height: 94rpx;
+    border-radius: 10rpx;
+    line-height: 94rpx;
+    background: #FF8B38 !important;
+    font-size: 36rpx;
+    color: #FFFFFF !important;
+    margin: 210rpx 30rpx 60rpx;
+}
+
+.init .btn::after{
+    border: none
+}
