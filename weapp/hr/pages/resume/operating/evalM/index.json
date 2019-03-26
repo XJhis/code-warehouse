@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "面试评价",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+       "i-rate": "../../../../components/rate/index",
+       "i-toast": "../../../../components/toast/index"
+    }
+}

@@ -1,0 +1,1 @@
+<i-icon type="{{type}}" size="{{size}}" color="{{color}}" i-custom="{{custom ? 'i-weapp' : ''}}"  i-class="{{custom ? custom : ''}}"></i-icon>

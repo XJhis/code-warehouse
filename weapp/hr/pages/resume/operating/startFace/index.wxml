@@ -1,0 +1,50 @@
+<form bindsubmit="submitForm">
+    <view class="init">
+        <i-cell-group i-class="plr">
+            <i-cell title="联系人" i-class="ptb b-border col-line">
+                <input slot="footer" name="contact" value="{{info.contact}}" type="text" placeholder="请输入" class="f28" />
+            </i-cell>
+            <i-cell title="联系电话" i-class="ptb b-border col-line">
+                <input slot="footer" name="contactPhone" value="{{info.contactPhone}}" type="number" placeholder="请输入" class="f28" maxlength="20" />
+            </i-cell>
+            <i-cell title="面试地址" i-class="ptb b-border col-line" is-link url="./../faceAddress/index?address={{info.proposeAddress}}">
+                <input slot="footer" disabled name="proposeAddress" value="{{info.proposeAddress}}" placeholder="请输入" class="f28" />
+            </i-cell>
+            <i-cell title="需要猎头确认" i-class="ptb b-border col-line">                
+                <switch slot="footer" color="#ff6b00" name="needConfirm" checked="{{info.needConfirm}}" bindchange="switchFn"/>
+            </i-cell>
+            <i-cell title="面试时间" i-class="ptb b-border col-line" wx:if="{{timeType==1}}">
+                <input slot="footer" type="text" placeholder="请输入" class="f28" value="{{info.proposeTime}}" name="proposeTime" maxlength="200"/>
+            </i-cell>
+            <i-cell title="面试时间" i-class="ptb b-border col-line" wx:if="{{timeType==2}}">                
+                <view slot="footer">
+                    <picker mode="multiSelector" 
+                        range="{{dateTimeArray}}" 
+                        value="{{dateTime}}" 
+                        bindchange="changeDateTime" 
+                        bindcolumnchange="changeDateTimeColumn">
+                        <view class="tui-picker-detail">
+                          {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+                        </view>
+                      </picker>                    
+                </view>
+            </i-cell>
+        </i-cell-group>
+        <view class="textareaContent">
+            <textarea bindinput="remarkFn" class="txt" value="{{info.hrRemark}}" placeholder="补充说明，最多200字" maxlength="200" name="hrRemark"/>
+            <view class="num b-border"> 
+               {{hrRemarkLeng}}/200
+            </view>
+        </view>
+        <view class="checkbox">
+          <checkbox-group name="lieniHas">
+            <label>
+              <checkbox color="#ff6b00" value="1" checked="{{info.lieniHas}}" class="checkboxSize"/>
+              <view class="fl">已确定该候选人归猎你网平台猎头所有</view>
+            </label>
+          </checkbox-group>
+        </view>
+        <button form-type="submit" class="btn">确认</button>    
+        <i-toast id="toast" />
+    </view>
+</form>

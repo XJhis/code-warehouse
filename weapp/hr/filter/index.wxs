@@ -1,0 +1,408 @@
+
+//替换html标签
+var replaceHtml = function(str) {
+    var htmlReg = getRegExp("<[^>]+>", 'g');
+
+    return str ? str.replace(htmlReg, "") : "";
+}
+
+// 换行转换
+var newline = function(str) {
+    var reg = getRegExp("\n", 'g'); 
+    
+    str = replaceHtml(str);      
+
+    return str ? str.replace(reg, '<br>') : '';
+}
+
+// 3000 => 3,000
+var CutNumber = function(num) {
+    return +num ? num.toLocaleString() : 0;
+}
+
+//推荐状态
+var recomStatus = {
+    data: {
+        '1': "审核中",
+        '2': "审核拒绝",
+        '3': "新推荐",
+        '4': "简历拒绝",
+        '5': "评估中",
+        '6': "发起初试",
+        '7': "面试拒绝",
+        '8': "猎头确认",
+        '9': "面试待定",
+        '10': "Offer",
+        '11': "放弃Offer",
+        '12': "入职",
+        '13': "上岗后离职",
+        '14': "已过保",
+        '15': "发起复试",
+        '16': "人选确认",
+        '17': "没来面试",
+        '18': "人选放弃"
+    },
+    show: function(id) {
+        return recomStatus.data['' + id] || '';
+    }
+}
+
+//性别
+var gender = {
+    data: {
+        '0': '女',
+        '1': '男'
+    },
+    show: function(id) {
+        return gender.data['' + id] || '';
+    }
+}
+
+// 出生日期
+var countAge = function(val) {
+    if (!val) {return ''}
+    return getDate().getFullYear() - val;
+}
+
+//工作年限
+var workYears = {
+    data: {
+        '0': '1年以内',
+        '1': '1年',
+        '2': '2年',
+        '3': '3年',
+        '4': '4年',
+        '5': '5年',
+        '6': '6年',
+        '7': '7年',
+        '8': '8年',
+        '9': '9年',
+        '10': '10年',
+        '11': '11年',
+        '12': '12年',
+        '99': '12年以上'
+    },
+    show: function(val, text) {
+        if (val===0) {
+            return '1年以内经验';
+        }
+        if (val=='' || val==null || val==undefined) {return ''};
+        
+
+        var text = text || '经验';
+
+        if (val > 12) {
+            return '12年以上经验'
+        }
+        return workYears.data['' + val] + text || '';
+    }
+}
+
+//学历
+var degree = {
+    data: {
+        '1': '大专以下',
+        '2': '大专',
+        '3': '本科',
+        '4': '硕士',
+        '5': '博士',
+        '6': '博士后',
+        '7': 'MBA'
+    },
+    show: function(val) {
+        return degree.data['' + val] || '';
+    }
+}
+
+//学历要求
+var degreeRequest = {
+    data: {
+        '0': '不限',
+        '2': '大专及以上',
+        '3': '本科及以上',
+        '4': '硕士及以上',
+        '5': '博士及以上'
+    },
+    show: function(val) {
+        return degreeRequest.data['' + val] || '';
+    }
+}
+
+
+//婚姻状况
+var maritalStatus = {
+    data: {
+        '0': '未知',
+        '1': '未婚',
+        '2': '已婚未育',
+        '3': '已婚已育',
+        '4': '离异'
+    },
+    show: function(val) {
+        return maritalStatus.data['' + val] || '';
+    }
+}
+
+
+//求职状态
+var workState = {
+    data: {
+        '1': '在职，看看新机会',
+        '2': '在职，急寻新工作',
+        '3': '在职，暂无跳槽打算',
+        '4': '离职，正在找工作'
+    },
+    show: function(val) {
+        return workState.data['' + val] || '';
+    }
+}
+
+//求职状态
+var companyScale = {
+    data: {
+        '1': '1-49人',
+        '2': '50-99人',
+        '3': '100-499人',
+        '4': '500-999人',
+        '5': '1000-9999人',
+        '6': '10000人以上'
+    },
+    show: function(val) {
+        return companyScale.data['' + val] || '';
+    }
+}
+
+//税前税后
+var salaryType = {
+    data: {
+        '1': '税前',
+        '2': '税后'
+    },
+    show: function(val) {
+        return salaryType.data['' + val] || '';
+    }
+}
+
+//税前税后
+var expectEntryTime = {
+    data: {
+        '0': '随时到岗',
+        '1': '一周之内',
+        '2': '两周之内',
+        '3': '三周之内',
+        '4': '一个月内',
+        '5': '一个月以上'
+    },
+    show: function(val) {
+        return expectEntryTime.data['' + val] || '';
+    }
+}
+
+//语言能力
+var language = {
+    type: {
+        '1': '英语',
+        '2': '日语',
+        '3': '其他',
+    },
+    pro: {
+        '1': '简单沟通',
+        '2': '读写精通',
+        '3': '商务洽谈',
+        '4': '同声翻译'
+    },
+    level: {
+        '1': '专业四级',
+        '2': '专业八级',
+        '3': 'CET4',
+        '4': 'CET6',
+        '5': 'PETS-1B',
+        '6': 'PETS-1',
+        '7': 'PETS-2',
+        '8': 'PETS-3',
+        '9': 'PETS-4',
+        '10': 'PETS-5',
+        '11': 'N1',
+        '12': 'N2',
+        '13': 'N3',
+        '14': 'N4',
+        '15': 'N5',
+    },
+    fn: {
+        type: function(val) {
+            return language.type['' + val] || '';
+        },
+        pro: function(val) {
+            return language.pro['' + val] || '';
+        },
+        level: function(val) {
+            return language.level['' + val] || '';
+        },
+    }
+}
+
+//取姓
+var familyName = {
+    data: ['欧阳', '太史', '端木', '上官', '司马', '东方', '独孤', '南宫', '万俟', '闻人',
+        '夏侯', '诸葛', '尉迟', '公羊', '赫连', '澹台', '皇甫', '宗政', '濮阳', '公冶',
+        '太叔', '申屠', '公孙', '慕容', '仲孙', '钟离', '长孙', '宇文', '城池', '司徒',
+        '鲜于', '司空', '汝嫣', '闾丘', '子车', '亓官', '司寇', '巫马', '公西', '颛孙',
+        '壤驷', '公良', '漆雕', '乐正', '宰父', '谷梁', '拓跋', '夹谷', '轩辕', '令狐',
+        '段干', '百里', '呼延', '东郭', '南门', '羊舌', '微生', '公户', '公玉', '公仪',
+        '梁丘', '公仲', '公上', '公门', '公山', '公坚', '左丘', '公伯', '西门', '公祖',
+        '第五', '公乘', '贯丘', '公皙', '南荣', '东里', '东宫', '仲长', '子书', '子桑',
+        '即墨', '达奚', '褚师'
+    ],
+    handle: function(fullname, type) {
+        var type = type || 1,
+            fullname = fullname || '',
+            hyArr = familyName.data,
+            vLength = fullname.length,
+            lastname = '', // 前为姓,后为名 
+            firstname = '';
+
+        if (vLength > 2) {
+            var preTwoWords = fullname.substring(0, 2);
+            // 取命名的前两个字,看是否在复姓库中    
+            if (hyArr.indexOf(preTwoWords) > -1) {
+                firstname = preTwoWords;
+                lastname = fullname.substring(1);
+            } else {
+                firstname = fullname.substring(0, 1);
+                lastname = fullname.substring(1);
+            }
+        } else if (vLength === 2) {
+            // 全名只有两个字时,以前一个为姓,后一下为名    
+            firstname = fullname.substring(0, 1);
+            lastname = fullname.substring(1);
+        } else {
+            firstname = fullname;
+        }
+        result = (type == 1 ? firstname : [firstname, lastname])
+        return result;
+    }
+}
+
+
+
+
+
+//数据转化
+function formatNumber(n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+
+/**
+ * 时间戳转化为年 月 日 时 分 秒
+ * number: 传入时间戳
+ * format：返回格式，支持自定义，但参数必须与formateArr里保持一致
+ */
+function formatTime(dd, str) {
+
+    var format = str || 'y-M-d';
+
+    var formateArr = ['y', 'M', 'd', 'h', 'm', 's'];
+    var returnArr = [];
+
+    var date = getDate(dd);
+    returnArr.push(date.getFullYear());
+    returnArr.push(formatNumber(date.getMonth() + 1));
+    returnArr.push(formatNumber(date.getDate()));
+
+    returnArr.push(formatNumber(date.getHours()));
+    returnArr.push(formatNumber(date.getMinutes()));
+    returnArr.push(formatNumber(date.getSeconds()));
+
+    for (var i = 0; i < returnArr.length - 1; i++) {
+        format = format.replace(formateArr[i], returnArr[i]);
+    }
+    
+    return format;
+}
+
+// 时间戳转年月
+var TOYEARMONTHSLOT = function(startYear, startMonth, endYear, endMonth) {
+    var result = '';
+    var date = getDate();
+    if (!endYear || endYear == 9999) {
+        endYear = date.getFullYear();
+        endMonth = date.getMonth() + 1;
+    }
+    if (parseInt(endMonth) < parseInt(startMonth)) {
+        endMonth = parseInt(endMonth) + 12;
+        endYear = parseInt(endYear) - 1;
+    }
+
+    result += (endYear - parseInt(startYear)) ? (endYear - parseInt(startYear)) + '年' : '';
+    result += (endMonth - parseInt(startMonth)) ? (endMonth - parseInt(startMonth)) + '个月' : '';
+
+    return result ? result : '不足一个月';
+}
+
+var workYearsReq = function(min, max) {
+    var result = '',
+        min = min || '',
+        max = max || '';
+    if (!min && !max) {
+        result = '经验不限';
+    } else if (min == 0 && max == 3) {
+        result = '3年及以下';
+    } else if (min && max == 0) {
+        return min + '年以上'
+    } else {
+        result = min + '-' + max + '年';
+    }
+
+    return result;
+}
+//保留几位小数、不四舍五入
+// amount 保留位数
+var savePoint = function(number, amount) {
+    var str = '',
+        amount = amount ||0,
+        result;
+
+    if (typeof + number !== 'number') {
+        return number;
+    }
+
+    if (amount<0) {
+        return number;
+    }
+
+    str = number + '';
+
+    if (str.lastIndexOf('.') == -1) {
+
+        return number;
+    } else {
+
+        result = +str.substring(0, str.lastIndexOf('.') + amount + 1);
+        return result;
+    }
+}
+
+module.exports = {
+    newline: newline,
+    showStatus: recomStatus.show,
+    showGender: gender.show,
+    countAge: countAge,
+    workYears: workYears.show,
+    showDegree: degree.show,
+    DATE: formatTime,
+    maritalStatus: maritalStatus.show,
+    workState: workState.show,
+    companyScale: companyScale.show,
+    degreeRequest: degreeRequest.show,
+    salaryType: salaryType.show,
+    expectEntryTime: expectEntryTime.show,
+    language: language.fn,
+    familyName: familyName.handle,
+    yearMonthRange: TOYEARMONTHSLOT,
+    workYearsReq: workYearsReq,
+    savePoint: savePoint,
+    replaceHtml: replaceHtml,
+    CutNumber: CutNumber
+
+}

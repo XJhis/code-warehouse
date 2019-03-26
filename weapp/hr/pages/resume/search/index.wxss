@@ -1,0 +1,166 @@
+page {
+	background: #f6f6f6;
+	word-break:break-all;
+}
+
+.search-page {}
+
+.search-header .fixed{
+	width: 100%;
+	height: 90rpx;
+	background: #FFF;
+	box-shadow: 0 1px 10px 0 rgba(22,8,0,0.08);
+	position: fixed;
+	top: 0;
+}
+
+.search-header .inpt {
+	position: relative;
+	width: 690rpx;
+	/*height: 60rpx;*/
+	margin: 15rpx auto;
+}
+
+.search-header .inpt > input {
+	border: 1rpx solid #E8E8E8;
+	border-radius: 100rpx;
+	padding: 0 70rpx;
+	font-size: 24rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	box-sizing: border-box;
+
+}
+
+.search-header .inpt .place-hold {
+	font-size: 24rpx;
+	color: #B4B4B4;
+	text-align: left;
+	
+}
+
+.search-header .inpt .icon {
+	position: absolute;
+	left: 30rpx;
+	top: 6rpx;
+}
+
+.search-header .take-place {
+	width: 100%;
+	height: 90rpx;
+}
+
+.search-cont .no-data{
+	padding: 150rpx 0;
+	font-size: 30rpx;
+	color: #B4B4B4;
+	text-align: center;
+	line-height: 30rpx;
+}
+
+/* 历史记录 */
+.history-record {
+	box-sizing: border-box;
+	padding: 40rpx 30rpx;
+}
+
+.history-record .title {
+	margin-bottom: 40rpx;
+
+}
+.history-record .title .name {
+	font-size: 26rpx;
+	color: #333333;
+	line-height: 26rpx;
+}
+
+.history-record .title .delete {
+	text-align: right;
+	margin-top: -20rpx;
+}
+
+.history-record .record-item {
+	box-sizing: border-box;
+	display: inline-block;
+	background: #FFFFFF;
+	border-radius: 100rpx;
+	font-size: 28rpx;
+	color: #999999;
+	line-height: 66rpx;
+	padding: 0 32rpx;
+	max-width: 372rpx;
+	margin: 0 30rpx 20rpx 0;
+}
+
+/* 列表显示 */
+.search-cont .list {
+	padding-top: 2rpx;
+}
+.list .list-item {
+    background: #fff;
+    padding: 40rpx 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.list-item .first,
+.list-item .bottom {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.list-item .first .name {
+    flex: 150;
+    font-size: 34rpx;
+    box-sizing: border-box;
+}
+
+.list-item .first .job {
+    flex: 400;
+    font-size: 30rpx;
+    padding: 4rpx 0 0 10rpx;
+    box-sizing: border-box;
+}
+
+.list-item .first .tag {
+    flex: 200;
+    font-size: 30rpx;
+}
+
+.list-item .second {
+    font-size: 24rpx;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 24rpx;
+    padding: 22rpx 0;
+    box-sizing: border-box;
+}
+
+.list-item .second >text {
+	 float: left;
+    display: block; 
+    margin-right: 36rpx;
+}
+
+.list-item .second>text:last-child {        
+    margin-right: 0;
+}
+
+.list-item .second>.city-name {
+    max-width: 260rpx;
+}
+
+.list-item .bottom .recom-job {
+    flex: 540;
+    font-size: 28rpx;
+    color: #666666;
+    letter-spacing: 0;
+    line-height: 28rpx;
+}
+
+.list-item .bottom .time {
+	flex: 140;
+    font-size: 24rpx;
+    color: #999999;
+    text-align: right;
+    line-height: 24rpx;
+}

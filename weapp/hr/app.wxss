@@ -1,0 +1,108 @@
+/**app.wxss**/
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+}
+
+/* // 万能清除浮动 */
+.clear:after,
+.clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* // 浮动 */
+.f-l {
+    float: left;
+}
+
+.f-r {
+    float: right;
+}
+
+/* // 省略 */
+.el-sl {
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* 加粗 */
+.b{
+    font-weight: bold;
+}
+/* // 对齐方式 */
+.t-c {
+    text-align: center !important;
+}
+
+.t-l {
+    text-align: left !important;
+}
+
+.t-r {
+    text-align: right !important;
+}
+
+/* 定位 */
+.relative {
+    position: relative;
+}
+
+/* // 强制换行 */
+.change-wrap {
+    word-wrap: break-word;
+}
+
+/* // 字体颜色 */
+.orange {
+    color: #ff6b00 !important;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+.modal-text {
+    font-size: 36rpx;
+    color: #000000;
+    text-align: center;
+    padding: 80rpx 50rpx;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* 表单提交 */
+.base-form-btn{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+/* 去app */
+.launchApp{
+    font-size: 28rpx;
+    position: fixed;
+    right: -10rpx;
+    bottom: 200rpx;
+    background: #ff6b00;
+    color: #fff;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx 0rpx 0rpx 30rpx;
+    z-index: 99999
+}
+.launchApp:after{
+    border: none;
+}

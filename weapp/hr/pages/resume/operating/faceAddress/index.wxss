@@ -1,0 +1,50 @@
+.address{
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 32rpx;
+    letter-spacing: 0;
+}
+.address .plr{
+    padding: 0 30rpx !important;
+}
+.address .ptb{
+    padding: 36rpx 0 !important;
+}
+.address .b-border{
+    border-bottom: 1px solid #F2F2F2;
+}
+.address .col-line{
+    min-height: 32rpx;
+}
+/*  */
+.address .cityInfo{
+    position: relative;
+    top: -14rpx;
+    width: 520rpx;
+    font-size: 28rpx;
+    line-height: 43rpx;
+    height: 80rpx;
+    
+}
+
+.address .btn{
+    width: 690rpx;
+    height: 94rpx;
+    border-radius: 10rpx;
+    line-height: 94rpx;
+    background: #FF8B38 !important;
+    font-size: 36rpx;
+    color: #FFFFFF !important;
+    margin: 800rpx 30rpx 60rpx;
+}
+.address .btn::after{
+    border: none
+}
+
+.address .address-detail {
+    align-items: stretch;
+    padding-bottom: 20rpx !important;
+}
+

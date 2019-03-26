@@ -1,0 +1,2 @@
+<!--pages/tools/salary/index.wxml-->
+<web-view src="https://www.lieni.com/h5/tools/chart"></web-view>

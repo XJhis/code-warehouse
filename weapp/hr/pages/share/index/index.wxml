@@ -1,0 +1,49 @@
+<wxs src="../../../filter/index.wxs" module="filters" />
+<view class="tabs">
+    <view class="tabs-tab">
+        <view class="tabs-tab-title {{ tabIndex == 1 ? 'active' : '' }}" data-key="1" bind:tap="tabChange">我的转发</view>    
+    </view>
+    <view class="tabs-tab">
+        <view class="tabs-tab-title {{ tabIndex == 2 ? 'active' : '' }}" data-key="2" bind:tap="tabChange">转发给我</view>
+    </view>
+</view>
+<view class="resume-list">
+    <block wx:if="{{!noData}}" wx:for="{{list}}" wx:key="index">
+        <navigator url="../detail/index?candidateId={{item.candidateId}}" hover-class="none">
+            <view class="list-item">
+                <view class="first">
+                    <view class="name b el-sl t-l">{{item.candidateName||''}}</view>
+                    <view class="job b el-sl">{{item.currentPosition||''}}</view>
+                    <view class="tag t-r">
+                        <i-tag color="blue">
+                            {{filters.showStatus(item.status)}}
+                        </i-tag>
+                        <i-icon wx:if="{{ item.havaUnRead && item.evaluates }}" class="icon" custom="i-msg_fill" size="28" color="#ff3d3d" />
+                        <i-icon wx:if="{{ !item.havaUnRead && item.evaluates }}" class="icon" custom="i-msg" size="28" color="#c1c1c1" />
+                    </view>
+                    
+                </view>
+                <view class="second clear">
+                    <text>{{filters.showGender(item.gender)}}</text><text>{{filters.countAge(item.birthYear)}}岁</text><text wx:if="{{item.workYears>=0}}">{{filters.workYears(item.workYears)}}</text><text>{{filters.showDegree(item.highestDegree)}}</text>
+                    <text wx:if="{{item.workCityName||item.workDistrictName}}">{{item.workCityName||''}}<block wx:if="{{item.workCityName&&item.workDistrictName}}">-</block>{{item.workDistrictName||''}}</text>
+                </view>
+                <view class="bottom">
+                    <view class="recom-job el-sl">推荐职位：{{item.jobName||''}}</view>
+                    <view class="time">{{filters.DATE(item.date)}}</view>
+                </view>
+            </view>
+        </navigator>
+    </block>
+    <block wx:if="{{noData}}">
+    	<view class="no-data t-c">
+    		<view>
+    			<image mode="scaleToFill" src="../../../assets/img/noData.png"></image>
+    		</view>
+    		<text class="text">暂时没有数据</text>
+    	</view>
+    </block>
+    <view wx:if="{{isLoading || !hasMore}}" style="padding-bottom: 20rpx">
+        <i-load-more wx:if="{{isLoading}}" />
+		<i-load-more wx:if="{{!hasMore}}" tip="没有更多了" loading="{{ false }}"/>
+    </view>
+</view>

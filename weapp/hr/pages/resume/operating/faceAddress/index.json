@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "面试地址",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+      "i-cell-group": "../../../../components/cell-group/index",
+      "i-cell": "../../../../components/cell/index",
+      "i-input": "../../../../components/input/index",
+      "i-toast": "../../../../components/toast/index"
+    }
+}

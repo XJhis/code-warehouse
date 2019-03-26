@@ -1,0 +1,13 @@
+/* pages/signInUp/up/index.wxss */
+@import "../index.wxss";
+
+.agreement{
+	font-size: 24rpx;
+	color: #BBBBBB;
+	line-height: 24px;
+	text-align: center;
+	padding-top: 50rpx;
+}
+.agreement .route{
+	display: inline-block;
+ }

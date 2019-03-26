@@ -1,0 +1,17 @@
+{
+	"navigationBarBackgroundColor": "#233963",
+	"backgroundColor": "#233963",
+	"navigationBarTitleText": "",
+	"enablePullDownRefresh": true,
+	"backgroundTextStyle": "light",
+	"usingComponents": {
+	    "i-sticky": "../../../components/sticky/index",
+    	"i-sticky-item": "../../../components/sticky-item/index",   
+	    "i-icon": "../../../components/icons/index",
+	    "i-tag": "../../../components/tag/index",
+	    "i-load-more": "../../../components/load-more/index",
+	    "i-tabs": "../../../components/tabs/index",
+        "i-tab": "../../../components/tab/index",
+        "i-spin": "../../../components/spin/index"
+	}
+}

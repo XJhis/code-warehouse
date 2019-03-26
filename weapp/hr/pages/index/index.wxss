@@ -1,0 +1,222 @@
+/* pages/index/index.wxss */
+page{
+	background: #fff;
+}
+ .close {
+ 	width: 40rpx;
+	height: 40rpx; 
+    position: absolute;
+    top: 10rpx;
+    right: 10rpx;
+}
+.close::before {
+    content:'';
+  	display: block;
+  	width: 40rpx;
+  	height: 6rpx; 
+  	background: #999;
+  	transform: rotate(45deg);
+  	position: absolute;
+  	top: 20rpx;
+
+}
+.close::after{
+	content:'';
+  	display: block;
+  	width: 40rpx;
+  	height: 6rpx; 
+  	background: #999;
+  	transform: rotate(-45deg);
+  	position: absolute;
+  	top: 20rpx;
+}
+/* 企宣 */
+.sign{
+	/*background: #fff;*/
+	font-family: PingFangSC-Medium;
+}
+.sign .img{
+	width: 100%;
+	display: block;
+}
+.sign .h1{
+	color: #000;
+	font-size: 48rpx;
+	line-height: 68rpx;
+	text-align: center;
+	margin: 30rpx 0rpx 60rpx;
+	-webkit-box-reflect: below -24rpx -webkit-gradient(linear, left top, left bottom, from(transparent),color-stop(50%, transparent),to(rgba(255, 255, 255, 0.2))); 
+}
+.sign .p{
+	margin-bottom: 50rpx;
+	padding-left: 128rpx;
+	position: relative;
+}
+.sign .p .h2{
+	font-size: 34rpx;
+	color: #333333;
+}
+.sign .p .sub{
+	font-family: PingFangSC-Regular;
+	font-size: 24rpx;
+	color: #7C7C7C;
+}
+.sign .p_icon{
+	position: absolute;
+	left: 90rpx;
+	top: 16rpx;
+	width: 18rpx;
+	height: 18rpx;
+	background-image: linear-gradient(223deg, #FFBA56 0%, #FF842B 74%);
+	box-shadow: 0 2rpx 4rpx 0 #FF8E3C;
+	border-radius: 4rpx 2rpx 4rpx 2rpx;
+}
+.sign .footer{
+	width: 100%;
+	height: 238rpx;
+	padding-top: 38rpx;
+	position: fixed;
+	bottom: 0;
+}
+.sign .btn{
+	position: absolute;
+	top: 46rpx;
+	width: 100%;
+	text-align: center;
+}
+.sign .btn button{
+	display: inline-block;
+	width: 295rpx;
+	height: 98rpx;
+	line-height: 98rpx;
+	background: linear-gradient(54deg, #FFBF69 0%, #FF6B00 100%);
+	box-shadow: 0 2rpx 8rpx 4rpx rgba(255,107,0,0.30);
+	border-radius: 20rpx;
+	font-family: PingFangSC-Regular;
+	font-size: 36rpx;
+	color: #fff;
+	letter-spacing: 0;
+	text-align: center;
+	border: none;
+	margin: 0 20rpx;
+}
+.sign .btn button:after{
+	border: none;
+}
+.sign .btn .signIn{
+	background: #fff;
+	box-shadow: 0 2rpx 8rpx 4rpx rgba(255,107,0,0.30);
+	color: #FF6B00
+}
+
+
+/* 登录方式 */
+.sign-select{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.40);
+	position: fixed;
+	display: flex;
+	align-items: center;
+	top: 0
+}
+.sign-select .signInUp{
+	width: 620rpx;
+	padding: 80rpx 125rpx;
+	background: #FFFFFF;
+	border-radius: 14rpx;
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: relative;
+	
+}
+.sign-select .title{
+	height: 40rpx;
+	font-size: 40rpx;
+	color: #000000;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 40rpx;
+	
+}
+.sign-select .weixin{
+	width: 370rpx;
+	height: 70rpx;
+	display: inline-block;
+	background: #1CAC1B;
+	border-color: #529941;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 70rpx;
+	margin-top: 50rpx;
+	box-sizing: border-box;
+}
+.sign-select .iphone{
+	width: 370rpx;
+	height: 70rpx;
+	display: inline-block;
+	background: #F8F8F8;
+	border-color: #DFDFDF;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	color: #333333;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 70rpx;
+	margin-top: 28rpx;
+	box-sizing: border-box;
+}
+.sign-select .icon{
+	margin-right: 18rpx;
+}
+/* am分享 */
+.share-modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.40);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    z-index: 99
+}
+.share-modal .modal{
+    width: 620rpx;
+    background: #FFFFFF;
+    border-radius: 14rpx;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+}
+.share-modal .title {
+    font-size:36rpx;
+    color:#000000;
+    text-align:center;
+    padding:50rpx 30rpx 30rpx;
+}
+.share-modal .img{
+	display: block;
+	width: 500rpx;
+	height: 400rpx;
+	margin: 0 auto 50rpx;
+}
+.share-modal .btns{
+    border-top: 2rpx solid #e9eaec;
+    height: 90rpx;
+    box-sizing: border-box;
+}
+.share-modal .weixin{
+    height: 88rpx;
+    background: #fff;
+    font-size: 36rpx;
+    color: #ff6b00;
+    text-align: center;
+    line-height: 88rpx;
+}
+.share-modal .weixin:after {
+    border: none
+}
+

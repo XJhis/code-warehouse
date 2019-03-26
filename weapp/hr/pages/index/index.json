@@ -1,0 +1,7 @@
+{
+	"navigationBarBackgroundColor": "#FFB854",
+	"disableScroll": true,
+	"usingComponents": {
+	    "i-icon": "../../components/icons/index"
+	}
+}

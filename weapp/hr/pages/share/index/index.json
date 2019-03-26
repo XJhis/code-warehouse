@@ -1,0 +1,12 @@
+{
+	"navigationBarBackgroundColor": "#fff",
+	"backgroundColor": "#f6f6f6",
+	"navigationBarTitleText": "转发简历",
+	"enablePullDownRefresh": true,
+	"backgroundTextStyle": "dark",
+	"usingComponents": {
+	    "i-icon": "../../../components/icons/index",
+	    "i-tag": "../../../components/tag/index",
+	    "i-load-more": "../../../components/load-more/index"
+	}
+}

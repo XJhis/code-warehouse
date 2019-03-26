@@ -1,0 +1,77 @@
+.box {
+	background: #f5f5f5;
+}
+
+.box .top{
+	box-sizing: border-box;
+	padding: 50rpx 30rpx;
+	background: #fff;
+	margin-bottom: 20rpx;
+}
+
+.top .title {
+	font-size: 32rpx;
+	color: #333333;
+	text-align: left;
+	line-height: 52rpx;
+	margin-bottom: 50rpx;
+}
+
+.top .radio-group>label{
+	display: block;
+	margin-bottom: 30rpx;
+	font-size: 32rpx;
+	color: #666666;
+	/* line-height: 32rpx; */
+
+}
+
+.top .radio-group>label:last-child {
+	margin-bottom: 0;
+}
+
+.box .bottom {
+	background: #fff;
+}
+
+.bottom .inpt {
+	position: relative;
+}
+
+.bottom .inpt .text-area{
+	box-sizing: border-box;
+	padding: 30rpx 30rpx 60rpx 30rpx;
+	width: 100%;
+	height: 250rpx;
+	border: 1px solid #f2f2f2;
+	font-size: 32rpx;
+}
+.bottom .inpt .num {
+	position: absolute;
+	right: 20rpx;
+	bottom: 25rpx;
+	font-size: 24rpx;
+	color: #BBBBBB;
+	text-align: right;
+	line-height: 24rpx;
+}
+.bottom .inpt .place-holder{
+	font-size: 32rpx;
+	color: #BBBBBB;
+	text-align: left;
+	line-height: 32rpx;
+}
+
+.bottom .b-btn {
+	padding: 310rpx 30px 0;	
+}
+
+.bottom .b-btn .btn{
+	background: #FF8B38 !important;
+	font-size: 36rpx;
+	color: #FFFFFF !important;
+}
+
+.bottom .b-btn .btn::after{
+	border: none
+}
