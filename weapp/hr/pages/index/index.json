@@ -3,8 +3,7 @@
 	"disableScroll": true,
 	"usingComponents": {
 	    "i-icon": "../../components/icons/index",
-	    "i-button": "../../components/button/index",
-	    "my-test": "../../myComponents/test/index"
+	    "i-button": "../../components/button/index"
 
 
 	}

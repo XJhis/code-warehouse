@@ -35,10 +35,7 @@ Page({
     },
     hideSign: function(){
         this.setData({show: false});  
-    },
-    // hideShare: function(){
-    //     this.setData({isShare: false});    
-    // },
+    },    
     // 直接注册
     showSignUp: function(){
         // 埋点
@@ -91,8 +88,7 @@ Page({
             });    
         }
         
-    },
-    
+    },    
     // 路由中转
     middleRoute: function(params){
         let query = params || this.data.query;
@@ -134,6 +130,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(query) {
+
+
         
         // (#) 特殊处理
         if(query.candidateId && query.candidateId.indexOf('m') != -1){
@@ -226,7 +224,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+    	// console.log('getCurrentPages:',getCurrentPages())
     },
 
     /**
