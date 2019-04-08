@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>使用rem布局</title>
-	<style>
-		* {margin:0; padding: 0}
-		.box {
-			padding: 0 30px;
-		}
-		.top {
-			margin: 0 auto;
-			width: 200px;
-			height: 100px;
-			background: #f0f;
-		}
 
-		.center {
-			margin: 0 auto;
-			width: 200px;
-			height: 100px;
-			background: #0ff;
-		}
-		.bottom {
-			margin: 0 auto;
-			width: 200px;
-			height: 100px;
-			background: #0f0;
-		}
-		
-		.btn {
-			width: 200px;
-			height: 60px
-		}
-	</style>
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, ser-scalable=no"> -->
+    <title>使用rem布局</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    .box {
+        width: 800px;
+        height: 200px;
+        margin: 20px auto 0;
+        background: #f00;
+    }
 	
+	.cont {
+		width: 400px;
+		height: 100px;
+		background: #f0f;
+	}
+    
+    </style>
 </head>
+
 <body>
-	<div class="box">
-		<!-- <div class="top"></div>
-		<div class="center"></div>
-		<div class="bottom"></div> -->
-		<button class="btn">添加</button>
-	</div>
-	<script>
-		console.log('逻辑像素:', screen.width, screen.height)
-	</script>
+    <div class="box">
+       <div class="cont"></div>
+        
+    </div>
+    <script>
+    console.log('逻辑像素:', screen.width, screen.height)
+    </script>
 </body>
+
 </html>
