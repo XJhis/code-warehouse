@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        //一：只是promise的语法糖
+        async function demo() {
+            let a = await Math.random();
+
+            console.log(a)
+        }
+        demo();
+
+        // 二：async用来表示函数是异步的，定义的函数会返回一个promise对象，可以使用then方法添加回调函数。
+        async function test(params) {
+            return 123
+        }
+
+        test().then( res => {
+            console.log(res)
+        } )
+
+        // 三：await必须写在async函数中
+        // await:是它最主要的意图是用来等待 Promise 对象的状态被 resolved。
+        // 如果等的是正常的表达式则立即执行。
+
+        function sleep(t = 1000) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('has enough sleep');
+                }, t);
+            })
+        }
+
+        function normalFun() {
+            return 11
+        }
+
+        async function awaitDemo() {
+            //正常函数
+            let nn = await normalFun();
+            console.log(nn)
+
+            //异步函数
+            let ss =  await sleep(2000);
+            console.log(ss)
+        }
+
+        awaitDemo();
+
+        // 四：实战
+        // 你有三个请求需要发生，第三个请求是依赖于第二个请求的解构第二个请求依赖于第一个请求的结果
+        function sleep(text, t=1000) {
+            return new Promise( (resolve, reject)=> {
+                setTimeout(() => {
+                    resolve(text);
+                }, t);
+            } ) 
+        }
+
+        async function allDo() {
+            let a1 = await sleep('first,');
+            let a2 = await sleep(a1+ 'second,');
+            let a3 = await sleep(a2+ 'last');
+
+            console.log(a1, a2, a3)
+        }
+
+        allDo();
+
+        // 五:错误处理
+        // 以上都是成功的时候执行resolve,那么失败的回调什么时候执行呢？
+        function sleep(t = 1000) {
+            return new Promise((resolve, reject) => {
+                let num = parseInt(Math.random() * 100);
+                setTimeout(() => {
+                    if (num % 2 === 0) {
+                        resolve(num)
+                    } else {
+                        reject(num)
+                    }
+                }, t);
+            })
+        }
+
+        async function demo() {
+            let a = await sleep();
+            console.log(a)
+        }
+
+        // demo() //会报错
+
+        // 为了处理reject，需要用try catch包装一下
+        async function demo() {
+            try {
+                let a = await sleep();
+                console.log(a)
+            } catch (e) {
+                console.log(e);
+            }
+
+        }
+
+        demo();
+
+        // 结论：在使用await时你需要思考：
+        // 你是需要同一个异步执行完后才去执行第二个异步；有先后顺序的异步
+        // 还是只要所有的异步都执行完后做某一件事情，异步没有先后顺序
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
