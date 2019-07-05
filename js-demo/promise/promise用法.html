@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise对象</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        function getOne(params) {
+            return new Promise(function (resolve, reject) {
+                params ++ 
+                setTimeout(() => {
+                    resolve({ id: params, name: 'asd'})
+                }, 1000);
+
+            })
+        }
+
+        function getTwo(params) {
+            let conf = {
+                1: '天',
+                2: '明',
+                3: '微',
+                4: '雨',
+            }
+            return new Promise(function (resolve, reject) {                  
+
+                setTimeout(() => {
+                    resolve(conf[params.id])
+                }, 1000);
+            })
+        }      
+
+        
+        getOne(1).then(res => {
+            console.log('res', res);
+            return getTwo(res); 
+
+        }).then( ss => {
+            console.log('ss', ss);
+            
+        })
+
+        
+
+
+
+    </script>
+</body>
+
+</html>

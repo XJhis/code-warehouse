@@ -62,8 +62,10 @@
             })
         }
 
-        loadImg( imgUrl[1] ).then(res => {
-            document.querySelector('.img-box').appendChild(res);
+        loadImg( imgUrl[1] ).then( res => {
+            console.log(res);
+            
+            document.querySelector('body').appendChild(res);
         } )
 
 
